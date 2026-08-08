@@ -1,756 +1,1069 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Creative Management Solutions (CMS Group) — an India-focused digital product studio building and operating independent products across wellness, commerce and technology." />
-  <meta name="theme-color" content="#030712" />
-  <title>Creative Management Solutions — Digital Product Studio</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Creative Management Solutions (CMS Group) — an India-focused digital product company building and growing its own technology products.">
+<meta name="theme-color" content="#030712">
+<title>Creative Management Solutions — CMS Group</title>
 
-  <style>
-    :root{
-      --bg:#030712;
-      --bg-soft:#070b14;
-      --panel:rgba(10,15,27,.78);
-      --panel-strong:#0b101b;
-      --line:rgba(148,163,184,.16);
-      --line-hover:rgba(56,189,248,.38);
-      --text:#f8fafc;
-      --muted:#94a3b8;
-      --muted-2:#64748b;
-      --cyan:#38bdf8;
-      --indigo:#6366f1;
-      --green:#10b981;
-      --max:1180px;
-      --radius:24px;
-      --shadow:0 25px 80px rgba(0,0,0,.35);
-    }
+<style>
+:root{
+  --bg:#030712;
+  --bg-soft:#060a12;
+  --panel:#0a0f18;
+  --panel-2:#0d1420;
+  --line:rgba(148,163,184,.14);
+  --line-hover:rgba(56,189,248,.38);
+  --text:#f8fafc;
+  --muted:#9aa7b9;
+  --dim:#66758a;
+  --cyan:#38bdf8;
+  --indigo:#6366f1;
+  --green:#10b981;
+  --max:1160px;
+  --side:24px;
+  --section:48px;
+}
 
-    *{box-sizing:border-box}
-    html{scroll-behavior:smooth}
-    body{
-      margin:0;
-      color:var(--text);
-      background:
-        radial-gradient(circle at 15% 8%, rgba(56,189,248,.09), transparent 28%),
-        radial-gradient(circle at 85% 20%, rgba(99,102,241,.08), transparent 30%),
-        var(--bg);
-      font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
-      line-height:1.6;
-      overflow-x:hidden;
-    }
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:88px}
+body{
+  margin:0;
+  color:var(--text);
+  background:
+    radial-gradient(circle at 78% 4%,rgba(56,189,248,.07),transparent 25rem),
+    radial-gradient(circle at 12% 30%,rgba(99,102,241,.05),transparent 24rem),
+    var(--bg);
+  font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  line-height:1.5;
+  overflow-x:hidden;
+}
+body:before{
+  content:"";
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  z-index:-1;
+  opacity:.18;
+  background-image:
+    linear-gradient(rgba(148,163,184,.045) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(148,163,184,.045) 1px,transparent 1px);
+  background-size:56px 56px;
+  mask-image:linear-gradient(to bottom,#000,transparent 72%);
+}
+a{color:inherit;text-decoration:none}
+button{font:inherit}
+img{display:block;max-width:100%}
 
-    body::before{
-      content:"";
-      position:fixed;
-      inset:0;
-      pointer-events:none;
-      opacity:.25;
-      background-image:
-        linear-gradient(rgba(148,163,184,.045) 1px,transparent 1px),
-        linear-gradient(90deg,rgba(148,163,184,.045) 1px,transparent 1px);
-      background-size:56px 56px;
-      mask-image:linear-gradient(to bottom,black,transparent 82%);
-      z-index:-1;
-    }
+.container{
+  width:min(var(--max),calc(100% - (var(--side) * 2)));
+  margin-inline:auto;
+}
 
-    a{color:inherit;text-decoration:none}
-    img{max-width:100%;display:block}
-    button{font:inherit}
+/* NAV */
+.nav-wrap{
+  position:sticky;
+  top:10px;
+  z-index:50;
+  padding-top:10px;
+}
+nav{
+  min-height:58px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:18px;
+  padding:7px 8px 7px 12px;
+  border:1px solid var(--line);
+  border-radius:17px;
+  background:rgba(3,7,18,.78);
+  backdrop-filter:blur(20px);
+  box-shadow:0 14px 45px rgba(0,0,0,.18);
+}
+.brand{
+  display:flex;
+  align-items:center;
+  gap:9px;
+  min-width:0;
+  font-size:12px;
+  font-weight:760;
+  letter-spacing:-.02em;
+}
+.mark{
+  width:32px;
+  height:32px;
+  flex:0 0 32px;
+  display:grid;
+  place-items:center;
+  border-radius:9px;
+  font-size:9px;
+  font-weight:950;
+  letter-spacing:-.04em;
+  color:#fff;
+  background:linear-gradient(135deg,#38bdf8,#6366f1);
+  box-shadow:0 0 24px rgba(56,189,248,.18);
+}
+.nav-links{
+  display:flex;
+  align-items:center;
+  gap:21px;
+}
+.nav-links a{
+  font-size:11px;
+  color:#9caabd;
+  transition:color .2s ease;
+}
+.nav-links a:hover{color:#fff}
+.nav-cta{
+  padding:9px 13px;
+  border-radius:10px;
+  background:#f8fafc;
+  color:#070b12!important;
+  font-weight:780!important;
+}
+.menu{
+  display:none;
+  border:1px solid var(--line);
+  border-radius:9px;
+  padding:7px 10px;
+  color:#fff;
+  background:transparent;
+}
 
-    .container{width:min(var(--max),calc(100% - 40px));margin:auto}
+/* HERO */
+.hero{
+  padding:72px 0 48px;
+}
+.hero-grid{
+  display:grid;
+  grid-template-columns:minmax(0,1.08fr) minmax(340px,.92fr);
+  gap:38px;
+  align-items:center;
+}
+.eyebrow{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding:6px 10px;
+  border:1px solid var(--line);
+  border-radius:999px;
+  color:#b8c4d4;
+  background:rgba(15,23,42,.42);
+  font-size:9px;
+  font-weight:700;
+  text-transform:uppercase;
+  letter-spacing:.12em;
+}
+.dot{
+  width:6px;
+  height:6px;
+  border-radius:50%;
+  background:var(--green);
+  box-shadow:0 0 13px rgba(16,185,129,.75);
+}
+h1{
+  max-width:780px;
+  margin:18px 0 15px;
+  font-size:clamp(47px,6.5vw,76px);
+  line-height:.97;
+  letter-spacing:-.068em;
+}
+.gradient{
+  color:transparent;
+  background:linear-gradient(100deg,#fff 5%,#e2e8f0 48%,#38bdf8 82%,#818cf8);
+  -webkit-background-clip:text;
+  background-clip:text;
+}
+.hero-copy{
+  max-width:690px;
+  margin:0;
+  color:var(--muted);
+  font-size:16px;
+  line-height:1.68;
+}
+.actions{
+  display:flex;
+  gap:9px;
+  flex-wrap:wrap;
+  margin-top:21px;
+}
+.btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-height:42px;
+  padding:0 15px;
+  border:1px solid var(--line);
+  border-radius:10px;
+  font-size:11px;
+  font-weight:780;
+  transition:transform .2s ease,border-color .2s ease;
+}
+.btn:hover{
+  transform:translateY(-1px);
+  border-color:var(--line-hover);
+}
+.primary{
+  border:0;
+  color:#03101b;
+  background:linear-gradient(135deg,var(--cyan),#6474ff);
+  box-shadow:0 10px 30px rgba(56,189,248,.12);
+}
+.secondary{background:rgba(15,23,42,.55)}
 
-    /* NAV */
-    .nav-wrap{
-      position:sticky;
-      top:14px;
-      z-index:100;
-      padding-top:14px;
-    }
+.hero-panel{
+  border:1px solid var(--line);
+  border-radius:21px;
+  padding:13px;
+  background:linear-gradient(145deg,#0d1523,#070b13);
+  box-shadow:0 22px 65px rgba(0,0,0,.28);
+}
+.panel-top{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:2px 4px 10px;
+  color:var(--dim);
+  font-size:9px;
+  letter-spacing:.09em;
+}
+.live{
+  display:flex;
+  align-items:center;
+  gap:6px;
+  color:#6ee7b7;
+}
+.live i{width:5px;height:5px;border-radius:50%;background:var(--green)}
+.panel-grid{
+  display:grid;
+  grid-template-columns:1.2fr .8fr;
+  gap:7px;
+}
+.tile{
+  min-height:92px;
+  padding:14px;
+  border:1px solid var(--line);
+  border-radius:14px;
+  background:#050a13;
+}
+.tile.big{
+  grid-row:span 2;
+  min-height:190px;
+}
+.tile small{
+  color:var(--dim);
+  font-size:8px;
+  font-weight:700;
+  text-transform:uppercase;
+  letter-spacing:.12em;
+}
+.tile strong{
+  display:block;
+  margin-top:7px;
+  font-size:22px;
+  line-height:1.12;
+  letter-spacing:-.04em;
+}
+.tile p{
+  margin:3px 0 0;
+  color:var(--muted);
+  font-size:9px;
+}
+.signal{
+  position:relative;
+  height:52px;
+  margin-top:13px;
+  border-radius:10px;
+  background:linear-gradient(180deg,rgba(56,189,248,.10),transparent);
+}
+.signal:after{
+  content:"";
+  position:absolute;
+  left:0;right:0;bottom:11px;
+  height:20px;
+  border-top:2px solid var(--cyan);
+  transform:skewY(-7deg);
+}
+.bar{
+  height:4px;
+  margin-top:12px;
+  overflow:hidden;
+  border-radius:99px;
+  background:#111827;
+}
+.bar span{
+  display:block;
+  width:82%;
+  height:100%;
+  background:linear-gradient(90deg,var(--cyan),var(--indigo));
+}
 
-    nav{
-      min-height:64px;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      padding:9px 10px 9px 14px;
-      border:1px solid var(--line);
-      border-radius:20px;
-      background:rgba(3,7,18,.72);
-      backdrop-filter:blur(22px);
-      box-shadow:0 12px 40px rgba(0,0,0,.22);
-    }
+/* GLOBAL SECTIONS */
+section{padding:var(--section) 0}
+.section-head{
+  max-width:730px;
+  margin-bottom:20px;
+}
+.kicker{
+  color:var(--cyan);
+  font-size:9px;
+  font-weight:800;
+  text-transform:uppercase;
+  letter-spacing:.16em;
+}
+h2{
+  margin:7px 0 9px;
+  font-size:clamp(31px,4vw,48px);
+  line-height:1;
+  letter-spacing:-.06em;
+}
+.section-head p{
+  max-width:650px;
+  margin:0;
+  color:var(--muted);
+  font-size:13px;
+  line-height:1.62;
+}
+.card{
+  border:1px solid var(--line);
+  border-radius:18px;
+  background:linear-gradient(145deg,rgba(15,23,42,.62),rgba(7,11,20,.76));
+  transition:border-color .25s ease,transform .25s ease,box-shadow .25s ease;
+}
+.card:hover{
+  border-color:rgba(148,163,184,.22);
+  box-shadow:0 18px 55px rgba(0,0,0,.18);
+}
 
-    .brand{display:flex;align-items:center;gap:11px;font-weight:700;letter-spacing:-.02em}
-    .brand-mark{
-      width:34px;height:34px;border-radius:10px;
-      display:grid;place-items:center;
-      font-size:11px;font-weight:900;
-      background:linear-gradient(135deg,var(--cyan),var(--indigo));
-      color:white;
-      box-shadow:0 0 25px rgba(56,189,248,.22);
-    }
-    .brand small{display:block;color:var(--muted);font-size:10px;font-weight:500;margin-top:-2px}
-    .nav-links{display:flex;align-items:center;gap:25px}
-    .nav-links a{font-size:13px;color:#aab5c6;transition:.25s}
-    .nav-links a:hover{color:white}
-    .nav-cta{
-      padding:10px 16px;border-radius:12px;
-      background:#f8fafc;color:#0b1020!important;
-      font-weight:750!important;
-    }
-    .menu-btn{display:none;border:1px solid var(--line);background:transparent;color:white;border-radius:10px;padding:8px 10px}
+/* ABOUT */
+.story-grid{
+  display:grid;
+  grid-template-columns:1.1fr .9fr;
+  gap:9px;
+}
+.story{padding:21px}
+.story h3{
+  margin:0 0 7px;
+  font-size:20px;
+  letter-spacing:-.04em;
+}
+.story p{
+  margin:0;
+  color:var(--muted);
+  font-size:12px;
+  line-height:1.68;
+}
+.pillars{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:6px;
+  margin-top:14px;
+}
+.pillar{
+  padding:11px;
+  border:1px solid var(--line);
+  border-radius:11px;
+  background:rgba(2,6,23,.3);
+}
+.pillar b{font-size:10px}
+.pillar span{
+  display:block;
+  margin-top:2px;
+  color:var(--muted);
+  font-size:9px;
+}
 
-    /* HERO */
-    .hero{
-      min-height:760px;
-      display:grid;
-      align-items:center;
-      padding:110px 0 90px;
-    }
+/* PRODUCTS */
+.products{display:grid;gap:11px}
+.product{
+  overflow:hidden;
+  border:1px solid var(--line);
+  border-radius:20px;
+  background:linear-gradient(145deg,rgba(15,23,42,.7),rgba(6,10,18,.9));
+}
+.product-main{padding:21px 21px 18px}
+.product-top{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
+}
+.status{
+  padding:5px 8px;
+  border:1px solid rgba(16,185,129,.25);
+  border-radius:999px;
+  color:#6ee7b7;
+  background:rgba(16,185,129,.05);
+  font-size:8px;
+  font-weight:750;
+  text-transform:uppercase;
+  letter-spacing:.11em;
+}
+.product h3{
+  margin:10px 0 4px;
+  font-size:33px;
+  line-height:1;
+  letter-spacing:-.055em;
+}
+.lead{
+  max-width:880px;
+  margin:0;
+  color:var(--muted);
+  font-size:12px;
+  line-height:1.62;
+}
+.tags{
+  display:flex;
+  flex-wrap:wrap;
+  gap:5px;
+  margin:12px 0 0;
+}
+.tag{
+  padding:4px 7px;
+  border:1px solid var(--line);
+  border-radius:6px;
+  color:#bac5d4;
+  font-size:8px;
+}
+.product-info{
+  display:grid;
+  grid-template-columns:1.05fr .95fr;
+  gap:14px;
+  margin-top:14px;
+  padding-top:13px;
+  border-top:1px solid var(--line);
+}
+.info h4{
+  margin:0 0 6px;
+  font-size:9px;
+  text-transform:uppercase;
+  letter-spacing:.12em;
+}
+.info p,.info li{
+  color:var(--muted);
+  font-size:10px;
+  line-height:1.55;
+}
+.info p{margin:0}
+.info ul{
+  margin:0;
+  padding-left:14px;
+}
+.info li{margin:2px 0}
+.product-actions{
+  display:flex;
+  flex-wrap:wrap;
+  gap:7px;
+  margin-top:12px;
+}
+.product-actions .btn{min-height:37px}
+.product-image{
+  padding:8px;
+  border-top:1px solid var(--line);
+  background:#02050b;
+}
+.product-image img{
+  width:100%;
+  max-height:520px;
+  object-fit:contain;
+  border-radius:11px;
+}
 
-    .hero-grid{
-      display:grid;
-      grid-template-columns:1.12fr .88fr;
-      gap:70px;
-      align-items:center;
-    }
+/* APPROACH */
+.approach{
+  display:grid;
+  grid-template-columns:repeat(5,1fr);
+  gap:6px;
+}
+.step{
+  min-height:118px;
+  padding:15px 13px;
+}
+.step .line{
+  width:22px;
+  height:2px;
+  margin-bottom:13px;
+  background:var(--cyan);
+}
+.step b{font-size:11px}
+.step p{
+  margin:6px 0 0;
+  color:var(--muted);
+  font-size:9px;
+  line-height:1.55;
+}
 
-    .eyebrow{
-      display:inline-flex;align-items:center;gap:9px;
-      padding:7px 11px;border:1px solid var(--line);
-      border-radius:999px;background:rgba(15,23,42,.5);
-      color:#b7c3d4;font-size:11px;letter-spacing:.08em;text-transform:uppercase;
-    }
-    .dot{width:7px;height:7px;border-radius:50%;background:var(--green);box-shadow:0 0 0 0 rgba(16,185,129,.5);animation:pulse 2s infinite}
-    @keyframes pulse{70%{box-shadow:0 0 0 9px transparent}100%{box-shadow:0 0 0 0 transparent}}
+/* VALUES */
+.values{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:6px;
+}
+.value{padding:14px}
+.value b{font-size:10px}
+.value p{
+  margin:4px 0 0;
+  color:var(--muted);
+  font-size:9px;
+  line-height:1.5;
+}
 
-    h1{
-      font-size:clamp(48px,7vw,82px);
-      line-height:.98;
-      letter-spacing:-.065em;
-      margin:24px 0;
-      max-width:900px;
-    }
-    .gradient{
-      background:linear-gradient(100deg,#fff 5%,#cbd5e1 42%,#38bdf8 78%,#818cf8);
-      -webkit-background-clip:text;background-clip:text;color:transparent;
-    }
-    .hero-copy{font-size:18px;line-height:1.75;color:var(--muted);max-width:700px}
-    .actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:32px}
-    .btn{
-      display:inline-flex;align-items:center;justify-content:center;gap:9px;
-      min-height:48px;padding:0 19px;border-radius:13px;
-      border:1px solid var(--line);font-size:13px;font-weight:750;transition:.25s;
-    }
-    .btn-primary{background:linear-gradient(135deg,var(--cyan),#4f7cff);color:#03101b;border:none;box-shadow:0 12px 35px rgba(56,189,248,.18)}
-    .btn-secondary{background:rgba(15,23,42,.55);color:#dbe4f0}
-    .btn:hover{transform:translateY(-2px);border-color:var(--line-hover)}
+/* VISION / CTA */
+.vision{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:20px;
+  align-items:center;
+  padding:21px;
+}
+.vision h3{
+  margin:5px 0 7px;
+  font-size:23px;
+  line-height:1.08;
+  letter-spacing:-.045em;
+}
+.vision p{
+  margin:0;
+  color:var(--muted);
+  font-size:11px;
+  line-height:1.62;
+}
+.future{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:5px;
+}
+.future div{
+  padding:10px;
+  border:1px solid var(--line);
+  border-radius:9px;
+  color:#cbd5e1;
+  font-size:9px;
+  background:rgba(2,6,23,.25);
+}
+.cta{
+  padding:25px 20px;
+  text-align:center;
+}
+.cta h2{margin:5px 0 8px}
+.cta p{
+  max-width:580px;
+  margin:0 auto 15px;
+  color:var(--muted);
+  font-size:11px;
+}
 
-    /* HERO WIDGET */
-    .hero-widget{
-      border:1px solid var(--line);
-      background:linear-gradient(145deg,rgba(15,23,42,.78),rgba(7,11,20,.86));
-      border-radius:28px;padding:18px;
-      box-shadow:var(--shadow);
-      transform:perspective(1200px) rotateY(-5deg) rotateX(2deg);
-    }
-    .widget-top{display:flex;justify-content:space-between;align-items:center;padding:4px 5px 16px}
-    .status{display:flex;align-items:center;gap:7px;font-size:11px;color:#a8b5c8}
-    .status i{width:6px;height:6px;background:var(--green);border-radius:50%}
-    .widget-grid{display:grid;grid-template-columns:1.25fr .75fr;gap:10px}
-    .mini-card{
-      min-height:125px;border:1px solid var(--line);border-radius:18px;
-      padding:18px;background:rgba(2,6,23,.55);
-    }
-    .mini-card.large{grid-row:span 2;min-height:260px}
-    .mini-label{font-size:10px;color:var(--muted-2);text-transform:uppercase;letter-spacing:.1em}
-    .mini-value{font-size:28px;font-weight:800;letter-spacing:-.04em;margin-top:10px}
-    .mini-desc{font-size:11px;color:var(--muted);margin-top:5px}
-    .signal{
-      height:80px;margin-top:20px;border-radius:12px;
-      background:linear-gradient(180deg,rgba(56,189,248,.11),transparent);
-      position:relative;overflow:hidden;
-    }
-    .signal::after{
-      content:"";position:absolute;left:-10%;right:-10%;bottom:12px;height:45px;
-      border-top:2px solid var(--cyan);
-      transform:skewY(-7deg);
-      box-shadow:0 -10px 25px rgba(56,189,248,.12);
-    }
+/* FOOTER */
+footer{
+  margin-top:0;
+  padding:25px 0 30px;
+  border-top:1px solid var(--line);
+}
+.footer-grid{
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
+  gap:18px;
+}
+.footer-brand{
+  font-size:11px;
+  font-weight:760;
+}
+.footer-brand span{
+  display:block;
+  margin-top:3px;
+  color:var(--dim);
+  font-size:9px;
+  font-weight:400;
+}
+.footer-links{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:flex-end;
+  gap:13px;
+  color:var(--muted);
+  font-size:9px;
+}
+.footer-links a:hover{color:#fff}
+.copyright{
+  margin-top:16px;
+  color:var(--dim);
+  font-size:8px;
+}
 
-    /* COMMON SECTIONS */
-    section{padding:105px 0}
-    .section-head{max-width:720px;margin-bottom:40px}
-    .kicker{color:var(--cyan);font-size:11px;text-transform:uppercase;letter-spacing:.16em;font-weight:800}
-    h2{font-size:clamp(34px,5vw,56px);line-height:1.03;letter-spacing:-.05em;margin:12px 0 16px}
-    .section-head p{color:var(--muted);font-size:16px;max-width:680px}
+/* REVEAL — vertical only, no horizontal animation */
+.reveal{
+  opacity:0;
+  transform:translateY(9px);
+  transition:opacity .45s ease,transform .45s ease;
+}
+.reveal.show{opacity:1;transform:none}
 
-    .glass{
-      border:1px solid var(--line);
-      background:linear-gradient(145deg,rgba(15,23,42,.62),rgba(7,11,20,.7));
-      border-radius:var(--radius);
-      box-shadow:0 20px 60px rgba(0,0,0,.18);
-    }
-
-    /* CMS STORY */
-    .story-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
-    .story-card{padding:32px}
-    .story-card h3{font-size:24px;letter-spacing:-.03em;margin:0 0 12px}
-    .story-card p{color:var(--muted);font-size:14px;line-height:1.8;margin:0}
-    .story-card strong{color:#e8eef8}
-    .studio-pillars{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:24px}
-    .pillar{padding:17px;border:1px solid var(--line);border-radius:16px;background:rgba(2,6,23,.35)}
-    .pillar b{font-size:13px}.pillar span{display:block;color:var(--muted);font-size:11px;margin-top:4px}
-
-    /* PRODUCTS */
-    .products{display:grid;gap:22px}
-    .product-card{
-      overflow:hidden;
-      border:1px solid var(--line);
-      border-radius:28px;
-      background:linear-gradient(145deg,rgba(15,23,42,.74),rgba(6,10,18,.9));
-      transition:.35s;
-    }
-    .product-card:hover{border-color:var(--line-hover);box-shadow:0 25px 80px rgba(56,189,248,.07);transform:translateY(-3px)}
-    .product-content{padding:36px 36px 28px}
-    .product-meta{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
-    .product-status{
-      font-size:10px;letter-spacing:.12em;text-transform:uppercase;
-      padding:7px 10px;border:1px solid rgba(16,185,129,.28);
-      color:#6ee7b7;background:rgba(16,185,129,.06);border-radius:999px;
-    }
-    .product-card h3{font-size:38px;letter-spacing:-.05em;margin:18px 0 9px}
-    .product-card .lead{font-size:15px;color:var(--muted);max-width:850px}
-    .tags{display:flex;flex-wrap:wrap;gap:8px;margin:22px 0}
-    .tag{font-size:10px;color:#b9c5d5;border:1px solid var(--line);padding:6px 9px;border-radius:8px;background:rgba(2,6,23,.35)}
-    .product-details{display:grid;grid-template-columns:1.2fr .8fr;gap:25px;margin-top:28px}
-    .detail h4{font-size:12px;text-transform:uppercase;letter-spacing:.12em;color:#d8e1ee;margin:0 0 10px}
-    .detail p,.detail li{color:var(--muted);font-size:13px}
-    .detail ul{margin:0;padding-left:18px}
-    .detail li{margin:5px 0}
-    .product-image{
-      border-top:1px solid var(--line);
-      background:#020617;
-      padding:14px;
-    }
-    .product-image img{
-      width:100%;
-      max-height:620px;
-      object-fit:contain;
-      border-radius:18px;
-      border:1px solid rgba(148,163,184,.12);
-    }
-    .image-note{font-size:10px;color:var(--muted-2);padding:10px 4px 0}
-
-    /* APPROACH */
-    .approach-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:10px}
-    .step{padding:25px 20px;min-height:210px}
-    .step-icon{width:38px;height:38px;display:grid;place-items:center;border-radius:11px;background:rgba(56,189,248,.08);color:var(--cyan);border:1px solid rgba(56,189,248,.18);font-weight:800}
-    .step h3{font-size:16px;margin:20px 0 8px}
-    .step p{font-size:12px;color:var(--muted);margin:0}
-
-    /* VALUES */
-    .values-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
-    .value{padding:24px;min-height:165px}
-    .value b{font-size:15px}.value p{color:var(--muted);font-size:12px;line-height:1.7}
-
-    /* FUTURE */
-    .future{padding:45px}
-    .future-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px}
-    .future h3{font-size:30px;letter-spacing:-.04em;margin:0 0 10px}
-    .future p{color:var(--muted);font-size:14px}
-    .roadmap{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}
-    .roadmap span{padding:9px 11px;border:1px solid var(--line);border-radius:10px;font-size:11px;color:#cbd5e1}
-
-    /* CTA / FOOTER */
-    .final-cta{text-align:center;padding:120px 20px}
-    .final-cta p{color:var(--muted);max-width:650px;margin:0 auto 28px}
-    footer{border-top:1px solid var(--line);padding:50px 0 30px}
-    .footer-grid{display:grid;grid-template-columns:1.4fr .8fr .8fr;gap:30px}
-    .footer-brand p{color:var(--muted);font-size:12px;max-width:420px}
-    footer h4{font-size:11px;text-transform:uppercase;letter-spacing:.12em;color:#cbd5e1;margin:0 0 12px}
-    footer a{display:block;color:var(--muted);font-size:12px;margin:8px 0}
-    footer a:hover{color:white}
-    .copyright{border-top:1px solid var(--line);margin-top:35px;padding-top:18px;color:var(--muted-2);font-size:10px;display:flex;justify-content:space-between;gap:15px}
-
-    /* REVEAL */
-    .reveal{opacity:0;transform:translateY(25px);transition:opacity .7s ease,transform .7s ease}
-    .reveal.visible{opacity:1;transform:none}
-
-    @media(max-width:950px){
-      .hero-grid,.story-grid,.product-details,.future-grid{grid-template-columns:1fr}
-      .hero{min-height:auto;padding-top:80px}
-      .hero-widget{transform:none}
-      .approach-grid{grid-template-columns:repeat(2,1fr)}
-      .values-grid{grid-template-columns:repeat(2,1fr)}
-    }
-
-    @media(max-width:720px){
-      .container{width:min(100% - 24px,var(--max))}
-      .nav-wrap{top:5px;padding-top:5px}
-      .nav-links{
-        display:none;position:absolute;top:72px;left:0;right:0;
-        padding:15px;border:1px solid var(--line);border-radius:16px;
-        background:rgba(3,7,18,.96);backdrop-filter:blur(20px);
-        flex-direction:column;align-items:stretch;gap:0;
-      }
-      .nav-links.open{display:flex}
-      .nav-links a{padding:12px}
-      .nav-cta{text-align:center}
-      .menu-btn{display:block}
-      .hero{padding:70px 0 60px}
-      h1{font-size:47px}
-      .hero-copy{font-size:15px}
-      section{padding:75px 0}
-      .widget-grid{grid-template-columns:1fr 1fr}
-      .mini-card.large{grid-column:span 2;grid-row:auto;min-height:190px}
-      .product-content{padding:25px 20px 22px}
-      .product-card h3{font-size:32px}
-      .approach-grid,.values-grid,.studio-pillars{grid-template-columns:1fr}
-      .future{padding:28px 22px}
-      .footer-grid{grid-template-columns:1fr 1fr}
-      .footer-brand{grid-column:span 2}
-      .copyright{flex-direction:column}
-    }
-
-    @media(prefers-reduced-motion:reduce){
-      html{scroll-behavior:auto}
-      *,*::before,*::after{animation:none!important;transition:none!important}
-      .reveal{opacity:1;transform:none}
-    }
-  </style>
+@media(max-width:920px){
+  :root{--section:42px}
+  .hero-grid,.story-grid,.vision{grid-template-columns:1fr}
+  .hero-grid{gap:28px}
+  .hero-panel{max-width:720px}
+  .approach{grid-template-columns:repeat(3,1fr)}
+  .values{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:700px){
+  :root{--side:13px;--section:37px}
+  .nav-wrap{top:7px;padding-top:7px}
+  nav{min-height:54px}
+  .brand span:last-child{font-size:11px}
+  .nav-links{
+    display:none;
+    position:absolute;
+    top:62px;
+    left:0;
+    right:0;
+    padding:8px;
+    flex-direction:column;
+    align-items:stretch;
+    gap:0;
+    border:1px solid var(--line);
+    border-radius:14px;
+    background:rgba(3,7,18,.97);
+  }
+  .nav-links.open{display:flex}
+  .nav-links a{padding:9px}
+  .nav-cta{text-align:center}
+  .menu{display:block}
+  .hero{padding:56px 0 35px}
+  h1{font-size:47px}
+  .hero-copy{font-size:14px}
+  .hero-grid{gap:24px}
+  .panel-grid{gap:6px}
+  .section-head{margin-bottom:16px}
+  .product-main,.story,.vision{padding:18px}
+  .product-info{grid-template-columns:1fr;gap:11px}
+  .product h3{font-size:30px}
+  .approach,.values{grid-template-columns:1fr 1fr}
+  .footer-grid{flex-direction:column}
+  .footer-links{justify-content:flex-start}
+}
+@media(max-width:430px){
+  .pillars,.future,.approach,.values{grid-template-columns:1fr}
+  .panel-grid{grid-template-columns:1fr}
+  .tile.big{grid-row:auto}
+  .product-top{align-items:flex-start;flex-direction:column}
+  h1{font-size:43px}
+}
+</style>
 </head>
 
 <body>
-  <div class="nav-wrap">
-    <div class="container">
-      <nav>
-        <a href="#top" class="brand" aria-label="Creative Management Solutions home">
-          <span class="brand-mark">CMS</span>
-          <span>Creative Management Solutions<small>CMS Group · India</small></span>
-        </a>
 
-        <div class="nav-links" id="navLinks">
-          <a href="#about">About</a>
-          <a href="#products">Products</a>
-          <a href="#approach">Approach</a>
-          <a href="#values">Values</a>
-          <a class="nav-cta" href="mailto:support@cmsgroup.in">Contact CMS</a>
+<div class="nav-wrap">
+  <div class="container">
+    <nav>
+      <a class="brand" href="#">
+        <span class="mark">CMS</span>
+        <span>Creative Management Solutions</span>
+      </a>
+
+      <button class="menu" id="menu" aria-label="Open navigation menu" aria-expanded="false">☰</button>
+
+      <div class="nav-links" id="navLinks">
+        <a href="#about">About</a>
+        <a href="#products">Products</a>
+        <a href="#approach">Approach</a>
+        <a href="#values">Values</a>
+        <a class="nav-cta" href="mailto:support@cmsgroup.in">Contact CMS</a>
+      </div>
+    </nav>
+  </div>
+</div>
+
+<main>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container hero-grid">
+
+    <div class="reveal">
+      <span class="eyebrow"><i class="dot"></i> India-focused digital product company</span>
+
+      <h1>
+        <span class="gradient">Building products</span><br>
+        that solve real problems.
+      </h1>
+
+      <p class="hero-copy">
+        Creative Management Solutions (CMS) builds, launches and grows its own technology products — creating focused digital experiences across wellness, commerce and emerging real-world opportunities.
+      </p>
+
+      <div class="actions">
+        <a class="btn primary" href="#products">Explore Products →</a>
+        <a class="btn secondary" href="#about">Our Philosophy</a>
+      </div>
+    </div>
+
+    <div class="hero-panel reveal">
+      <div class="panel-top">
+        <span>CMS / PRODUCT STUDIO</span>
+        <span class="live"><i></i> Building</span>
+      </div>
+
+      <div class="panel-grid">
+        <div class="tile big">
+          <small>Product philosophy</small>
+          <strong>Build → Launch → Learn → Grow</strong>
+          <p>Independent products designed around real user needs.</p>
+          <div class="signal"></div>
+          <div class="bar"><span></span></div>
         </div>
 
-        <button class="menu-btn" id="menuBtn" aria-label="Open menu">☰</button>
-      </nav>
+        <div class="tile">
+          <small>Featured products</small>
+          <strong>02</strong>
+          <p>Publicly showcased</p>
+        </div>
+
+        <div class="tile">
+          <small>Primary market</small>
+          <strong>India</strong>
+          <p>Built for real-world needs</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="container">
+
+    <div class="section-head reveal">
+      <span class="kicker">About CMS</span>
+      <h2>We build. We own. We evolve.</h2>
+      <p>CMS is focused on creating and operating its own products rather than simply building software for others.</p>
+    </div>
+
+    <div class="story-grid">
+
+      <article class="card story reveal">
+        <h3>A product-first company.</h3>
+        <p>
+          We start with a real problem, shape a useful experience, build the technology behind it, launch it, listen to users and continuously improve the product. Our long-term goal is to create independent products that can grow into meaningful ecosystems.
+        </p>
+
+        <div class="pillars">
+          <div class="pillar"><b>Problem → Product</b><span>Start with what matters.</span></div>
+          <div class="pillar"><b>Experience → Trust</b><span>Keep products simple and reliable.</span></div>
+          <div class="pillar"><b>Launch → Learn</b><span>Improve through real usage.</span></div>
+          <div class="pillar"><b>Product → Ecosystem</b><span>Build for long-term scale.</span></div>
+        </div>
+      </article>
+
+      <article class="card story reveal">
+        <h3>Where CMS is heading.</h3>
+        <p>
+          CMS is starting with focused digital products and an India-first approach. Over time, the company aims to build multiple technology-led businesses and explore opportunities beyond software when the right time and opportunity arrive.
+        </p>
+
+        <div class="pillars">
+          <div class="pillar"><b>Consumer Products</b><span>Useful everyday experiences.</span></div>
+          <div class="pillar"><b>Business Products</b><span>Technology for real operations.</span></div>
+          <div class="pillar"><b>Digital Commerce</b><span>Connecting people and businesses.</span></div>
+          <div class="pillar"><b>Wellness</b><span>Technology for healthier living.</span></div>
+        </div>
+      </article>
+
     </div>
   </div>
+</section>
 
-  <main id="top">
-    <!-- HERO -->
-    <section class="hero">
-      <div class="container hero-grid">
-        <div class="reveal">
-          <div class="eyebrow"><span class="dot"></span> India-focused digital product studio</div>
-          <h1>We build products that turn <span class="gradient">real problems into better experiences.</span></h1>
-          <p class="hero-copy">
-            Creative Management Solutions is a product-led technology studio focused on building,
-            launching and continuously improving independent digital products. We combine product thinking,
-            engineering, design and disciplined execution to create useful technology for everyday life and business.
-          </p>
-          <div class="actions">
-            <a class="btn btn-primary" href="#products">Explore Products →</a>
-            <a class="btn btn-secondary" href="#about">Our Philosophy</a>
+<!-- PRODUCTS -->
+<section id="products">
+  <div class="container">
+
+    <div class="section-head reveal">
+      <span class="kicker">Featured products</span>
+      <h2>Two products. One product philosophy.</h2>
+      <p>CMS is currently showcasing VibeFit and KokanKart — two products built around very different real-world needs.</p>
+    </div>
+
+    <div class="products">
+
+      <!-- VIBEFIT -->
+      <article class="product reveal">
+
+        <div class="product-main">
+          <div class="product-top">
+            <span class="status">Play Store preparation</span>
+            <span class="kicker">Wellness / Consumer</span>
           </div>
-        </div>
 
-        <div class="hero-widget reveal">
-          <div class="widget-top">
-            <strong style="font-size:13px">CMS Product Studio</strong>
-            <span class="status"><i></i> Building & operating</span>
+          <h3>VibeFit</h3>
+
+          <p class="lead">
+            An offline-first fitness and wellness companion bringing workouts, yoga, nutrition, progress tracking, lifestyle planning and wellness guidance into one experience.
+          </p>
+
+          <div class="tags">
+            <span class="tag">Workout Tracking</span>
+            <span class="tag">Yoga & Meditation</span>
+            <span class="tag">Indian Nutrition</span>
+            <span class="tag">Offline-First</span>
+            <span class="tag">Local Data</span>
+            <span class="tag">Progress Analytics</span>
+            <span class="tag">Lifestyle Planner</span>
+            <span class="tag">Privacy Focused</span>
           </div>
-          <div class="widget-grid">
-            <div class="mini-card large">
-              <div class="mini-label">Studio direction</div>
-              <div class="mini-value">Build → Launch → Learn → Grow</div>
-              <div class="mini-desc">Independent products designed around real user needs.</div>
-              <div class="signal"></div>
-            </div>
-            <div class="mini-card">
-              <div class="mini-label">Public products</div>
-              <div class="mini-value">02</div>
-              <div class="mini-desc">VibeFit · KokanKart</div>
-            </div>
-            <div class="mini-card">
-              <div class="mini-label">Focus</div>
-              <div class="mini-value">India</div>
-              <div class="mini-desc">Local problems, scalable thinking.</div>
-            </div>
-            <div class="mini-card">
-              <div class="mini-label">Model</div>
-              <div class="mini-value">Product</div>
-              <div class="mini-desc">Technology · Innovation · Ownership</div>
-            </div>
-            <div class="mini-card">
-              <div class="mini-label">Next</div>
-              <div class="mini-value">More</div>
-              <div class="mini-desc">New products are being developed privately.</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
 
-    <!-- ABOUT CMS -->
-    <section id="about">
-      <div class="container">
-        <div class="section-head reveal">
-          <span class="kicker">About CMS Group</span>
-          <h2>Not a collection of projects. A product company in the making.</h2>
-          <p>
-            CMS is being built with a long-term product mindset: identify meaningful problems,
-            design a focused solution, build the technology ourselves, launch it, listen to users,
-            and improve it continuously.
-          </p>
-        </div>
+          <div class="product-info">
 
-        <div class="story-grid">
-          <article class="glass story-card reveal">
-            <h3>Our purpose</h3>
-            <p>
-              We create digital products that make complicated everyday tasks simpler.
-              Our current product direction spans <strong>personal wellness</strong> and
-              <strong>local commerce</strong>, with future products planned across additional
-              technology-led opportunities.
-            </p>
-            <div class="studio-pillars">
-              <div class="pillar"><b>Product Ownership</b><span>We build around products we believe in.</span></div>
-              <div class="pillar"><b>Real-world Utility</b><span>Technology should solve a meaningful problem.</span></div>
-              <div class="pillar"><b>Long-term Thinking</b><span>Launch is a milestone, not the finish line.</span></div>
-              <div class="pillar"><b>Continuous Improvement</b><span>Feedback drives the next version.</span></div>
-            </div>
-          </article>
-
-          <article class="glass story-card reveal">
-            <h3>How CMS thinks</h3>
-            <p>
-              CMS follows a <strong>product-first, technology-driven approach</strong>.
-              We focus on creating our own digital platforms rather than treating software as a one-off deliverable.
-              Each product has its own identity, users, roadmap and growth journey.
-            </p>
-            <div class="studio-pillars">
-              <div class="pillar"><b>Design</b><span>Clear, intuitive and purposeful experiences.</span></div>
-              <div class="pillar"><b>Engineering</b><span>Reliable foundations built for evolution.</span></div>
-              <div class="pillar"><b>Privacy</b><span>Responsible handling of user information.</span></div>
-              <div class="pillar"><b>Scale</b><span>Start focused, build with a wider future in mind.</span></div>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- PRODUCTS -->
-    <section id="products">
-      <div class="container">
-        <div class="section-head reveal">
-          <span class="kicker">Featured Products</span>
-          <h2>Two products. Two different problems. One product mindset.</h2>
-          <p>
-            These are the products CMS is publicly showcasing today. Additional products are being developed
-            behind the scenes and will be revealed when they are ready.
-          </p>
-        </div>
-
-        <div class="products">
-
-          <!-- VIBEFIT -->
-          <article class="product-card reveal">
-            <div class="product-content">
-              <div class="product-meta">
-                <span class="product-status">Live Build · Play Store Preparation</span>
-                <span style="color:var(--muted);font-size:11px">Wellness Technology</span>
-              </div>
-
-              <h3>VibeFit</h3>
-              <p class="lead">
-                An offline-first fitness and wellness companion bringing workouts, yoga, nutrition,
-                progress tracking, lifestyle planning and wellness guidance into one focused experience.
-              </p>
-
-              <div class="tags">
-                <span class="tag">Workout Tracking</span>
-                <span class="tag">Yoga & Meditation</span>
-                <span class="tag">Indian Nutrition</span>
-                <span class="tag">Offline-First</span>
-                <span class="tag">Local Data</span>
-                <span class="tag">Progress Analytics</span>
-                <span class="tag">Lifestyle Planner</span>
-                <span class="tag">Smart Reminders</span>
-                <span class="tag">Privacy Focused</span>
-              </div>
-
-              <div class="product-details">
-                <div class="detail">
-                  <h4>What it brings together</h4>
-                  <ul>
-                    <li>Workout programs, exercise tracking and workout history</li>
-                    <li>Yoga, meditation, mobility and recovery experiences</li>
-                    <li>Indian-friendly nutrition and meal tracking</li>
-                    <li>Weight, body metrics, photos and progress analytics</li>
-                    <li>Calendar, lifestyle planning, reminders and reports</li>
-                  </ul>
-                </div>
-                <div class="detail">
-                  <h4>Product philosophy</h4>
-                  <p>
-                    VibeFit is designed around an <strong>offline-first</strong> experience so essential
-                    fitness tracking remains available without continuous internet access.
-                    User data can be stored locally for a fast, private and dependable experience.
-                  </p>
-                  <a class="btn btn-secondary" href="privacy.html" style="margin-top:8px">Privacy Policy ↗</a>
-                </div>
-              </div>
+            <div class="info">
+              <h4>Product experience</h4>
+              <ul>
+                <li>Workout library and session tracking</li>
+                <li>Yoga, breathing, mobility and recovery</li>
+                <li>Indian food and nutrition tracking</li>
+                <li>Weight, measurements and progress photos</li>
+                <li>Goals, planning, reports and reminders</li>
+              </ul>
             </div>
 
-            <div class="product-image">
-              <img src="assets/vibefit-showcase.png"
-                   alt="VibeFit product showcase showing workout, yoga, nutrition, recovery, progress and lifestyle features"
-                   loading="lazy"
-                   onerror="this.style.display='none';this.nextElementSibling.style.display='block';" />
-              <div class="image-note" style="display:none">
-                Add your VibeFit showcase image as <strong>assets/vibefit-showcase.png</strong>.
-              </div>
-              <div class="image-note">VibeFit — product experience showcase</div>
-            </div>
-          </article>
-
-          <!-- KOKANKART -->
-          <article class="product-card reveal">
-            <div class="product-content">
-              <div class="product-meta">
-                <span class="product-status">Product Development</span>
-                <span style="color:var(--muted);font-size:11px">Local Commerce Technology</span>
-              </div>
-
-              <h3>KokanKart</h3>
-              <p class="lead">
-                A hyperlocal commerce platform connecting customers with trusted local vendors and regional
-                products, with customer, vendor, delivery and administration journeys connected in one ecosystem.
-              </p>
-
-              <div class="tags">
-                <span class="tag">Hyperlocal Marketplace</span>
-                <span class="tag">Local Vendors</span>
-                <span class="tag">Regional Products</span>
-                <span class="tag">Smart Cart</span>
-                <span class="tag">Order Tracking</span>
-                <span class="tag">Vendor Dashboard</span>
-                <span class="tag">Delivery Flow</span>
-                <span class="tag">Admin Operations</span>
-                <span class="tag">Area-Based Commerce</span>
-              </div>
-
-              <div class="product-details">
-                <div class="detail">
-                  <h4>Connected ecosystem</h4>
-                  <ul>
-                    <li>Customers discover products available in their area</li>
-                    <li>Local vendors manage products, stock, prices and orders</li>
-                    <li>Delivery partners can manage assigned deliveries and status</li>
-                    <li>Admin operations support vendor, product and order management</li>
-                    <li>Area-based commerce supports a focused local launch strategy</li>
-                  </ul>
-                </div>
-                <div class="detail">
-                  <h4>Product direction</h4>
-                  <p>
-                    KokanKart is designed to make local shopping easier while helping regional vendors
-                    participate in digital commerce. The long-term model can evolve from focused local
-                    markets into a wider network.
-                  </p>
-                  <a class="btn btn-primary" href="mailto:support@cmsgroup.in?subject=KokanKart%20Inquiry">KokanKart Inquiry →</a>
-                </div>
-              </div>
-            </div>
-
-            <div class="product-image">
-              <img src="assets/kokankart-showcase.png"
-                   alt="KokanKart product showcase showing customer shopping, vendor dashboard, delivery and admin experiences"
-                   loading="lazy"
-                   onerror="this.style.display='none';this.nextElementSibling.style.display='block';" />
-              <div class="image-note" style="display:none">
-                Add your KokanKart showcase image as <strong>assets/kokankart-showcase.png</strong>.
-              </div>
-              <div class="image-note">KokanKart — product ecosystem showcase</div>
-            </div>
-          </article>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- APPROACH -->
-    <section id="approach">
-      <div class="container">
-        <div class="section-head reveal">
-          <span class="kicker">Our Approach</span>
-          <h2>From an idea to a product people can use.</h2>
-          <p>
-            CMS keeps the process deliberately focused: understand the problem, build the right foundation,
-            ship a useful product, then improve it through real-world learning.
-          </p>
-        </div>
-
-        <div class="approach-grid">
-          <article class="glass step reveal"><div class="step-icon">01</div><h3>Identify</h3><p>Find a real user or business problem worth solving and understand the context around it.</p></article>
-          <article class="glass step reveal"><div class="step-icon">02</div><h3>Architect</h3><p>Define product scope, experience, technology and a foundation that can evolve with the product.</p></article>
-          <article class="glass step reveal"><div class="step-icon">03</div><h3>Build</h3><p>Turn the product vision into a reliable, focused experience with thoughtful engineering and design.</p></article>
-          <article class="glass step reveal"><div class="step-icon">04</div><h3>Launch</h3><p>Put the product in real users’ hands, observe actual behaviour and learn from the market.</p></article>
-          <article class="glass step reveal"><div class="step-icon">05</div><h3>Iterate</h3><p>Use feedback, data and experience to improve quality, usefulness and long-term product value.</p></article>
-        </div>
-      </div>
-    </section>
-
-    <!-- VALUES -->
-    <section id="values">
-      <div class="container">
-        <div class="section-head reveal">
-          <span class="kicker">What We Stand For</span>
-          <h2>Technology with standards.</h2>
-          <p>
-            The way CMS builds matters as much as what CMS builds.
-          </p>
-        </div>
-
-        <div class="values-grid">
-          <article class="glass value reveal"><b>Innovation</b><p>We look for better ways to solve problems and create experiences people actually want to use.</p></article>
-          <article class="glass value reveal"><b>Trust</b><p>We aim to earn confidence through dependable products, responsible decisions and consistent delivery.</p></article>
-          <article class="glass value reveal"><b>Speed</b><p>Move with purpose, reduce unnecessary complexity and turn good ideas into useful products faster.</p></article>
-          <article class="glass value reveal"><b>Customer Satisfaction</b><p>User needs and real-world experience remain central to product decisions.</p></article>
-          <article class="glass value reveal"><b>Transparency</b><p>Clear thinking, clear communication and honest product decisions build stronger relationships.</p></article>
-          <article class="glass value reveal"><b>Quality</b><p>We care about the details — performance, usability, reliability and the overall experience.</p></article>
-          <article class="glass value reveal"><b>Growth</b><p>Every release should create learning and move the product closer to a stronger future.</p></article>
-          <article class="glass value reveal"><b>Service</b><p>Products are built for people. Support, listening and continuous improvement are part of the journey.</p></article>
-        </div>
-      </div>
-    </section>
-
-    <!-- FUTURE -->
-    <section>
-      <div class="container">
-        <div class="glass future reveal">
-          <div class="future-grid">
-            <div>
-              <span class="kicker">The Road Ahead</span>
-              <h3>Build today. Create a product ecosystem tomorrow.</h3>
+            <div class="info">
+              <h4>Product philosophy</h4>
               <p>
-                CMS is starting with focused digital products and a clear India-first direction.
-                Over time, the vision is to expand into a broader portfolio of technology products
-                and eventually explore opportunities beyond software.
+                Core fitness functionality is designed around an offline-first experience, with local storage helping the app remain useful without continuous internet access.
               </p>
-            </div>
-            <div>
-              <h3 style="font-size:21px">Technology. Products. Innovation.</h3>
-              <p>
-                We want CMS to grow through products that solve different real-world problems while
-                maintaining the same foundation: strong execution, useful design, trust and long-term ownership.
-              </p>
-              <div class="roadmap">
-                <span>India-first</span>
-                <span>Independent Products</span>
-                <span>Digital Innovation</span>
-                <span>Product Ecosystem</span>
-                <span>Long-term Growth</span>
+
+              <div class="product-actions">
+                <a class="btn primary" href="/privacy.html">Privacy Policy ↗</a>
+                <a class="btn secondary" href="mailto:support@cmsgroup.in?subject=VibeFit%20Support">VibeFit Support →</a>
               </div>
             </div>
+
           </div>
         </div>
-      </div>
-    </section>
 
-    <!-- CTA -->
-    <section class="final-cta">
-      <div class="container reveal">
-        <span class="kicker">Creative Management Solutions</span>
-        <h2>Building useful technology, one product at a time.</h2>
+        <div class="product-image">
+          <img
+            src="assets/vibefit-showcase.png"
+            alt="VibeFit product showcase showing workouts, yoga, nutrition, recovery, progress and lifestyle screens"
+            loading="lazy"
+          >
+        </div>
+
+      </article>
+
+      <!-- KOKANKART -->
+      <article class="product reveal">
+
+        <div class="product-main">
+          <div class="product-top">
+            <span class="status">Product development</span>
+            <span class="kicker">Commerce / Local</span>
+          </div>
+
+          <h3>KokanKart</h3>
+
+          <p class="lead">
+            A hyperlocal commerce platform connecting customers with local vendors and regional products through a connected shopping, vendor, delivery and administration experience.
+          </p>
+
+          <div class="tags">
+            <span class="tag">Hyperlocal Marketplace</span>
+            <span class="tag">Local Vendors</span>
+            <span class="tag">Regional Products</span>
+            <span class="tag">Smart Cart</span>
+            <span class="tag">Order Tracking</span>
+            <span class="tag">Vendor Dashboard</span>
+            <span class="tag">Delivery Flow</span>
+            <span class="tag">Admin Operations</span>
+          </div>
+
+          <div class="product-info">
+
+            <div class="info">
+              <h4>Connected ecosystem</h4>
+              <ul>
+                <li>Customer discovery and local shopping</li>
+                <li>Vendor product and order management</li>
+                <li>Delivery partner workflow and tracking</li>
+                <li>Admin controls, monitoring and analytics</li>
+                <li>Area-based commerce model</li>
+              </ul>
+            </div>
+
+            <div class="info">
+              <h4>Product philosophy</h4>
+              <p>
+                KokanKart is designed as more than a storefront — it connects local commerce participants into one practical digital ecosystem.
+              </p>
+
+              <div class="product-actions">
+                <a class="btn primary" href="mailto:support@cmsgroup.in?subject=KokanKart%20Inquiry">KokanKart Inquiry →</a>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="product-image">
+          <img
+            src="assets/kokankart-showcase.png"
+            alt="KokanKart product showcase showing customer shopping, vendor dashboard, delivery and admin experiences"
+            loading="lazy"
+          >
+        </div>
+
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- APPROACH -->
+<section id="approach">
+  <div class="container">
+
+    <div class="section-head reveal">
+      <span class="kicker">How we build</span>
+      <h2>From real problem to real product.</h2>
+      <p>CMS keeps the product cycle focused, practical and iterative.</p>
+    </div>
+
+    <div class="approach">
+      <div class="card step reveal"><div class="line"></div><b>Identify</b><p>Understand the problem and the people experiencing it.</p></div>
+      <div class="card step reveal"><div class="line"></div><b>Design</b><p>Shape a clear experience around the core user need.</p></div>
+      <div class="card step reveal"><div class="line"></div><b>Build</b><p>Create reliable technology with quality at the foundation.</p></div>
+      <div class="card step reveal"><div class="line"></div><b>Launch</b><p>Put the product into the real world and learn from usage.</p></div>
+      <div class="card step reveal"><div class="line"></div><b>Iterate</b><p>Improve continuously as users, needs and opportunities evolve.</p></div>
+    </div>
+
+  </div>
+</section>
+
+<!-- VALUES -->
+<section id="values">
+  <div class="container">
+
+    <div class="section-head reveal">
+      <span class="kicker">Core values</span>
+      <h2>Principles behind every product.</h2>
+    </div>
+
+    <div class="values">
+      <div class="card value reveal"><b>Innovation</b><p>Think differently. Build meaningfully.</p></div>
+      <div class="card value reveal"><b>Trust</b><p>Earn confidence through every interaction.</p></div>
+      <div class="card value reveal"><b>Speed</b><p>Move from idea to execution with purpose.</p></div>
+      <div class="card value reveal"><b>Customer Satisfaction</b><p>Create value users can feel.</p></div>
+      <div class="card value reveal"><b>Transparency</b><p>Stay clear, honest and responsible.</p></div>
+      <div class="card value reveal"><b>Quality</b><p>Build reliable experiences without shortcuts.</p></div>
+      <div class="card value reveal"><b>Growth</b><p>Build today with tomorrow in mind.</p></div>
+      <div class="card value reveal"><b>Service</b><p>Support products with responsibility.</p></div>
+    </div>
+
+  </div>
+</section>
+
+<!-- VISION -->
+<section>
+  <div class="container">
+
+    <div class="card vision reveal">
+      <div>
+        <span class="kicker">Long-term direction</span>
+        <h3>Build products today. Create ecosystems tomorrow.</h3>
         <p>
-          Explore what CMS is building today. For product feedback, support or business enquiries,
-          connect with the CMS team.
+          CMS is starting with an India-focused product portfolio and aims to grow through useful technology products, strong execution and long-term ownership.
         </p>
-        <div class="actions" style="justify-content:center">
-          <a class="btn btn-primary" href="mailto:support@cmsgroup.in">Contact CMS →</a>
-          <a class="btn btn-secondary" href="#products">View Products</a>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer>
-    <div class="container">
-      <div class="footer-grid">
-        <div class="footer-brand">
-          <a href="#top" class="brand">
-            <span class="brand-mark">CMS</span>
-            <span>Creative Management Solutions<small>CMS Group · India</small></span>
-          </a>
-          <p>
-            A product-led technology studio focused on building, launching and improving independent
-            digital products that solve real-world problems.
-          </p>
-        </div>
-
-        <div>
-          <h4>Explore</h4>
-          <a href="#about">About CMS</a>
-          <a href="#products">Products</a>
-          <a href="#approach">Approach</a>
-          <a href="#values">Values</a>
-        </div>
-
-        <div>
-          <h4>Legal & Contact</h4>
-          <a href="privacy.html">Privacy Policy</a>
-          <a href="terms.html">Terms</a>
-          <a href="mailto:support@cmsgroup.in">support@cmsgroup.in</a>
-        </div>
       </div>
 
-      <div class="copyright">
-        <span>© <span id="year"></span> Creative Management Solutions. All Rights Reserved.</span>
-        <span>Technology. Products. Innovation.</span>
+      <div class="future">
+        <div>Consumer Technology</div>
+        <div>Business Technology</div>
+        <div>Digital Commerce</div>
+        <div>Wellness Platforms</div>
+        <div>New Product Categories</div>
+        <div>Future Business Opportunities</div>
       </div>
     </div>
-  </footer>
 
-  <script>
-    const menuBtn = document.getElementById("menuBtn");
-    const navLinks = document.getElementById("navLinks");
+  </div>
+</section>
 
-    menuBtn.addEventListener("click", () => {
-      navLinks.classList.toggle("open");
-      menuBtn.textContent = navLinks.classList.contains("open") ? "✕" : "☰";
-    });
+<!-- CTA -->
+<section>
+  <div class="container">
 
-    navLinks.querySelectorAll("a").forEach(link => {
-      link.addEventListener("click", () => {
-        navLinks.classList.remove("open");
-        menuBtn.textContent = "☰";
-      });
-    });
+    <div class="card cta reveal">
+      <span class="kicker">Creative Management Solutions</span>
+      <h2>Building what comes next.</h2>
+      <p>
+        Follow the products we are building today and the ecosystems we aim to create over time.
+      </p>
+      <a class="btn primary" href="mailto:support@cmsgroup.in">Contact CMS →</a>
+    </div>
 
-    document.getElementById("year").textContent = new Date().getFullYear();
+  </div>
+</section>
 
-    const observer = new IntersectionObserver(
-      entries => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("visible");
-            observer.unobserve(entry.target);
-          }
-        });
-      },
-      { threshold: 0.12 }
-    );
+</main>
 
-    document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
-  </script>
+<footer>
+  <div class="container">
+
+    <div class="footer-grid">
+      <div class="footer-brand">
+        Creative Management Solutions
+        <span>India-focused digital product company.</span>
+      </div>
+
+      <div class="footer-links">
+        <a href="#about">About</a>
+        <a href="#products">Products</a>
+        <a href="#approach">Approach</a>
+        <a href="#values">Values</a>
+        <a href="/privacy.html">Privacy</a>
+        <a href="/terms.html">Terms</a>
+        <a href="mailto:support@cmsgroup.in">support@cmsgroup.in</a>
+      </div>
+    </div>
+
+    <div class="copyright">
+      © <span id="year"></span> Creative Management Solutions. All Rights Reserved.
+    </div>
+
+  </div>
+</footer>
+
+<script>
+const menu = document.getElementById("menu");
+const links = document.getElementById("navLinks");
+
+menu.addEventListener("click", () => {
+  const open = links.classList.toggle("open");
+  menu.setAttribute("aria-expanded", open ? "true" : "false");
+});
+
+links.querySelectorAll("a").forEach(link => {
+  link.addEventListener("click", () => {
+    links.classList.remove("open");
+    menu.setAttribute("aria-expanded","false");
+  });
+});
+
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if(entry.isIntersecting){
+      entry.target.classList.add("show");
+      observer.unobserve(entry.target);
+    }
+  });
+},{threshold:.07});
+
+document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
+
+document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+
 </body>
 </html>
