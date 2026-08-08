@@ -1,508 +1,1100 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Creative Management Solutions — an India-focused digital product company building products across wellness, commerce and emerging real-world opportunities.">
-<meta name="theme-color" content="#030712">
-<title>Creative Management Solutions | Building Products</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Creative Management Solutions — India-focused digital product company building products that solve real problems.">
+  <title>Creative Management Solutions | CMS</title>
 
-<style>
-:root {
-  --bg: #030712;
-  --bg-soft: #060a12;
-  --panel: #0a0f18;
-  --panel-2: #0d1420;
-  --line: rgba(148, 163, 184, 0.14);
-  --line-hover: rgba(56, 189, 248, 0.38);
-  --text: #f8fafc;
-  --muted: #9aa7b9;
-  --dim: #66758a;
+  <!-- Google Fonts: Sora, JetBrains Mono, Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600;700&family=Sora:wght@600;700;800&display=swap" rel="stylesheet">
 
-  /* Studio & Product Accents */
-  --cyan: #38bdf8;
-  --indigo: #6366f1;
-  --green: #10b981;
-  --amber: #f5a623; /* How We Build / Values */
-  --coral: #ef4b5f; /* VibeFit Accent */
-  --teal: #2dd4bf;  /* KokanKart Accent */
+  <style>
+    /* =========================================================
+       RESET & BASE STYLES
+    ========================================================= */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-  --max: 1200px;
-  --side: 24px;
-  --section: 64px;
+    html {
+      scroll-behavior: smooth;
+    }
 
-  --font-display: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
-  --font-body: "Inter", ui-sans-serif, system-ui, sans-serif;
-}
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      * { animation-duration: 0.001ms !important; transition-duration: 0.001ms !important; }
+    }
 
-* { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; scroll-padding-top: 88px; }
-@media (prefers-reduced-motion: reduce) {
-  html { scroll-behavior: auto; }
-  * { animation-duration: .001ms !important; transition-duration: .001ms !important; }
-}
+    body {
+      font-family: 'Inter', ui-sans-serif, system-ui, sans-serif;
+      background: #08090d;
+      color: #f4f4f5;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
 
-body {
-  color: var(--text);
-  background:
-    radial-gradient(circle at 78% 4%, rgba(56,189,248,.08), transparent 25rem),
-    radial-gradient(circle at 8% 22%, rgba(99,102,241,.06), transparent 26rem),
-    radial-gradient(circle at 92% 62%, rgba(239,75,95,.045), transparent 28rem),
-    radial-gradient(circle at 18% 88%, rgba(45,212,191,.04), transparent 26rem),
-    var(--bg);
-  font-family: var(--font-body);
-  line-height: 1.6;
-  overflow-x: hidden;
-}
+    img {
+      max-width: 100%;
+      display: block;
+    }
 
-/* Subtle Overlay Texture */
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: -1;
-  opacity: .18;
-  background-image:
-    linear-gradient(rgba(148,163,184,.045) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(148,163,184,.045) 1px, transparent 1px);
-  background-size: 56px 56px;
-  mask-image: linear-gradient(to bottom, #000, transparent 72%);
-}
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
 
-a { color: inherit; text-decoration: none; }
-button { font: inherit; }
-img { display: block; max-width: 100%; }
+    button {
+      font: inherit;
+    }
 
-.container {
-  width: min(var(--max), calc(100% - (var(--side) * 2)));
-  margin-inline: auto;
-}
+    /* =========================================================
+       VARIABLES
+    ========================================================= */
+    :root {
+      --bg: #08090d;
+      --bg-soft: #0d0f14;
+      --surface: #11131a;
+      --surface-2: #151820;
 
-/* SPECTRUM SIGNATURE BAR */
-.spectrum {
-  height: 3px;
-  width: 100%;
-  background: linear-gradient(90deg, var(--cyan), var(--indigo), var(--coral), var(--amber), var(--teal));
-  background-size: 200% 100%;
-  animation: driftSpectrum 14s linear infinite;
-}
-@keyframes driftSpectrum {
-  0% { background-position: 0% 0; }
-  100% { background-position: 200% 0; }
-}
+      --border: rgba(255,255,255,.09);
+      --border-strong: rgba(255,255,255,.15);
 
-/* NAVBAR */
-nav {
-  position: sticky;
-  top: 10px;
-  z-index: 1000;
-  margin-top: 10px;
-}
-.nav-inner {
-  width: min(var(--max), calc(100% - (var(--side) * 2)));
-  margin-inline: auto;
-  min-height: 60px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 8px 18px;
-  border: 1px solid var(--line);
-  border-radius: 16px;
-  background: rgba(3, 7, 18, 0.82);
-  backdrop-filter: blur(20px);
-}
-.brand {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  font-family: var(--font-display);
-  font-size: 1.1rem;
-  font-weight: 700;
-}
-.brand-mark {
-  width: 34px;
-  height: 34px;
-  display: grid;
-  place-items: center;
-  border-radius: 9px;
-  color: #fff;
-  background: linear-gradient(135deg, var(--cyan), var(--indigo) 55%, var(--coral));
-  font-size: 0.75rem;
-  font-weight: 800;
-  box-shadow: 0 0 20px rgba(56,189,248,.2);
-}
-.nav-links { display: flex; align-items: center; gap: 24px; }
-.nav-links a:not(.nav-cta) {
-  font-size: 0.9rem;
-  color: var(--muted);
-  font-weight: 500;
-  transition: color 0.2s ease;
-}
-.nav-links a:not(.nav-cta):hover { color: #fff; }
-.nav-cta {
-  padding: 8px 16px;
-  border-radius: 10px;
-  background: #fff;
-  color: #030712 !important;
-  font-weight: 700 !important;
-  font-size: 0.875rem !important;
-  transition: transform .2s ease, box-shadow .2s ease;
-}
-.nav-cta:hover { transform: translateY(-1px); box-shadow: 0 8px 20px rgba(255,255,255,.15); }
-.menu {
-  display: none;
-  border: 1px solid var(--line);
-  background: transparent;
-  color: #fff;
-  width: 38px;
-  height: 38px;
-  border-radius: 8px;
-  cursor: pointer;
-}
+      --text: #f5f5f5;
+      --muted: #999da8;
+      --muted-2: #727783;
 
-/* HERO */
-.hero { padding: 70px 0 50px; }
-.hero-grid {
-  display: grid;
-  grid-template-columns: minmax(0, 1.1fr) minmax(340px, 0.9fr);
-  gap: 50px;
-  align-items: center;
-}
-.eyebrow {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 6px 14px;
-  border: 1px solid var(--line);
-  border-radius: 999px;
-  background: rgba(15, 23, 42, 0.5);
-  color: #b8c4d4;
-  font-size: 0.75rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: .1em;
-}
-.dot {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: var(--teal);
-  box-shadow: 0 0 12px var(--teal);
-}
-.hero h1 {
-  margin-top: 20px;
-  font-family: var(--font-display);
-  font-size: clamp(40px, 5vw, 68px);
-  line-height: 1.05;
-  letter-spacing: -.03em;
-  font-weight: 700;
-}
-.gradient {
-  background: linear-gradient(100deg, #fff 0%, #cbd5e1 35%, var(--teal) 70%, var(--coral) 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-}
-.hero-copy {
-  margin-top: 20px;
-  color: var(--muted);
-  font-size: 1.05rem;
-  line-height: 1.7;
-}
-.actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 28px; }
+      /* Studio Accents */
+      --cyan: #31d4c7;
+      --indigo: #6366f1;
+      --coral: #f2555f;   /* VibeFit Accent */
+      --amber: #f4a636;   /* KokanKart Accent */
 
-/* BUTTONS */
-.btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 44px;
-  padding: 0 20px;
-  border-radius: 10px;
-  font-size: 0.875rem;
-  font-weight: 700;
-  transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
-  border: 1px solid transparent;
-}
-.btn:hover { transform: translateY(-2px); }
-.btn.primary {
-  color: #030712;
-  background: linear-gradient(135deg, var(--teal), #7ee8dc);
-  box-shadow: 0 8px 25px rgba(45, 212, 191, 0.2);
-}
-.btn.primary.coral-btn {
-  background: linear-gradient(135deg, var(--coral), #ff8fa3);
-  box-shadow: 0 8px 25px rgba(239, 75, 95, 0.2);
-  color: #fff;
-}
-.btn.secondary {
-  color: var(--text);
-  border-color: var(--line);
-  background: rgba(15, 23, 42, 0.6);
-}
-.btn.secondary:hover { border-color: var(--line-hover); }
+      --radius: 24px;
+      --radius-small: 14px;
+      --container: 1180px;
 
-/* HERO PANEL */
-.hero-panel {
-  padding: 18px;
-  border: 1px solid var(--line);
-  border-radius: 20px;
-  background: linear-gradient(145deg, #0d1420, #050912);
-  box-shadow: 0 20px 50px rgba(0,0,0,0.4);
-}
-.panel-top {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding-bottom: 12px;
-  color: var(--dim);
-  font-size: 0.75rem;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-}
-.live { display: flex; align-items: center; gap: 6px; color: var(--teal); }
-.live i { width: 6px; height: 6px; border-radius: 50%; background: var(--teal); }
-.panel-grid { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 10px; }
-.tile {
-  padding: 16px;
-  border: 1px solid var(--line);
-  border-radius: 12px;
-  background: rgba(2, 6, 23, 0.4);
-}
-.tile.big { grid-row: span 2; display: flex; flex-direction: column; justify-content: space-between; }
-.tile small { color: var(--dim); font-size: 0.7rem; text-transform: uppercase; letter-spacing: .08em; font-weight: 700; }
-.tile strong { display: block; margin-top: 6px; font-family: var(--font-display); font-size: 1.2rem; }
-.tile p { margin-top: 4px; color: var(--muted); font-size: 0.8rem; }
+      --font-display: 'Sora', sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+    }
 
-.bar { height: 4px; margin-top: 12px; border-radius: 99px; background: rgba(255,255,255,0.08); overflow: hidden; }
-.bar span { display: block; height: 100%; background: var(--cyan); width: 75%; }
-.bar.coral span { background: var(--coral); width: 68%; }
-.bar.teal span { background: var(--teal); width: 54%; }
+    /* Scroll progress bar */
+    .scroll-progress {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--cyan), var(--indigo), var(--coral), var(--amber));
+      z-index: 2000;
+      width: 0%;
+      transition: width 0.1s ease-out;
+    }
 
-/* SECTIONS */
-section { padding: var(--section) 0; }
-.section-head { max-width: 720px; margin-bottom: 40px; }
-.section-head h2 {
-  margin-top: 8px;
-  font-family: var(--font-display);
-  font-size: clamp(28px, 4vw, 48px);
-  line-height: 1.1;
-  letter-spacing: -.02em;
-}
-.section-head p { margin-top: 12px; color: var(--muted); font-size: 1rem; }
+    .container {
+      width: min(calc(100% - 40px), var(--container));
+      margin: 0 auto;
+    }
 
-.kicker { font-size: 0.75rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.12em; color: var(--cyan); }
-.kicker.coral { color: var(--coral); }
-.kicker.teal { color: var(--teal); }
-.kicker.amber { color: var(--amber); }
+    /* =========================================================
+       TYPOGRAPHY & ACCENTS
+    ========================================================= */
+    h1, h2, h3, .brand-text strong, .banner-name, .tile strong {
+      font-family: var(--font-display);
+    }
 
-/* CARDS & PILLARS */
-.card {
-  border: 1px solid var(--line);
-  border-radius: 18px;
-  background: linear-gradient(145deg, rgba(15, 23, 42, 0.6), rgba(6, 10, 18, 0.8));
-}
-.story-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-.story { padding: 28px; }
-.story h3 { font-family: var(--font-display); font-size: 1.4rem; }
-.story p { margin-top: 10px; color: var(--muted); font-size: 0.925rem; }
-.pillars { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 20px; }
-.pillar {
-  padding: 12px 14px;
-  border: 1px solid var(--line);
-  border-radius: 10px;
-  background: rgba(2, 6, 23, 0.3);
-  border-left: 3px solid var(--cyan);
-}
-.pillar:nth-child(2) { border-left-color: var(--indigo); }
-.pillar:nth-child(3) { border-left-color: var(--coral); }
-.pillar:nth-child(4) { border-left-color: var(--teal); }
-.pillar b { font-size: 0.85rem; display: block; }
-.pillar span { font-size: 0.775rem; color: var(--dim); margin-top: 2px; display: block; }
+    .kicker, .tag, .status, .panel-top, small {
+      font-family: var(--font-mono);
+    }
 
-/* PRODUCTS SECTION */
-.products { display: flex; flex-direction: column; gap: 48px; }
-.product {
-  overflow: hidden;
-  border: 1px solid var(--line);
-  border-radius: 20px;
-  background: linear-gradient(145deg, rgba(15,23,42,.7), rgba(6,10,18,.9));
-  transition: border-color .25s ease, box-shadow .25s ease;
-}
-.product.vibefit:hover { border-color: rgba(239,75,95,.35); box-shadow: 0 12px 40px rgba(239,75,95,.08); }
-.product.kokankart:hover { border-color: rgba(45,212,191,.35); box-shadow: 0 12px 40px rgba(45,212,191,.08); }
+    /* =========================================================
+       NAVBAR
+    ========================================================= */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(8,9,13,.85);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid rgba(255,255,255,.06);
+    }
 
-.product-main { padding: 24px; }
+    nav {
+      min-height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: min(calc(100% - 40px), var(--container));
+      margin: 0 auto;
+    }
 
-/* PRODUCT VISUAL WITH OVERLAY */
-.product-visual {
-  position: relative;
-  width: 100%;
-  min-height: 420px;
-  overflow: hidden;
-  border-radius: 16px;
-  border: 1px solid var(--line);
-}
-.product-background {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-.product-overlay {
-  position: relative;
-  z-index: 2;
-  min-height: 420px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  padding: 28px;
-  background: linear-gradient(90deg, rgba(3,7,14,0.88) 0%, rgba(3,7,14,0.6) 45%, transparent 80%);
-}
-.product-overlay-top { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 800;
+      letter-spacing: -.03em;
+    }
 
-.status {
-  padding: 5px 12px;
-  border-radius: 999px;
-  font-size: 0.725rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: .06em;
-}
-.status.vibefit-status {
-  border: 1px solid rgba(239,75,95,.4);
-  background: rgba(239,75,95,.12);
-  color: #ff907e;
-}
-.status.building {
-  border: 1px solid rgba(45,212,191,.4);
-  background: rgba(45,212,191,.12);
-  color: #66e8df;
-}
+    .brand-mark {
+      width: 38px;
+      height: 38px;
+      display: grid;
+      place-items: center;
+      border-radius: 12px;
+      background: linear-gradient(135deg, var(--coral), var(--amber));
+      color: #08090d;
+      font-weight: 900;
+      font-family: var(--font-display);
+    }
 
-.product-overlay-content { max-width: 580px; margin-top: auto; margin-bottom: auto; }
-.product-overlay-content h3 {
-  font-family: var(--font-display);
-  font-size: clamp(32px, 4vw, 52px);
-  color: #fff;
-  letter-spacing: -.02em;
-}
-.overlay-lead { margin-top: 8px; color: rgba(255,255,255,0.8); font-size: 0.95rem; line-height: 1.6; }
-.overlay-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 14px; }
-.overlay-tags .tag {
-  padding: 5px 10px;
-  border: 1px solid rgba(255,255,255,0.15);
-  border-radius: 6px;
-  background: rgba(3,7,18,0.65);
-  color: rgba(255,255,255,0.9);
-  backdrop-filter: blur(8px);
-  font-size: 0.75rem;
-  font-weight: 500;
-}
+    .brand-text {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.1;
+    }
 
-.product-overlay-footer {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  color: rgba(255,255,255,0.7);
-  font-size: 0.78rem;
-  font-weight: 600;
-}
-.product-overlay-footer i { width: 1px; height: 12px; background: rgba(255,255,255,0.3); }
-.overlay-progress { width: 180px; height: 4px; border-radius: 99px; background: rgba(255,255,255,0.15); overflow: hidden; }
-.overlay-progress span { display: block; height: 100%; }
-.vibefit-visual .overlay-progress span { width: 75%; background: var(--coral); }
-.kokankart-visual .overlay-progress span { width: 50%; background: var(--teal); }
+    .brand-text strong {
+      font-size: 15px;
+    }
 
-.product-info { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 20px; }
-.info { padding: 20px; border: 1px solid var(--line); border-radius: 12px; background: rgba(2,6,23,0.25); }
-.info h4 { font-size: 0.8rem; text-transform: uppercase; letter-spacing: .1em; margin-bottom: 8px; }
-.vibefit .info h4 { color: var(--coral); }
-.kokankart .info h4 { color: var(--teal); }
-.info p, .info li { color: var(--muted); font-size: 0.875rem; line-height: 1.6; }
-.info ul { padding-left: 16px; }
-.info li { margin-bottom: 4px; }
-.product-actions { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 16px; }
+    .brand-text span {
+      font-size: 10px;
+      color: var(--muted);
+      margin-top: 4px;
+      font-weight: 500;
+    }
 
-/* APPROACH & VALUES */
-.approach { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; }
-.step { padding: 20px; border-top: 2px solid var(--amber); }
-.step:nth-child(1) { border-top-color: var(--cyan); }
-.step:nth-child(2) { border-top-color: var(--indigo); }
-.step:nth-child(3) { border-top-color: var(--amber); }
-.step:nth-child(4) { border-top-color: var(--coral); }
-.step:nth-child(5) { border-top-color: var(--teal); }
-.step b { font-family: var(--font-display); font-size: 1rem; }
-.step p { margin-top: 6px; color: var(--muted); font-size: 0.825rem; }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+    }
 
-.values { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
-.value { padding: 18px; border-top: 2px solid var(--line); }
-.value:nth-child(4n+1) { border-top-color: var(--cyan); }
-.value:nth-child(4n+2) { border-top-color: var(--indigo); }
-.value:nth-child(4n+3) { border-top-color: var(--amber); }
-.value:nth-child(4n+4) { border-top-color: var(--coral); }
-.value b { font-family: var(--font-display); font-size: 0.95rem; }
-.value p { margin-top: 6px; color: var(--muted); font-size: 0.825rem; }
+    .nav-links a {
+      color: #bfc2ca;
+      font-size: 14px;
+      transition: .25s ease;
+    }
 
-/* VISION & CTA */
-.vision { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; padding: 28px; }
-.vision h3 { font-family: var(--font-display); font-size: 1.6rem; margin-top: 6px; }
-.future { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
-.future div { padding: 12px; border: 1px solid var(--line); border-radius: 8px; font-size: 0.8rem; color: #cbd5e1; background: rgba(2,6,23,0.3); border-left: 2px solid var(--dim); }
-.future div:nth-child(1) { border-left-color: var(--cyan); }
-.future div:nth-child(2) { border-left-color: var(--indigo); }
-.future div:nth-child(3) { border-left-color: var(--teal); }
-.future div:nth-child(4) { border-left-color: var(--coral); }
+    .nav-links a:hover {
+      color: white;
+    }
 
-.cta { padding: 40px 24px; text-align: center; }
-.cta h2 { font-family: var(--font-display); font-size: clamp(28px, 4vw, 42px); }
-.cta p { max-width: 560px; margin: 10px auto 20px; color: var(--muted); font-size: 0.95rem; }
+    .nav-links .nav-cta {
+      padding: 10px 18px;
+      border: 1px solid var(--border-strong);
+      border-radius: 999px;
+      color: white;
+      font-weight: 600;
+      position: relative;
+      overflow: hidden;
+    }
 
-/* FOOTER */
-footer { padding: 32px 0; border-top: 1px solid var(--line); margin-top: 20px; }
-.footer-grid { display: flex; justify-content: space-between; align-items: flex-start; gap: 20px; }
-.footer-brand { font-family: var(--font-display); font-size: 0.95rem; font-weight: 700; }
-.footer-brand span { display: block; color: var(--dim); font-size: 0.8rem; font-family: var(--font-body); font-weight: 400; margin-top: 2px; }
-.footer-links { display: flex; gap: 16px; flex-wrap: wrap; color: var(--muted); font-size: 0.85rem; }
-.copyright { margin-top: 20px; color: var(--dim); font-size: 0.775rem; }
+    .nav-links .nav-cta:hover {
+      border-color: rgba(255,255,255,.4);
+      background: rgba(255,255,255,.06);
+    }
 
-/* REVEAL ANIMATIONS */
-.reveal { opacity: 0; transform: translateY(20px); transition: opacity .6s ease, transform .6s ease; }
-.reveal.visible { opacity: 1; transform: translateY(0); }
+    .menu {
+      display: none;
+      border: 0;
+      background: transparent;
+      color: white;
+      font-size: 25px;
+      cursor: pointer;
+    }
 
-/* RESPONSIVE */
-@media (max-width: 900px) {
-  .hero-grid, .story-grid, .vision, .product-info { grid-template-columns: 1fr; }
-  .approach { grid-template-columns: repeat(3, 1fr); }
-  .values { grid-template-columns: repeat(2, 1fr); }
-}
-@media (max-width: 650px) {
-  .nav-links { display: none; position: absolute; top: 65px; left: 0; right: 0; padding: 16px; flex-direction: column; border: 1px solid var(--line); border-radius: 12px; background: rgba(3,7,18,0.95); }
-  .nav-links.open { display: flex; }
-  .menu { display: block; }
-  .approach, .values, .future { grid-template-columns: 1fr; }
-  .product-overlay-content { max-width: 100%; }
-}
-</style>
+    /* =========================================================
+       HERO
+    ========================================================= */
+    .hero {
+      min-height: calc(100vh - 76px);
+      display: grid;
+      grid-template-columns: 1.05fr .95fr;
+      align-items: center;
+      gap: 70px;
+      padding-top: 90px;
+      padding-bottom: 100px;
+      position: relative;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      width: 520px;
+      height: 520px;
+      left: -220px;
+      top: 50px;
+      background: rgba(242,85,95,.08);
+      filter: blur(100px);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      color: #c4c6cc;
+      font-size: 12px;
+      letter-spacing: .04em;
+      margin-bottom: 22px;
+    }
+
+    .dot {
+      width: 7px;
+      height: 7px;
+      display: inline-block;
+      background: var(--cyan);
+      border-radius: 50%;
+      box-shadow: 0 0 0 5px rgba(49,212,199,.12);
+    }
+
+    h1 {
+      font-size: clamp(48px, 6vw, 76px);
+      line-height: 1.05;
+      letter-spacing: -.04em;
+      max-width: 850px;
+    }
+
+    .gradient {
+      background: linear-gradient(90deg, var(--coral), #ff9e8b 40%, var(--amber));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero-copy {
+      max-width: 650px;
+      margin-top: 28px;
+      color: var(--muted);
+      font-size: 17px;
+      line-height: 1.8;
+    }
+
+    .actions {
+      display: flex;
+      gap: 12px;
+      margin-top: 34px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 48px;
+      padding: 0 22px;
+      border-radius: 12px;
+      font-size: 13px;
+      font-weight: 700;
+      transition: all .25s ease;
+      position: relative;
+      overflow: hidden;
+      border: 1px solid transparent;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .btn.primary {
+      background: white;
+      color: #090a0d;
+    }
+
+    .btn.primary:hover {
+      background: #f0f0f0;
+      box-shadow: 0 10px 25px rgba(255,255,255,0.15);
+    }
+
+    .btn.secondary {
+      border-color: var(--border-strong);
+      color: #d6d7dc;
+      background: rgba(255,255,255,.02);
+    }
+
+    .btn.secondary:hover {
+      background: rgba(255,255,255,.06);
+      border-color: rgba(255,255,255,.3);
+    }
+
+    .btn.coral-btn {
+      background: linear-gradient(135deg, var(--coral), #ff887b);
+      color: white;
+      box-shadow: 0 8px 20px rgba(242,85,95,0.25);
+    }
+
+    .btn.amber-btn {
+      background: linear-gradient(135deg, var(--amber), #f7c36d);
+      color: #08090d;
+      box-shadow: 0 8px 20px rgba(244,166,54,0.25);
+    }
+
+    /* =========================================================
+       HERO PANEL
+    ========================================================= */
+    .hero-panel {
+      padding: 18px;
+      background: linear-gradient(145deg, rgba(255,255,255,.06), rgba(255,255,255,.018));
+      border: 1px solid var(--border);
+      border-radius: 25px;
+      box-shadow: 0 30px 100px rgba(0,0,0,.45);
+    }
+
+    .panel-top {
+      display: flex;
+      justify-content: space-between;
+      padding: 5px 4px 18px;
+      color: #777b85;
+      font-size: 10px;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+    }
+
+    .live {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      color: #9da1aa;
+    }
+
+    .live i {
+      width: 6px;
+      height: 6px;
+      background: var(--cyan);
+      border-radius: 50%;
+      box-shadow: 0 0 8px var(--cyan);
+    }
+
+    .panel-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .tile {
+      min-height: 150px;
+      padding: 22px;
+      border-radius: 18px;
+      background: #101218;
+      border: 1px solid var(--border);
+      position: relative;
+      overflow: hidden;
+      transition: border-color 0.3s ease;
+    }
+
+    .tile.big {
+      grid-column: span 2;
+      min-height: 210px;
+      background: radial-gradient(circle at top right, rgba(49,212,199,0.08), rgba(16,18,24,0.95));
+    }
+
+    .tile small {
+      display: block;
+      color: #727680;
+      font-size: 10px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 13px;
+    }
+
+    .tile strong {
+      display: block;
+      font-size: 22px;
+      letter-spacing: -.02em;
+    }
+
+    .tile p {
+      color: #858994;
+      font-size: 12px;
+      margin-top: 8px;
+    }
+
+    .signal {
+      position: absolute;
+      right: 22px;
+      bottom: 45px;
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+      border: 1px solid rgba(49,212,199,.3);
+      box-shadow: 0 0 35px rgba(49,212,199,.08);
+    }
+
+    .signal::before, .signal::after {
+      content: "";
+      position: absolute;
+      inset: 12px;
+      border: 1px solid rgba(242,85,95,.3);
+      border-radius: 50%;
+    }
+
+    .signal::after {
+      inset: 25px;
+      border-color: rgba(244,166,54,.4);
+    }
+
+    .bar {
+      position: absolute;
+      left: 22px;
+      right: 22px;
+      bottom: 20px;
+      height: 3px;
+      border-radius: 20px;
+      background: rgba(255,255,255,.06);
+      overflow: hidden;
+    }
+
+    .bar span {
+      display: block;
+      width: 65%;
+      height: 100%;
+      background: linear-gradient(90deg, var(--cyan), var(--indigo));
+    }
+
+    .accent-coral strong { color: var(--coral); }
+    .accent-amber strong { color: var(--amber); }
+
+    .bar.coral span { background: var(--coral); width: 72%; }
+    .bar.amber span { background: var(--amber); width: 55%; }
+
+    /* =========================================================
+       SECTIONS
+    ========================================================= */
+    section {
+      padding: 110px 0;
+      position: relative;
+    }
+
+    .section-head {
+      max-width: 760px;
+      margin-bottom: 48px;
+    }
+
+    .kicker {
+      display: inline-block;
+      color: #a6a9b2;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: .12em;
+      margin-bottom: 12px;
+    }
+
+    .kicker.coral { color: var(--coral); }
+    .kicker.amber { color: var(--amber); }
+
+    .section-head h2 {
+      font-size: clamp(34px, 4vw, 52px);
+      line-height: 1.1;
+      letter-spacing: -.03em;
+    }
+
+    .section-head p {
+      margin-top: 16px;
+      color: var(--muted);
+      max-width: 670px;
+      font-size: 15px;
+    }
+
+    /* =========================================================
+       ABOUT
+    ========================================================= */
+    .story-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+    }
+
+    .card {
+      background: linear-gradient(145deg, rgba(255,255,255,.045), rgba(255,255,255,.018));
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-3px);
+      border-color: rgba(255,255,255,0.2);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+    }
+
+    .story { padding: 34px; }
+    .story.alt { background: linear-gradient(145deg, rgba(49,212,199,.045), rgba(255,255,255,.018)); }
+
+    .story h3 {
+      font-size: 24px;
+      letter-spacing: -.02em;
+    }
+
+    .story > p {
+      margin-top: 15px;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.8;
+    }
+
+    .pillars {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-top: 28px;
+    }
+
+    .pillar {
+      padding: 16px;
+      background: rgba(255,255,255,.025);
+      border: 1px solid rgba(255,255,255,.06);
+      border-radius: 14px;
+      border-left: 3px solid var(--cyan);
+    }
+
+    .pillar:nth-child(2) { border-left-color: var(--indigo); }
+    .pillar:nth-child(3) { border-left-color: var(--coral); }
+    .pillar:nth-child(4) { border-left-color: var(--amber); }
+
+    .pillar b { display: block; font-size: 13px; }
+    .pillar span { display: block; color: #747883; font-size: 11px; margin-top: 4px; }
+
+    /* =========================================================
+       PRODUCTS
+    ========================================================= */
+    .products {
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+    }
+
+    .product {
+      border: 1px solid var(--border);
+      border-radius: 28px;
+      overflow: hidden;
+      background: #0d0f14;
+      display: grid;
+      grid-template-columns: 1.15fr .85fr;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .product.vibefit:hover {
+      border-color: rgba(242,85,95,0.35);
+      box-shadow: 0 20px 50px rgba(242,85,95,0.08);
+    }
+
+    .product.kokankart:hover {
+      border-color: rgba(244,166,54,0.35);
+      box-shadow: 0 20px 50px rgba(244,166,54,0.08);
+    }
+
+    .product-main { padding: 32px; }
+
+    .product-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+
+    .status {
+      display: inline-flex;
+      align-items: center;
+      padding: 6px 12px;
+      border-radius: 999px;
+      background: rgba(242,85,95,.08);
+      color: var(--coral);
+      font-size: 10px;
+      border: 1px solid rgba(242,85,95,.2);
+      font-weight: 600;
+    }
+
+    .status.building {
+      background: rgba(244,166,54,.08);
+      color: var(--amber);
+      border-color: rgba(244,166,54,.2);
+    }
+
+    /* PRODUCT BANNER OVERLAY WITH BACKGROUND IMAGES */
+    .product-banner {
+      position: relative;
+      min-height: 360px;
+      border-radius: 22px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,.1);
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .vibefit-banner {
+      background-image: linear-gradient(90deg, rgba(8,9,13,.88) 0%, rgba(8,9,13,.4) 50%, rgba(8,9,13,.7) 100%), url("assets/vibefit-bg.png");
+    }
+
+    .kokankart-banner {
+      background-image: linear-gradient(90deg, rgba(8,9,13,.88) 0%, rgba(8,9,13,.4) 50%, rgba(8,9,13,.7) 100%), url("assets/kokankart-bg.png");
+    }
+
+    .banner-glow {
+      position: absolute;
+      width: 250px;
+      height: 250px;
+      border-radius: 50%;
+      filter: blur(70px);
+      pointer-events: none;
+    }
+
+    .vibefit-banner .banner-glow { background: rgba(242,85,95,.18); left: 10%; top: 15%; }
+    .kokankart-banner .banner-glow { background: rgba(244,166,54,.18); left: 10%; top: 15%; }
+
+    .banner-content {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      min-height: 275px;
+      padding: 30px;
+    }
+
+    .banner-text { max-width: 320px; }
+
+    .banner-name {
+      display: block;
+      font-size: clamp(38px, 5vw, 58px);
+      line-height: 1;
+      font-weight: 800;
+      letter-spacing: -.04em;
+    }
+
+    .vibefit-banner .banner-name { color: var(--coral); }
+    .kokankart-banner .banner-name { color: var(--amber); }
+
+    .banner-tag {
+      display: block;
+      margin-top: 12px;
+      color: rgba(255,255,255,.75);
+      font-size: 12px;
+    }
+
+    .banner-footer {
+      position: relative;
+      z-index: 3;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 16px 20px;
+      background: rgba(5,6,9,.75);
+      backdrop-filter: blur(10px);
+      border-top: 1px solid rgba(255,255,255,.08);
+      color: #b8bbc3;
+      font-size: 10px;
+    }
+
+    .banner-footer i {
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: rgba(255,255,255,.3);
+    }
+
+    .banner-bar {
+      flex: 1;
+      height: 3px;
+      background: rgba(255,255,255,.08);
+      border-radius: 20px;
+      overflow: hidden;
+      margin-left: 5px;
+    }
+
+    .banner-bar span {
+      display: block;
+      height: 100%;
+      width: 72%;
+      background: var(--coral);
+    }
+
+    .kokankart-banner .banner-bar span {
+      background: var(--amber);
+      width: 55%;
+    }
+
+    /* PRODUCT CONTENT DETAILS */
+    .product h3 {
+      margin-top: 28px;
+      font-size: 30px;
+      letter-spacing: -.03em;
+    }
+
+    .product .lead {
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.8;
+      margin-top: 10px;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+      margin-top: 20px;
+    }
+
+    .tag {
+      padding: 6px 12px;
+      border: 1px solid rgba(255,255,255,.08);
+      background: rgba(255,255,255,.025);
+      border-radius: 999px;
+      color: #a7aab3;
+      font-size: 10px;
+    }
+
+    .product-info {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 25px;
+      margin-top: 28px;
+      padding-top: 24px;
+      border-top: 1px solid rgba(255,255,255,.07);
+    }
+
+    .info h4 {
+      font-size: 13px;
+      margin-bottom: 12px;
+    }
+
+    .vibefit .info h4 { color: var(--coral); }
+    .kokankart .info h4 { color: var(--amber); }
+
+    .info p, .info li {
+      color: #858994;
+      font-size: 12px;
+      line-height: 1.75;
+    }
+
+    .info ul { padding-left: 17px; }
+    .info li + li { margin-top: 5px; }
+
+    .product-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .product-actions .btn {
+      font-size: 12px;
+      min-height: 42px;
+      padding: 0 16px;
+    }
+
+    /* SHOWCASE IMAGE CONTAINER */
+    .product-image {
+      min-height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 30px;
+      background: radial-gradient(circle at center, rgba(255,255,255,.04), transparent 70%);
+      border-left: 1px solid rgba(255,255,255,.07);
+    }
+
+    .product-image img {
+      width: 100%;
+      max-width: 520px;
+      height: auto;
+      object-fit: contain;
+      filter: drop-shadow(0 25px 40px rgba(0,0,0,.6));
+      transition: transform 0.4s ease;
+    }
+
+    .product:hover .product-image img {
+      transform: scale(1.02);
+    }
+
+    /* =========================================================
+       APPROACH
+    ========================================================= */
+    .approach {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 12px;
+    }
+
+    .step {
+      padding: 24px;
+      min-height: 200px;
+      border-top: 3px solid var(--amber);
+    }
+
+    .step:nth-child(1) { border-top-color: var(--cyan); }
+    .step:nth-child(2) { border-top-color: var(--indigo); }
+    .step:nth-child(3) { border-top-color: var(--amber); }
+    .step:nth-child(4) { border-top-color: var(--coral); }
+    .step:nth-child(5) { border-top-color: #10b981; }
+
+    .step b {
+      font-size: 16px;
+      font-family: var(--font-display);
+    }
+
+    .step p {
+      color: var(--muted);
+      font-size: 12px;
+      margin-top: 10px;
+    }
+
+    /* =========================================================
+       VALUES
+    ========================================================= */
+    .values {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+    }
+
+    .value {
+      padding: 24px;
+      min-height: 140px;
+      border-top: 2px solid var(--border-strong);
+    }
+
+    .value:nth-child(4n+1) { border-top-color: var(--cyan); }
+    .value:nth-child(4n+2) { border-top-color: var(--indigo); }
+    .value:nth-child(4n+3) { border-top-color: var(--coral); }
+    .value:nth-child(4n+4) { border-top-color: var(--amber); }
+
+    .value b {
+      font-size: 15px;
+      font-family: var(--font-display);
+    }
+
+    .value p {
+      color: var(--muted);
+      font-size: 12px;
+      margin-top: 8px;
+    }
+
+    /* =========================================================
+       VISION
+    ========================================================= */
+    .vision {
+      padding: 38px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 50px;
+      align-items: center;
+    }
+
+    .vision h3 {
+      font-size: 28px;
+      line-height: 1.15;
+      letter-spacing: -.03em;
+      margin-top: 5px;
+    }
+
+    .vision p {
+      color: var(--muted);
+      font-size: 13px;
+      margin-top: 14px;
+      max-width: 600px;
+    }
+
+    .future {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 9px;
+    }
+
+    .future div {
+      padding: 15px;
+      border: 1px solid rgba(255,255,255,.07);
+      border-radius: 12px;
+      background: rgba(255,255,255,.025);
+      color: #b5b8c0;
+      font-size: 11px;
+      border-left: 2px solid var(--border-strong);
+    }
+
+    .future div:nth-child(1) { border-left-color: var(--cyan); }
+    .future div:nth-child(2) { border-left-color: var(--indigo); }
+    .future div:nth-child(3) { border-left-color: var(--amber); }
+    .future div:nth-child(4) { border-left-color: var(--coral); }
+
+    /* =========================================================
+       CTA & FOOTER
+    ========================================================= */
+    .cta {
+      padding: 65px 35px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta::before {
+      content: "";
+      position: absolute;
+      width: 300px;
+      height: 300px;
+      left: 50%;
+      top: -180px;
+      transform: translateX(-50%);
+      background: rgba(242,85,95,.12);
+      filter: blur(80px);
+      border-radius: 50%;
+    }
+
+    .cta > * { position: relative; z-index: 2; }
+
+    .cta h2 {
+      font-size: clamp(35px, 5vw, 56px);
+      letter-spacing: -.04em;
+      line-height: 1;
+      margin-top: 8px;
+    }
+
+    .cta p {
+      max-width: 560px;
+      margin: 16px auto 25px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    footer {
+      padding: 65px 0 30px;
+      border-top: 1px solid rgba(255,255,255,.06);
+      margin-top: 50px;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+    }
+
+    .footer-brand {
+      font-weight: 800;
+      font-size: 15px;
+    }
+
+    .footer-brand span {
+      display: block;
+      margin-top: 7px;
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 400;
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: flex-end;
+      flex-wrap: wrap;
+      gap: 18px;
+    }
+
+    .footer-links a {
+      color: #858993;
+      font-size: 11px;
+      transition: .2s ease;
+    }
+
+    .footer-links a:hover { color: white; }
+
+    .copyright {
+      margin-top: 50px;
+      padding-top: 22px;
+      border-top: 1px solid rgba(255,255,255,.06);
+      color: #626671;
+      font-size: 10px;
+    }
+
+    /* =========================================================
+       REVEAL ANIMATIONS
+    ========================================================= */
+    .reveal {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity .7s ease, transform .7s ease;
+    }
+
+    .reveal.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* =========================================================
+       RESPONSIVE
+    ========================================================= */
+    @media (max-width: 1000px) {
+      .hero { grid-template-columns: 1fr; gap: 50px; }
+      .hero-panel { max-width: 700px; }
+      .product { grid-template-columns: 1fr; }
+      .product-image { border-left: 0; border-top: 1px solid rgba(255,255,255,.07); }
+      .approach, .values { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 720px) {
+      .container { width: min(calc(100% - 28px), var(--container)); }
+      nav { width: calc(100% - 28px); }
+
+      .nav-links {
+        position: absolute;
+        left: 14px;
+        right: 14px;
+        top: 70px;
+        padding: 18px;
+        flex-direction: column;
+        align-items: stretch;
+        background: rgba(13,15,20,.98);
+        border: 1px solid var(--border);
+        border-radius: 18px;
+        display: none;
+      }
+
+      .nav-links.active { display: flex; }
+      .menu { display: block; }
+      h1 { font-size: clamp(40px, 11vw, 60px); }
+      .hero { padding-top: 50px; }
+      section { padding: 70px 0; }
+      .story-grid, .pillars, .product-info, .approach, .values, .vision, .future, .footer-grid { grid-template-columns: 1fr; }
+      .product-main, .product-image, .vision { padding: 20px; }
+      .product-top { align-items: flex-start; flex-direction: column; }
+      .banner-name { font-size: 38px; }
+      .footer-links { justify-content: flex-start; }
+    }
+
+    @media (max-width: 450px) {
+      .panel-grid { grid-template-columns: 1fr; }
+      .tile.big { grid-column: span 1; }
+      .actions { flex-direction: column; }
+      .actions .btn { width: 100%; }
+      .banner-footer { flex-wrap: wrap; }
+      .banner-bar { flex-basis: 100%; margin-left: 0; }
+    }
+  </style>
 </head>
 
 <body>
 
-<div class="spectrum"></div>
+<div class="scroll-progress" id="scrollProgress"></div>
 
-<nav>
-  <div class="nav-inner">
+<!-- NAVIGATION -->
+<header>
+  <nav>
     <a href="#" class="brand">
       <span class="brand-mark">CMS</span>
-      <span>Creative Management Solutions</span>
+      <span class="brand-text">
+        <strong>Creative Management Solutions</strong>
+        <span>India-focused digital product company.</span>
+      </span>
     </a>
 
-    <button class="menu" id="menu" aria-label="Toggle navigation">☰</button>
+    <button class="menu" id="menu" aria-label="Open navigation menu" aria-expanded="false">☰</button>
 
     <div class="nav-links" id="navLinks">
       <a href="#about">About</a>
@@ -511,52 +1103,51 @@ footer { padding: 32px 0; border-top: 1px solid var(--line); margin-top: 20px; }
       <a href="#values">Values</a>
       <a class="nav-cta" href="mailto:support@cmsgroup.in">Contact CMS</a>
     </div>
-  </div>
-</nav>
+  </nav>
+</header>
 
 <main>
 
 <!-- HERO -->
-<section class="hero">
-  <div class="container hero-grid">
-    <div class="reveal">
-      <span class="eyebrow"><i class="dot"></i> India-focused digital product company</span>
-      <h1><span class="gradient">Building products</span><br>that solve real problems.</h1>
-      <p class="hero-copy">Creative Management Solutions (CMS) builds, launches and grows its own technology products — creating focused digital experiences across wellness, commerce and emerging real-world opportunities.</p>
-      <div class="actions">
-        <a class="btn primary" href="#products">Explore Products →</a>
-        <a class="btn secondary" href="#about">Our Philosophy</a>
-      </div>
+<section class="hero container">
+  <div class="reveal">
+    <span class="eyebrow"><i class="dot"></i> India-focused digital product company</span>
+    <h1><span class="gradient">Building products</span><br>that solve real problems.</h1>
+    <p class="hero-copy">Creative Management Solutions (CMS) builds, launches and grows its own technology products — creating focused digital experiences across wellness, commerce and emerging real-world opportunities.</p>
+    
+    <div class="actions">
+      <a class="btn primary" href="#products">Explore Products →</a>
+      <a class="btn secondary" href="#about">Our Philosophy</a>
+    </div>
+  </div>
+
+  <div class="hero-panel reveal">
+    <div class="panel-top">
+      <span>CMS / PRODUCT STUDIO</span>
+      <span class="live"><i></i> Building</span>
     </div>
 
-    <div class="hero-panel reveal">
-      <div class="panel-top">
-        <span>CMS / PRODUCT STUDIO</span>
-        <span class="live"><i></i> Building</span>
+    <div class="panel-grid">
+      <div class="tile big">
+        <small>Product philosophy</small>
+        <strong>Build → Launch → Learn → Grow</strong>
+        <p>Independent products designed around real user needs.</p>
+        <div class="signal"></div>
+        <div class="bar"><span></span></div>
       </div>
-      <div class="panel-grid">
-        <div class="tile big">
-          <div>
-            <small>Product philosophy</small>
-            <strong>Build → Launch → Learn → Grow</strong>
-          </div>
-          <div>
-            <p>Independent products designed around real user needs.</p>
-            <div class="bar"><span></span></div>
-          </div>
-        </div>
-        <div class="tile">
-          <small>VibeFit</small>
-          <strong>Wellness</strong>
-          <p>Play Store preparation</p>
-          <div class="bar coral"><span></span></div>
-        </div>
-        <div class="tile">
-          <small>KokanKart</small>
-          <strong>Commerce</strong>
-          <p>Product development</p>
-          <div class="bar teal"><span></span></div>
-        </div>
+
+      <div class="tile accent-coral">
+        <small>VibeFit</small>
+        <strong>Wellness</strong>
+        <p>Play Store preparation</p>
+        <div class="bar coral"><span></span></div>
+      </div>
+
+      <div class="tile accent-amber">
+        <small>KokanKart</small>
+        <strong>Commerce</strong>
+        <p>Product development</p>
+        <div class="bar amber"><span></span></div>
       </div>
     </div>
   </div>
@@ -574,23 +1165,25 @@ footer { padding: 32px 0; border-top: 1px solid var(--line); margin-top: 20px; }
     <div class="story-grid">
       <article class="card story reveal">
         <h3>A product-first company.</h3>
-        <p>We start with a real problem, shape a useful experience, build the technology behind it, launch it, listen to users and continuously improve the product.</p>
+        <p>We start with a real problem, shape a useful experience, build the technology behind it, launch it, listen to users and continuously improve the product. Our long-term goal is to create independent products that can grow into meaningful ecosystems.</p>
+        
         <div class="pillars">
           <div class="pillar"><b>Problem → Product</b><span>Start with what matters.</span></div>
-          <div class="pillar"><b>Experience → Trust</b><span>Keep products simple.</span></div>
-          <div class="pillar"><b>Launch → Learn</b><span>Improve through usage.</span></div>
-          <div class="pillar"><b>Product → Ecosystem</b><span>Build for scale.</span></div>
+          <div class="pillar"><b>Experience → Trust</b><span>Keep products simple & reliable.</span></div>
+          <div class="pillar"><b>Launch → Learn</b><span>Improve through real usage.</span></div>
+          <div class="pillar"><b>Product → Ecosystem</b><span>Build for long-term scale.</span></div>
         </div>
       </article>
 
-      <article class="card story reveal">
+      <article class="card story alt reveal">
         <h3>Where CMS is heading.</h3>
-        <p>CMS is starting with focused digital products and an India-first approach. Over time, the company aims to build multiple technology-led businesses.</p>
+        <p>CMS is starting with focused digital products and an India-first approach. Over time, the company aims to build multiple technology-led businesses and explore opportunities beyond software when the right time and opportunity arrive.</p>
+
         <div class="pillars">
-          <div class="pillar"><b>Consumer Products</b><span>Useful everyday apps.</span></div>
-          <div class="pillar"><b>Business Products</b><span>Operations tech.</span></div>
-          <div class="pillar"><b>Digital Commerce</b><span>Local connectivity.</span></div>
-          <div class="pillar"><b>Wellness</b><span>Healthier living.</span></div>
+          <div class="pillar"><b>Consumer Products</b><span>Useful everyday experiences.</span></div>
+          <div class="pillar"><b>Business Products</b><span>Technology for real operations.</span></div>
+          <div class="pillar"><b>Digital Commerce</b><span>Connecting people & businesses.</span></div>
+          <div class="pillar"><b>Wellness</b><span>Technology for healthier living.</span></div>
         </div>
       </article>
     </div>
@@ -603,7 +1196,7 @@ footer { padding: 32px 0; border-top: 1px solid var(--line); margin-top: 20px; }
     <div class="section-head reveal">
       <span class="kicker">Featured products</span>
       <h2>Two products. One product philosophy.</h2>
-      <p>CMS is currently showcasing VibeFit and KokanKart — two products built around very different real-world needs.</p>
+      <p>CMS is currently showcasing VibeFit and KokanKart — two products built around very different real-world needs, each with its own visual identity.</p>
     </div>
 
     <div class="products">
@@ -612,31 +1205,40 @@ footer { padding: 32px 0; border-top: 1px solid var(--line); margin-top: 20px; }
       <article class="product vibefit reveal">
         <div class="product-main">
           
-          <div class="product-visual vibefit-visual">
-            <img class="product-background" src="assets/vibefit-background.png" alt="VibeFit background image" loading="lazy">
-            <div class="product-overlay">
-              <div class="product-overlay-top">
-                <span class="status vibefit-status">Play Store preparation</span>
-                <span class="kicker coral">Wellness / Consumer</span>
-              </div>
-              <div class="product-overlay-content">
-                <h3>VibeFit</h3>
-                <p class="overlay-lead">An offline-first fitness and wellness companion bringing workouts, yoga, nutrition, progress tracking, lifestyle planning and wellness guidance into one experience.</p>
-                <div class="overlay-tags">
-                  <span class="tag">Workout Tracking</span>
-                  <span class="tag">Yoga & Meditation</span>
-                  <span class="tag">Indian Nutrition</span>
-                  <span class="tag">Offline-First</span>
-                  <span class="tag">Privacy Focused</span>
-                </div>
-              </div>
-              <div class="product-overlay-footer">
-                <span>Play Store preparation</span>
-                <i></i>
-                <span>Build Phase</span>
-                <div class="overlay-progress"><span></span></div>
+          <div class="product-top">
+            <span class="status">Play Store preparation</span>
+            <span class="kicker coral">Wellness / Consumer</span>
+          </div>
+
+          <!-- NEW BACKGROUND IMAGE BANNER -->
+          <div class="product-banner vibefit-banner">
+            <div class="banner-glow"></div>
+            <div class="banner-content">
+              <div class="banner-text">
+                <span class="banner-name">VibeFit</span>
+                <span class="banner-tag">Wellness / Consumer</span>
               </div>
             </div>
+            <div class="banner-footer">
+              <span>Play Store preparation</span>
+              <i></i>
+              <span>Build</span>
+              <div class="banner-bar"><span></span></div>
+            </div>
+          </div>
+
+          <h3>VibeFit</h3>
+          <p class="lead">An offline-first fitness and wellness companion bringing workouts, yoga, nutrition, progress tracking, lifestyle planning and wellness guidance into one experience.</p>
+
+          <div class="tags">
+            <span class="tag">Workout Tracking</span>
+            <span class="tag">Yoga & Meditation</span>
+            <span class="tag">Indian Nutrition</span>
+            <span class="tag">Offline-First</span>
+            <span class="tag">Local Data</span>
+            <span class="tag">Progress Analytics</span>
+            <span class="tag">Lifestyle Planner</span>
+            <span class="tag">Privacy Focused</span>
           </div>
 
           <div class="product-info">
@@ -646,72 +1248,95 @@ footer { padding: 32px 0; border-top: 1px solid var(--line); margin-top: 20px; }
                 <li>Workout library and session tracking</li>
                 <li>Yoga, breathing, mobility and recovery</li>
                 <li>Indian food and nutrition tracking</li>
-                <li>Progress analytics & lifestyle planning</li>
+                <li>Weight, measurements and progress photos</li>
+                <li>Goals, planning, reports and reminders</li>
               </ul>
             </div>
+
             <div class="info">
               <h4>Product philosophy</h4>
-              <p>Core fitness functionality is designed around an offline-first experience, keeping data local and accessible anywhere.</p>
+              <p>Core fitness functionality is designed around an offline-first experience, with local storage helping the app remain useful without continuous internet access.</p>
+
               <div class="product-actions">
-                <a class="btn primary coral-btn" href="/vibefit-privacy.html">Privacy Policy ↗</a>
+                <a class="btn coral-btn" href="/vibefit-privacy.html">VibeFit Privacy Policy ↗</a>
                 <a class="btn secondary" href="mailto:support@cmsgroup.in?subject=VibeFit%20Support">VibeFit Support →</a>
               </div>
             </div>
           </div>
+        </div>
 
+        <!-- EXISTING SHOWCASE IMAGE -->
+        <div class="product-image">
+          <img src="assets/vibefit-showcase.png" alt="VibeFit product showcase showing workouts, yoga, nutrition, recovery, progress and lifestyle screens" loading="lazy">
         </div>
       </article>
 
       <!-- KOKANKART -->
       <article class="product kokankart reveal">
         <div class="product-main">
-          
-          <div class="product-visual kokankart-visual">
-            <img class="product-background" src="assets/kokankart-background.png" alt="KokanKart background image" loading="lazy">
-            <div class="product-overlay">
-              <div class="product-overlay-top">
-                <span class="status building">Product development</span>
-                <span class="kicker teal">Commerce / Local</span>
-              </div>
-              <div class="product-overlay-content">
-                <h3>KokanKart</h3>
-                <p class="overlay-lead">A hyperlocal commerce platform connecting customers with local vendors and regional products through a connected ecosystem.</p>
-                <div class="overlay-tags">
-                  <span class="tag">Hyperlocal Marketplace</span>
-                  <span class="tag">Local Vendors</span>
-                  <span class="tag">Regional Products</span>
-                  <span class="tag">Smart Cart</span>
-                  <span class="tag">Delivery Flow</span>
-                </div>
-              </div>
-              <div class="product-overlay-footer">
-                <span>Product development</span>
-                <i></i>
-                <span>Launch Phase</span>
-                <div class="overlay-progress"><span></span></div>
+
+          <div class="product-top">
+            <span class="status building">Product development</span>
+            <span class="kicker amber">Commerce / Local</span>
+          </div>
+
+          <!-- NEW BACKGROUND IMAGE BANNER -->
+          <div class="product-banner kokankart-banner">
+            <div class="banner-glow"></div>
+            <div class="banner-content">
+              <div class="banner-text">
+                <span class="banner-name">KokanKart</span>
+                <span class="banner-tag">Commerce / Local</span>
               </div>
             </div>
+            <div class="banner-footer">
+              <span>Product development</span>
+              <i></i>
+              <span>Launch</span>
+              <div class="banner-bar"><span></span></div>
+            </div>
+          </div>
+
+          <h3>KokanKart</h3>
+          <p class="lead">A hyperlocal commerce platform connecting customers with local vendors and regional products through a connected shopping, vendor, delivery and administration experience.</p>
+
+          <div class="tags">
+            <span class="tag">Hyperlocal Marketplace</span>
+            <span class="tag">Local Vendors</span>
+            <span class="tag">Regional Products</span>
+            <span class="tag">Smart Cart</span>
+            <span class="tag">Order Tracking</span>
+            <span class="tag">Vendor Dashboard</span>
+            <span class="tag">Delivery Flow</span>
+            <span class="tag">Admin Operations</span>
           </div>
 
           <div class="product-info">
             <div class="info">
               <h4>Connected ecosystem</h4>
               <ul>
-                <li>Customer discovery & local shopping</li>
-                <li>Vendor product & order management</li>
-                <li>Delivery partner workflows</li>
-                <li>Admin operations & analytics</li>
+                <li>Customer discovery and local shopping</li>
+                <li>Vendor product and order management</li>
+                <li>Delivery partner workflow and tracking</li>
+                <li>Admin controls, monitoring and analytics</li>
+                <li>Area-based commerce model</li>
               </ul>
             </div>
+
             <div class="info">
               <h4>Product philosophy</h4>
-              <p>KokanKart connects local commerce participants into one practical and accessible digital ecosystem.</p>
+              <p>KokanKart is designed as more than a storefront — it connects local commerce participants into one practical digital ecosystem.</p>
+
               <div class="product-actions">
-                <a class="btn primary" href="mailto:support@cmsgroup.in?subject=KokanKart%20Inquiry">KokanKart Inquiry →</a>
+                <a class="btn amber-btn" href="mailto:support@cmsgroup.in?subject=KokanKart%20Inquiry">KokanKart Inquiry →</a>
               </div>
             </div>
           </div>
+        </div>
 
+        <!-- EXISTING SHOWCASE IMAGE -->
+        <div class="product-image">
+          <img src="assets/kokankart-showcase.png" alt="KokanKart product showcase showing customer shopping, vendor dashboard, delivery and admin experiences" loading="lazy">
         </div>
       </article>
 
@@ -729,11 +1354,30 @@ footer { padding: 32px 0; border-top: 1px solid var(--line); margin-top: 20px; }
     </div>
 
     <div class="approach">
-      <div class="card step reveal"><b>Identify</b><p>Understand the real user problem.</p></div>
-      <div class="card step reveal"><b>Design</b><p>Shape a clear, reliable user experience.</p></div>
-      <div class="card step reveal"><b>Build</b><p>Create solid technology foundations.</p></div>
-      <div class="card step reveal"><b>Launch</b><p>Release to the real world and learn.</p></div>
-      <div class="card step reveal"><b>Iterate</b><p>Evolve continuously over time.</p></div>
+      <div class="card step reveal">
+        <b>Identify</b>
+        <p>Understand the problem and the people experiencing it.</p>
+      </div>
+
+      <div class="card step reveal">
+        <b>Design</b>
+        <p>Shape a clear experience around the core user need.</p>
+      </div>
+
+      <div class="card step reveal">
+        <b>Build</b>
+        <p>Create reliable technology with quality at the foundation.</p>
+      </div>
+
+      <div class="card step reveal">
+        <b>Launch</b>
+        <p>Put the product into the real world and learn from usage.</p>
+      </div>
+
+      <div class="card step reveal">
+        <b>Iterate</b>
+        <p>Improve continuously as users, needs and opportunities evolve.</p>
+      </div>
     </div>
   </div>
 </section>
@@ -747,37 +1391,41 @@ footer { padding: 32px 0; border-top: 1px solid var(--line); margin-top: 20px; }
     </div>
 
     <div class="values">
-      <div class="card value reveal"><b>Innovation</b><p>Think differently, build meaningfully.</p></div>
-      <div class="card value reveal"><b>Trust</b><p>Earn confidence through reliability.</p></div>
-      <div class="card value reveal"><b>Speed</b><p>Move from idea to execution.</p></div>
-      <div class="card value reveal"><b>Satisfaction</b><p>Create real value for users.</p></div>
-      <div class="card value reveal"><b>Transparency</b><p>Stay clear and responsible.</p></div>
-      <div class="card value reveal"><b>Quality</b><p>Build solid experiences without shortcuts.</p></div>
+      <div class="card value reveal"><b>Innovation</b><p>Think differently. Build meaningfully.</p></div>
+      <div class="card value reveal"><b>Trust</b><p>Earn confidence through every interaction.</p></div>
+      <div class="card value reveal"><b>Speed</b><p>Move from idea to execution with purpose.</p></div>
+      <div class="card value reveal"><b>Customer Satisfaction</b><p>Create value users can feel.</p></div>
+      <div class="card value reveal"><b>Transparency</b><p>Stay clear, honest and responsible.</p></div>
+      <div class="card value reveal"><b>Quality</b><p>Build reliable experiences without shortcuts.</p></div>
       <div class="card value reveal"><b>Growth</b><p>Build today with tomorrow in mind.</p></div>
-      <div class="card value reveal"><b>Service</b><p>Support products responsibly.</p></div>
+      <div class="card value reveal"><b>Service</b><p>Support products with responsibility.</p></div>
     </div>
   </div>
 </section>
 
-<!-- VISION & CTA -->
+<!-- VISION -->
 <section>
   <div class="container">
     <div class="card vision reveal">
       <div>
         <span class="kicker">Long-term direction</span>
         <h3>Build products today. Create ecosystems tomorrow.</h3>
-        <p>CMS aims to grow through useful technology products, strong execution and long-term ownership.</p>
+        <p>CMS is starting with an India-focused product portfolio and aims to grow through useful technology products, strong execution and long-term ownership.</p>
       </div>
+
       <div class="future">
-        <div>Consumer Tech</div>
-        <div>Business Tech</div>
+        <div>Consumer Technology</div>
+        <div>Business Technology</div>
         <div>Digital Commerce</div>
         <div>Wellness Platforms</div>
+        <div>New Product Categories</div>
+        <div>Future Business Opportunities</div>
       </div>
     </div>
   </div>
 </section>
 
+<!-- CTA -->
 <section>
   <div class="container">
     <div class="card cta reveal">
@@ -791,6 +1439,7 @@ footer { padding: 32px 0; border-top: 1px solid var(--line); margin-top: 20px; }
 
 </main>
 
+<!-- FOOTER -->
 <footer>
   <div class="container">
     <div class="footer-grid">
@@ -798,6 +1447,7 @@ footer { padding: 32px 0; border-top: 1px solid var(--line); margin-top: 20px; }
         Creative Management Solutions
         <span>India-focused digital product company.</span>
       </div>
+
       <div class="footer-links">
         <a href="#about">About</a>
         <a href="#products">Products</a>
@@ -808,36 +1458,55 @@ footer { padding: 32px 0; border-top: 1px solid var(--line); margin-top: 20px; }
         <a href="mailto:support@cmsgroup.in">support@cmsgroup.in</a>
       </div>
     </div>
+
     <div class="copyright">
       © <span id="year"></span> Creative Management Solutions. All Rights Reserved.
     </div>
   </div>
 </footer>
 
+<!-- JAVASCRIPT -->
 <script>
-// Mobile Menu
-const menu = document.getElementById("menu");
-const navLinks = document.getElementById("navLinks");
-menu.addEventListener("click", () => {
-  const open = navLinks.classList.toggle("open");
-  menu.textContent = open ? "✕" : "☰";
-});
+  // Mobile Menu
+  const menu = document.getElementById("menu");
+  const navLinks = document.getElementById("navLinks");
 
-// Set Year
-document.getElementById("year").textContent = new Date().getFullYear();
-
-// Intersection Observer for Smooth Reveal
-const revealElements = document.querySelectorAll(".reveal");
-const revealObserver = new IntersectionObserver((entries, observer) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add("visible");
-      observer.unobserve(entry.target);
-    }
+  menu.addEventListener("click", () => {
+    navLinks.classList.toggle("active");
+    const expanded = navLinks.classList.contains("active");
+    menu.setAttribute("aria-expanded", expanded);
   });
-}, { threshold: 0.1 });
 
-revealElements.forEach(el => revealObserver.observe(el));
+  document.querySelectorAll(".nav-links a").forEach(link => {
+    link.addEventListener("click", () => {
+      navLinks.classList.remove("active");
+      menu.setAttribute("aria-expanded", "false");
+    });
+  });
+
+  // Scroll Progress Bar
+  window.addEventListener("scroll", () => {
+    const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+    const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    const scrolled = (winScroll / height) * 100;
+    document.getElementById("scrollProgress").style.width = scrolled + "%";
+  });
+
+  // Scroll Reveal
+  const revealElements = document.querySelectorAll(".reveal");
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("show");
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+
+  revealElements.forEach(element => observer.observe(element));
+
+  // Current Year
+  document.getElementById("year").textContent = new Date().getFullYear();
 </script>
 
 </body>
