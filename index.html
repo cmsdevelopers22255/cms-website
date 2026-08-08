@@ -1,3227 +1,844 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8">
-
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
-  >
-
-  <meta
-    name="description"
-    content="Creative Management Solutions — an India-focused digital product company building products across wellness, commerce and emerging real-world opportunities."
-  >
-
-  <meta
-    name="keywords"
-    content="Creative Management Solutions, CMS, VibeFit, KokanKart, digital products, India"
-  >
-
-  <meta
-    name="author"
-    content="Creative Management Solutions"
-  >
-
-  <title>
-    Creative Management Solutions | Building Products
-  </title>
-
-
-  <style>
-
-    /* =========================================================
-       RESET
-       ========================================================= */
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-
-    body {
-      min-height: 100vh;
-
-      background:
-        radial-gradient(
-          circle at 80% 10%,
-          rgba(30, 220, 205, 0.08),
-          transparent 30%
-        ),
-        radial-gradient(
-          circle at 10% 20%,
-          rgba(255, 90, 70, 0.06),
-          transparent 25%
-        ),
-        #070c18;
-
-      color: #e9eef8;
-
-      font-family:
-        Inter,
-        ui-sans-serif,
-        system-ui,
-        -apple-system,
-        BlinkMacSystemFont,
-        "Segoe UI",
-        sans-serif;
-
-      line-height: 1.5;
-      overflow-x: hidden;
-    }
-
-
-    img {
-      max-width: 100%;
-    }
-
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-
-    button {
-      font: inherit;
-    }
-
-
-    /* =========================================================
-       VARIABLES
-       ========================================================= */
-
-    :root {
-
-      --bg: #070c18;
-      --bg-soft: #0b1220;
-      --card: rgba(13, 21, 36, 0.78);
-      --card-strong: #0d1524;
-
-      --border: rgba(255, 255, 255, 0.09);
-      --border-light: rgba(255, 255, 255, 0.14);
-
-      --text: #f5f7fb;
-      --muted: #9aa8bd;
-      --muted-2: #758399;
-
-      --teal: #38d9cd;
-      --teal-dark: #1fbcb2;
-
-      --coral: #ff654d;
-      --amber: #f5b84d;
-
-      --radius: 18px;
-      --max-width: 1240px;
-    }
-
-
-    /* =========================================================
-       COMMON
-       ========================================================= */
-
-    .container {
-      width: min(
-        calc(100% - 40px),
-        var(--max-width)
-      );
-
-      margin-inline: auto;
-    }
-
-
-    section {
-      padding: 110px 0;
-      position: relative;
-    }
-
-
-    .section-head {
-      max-width: 760px;
-      margin-bottom: 50px;
-    }
-
-
-    .section-head h2 {
-      margin-top: 12px;
-
-      font-size: clamp(
-        34px,
-        5vw,
-        58px
-      );
-
-      line-height: 1.05;
-      letter-spacing: -0.04em;
-    }
-
-
-    .section-head p {
-      margin-top: 18px;
-
-      color: var(--muted);
-
-      font-size: 17px;
-      line-height: 1.75;
-    }
-
-
-    .kicker {
-      display: inline-block;
-
-      color: var(--teal);
-
-      font-size: 12px;
-      font-weight: 800;
-
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-    }
-
-
-    .kicker.coral {
-      color: var(--coral);
-    }
-
-
-    .kicker.teal {
-      color: var(--teal);
-    }
-
-
-    .kicker.amber {
-      color: var(--amber);
-    }
-
-
-    /* =========================================================
-       NAVBAR
-       ========================================================= */
-
-    nav {
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-
-      background: rgba(7, 12, 24, 0.82);
-
-      border-bottom: 1px solid var(--border);
-
-      backdrop-filter: blur(18px);
-      -webkit-backdrop-filter: blur(18px);
-    }
-
-
-    .nav-inner {
-      width: min(
-        calc(100% - 40px),
-        var(--max-width)
-      );
-
-      min-height: 76px;
-
-      margin-inline: auto;
-
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-
-      gap: 30px;
-    }
-
-
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-
-      font-size: 16px;
-      font-weight: 800;
-      letter-spacing: -0.02em;
-    }
-
-
-    .brand-mark {
-      width: 34px;
-      height: 34px;
-
-      display: grid;
-      place-items: center;
-
-      border: 1px solid rgba(56, 217, 205, 0.5);
-      border-radius: 10px;
-
-      color: var(--teal);
-
-      background:
-        linear-gradient(
-          135deg,
-          rgba(56, 217, 205, 0.14),
-          rgba(255, 101, 77, 0.1)
-        );
-
-      font-size: 12px;
-      font-weight: 900;
-    }
-
-
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 28px;
-    }
-
-
-    .nav-links a {
-      color: var(--muted);
-
-      font-size: 13px;
-      font-weight: 650;
-
-      transition:
-        color 0.2s ease,
-        transform 0.2s ease;
-    }
-
-
-    .nav-links a:hover {
-      color: var(--text);
-      transform: translateY(-1px);
-    }
-
-
-    .nav-links .nav-cta {
-      padding: 10px 16px;
-
-      color: #061019;
-
-      background: var(--teal);
-
-      border-radius: 10px;
-
-      font-weight: 800;
-    }
-
-
-    .nav-links .nav-cta:hover {
-      color: #061019;
-    }
-
-
-    .menu {
-      display: none;
-
-      border: 1px solid var(--border);
-      background: rgba(255,255,255,0.04);
-
-      color: white;
-
-      width: 42px;
-      height: 42px;
-
-      border-radius: 10px;
-
-      cursor: pointer;
-    }
-
-
-    /* =========================================================
-       HERO
-       ========================================================= */
-
-    .hero {
-      padding-top: 100px;
-      padding-bottom: 90px;
-    }
-
-
-    .hero-grid {
-      display: grid;
-
-      grid-template-columns:
-        minmax(0, 1.1fr)
-        minmax(360px, 0.9fr);
-
-      align-items: center;
-
-      gap: 70px;
-    }
-
-
-    .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 9px;
-
-      padding: 8px 12px;
-
-      border: 1px solid var(--border-light);
-      border-radius: 999px;
-
-      background: rgba(255,255,255,0.025);
-
-      color: var(--muted);
-
-      font-size: 11px;
-      font-weight: 750;
-
-      letter-spacing: 0.04em;
-    }
-
-
-    .dot {
-      width: 7px;
-      height: 7px;
-
-      border-radius: 50%;
-
-      background: var(--teal);
-
-      box-shadow:
-        0 0 0 5px rgba(56,217,205,0.08),
-        0 0 18px rgba(56,217,205,0.6);
-    }
-
-
-    .hero h1 {
-      margin-top: 25px;
-
-      font-size: clamp(
-        50px,
-        7vw,
-        86px
-      );
-
-      line-height: 0.98;
-
-      letter-spacing: -0.065em;
-    }
-
-
-    .gradient {
-      background:
-        linear-gradient(
-          90deg,
-          #ffffff 0%,
-          #65e6dc 45%,
-          #ff7661 100%
-        );
-
-      -webkit-background-clip: text;
-      background-clip: text;
-
-      color: transparent;
-    }
-
-
-    .hero-copy {
-      max-width: 700px;
-
-      margin-top: 25px;
-
-      color: var(--muted);
-
-      font-size: 17px;
-      line-height: 1.8;
-    }
-
-
-    .actions {
-      display: flex;
-      flex-wrap: wrap;
-
-      gap: 12px;
-
-      margin-top: 32px;
-    }
-
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-
-      min-height: 46px;
-
-      padding: 0 18px;
-
-      border-radius: 10px;
-
-      font-size: 13px;
-      font-weight: 800;
-
-      transition:
-        transform 0.2s ease,
-        box-shadow 0.2s ease,
-        background 0.2s ease;
-    }
-
-
-    .btn:hover {
-      transform: translateY(-2px);
-    }
-
-
-    .btn.primary {
-      color: #061019;
-      background: var(--teal);
-
-      box-shadow:
-        0 10px 30px rgba(56,217,205,0.14);
-    }
-
-
-    .btn.secondary {
-      color: var(--text);
-
-      border: 1px solid var(--border-light);
-
-      background: rgba(255,255,255,0.03);
-    }
-
-
-    /* =========================================================
-       HERO PANEL
-       ========================================================= */
-
-    .hero-panel {
-      padding: 18px;
-
-      border: 1px solid var(--border);
-
-      border-radius: 20px;
-
-      background:
-        linear-gradient(
-          145deg,
-          rgba(255,255,255,0.05),
-          rgba(255,255,255,0.015)
-        );
-
-      box-shadow:
-        0 30px 80px rgba(0,0,0,0.25);
-    }
-
-
-    .panel-top {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-
-      padding: 4px 4px 16px;
-
-      color: var(--muted-2);
-
-      font-size: 10px;
-      font-weight: 800;
-
-      letter-spacing: 0.1em;
-    }
-
-
-    .live {
-      display: flex;
-      align-items: center;
-      gap: 7px;
-
-      color: var(--teal);
-    }
-
-
-    .live i {
-      width: 7px;
-      height: 7px;
-
-      border-radius: 50%;
-
-      background: var(--teal);
-    }
-
-
-    .panel-grid {
-      display: grid;
-
-      grid-template-columns: 1.4fr 1fr;
-      gap: 10px;
-    }
-
-
-    .tile {
-      min-height: 155px;
-
-      padding: 20px;
-
-      border: 1px solid var(--border);
-
-      border-radius: 14px;
-
-      background: rgba(255,255,255,0.025);
-    }
-
-
-    .tile.big {
-      grid-row: span 2;
-      min-height: 320px;
-
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-    }
-
-
-    .tile small {
-      color: var(--muted-2);
-
-      font-size: 10px;
-      font-weight: 800;
-
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-    }
-
-
-    .tile strong {
-      display: block;
-
-      margin-top: 9px;
-
-      font-size: 20px;
-      line-height: 1.2;
-    }
-
-
-    .tile p {
-      margin-top: 8px;
-
-      color: var(--muted);
-
-      font-size: 12px;
-    }
-
-
-    .signal {
-      height: 80px;
-
-      margin: 35px 0 20px;
-
-      border-bottom: 1px solid rgba(56,217,205,0.25);
-
-      background:
-        linear-gradient(
-          135deg,
-          transparent 0 25%,
-          rgba(56,217,205,0.08) 26% 27%,
-          transparent 28% 45%,
-          rgba(56,217,205,0.12) 46% 47%,
-          transparent 48%
-        );
-    }
-
-
-    .bar {
-      height: 4px;
-
-      margin-top: 18px;
-
-      overflow: hidden;
-
-      border-radius: 99px;
-
-      background: rgba(255,255,255,0.08);
-    }
-
-
-    .bar span {
-      display: block;
-
-      width: 72%;
-      height: 100%;
-
-      border-radius: inherit;
-
-      background: var(--teal);
-    }
-
-
-    .bar.coral span {
-      width: 70%;
-      background: var(--coral);
-    }
-
-
-    .bar.teal span {
-      width: 54%;
-      background: var(--teal);
-    }
-
-
-    /* =========================================================
-       ABOUT
-       ========================================================= */
-
-    .story-grid {
-      display: grid;
-
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-
-      gap: 18px;
-    }
-
-
-    .card {
-      border: 1px solid var(--border);
-
-      border-radius: var(--radius);
-
-      background:
-        linear-gradient(
-          145deg,
-          rgba(255,255,255,0.045),
-          rgba(255,255,255,0.018)
-        );
-
-      box-shadow:
-        0 20px 60px rgba(0,0,0,0.12);
-    }
-
-
-    .story {
-      padding: 32px;
-    }
-
-
-    .story h3 {
-      font-size: 25px;
-      letter-spacing: -0.03em;
-    }
-
-
-    .story > p {
-      margin-top: 15px;
-
-      color: var(--muted);
-
-      font-size: 15px;
-      line-height: 1.75;
-    }
-
-
-    .pillars {
-      display: grid;
-
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-
-      gap: 10px;
-
-      margin-top: 28px;
-    }
-
-
-    .pillar {
-      padding: 15px;
-
-      border: 1px solid var(--border);
-
-      border-radius: 12px;
-
-      background: rgba(255,255,255,0.025);
-    }
-
-
-    .pillar b {
-      display: block;
-
-      font-size: 12px;
-    }
-
-
-    .pillar span {
-      display: block;
-
-      margin-top: 5px;
-
-      color: var(--muted-2);
-
-      font-size: 11px;
-    }
-
-
-    /* =========================================================
-       PRODUCTS
-       ========================================================= */
-
-    .products {
-      display: flex;
-      flex-direction: column;
-
-      gap: 80px;
-    }
-
-
-    .product {
-      overflow: hidden;
-
-      border: 1px solid var(--border);
-
-      border-radius: 24px;
-
-      background:
-        linear-gradient(
-          145deg,
-          rgba(255,255,255,0.035),
-          rgba(255,255,255,0.012)
-        );
-    }
-
-
-    .product-main {
-      padding: 22px;
-    }
-
-
-    /* =========================================================
-       NEW PRODUCT IMAGE SECTION
-       ========================================================= */
-
-    .product-visual {
-      position: relative;
-
-      width: 100%;
-
-      min-height: 460px;
-
-      overflow: hidden;
-
-      border-radius: 18px;
-
-      background: #071019;
-    }
-
-
-    .product-background {
-      position: absolute;
-
-      inset: 0;
-
-      width: 100%;
-      height: 100%;
-
-      object-fit: cover;
-
-      display: block;
-    }
-
-
-    .product-overlay {
-      position: relative;
-
-      z-index: 2;
-
-      min-height: 460px;
-
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-
-      padding: 28px 32px;
-    }
-
-
-    .product-overlay::before {
-      content: "";
-
-      position: absolute;
-
-      inset: 0;
-
-      z-index: -1;
-
-      background:
-        linear-gradient(
-          90deg,
-          rgba(3,7,14,0.82) 0%,
-          rgba(3,7,14,0.55) 36%,
-          transparent 72%
-        );
-    }
-
-
-    .product-overlay-top {
-      display: flex;
-
-      align-items: center;
-      justify-content: space-between;
-
-      gap: 20px;
-    }
-
-
-    .status {
-      display: inline-flex;
-      align-items: center;
-
-      padding: 7px 11px;
-
-      border: 1px solid rgba(255,101,77,0.4);
-
-      border-radius: 999px;
-
-      background: rgba(255,101,77,0.10);
-
-      color: #ff907e;
-
-      font-size: 10px;
-      font-weight: 800;
-
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-    }
-
-
-    .status.building {
-      color: #66e8df;
-
-      border-color: rgba(56,217,205,0.4);
-
-      background: rgba(56,217,205,0.08);
-    }
-
-
-    .product-overlay-content {
-      width: min(60%, 650px);
-
-      margin-top: auto;
-      margin-bottom: auto;
-    }
-
-
-    .product-overlay-content h3 {
-      margin: 15px 0 10px;
-
-      color: #ffffff;
-
-      font-size: clamp(
-        38px,
-        5vw,
-        64px
-      );
-
-      line-height: 1;
-
-      letter-spacing: -0.055em;
-    }
-
-
-    .overlay-lead {
-      max-width: 620px;
-
-      margin-bottom: 20px;
-
-      color: rgba(255,255,255,0.78);
-
-      font-size: 14px;
-
-      line-height: 1.7;
-    }
-
-
-    .overlay-tags {
-      display: flex;
-      flex-wrap: wrap;
-
-      gap: 7px;
-    }
-
-
-    .overlay-tags .tag {
-      padding: 6px 9px;
-
-      border: 1px solid rgba(255,255,255,0.15);
-
-      border-radius: 7px;
-
-      background: rgba(5,10,18,0.66);
-
-      color: rgba(255,255,255,0.9);
-
-      backdrop-filter: blur(8px);
-
-      font-size: 9px;
-      font-weight: 700;
-    }
-
-
-    .product-overlay-footer {
-      display: flex;
-      align-items: center;
-
-      gap: 15px;
-
-      color: rgba(255,255,255,0.78);
-
-      font-size: 11px;
-      font-weight: 700;
-    }
-
-
-    .product-overlay-footer i {
-      width: 1px;
-      height: 14px;
-
-      background: rgba(255,255,255,0.35);
-    }
-
-
-    .overlay-progress {
-      width: 230px;
-      height: 4px;
-
-      margin-left: 5px;
-
-      overflow: hidden;
-
-      border-radius: 999px;
-
-      background: rgba(255,255,255,0.15);
-    }
-
-
-    .overlay-progress span {
-      display: block;
-
-      height: 100%;
-
-      border-radius: inherit;
-    }
-
-
-    .vibefit-visual .overlay-progress span {
-      width: 76%;
-      background: var(--coral);
-    }
-
-
-    .kokankart-visual .overlay-progress span {
-      width: 52%;
-      background: var(--teal);
-    }
-
-
-    /* =========================================================
-       PRODUCT INFO
-       ========================================================= */
-
-    .product-info {
-      display: grid;
-
-      grid-template-columns:
-        minmax(0, 1fr)
-        minmax(0, 1fr);
-
-      gap: 18px;
-
-      margin-top: 22px;
-    }
-
-
-    .info {
-      padding: 25px;
-
-      border: 1px solid var(--border);
-
-      border-radius: 15px;
-
-      background: rgba(255,255,255,0.02);
-    }
-
-
-    .info h4 {
-      margin-bottom: 14px;
-
-      color: var(--teal);
-
-      font-size: 12px;
-
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-    }
-
-
-    .info p,
-    .info li {
-      color: var(--muted);
-
-      font-size: 14px;
-      line-height: 1.7;
-    }
-
-
-    .info ul {
-      padding-left: 18px;
-    }
-
-
-    .info li + li {
-      margin-top: 7px;
-    }
-
-
-    .product-actions {
-      display: flex;
-      flex-wrap: wrap;
-
-      gap: 10px;
-
-      margin-top: 22px;
-    }
-
-
-    /* =========================================================
-       OLD SHOWCASE
-       ========================================================= */
-
-    .product-image {
-      width: 100%;
-
-      margin-top: 22px;
-
-      overflow: hidden;
-
-      border-radius: 16px;
-    }
-
-
-    .product-image img {
-      display: block;
-
-      width: 100%;
-      height: auto;
-
-      border-radius: inherit;
-
-      transition: transform 0.5s ease;
-    }
-
-
-    .product-image:hover img {
-      transform: scale(1.015);
-    }
-
-
-    /* =========================================================
-       APPROACH
-       ========================================================= */
-
-    .approach {
-      display: grid;
-
-      grid-template-columns:
-        repeat(5, minmax(0, 1fr));
-
-      gap: 12px;
-    }
-
-
-    .step {
-      position: relative;
-
-      min-height: 220px;
-
-      padding: 25px;
-    }
-
-
-    .step .line {
-      width: 45px;
-      height: 3px;
-
-      margin-bottom: 35px;
-
-      border-radius: 99px;
-
-      background: var(--amber);
-    }
-
-
-    .step b {
-      font-size: 17px;
-    }
-
-
-    .step p {
-      margin-top: 10px;
-
-      color: var(--muted);
-
-      font-size: 13px;
-      line-height: 1.65;
-    }
-
-
-    /* =========================================================
-       VALUES
-       ========================================================= */
-
-    .values {
-      display: grid;
-
-      grid-template-columns:
-        repeat(4, minmax(0, 1fr));
-
-      gap: 12px;
-    }
-
-
-    .value {
-      min-height: 150px;
-
-      padding: 23px;
-    }
-
-
-    .value b {
-      font-size: 16px;
-    }
-
-
-    .value p {
-      margin-top: 9px;
-
-      color: var(--muted);
-
-      font-size: 13px;
-      line-height: 1.6;
-    }
-
-
-    /* =========================================================
-       VISION
-       ========================================================= */
-
-    .vision {
-      display: grid;
-
-      grid-template-columns:
-        minmax(0, 1.1fr)
-        minmax(0, 0.9fr);
-
-      gap: 50px;
-
-      padding: 42px;
-    }
-
-
-    .vision h3 {
-      max-width: 700px;
-
-      margin-top: 13px;
-
-      font-size: clamp(
-        30px,
-        4vw,
-        50px
-      );
-
-      line-height: 1.05;
-
-      letter-spacing: -0.04em;
-    }
-
-
-    .vision p {
-      max-width: 650px;
-
-      margin-top: 17px;
-
-      color: var(--muted);
-
-      font-size: 15px;
-      line-height: 1.7;
-    }
-
-
-    .future {
-      display: grid;
-
-      grid-template-columns: repeat(2, 1fr);
-
-      gap: 9px;
-
-      align-content: center;
-    }
-
-
-    .future div {
-      padding: 16px;
-
-      border: 1px solid var(--border);
-
-      border-radius: 10px;
-
-      background: rgba(255,255,255,0.025);
-
-      color: var(--muted);
-
-      font-size: 12px;
-      font-weight: 700;
-    }
-
-
-    /* =========================================================
-       CTA
-       ========================================================= */
-
-    .cta {
-      padding: 65px;
-
-      text-align: center;
-    }
-
-
-    .cta h2 {
-      margin-top: 12px;
-
-      font-size: clamp(
-        38px,
-        5vw,
-        65px
-      );
-
-      line-height: 1;
-
-      letter-spacing: -0.05em;
-    }
-
-
-    .cta p {
-      max-width: 650px;
-
-      margin: 18px auto 28px;
-
-      color: var(--muted);
-
-      font-size: 15px;
-      line-height: 1.7;
-    }
-
-
-    /* =========================================================
-       FOOTER
-       ========================================================= */
-
-    footer {
-      padding: 60px 0 30px;
-
-      border-top: 1px solid var(--border);
-    }
-
-
-    .footer-grid {
-      display: grid;
-
-      grid-template-columns:
-        1fr
-        auto;
-
-      gap: 40px;
-    }
-
-
-    .footer-brand {
-      font-size: 15px;
-      font-weight: 800;
-    }
-
-
-    .footer-brand span {
-      display: block;
-
-      margin-top: 7px;
-
-      color: var(--muted-2);
-
-      font-size: 12px;
-      font-weight: 500;
-    }
-
-
-    .footer-links {
-      display: flex;
-      flex-wrap: wrap;
-
-      justify-content: flex-end;
-
-      gap: 18px;
-    }
-
-
-    .footer-links a {
-      color: var(--muted);
-
-      font-size: 12px;
-    }
-
-
-    .footer-links a:hover {
-      color: var(--text);
-    }
-
-
-    .copyright {
-      margin-top: 45px;
-      padding-top: 20px;
-
-      border-top: 1px solid var(--border);
-
-      color: var(--muted-2);
-
-      font-size: 11px;
-    }
-
-
-    /* =========================================================
-       REVEAL ANIMATION
-       ========================================================= */
-
-    .reveal {
-      opacity: 0;
-
-      transform: translateY(25px);
-
-      transition:
-        opacity 0.7s ease,
-        transform 0.7s ease;
-    }
-
-
-    .reveal.visible {
-      opacity: 1;
-
-      transform: translateY(0);
-    }
-
-
-    /* =========================================================
-       RESPONSIVE
-       ========================================================= */
-
-    @media (max-width: 1000px) {
-
-      .hero-grid {
-        grid-template-columns: 1fr;
-        gap: 50px;
-      }
-
-
-      .hero-panel {
-        max-width: 700px;
-      }
-
-
-      .approach {
-        grid-template-columns:
-          repeat(3, minmax(0, 1fr));
-      }
-
-
-      .values {
-        grid-template-columns:
-          repeat(2, minmax(0, 1fr));
-      }
-
-    }
-
-
-    @media (max-width: 800px) {
-
-      section {
-        padding: 80px 0;
-      }
-
-
-      .menu {
-        display: block;
-      }
-
-
-      .nav-links {
-        position: absolute;
-
-        top: 76px;
-        left: 20px;
-        right: 20px;
-
-        display: none;
-
-        flex-direction: column;
-        align-items: stretch;
-
-        padding: 14px;
-
-        border: 1px solid var(--border);
-
-        border-radius: 14px;
-
-        background:
-          rgba(9,15,28,0.97);
-
-        backdrop-filter: blur(20px);
-      }
-
-
-      .nav-links.open {
-        display: flex;
-      }
-
-
-      .nav-links a {
-        padding: 12px;
-      }
-
-
-      .nav-links .nav-cta {
-        text-align: center;
-      }
-
-
-      .story-grid {
-        grid-template-columns: 1fr;
-      }
-
-
-      .product-info {
-        grid-template-columns: 1fr;
-      }
-
-
-      .vision {
-        grid-template-columns: 1fr;
-      }
-
-
-      .footer-grid {
-        grid-template-columns: 1fr;
-      }
-
-
-      .footer-links {
-        justify-content: flex-start;
-      }
-
-    }
-
-
-    @media (max-width: 650px) {
-
-      .container,
-      .nav-inner {
-        width: min(
-          calc(100% - 28px),
-          var(--max-width)
-        );
-      }
-
-
-      .hero {
-        padding-top: 65px;
-      }
-
-
-      .hero h1 {
-        font-size: 48px;
-      }
-
-
-      .hero-copy {
-        font-size: 15px;
-      }
-
-
-      .panel-grid {
-        grid-template-columns: 1fr;
-      }
-
-
-      .tile.big {
-        grid-row: auto;
-        min-height: 240px;
-      }
-
-
-      .pillars {
-        grid-template-columns: 1fr;
-      }
-
-
-      .product-main {
-        padding: 12px;
-      }
-
-
-      .product-visual {
-        min-height: 540px;
-      }
-
-
-      .product-overlay {
-        min-height: 540px;
-
-        padding: 20px;
-      }
-
-
-      .product-overlay::before {
-        background:
-          linear-gradient(
-            90deg,
-            rgba(3,7,14,0.86) 0%,
-            rgba(3,7,14,0.63) 55%,
-            rgba(3,7,14,0.18) 100%
-          );
-      }
-
-
-      .product-overlay-top {
-        flex-direction: column;
-
-        align-items: flex-start;
-
-        gap: 10px;
-      }
-
-
-      .product-overlay-content {
-        width: 72%;
-      }
-
-
-      .product-overlay-content h3 {
-        font-size: 38px;
-      }
-
-
-      .overlay-lead {
-        font-size: 12px;
-        line-height: 1.55;
-      }
-
-
-      .overlay-tags {
-        gap: 5px;
-      }
-
-
-      .overlay-tags .tag {
-        font-size: 8px;
-        padding: 5px 7px;
-      }
-
-
-      .product-overlay-footer {
-        gap: 8px;
-
-        font-size: 9px;
-      }
-
-
-      .overlay-progress {
-        width: 80px;
-      }
-
-
-      .product-actions {
-        flex-direction: column;
-      }
-
-
-      .product-actions .btn {
-        width: 100%;
-      }
-
-
-      .approach {
-        grid-template-columns: 1fr;
-      }
-
-
-      .values {
-        grid-template-columns: 1fr;
-      }
-
-
-      .vision {
-        padding: 27px;
-      }
-
-
-      .future {
-        grid-template-columns: 1fr;
-      }
-
-
-      .cta {
-        padding: 45px 22px;
-      }
-
-    }
-
-
-    @media (max-width: 480px) {
-
-      .hero h1 {
-        font-size: 42px;
-      }
-
-
-      .actions {
-        flex-direction: column;
-      }
-
-
-      .actions .btn {
-        width: 100%;
-      }
-
-
-      .product-visual {
-        min-height: 500px;
-      }
-
-
-      .product-overlay {
-        min-height: 500px;
-      }
-
-
-      .product-overlay-content {
-        width: 76%;
-      }
-
-
-      .product-overlay-content h3 {
-        font-size: 34px;
-      }
-
-
-      .product-overlay-footer {
-        flex-wrap: wrap;
-      }
-
-    }
-
-  </style>
-
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Creative Management Solutions — an India-focused digital product company building products across wellness, commerce and emerging real-world opportunities.">
+<meta name="theme-color" content="#030712">
+<title>Creative Management Solutions | Building Products</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --bg: #030712;
+  --bg-soft: #060a12;
+  --panel: #0a0f18;
+  --panel-2: #0d1420;
+  --line: rgba(148, 163, 184, 0.14);
+  --line-hover: rgba(56, 189, 248, 0.38);
+  --text: #f8fafc;
+  --muted: #9aa7b9;
+  --dim: #66758a;
+
+  /* Studio & Product Accents */
+  --cyan: #38bdf8;
+  --indigo: #6366f1;
+  --green: #10b981;
+  --amber: #f5a623; /* How We Build / Values */
+  --coral: #ef4b5f; /* VibeFit Accent */
+  --teal: #2dd4bf;  /* KokanKart Accent */
+
+  --max: 1200px;
+  --side: 24px;
+  --section: 64px;
+
+  --font-display: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+  --font-body: "Inter", ui-sans-serif, system-ui, sans-serif;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; scroll-padding-top: 88px; }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { animation-duration: .001ms !important; transition-duration: .001ms !important; }
+}
+
+body {
+  color: var(--text);
+  background:
+    radial-gradient(circle at 78% 4%, rgba(56,189,248,.08), transparent 25rem),
+    radial-gradient(circle at 8% 22%, rgba(99,102,241,.06), transparent 26rem),
+    radial-gradient(circle at 92% 62%, rgba(239,75,95,.045), transparent 28rem),
+    radial-gradient(circle at 18% 88%, rgba(45,212,191,.04), transparent 26rem),
+    var(--bg);
+  font-family: var(--font-body);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* Subtle Overlay Texture */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: -1;
+  opacity: .18;
+  background-image:
+    linear-gradient(rgba(148,163,184,.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(148,163,184,.045) 1px, transparent 1px);
+  background-size: 56px 56px;
+  mask-image: linear-gradient(to bottom, #000, transparent 72%);
+}
+
+a { color: inherit; text-decoration: none; }
+button { font: inherit; }
+img { display: block; max-width: 100%; }
+
+.container {
+  width: min(var(--max), calc(100% - (var(--side) * 2)));
+  margin-inline: auto;
+}
+
+/* SPECTRUM SIGNATURE BAR */
+.spectrum {
+  height: 3px;
+  width: 100%;
+  background: linear-gradient(90deg, var(--cyan), var(--indigo), var(--coral), var(--amber), var(--teal));
+  background-size: 200% 100%;
+  animation: driftSpectrum 14s linear infinite;
+}
+@keyframes driftSpectrum {
+  0% { background-position: 0% 0; }
+  100% { background-position: 200% 0; }
+}
+
+/* NAVBAR */
+nav {
+  position: sticky;
+  top: 10px;
+  z-index: 1000;
+  margin-top: 10px;
+}
+.nav-inner {
+  width: min(var(--max), calc(100% - (var(--side) * 2)));
+  margin-inline: auto;
+  min-height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 18px;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: rgba(3, 7, 18, 0.82);
+  backdrop-filter: blur(20px);
+}
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+.brand-mark {
+  width: 34px;
+  height: 34px;
+  display: grid;
+  place-items: center;
+  border-radius: 9px;
+  color: #fff;
+  background: linear-gradient(135deg, var(--cyan), var(--indigo) 55%, var(--coral));
+  font-size: 0.75rem;
+  font-weight: 800;
+  box-shadow: 0 0 20px rgba(56,189,248,.2);
+}
+.nav-links { display: flex; align-items: center; gap: 24px; }
+.nav-links a:not(.nav-cta) {
+  font-size: 0.9rem;
+  color: var(--muted);
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+.nav-links a:not(.nav-cta):hover { color: #fff; }
+.nav-cta {
+  padding: 8px 16px;
+  border-radius: 10px;
+  background: #fff;
+  color: #030712 !important;
+  font-weight: 700 !important;
+  font-size: 0.875rem !important;
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+.nav-cta:hover { transform: translateY(-1px); box-shadow: 0 8px 20px rgba(255,255,255,.15); }
+.menu {
+  display: none;
+  border: 1px solid var(--line);
+  background: transparent;
+  color: #fff;
+  width: 38px;
+  height: 38px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+/* HERO */
+.hero { padding: 70px 0 50px; }
+.hero-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(340px, 0.9fr);
+  gap: 50px;
+  align-items: center;
+}
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: rgba(15, 23, 42, 0.5);
+  color: #b8c4d4;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .1em;
+}
+.dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--teal);
+  box-shadow: 0 0 12px var(--teal);
+}
+.hero h1 {
+  margin-top: 20px;
+  font-family: var(--font-display);
+  font-size: clamp(40px, 5vw, 68px);
+  line-height: 1.05;
+  letter-spacing: -.03em;
+  font-weight: 700;
+}
+.gradient {
+  background: linear-gradient(100deg, #fff 0%, #cbd5e1 35%, var(--teal) 70%, var(--coral) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.hero-copy {
+  margin-top: 20px;
+  color: var(--muted);
+  font-size: 1.05rem;
+  line-height: 1.7;
+}
+.actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 28px; }
+
+/* BUTTONS */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: 0 20px;
+  border-radius: 10px;
+  font-size: 0.875rem;
+  font-weight: 700;
+  transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+  border: 1px solid transparent;
+}
+.btn:hover { transform: translateY(-2px); }
+.btn.primary {
+  color: #030712;
+  background: linear-gradient(135deg, var(--teal), #7ee8dc);
+  box-shadow: 0 8px 25px rgba(45, 212, 191, 0.2);
+}
+.btn.primary.coral-btn {
+  background: linear-gradient(135deg, var(--coral), #ff8fa3);
+  box-shadow: 0 8px 25px rgba(239, 75, 95, 0.2);
+  color: #fff;
+}
+.btn.secondary {
+  color: var(--text);
+  border-color: var(--line);
+  background: rgba(15, 23, 42, 0.6);
+}
+.btn.secondary:hover { border-color: var(--line-hover); }
+
+/* HERO PANEL */
+.hero-panel {
+  padding: 18px;
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  background: linear-gradient(145deg, #0d1420, #050912);
+  box-shadow: 0 20px 50px rgba(0,0,0,0.4);
+}
+.panel-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 12px;
+  color: var(--dim);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+}
+.live { display: flex; align-items: center; gap: 6px; color: var(--teal); }
+.live i { width: 6px; height: 6px; border-radius: 50%; background: var(--teal); }
+.panel-grid { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 10px; }
+.tile {
+  padding: 16px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: rgba(2, 6, 23, 0.4);
+}
+.tile.big { grid-row: span 2; display: flex; flex-direction: column; justify-content: space-between; }
+.tile small { color: var(--dim); font-size: 0.7rem; text-transform: uppercase; letter-spacing: .08em; font-weight: 700; }
+.tile strong { display: block; margin-top: 6px; font-family: var(--font-display); font-size: 1.2rem; }
+.tile p { margin-top: 4px; color: var(--muted); font-size: 0.8rem; }
+
+.bar { height: 4px; margin-top: 12px; border-radius: 99px; background: rgba(255,255,255,0.08); overflow: hidden; }
+.bar span { display: block; height: 100%; background: var(--cyan); width: 75%; }
+.bar.coral span { background: var(--coral); width: 68%; }
+.bar.teal span { background: var(--teal); width: 54%; }
+
+/* SECTIONS */
+section { padding: var(--section) 0; }
+.section-head { max-width: 720px; margin-bottom: 40px; }
+.section-head h2 {
+  margin-top: 8px;
+  font-family: var(--font-display);
+  font-size: clamp(28px, 4vw, 48px);
+  line-height: 1.1;
+  letter-spacing: -.02em;
+}
+.section-head p { margin-top: 12px; color: var(--muted); font-size: 1rem; }
+
+.kicker { font-size: 0.75rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.12em; color: var(--cyan); }
+.kicker.coral { color: var(--coral); }
+.kicker.teal { color: var(--teal); }
+.kicker.amber { color: var(--amber); }
+
+/* CARDS & PILLARS */
+.card {
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: linear-gradient(145deg, rgba(15, 23, 42, 0.6), rgba(6, 10, 18, 0.8));
+}
+.story-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.story { padding: 28px; }
+.story h3 { font-family: var(--font-display); font-size: 1.4rem; }
+.story p { margin-top: 10px; color: var(--muted); font-size: 0.925rem; }
+.pillars { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 20px; }
+.pillar {
+  padding: 12px 14px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: rgba(2, 6, 23, 0.3);
+  border-left: 3px solid var(--cyan);
+}
+.pillar:nth-child(2) { border-left-color: var(--indigo); }
+.pillar:nth-child(3) { border-left-color: var(--coral); }
+.pillar:nth-child(4) { border-left-color: var(--teal); }
+.pillar b { font-size: 0.85rem; display: block; }
+.pillar span { font-size: 0.775rem; color: var(--dim); margin-top: 2px; display: block; }
+
+/* PRODUCTS SECTION */
+.products { display: flex; flex-direction: column; gap: 48px; }
+.product {
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  background: linear-gradient(145deg, rgba(15,23,42,.7), rgba(6,10,18,.9));
+  transition: border-color .25s ease, box-shadow .25s ease;
+}
+.product.vibefit:hover { border-color: rgba(239,75,95,.35); box-shadow: 0 12px 40px rgba(239,75,95,.08); }
+.product.kokankart:hover { border-color: rgba(45,212,191,.35); box-shadow: 0 12px 40px rgba(45,212,191,.08); }
+
+.product-main { padding: 24px; }
+
+/* PRODUCT VISUAL WITH OVERLAY */
+.product-visual {
+  position: relative;
+  width: 100%;
+  min-height: 420px;
+  overflow: hidden;
+  border-radius: 16px;
+  border: 1px solid var(--line);
+}
+.product-background {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.product-overlay {
+  position: relative;
+  z-index: 2;
+  min-height: 420px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 28px;
+  background: linear-gradient(90deg, rgba(3,7,14,0.88) 0%, rgba(3,7,14,0.6) 45%, transparent 80%);
+}
+.product-overlay-top { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+
+.status {
+  padding: 5px 12px;
+  border-radius: 999px;
+  font-size: 0.725rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+}
+.status.vibefit-status {
+  border: 1px solid rgba(239,75,95,.4);
+  background: rgba(239,75,95,.12);
+  color: #ff907e;
+}
+.status.building {
+  border: 1px solid rgba(45,212,191,.4);
+  background: rgba(45,212,191,.12);
+  color: #66e8df;
+}
+
+.product-overlay-content { max-width: 580px; margin-top: auto; margin-bottom: auto; }
+.product-overlay-content h3 {
+  font-family: var(--font-display);
+  font-size: clamp(32px, 4vw, 52px);
+  color: #fff;
+  letter-spacing: -.02em;
+}
+.overlay-lead { margin-top: 8px; color: rgba(255,255,255,0.8); font-size: 0.95rem; line-height: 1.6; }
+.overlay-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 14px; }
+.overlay-tags .tag {
+  padding: 5px 10px;
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 6px;
+  background: rgba(3,7,18,0.65);
+  color: rgba(255,255,255,0.9);
+  backdrop-filter: blur(8px);
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+.product-overlay-footer {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: rgba(255,255,255,0.7);
+  font-size: 0.78rem;
+  font-weight: 600;
+}
+.product-overlay-footer i { width: 1px; height: 12px; background: rgba(255,255,255,0.3); }
+.overlay-progress { width: 180px; height: 4px; border-radius: 99px; background: rgba(255,255,255,0.15); overflow: hidden; }
+.overlay-progress span { display: block; height: 100%; }
+.vibefit-visual .overlay-progress span { width: 75%; background: var(--coral); }
+.kokankart-visual .overlay-progress span { width: 50%; background: var(--teal); }
+
+.product-info { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 20px; }
+.info { padding: 20px; border: 1px solid var(--line); border-radius: 12px; background: rgba(2,6,23,0.25); }
+.info h4 { font-size: 0.8rem; text-transform: uppercase; letter-spacing: .1em; margin-bottom: 8px; }
+.vibefit .info h4 { color: var(--coral); }
+.kokankart .info h4 { color: var(--teal); }
+.info p, .info li { color: var(--muted); font-size: 0.875rem; line-height: 1.6; }
+.info ul { padding-left: 16px; }
+.info li { margin-bottom: 4px; }
+.product-actions { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 16px; }
+
+/* APPROACH & VALUES */
+.approach { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; }
+.step { padding: 20px; border-top: 2px solid var(--amber); }
+.step:nth-child(1) { border-top-color: var(--cyan); }
+.step:nth-child(2) { border-top-color: var(--indigo); }
+.step:nth-child(3) { border-top-color: var(--amber); }
+.step:nth-child(4) { border-top-color: var(--coral); }
+.step:nth-child(5) { border-top-color: var(--teal); }
+.step b { font-family: var(--font-display); font-size: 1rem; }
+.step p { margin-top: 6px; color: var(--muted); font-size: 0.825rem; }
+
+.values { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+.value { padding: 18px; border-top: 2px solid var(--line); }
+.value:nth-child(4n+1) { border-top-color: var(--cyan); }
+.value:nth-child(4n+2) { border-top-color: var(--indigo); }
+.value:nth-child(4n+3) { border-top-color: var(--amber); }
+.value:nth-child(4n+4) { border-top-color: var(--coral); }
+.value b { font-family: var(--font-display); font-size: 0.95rem; }
+.value p { margin-top: 6px; color: var(--muted); font-size: 0.825rem; }
+
+/* VISION & CTA */
+.vision { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; padding: 28px; }
+.vision h3 { font-family: var(--font-display); font-size: 1.6rem; margin-top: 6px; }
+.future { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.future div { padding: 12px; border: 1px solid var(--line); border-radius: 8px; font-size: 0.8rem; color: #cbd5e1; background: rgba(2,6,23,0.3); border-left: 2px solid var(--dim); }
+.future div:nth-child(1) { border-left-color: var(--cyan); }
+.future div:nth-child(2) { border-left-color: var(--indigo); }
+.future div:nth-child(3) { border-left-color: var(--teal); }
+.future div:nth-child(4) { border-left-color: var(--coral); }
+
+.cta { padding: 40px 24px; text-align: center; }
+.cta h2 { font-family: var(--font-display); font-size: clamp(28px, 4vw, 42px); }
+.cta p { max-width: 560px; margin: 10px auto 20px; color: var(--muted); font-size: 0.95rem; }
+
+/* FOOTER */
+footer { padding: 32px 0; border-top: 1px solid var(--line); margin-top: 20px; }
+.footer-grid { display: flex; justify-content: space-between; align-items: flex-start; gap: 20px; }
+.footer-brand { font-family: var(--font-display); font-size: 0.95rem; font-weight: 700; }
+.footer-brand span { display: block; color: var(--dim); font-size: 0.8rem; font-family: var(--font-body); font-weight: 400; margin-top: 2px; }
+.footer-links { display: flex; gap: 16px; flex-wrap: wrap; color: var(--muted); font-size: 0.85rem; }
+.copyright { margin-top: 20px; color: var(--dim); font-size: 0.775rem; }
+
+/* REVEAL ANIMATIONS */
+.reveal { opacity: 0; transform: translateY(20px); transition: opacity .6s ease, transform .6s ease; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  .hero-grid, .story-grid, .vision, .product-info { grid-template-columns: 1fr; }
+  .approach { grid-template-columns: repeat(3, 1fr); }
+  .values { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 650px) {
+  .nav-links { display: none; position: absolute; top: 65px; left: 0; right: 0; padding: 16px; flex-direction: column; border: 1px solid var(--line); border-radius: 12px; background: rgba(3,7,18,0.95); }
+  .nav-links.open { display: flex; }
+  .menu { display: block; }
+  .approach, .values, .future { grid-template-columns: 1fr; }
+  .product-overlay-content { max-width: 100%; }
+}
+</style>
 </head>
-
 
 <body>
 
+<div class="spectrum"></div>
 
-  <!-- =======================================================
-       NAVIGATION
-       ======================================================= -->
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="brand">
+      <span class="brand-mark">CMS</span>
+      <span>Creative Management Solutions</span>
+    </a>
 
-  <nav>
+    <button class="menu" id="menu" aria-label="Toggle navigation">☰</button>
 
-    <div class="nav-inner">
+    <div class="nav-links" id="navLinks">
+      <a href="#about">About</a>
+      <a href="#products">Products</a>
+      <a href="#approach">Approach</a>
+      <a href="#values">Values</a>
+      <a class="nav-cta" href="mailto:support@cmsgroup.in">Contact CMS</a>
+    </div>
+  </div>
+</nav>
 
+<main>
 
-      <a
-        href="#"
-        class="brand"
-        aria-label="Creative Management Solutions"
-      >
-
-        <span class="brand-mark">
-          CMS
-        </span>
-
-        <span>
-          Creative Management Solutions
-        </span>
-
-      </a>
-
-
-      <button
-        class="menu"
-        id="menu"
-        aria-label="Open navigation menu"
-        aria-expanded="false"
-      >
-        ☰
-      </button>
-
-
-      <div
-        class="nav-links"
-        id="navLinks"
-      >
-
-        <a href="#about">
-          About
-        </a>
-
-        <a href="#products">
-          Products
-        </a>
-
-        <a href="#approach">
-          Approach
-        </a>
-
-        <a href="#values">
-          Values
-        </a>
-
-        <a
-          class="nav-cta"
-          href="mailto:support@cmsgroup.in"
-        >
-          Contact CMS
-        </a>
-
+<!-- HERO -->
+<section class="hero">
+  <div class="container hero-grid">
+    <div class="reveal">
+      <span class="eyebrow"><i class="dot"></i> India-focused digital product company</span>
+      <h1><span class="gradient">Building products</span><br>that solve real problems.</h1>
+      <p class="hero-copy">Creative Management Solutions (CMS) builds, launches and grows its own technology products — creating focused digital experiences across wellness, commerce and emerging real-world opportunities.</p>
+      <div class="actions">
+        <a class="btn primary" href="#products">Explore Products →</a>
+        <a class="btn secondary" href="#about">Our Philosophy</a>
       </div>
-
     </div>
 
-  </nav>
-
-
-
-  <!-- =======================================================
-       HERO
-       ======================================================= -->
-
-  <main>
-
-
-    <section class="hero">
-
-      <div class="container">
-
-        <div class="hero-grid">
-
-
-          <div class="reveal">
-
-            <span class="eyebrow">
-
-              <i class="dot"></i>
-
-              India-focused digital product company
-
-            </span>
-
-
-            <h1>
-
-              <span class="gradient">
-                Building products
-              </span>
-
-              <br>
-
-              that solve real problems.
-
-            </h1>
-
-
-            <p class="hero-copy">
-
-              Creative Management Solutions (CMS) builds, launches and
-              grows its own technology products — creating focused digital
-              experiences across wellness, commerce and emerging
-              real-world opportunities.
-
-            </p>
-
-
-            <div class="actions">
-
-              <a
-                class="btn primary"
-                href="#products"
-              >
-                Explore Products →
-              </a>
-
-
-              <a
-                class="btn secondary"
-                href="#about"
-              >
-                Our Philosophy
-              </a>
-
-            </div>
-
-          </div>
-
-
-
-          <div class="hero-panel reveal">
-
-
-            <div class="panel-top">
-
-              <span>
-                CMS / PRODUCT STUDIO
-              </span>
-
-
-              <span class="live">
-
-                <i></i>
-
-                Building
-
-              </span>
-
-            </div>
-
-
-            <div class="panel-grid">
-
-
-              <div class="tile big">
-
-                <small>
-                  Product philosophy
-                </small>
-
-                <strong>
-                  Build → Launch → Learn → Grow
-                </strong>
-
-                <p>
-                  Independent products designed around real user needs.
-                </p>
-
-                <div class="signal"></div>
-
-                <div class="bar">
-                  <span></span>
-                </div>
-
-              </div>
-
-
-              <div class="tile accent-coral">
-
-                <small>
-                  VibeFit
-                </small>
-
-                <strong>
-                  Wellness
-                </strong>
-
-                <p>
-                  Play Store preparation
-                </p>
-
-                <div class="bar coral">
-                  <span></span>
-                </div>
-
-              </div>
-
-
-              <div class="tile accent-teal">
-
-                <small>
-                  KokanKart
-                </small>
-
-                <strong>
-                  Commerce
-                </strong>
-
-                <p>
-                  Product development
-                </p>
-
-                <div class="bar teal">
-                  <span></span>
-                </div>
-
-              </div>
-
-
-            </div>
-
-          </div>
-
-
-        </div>
-
+    <div class="hero-panel reveal">
+      <div class="panel-top">
+        <span>CMS / PRODUCT STUDIO</span>
+        <span class="live"><i></i> Building</span>
       </div>
-
-    </section>
-
-
-
-    <!-- =======================================================
-         ABOUT
-         ======================================================= -->
-
-    <section id="about">
-
-      <div class="container">
-
-
-        <div class="section-head reveal">
-
-          <span class="kicker">
-            About CMS
-          </span>
-
-          <h2>
-            We build. We own. We evolve.
-          </h2>
-
-          <p>
-            CMS is focused on creating and operating its own products
-            rather than simply building software for others.
-          </p>
-
-        </div>
-
-
-
-        <div class="story-grid">
-
-
-          <article class="card story reveal">
-
-            <h3>
-              A product-first company.
-            </h3>
-
-
-            <p>
-              We start with a real problem, shape a useful experience,
-              build the technology behind it, launch it, listen to users
-              and continuously improve the product. Our long-term goal is
-              to create independent products that can grow into meaningful
-              ecosystems.
-            </p>
-
-
-            <div class="pillars">
-
-
-              <div class="pillar">
-
-                <b>
-                  Problem → Product
-                </b>
-
-                <span>
-                  Start with what matters.
-                </span>
-
-              </div>
-
-
-              <div class="pillar">
-
-                <b>
-                  Experience → Trust
-                </b>
-
-                <span>
-                  Keep products simple and reliable.
-                </span>
-
-              </div>
-
-
-              <div class="pillar">
-
-                <b>
-                  Launch → Learn
-                </b>
-
-                <span>
-                  Improve through real usage.
-                </span>
-
-              </div>
-
-
-              <div class="pillar">
-
-                <b>
-                  Product → Ecosystem
-                </b>
-
-                <span>
-                  Build for long-term scale.
-                </span>
-
-              </div>
-
-
-            </div>
-
-          </article>
-
-
-
-          <article class="card story reveal">
-
-            <h3>
-              Where CMS is heading.
-            </h3>
-
-
-            <p>
-              CMS is starting with focused digital products and an
-              India-first approach. Over time, the company aims to build
-              multiple technology-led businesses and explore opportunities
-              beyond software when the right time and opportunity arrive.
-            </p>
-
-
-            <div class="pillars">
-
-
-              <div class="pillar">
-
-                <b>
-                  Consumer Products
-                </b>
-
-                <span>
-                  Useful everyday experiences.
-                </span>
-
-              </div>
-
-
-              <div class="pillar">
-
-                <b>
-                  Business Products
-                </b>
-
-                <span>
-                  Technology for real operations.
-                </span>
-
-              </div>
-
-
-              <div class="pillar">
-
-                <b>
-                  Digital Commerce
-                </b>
-
-                <span>
-                  Connecting people and businesses.
-                </span>
-
-              </div>
-
-
-              <div class="pillar">
-
-                <b>
-                  Wellness
-                </b>
-
-                <span>
-                  Technology for healthier living.
-                </span>
-
-              </div>
-
-
-            </div>
-
-          </article>
-
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-
-    <!-- =======================================================
-         PRODUCTS
-         ======================================================= -->
-
-    <section id="products">
-
-      <div class="container">
-
-
-        <div class="section-head reveal">
-
-          <span class="kicker">
-            Featured products
-          </span>
-
-          <h2>
-            Two products. One product philosophy.
-          </h2>
-
-          <p>
-            CMS is currently showcasing VibeFit and KokanKart — two
-            products built around very different real-world needs,
-            each with its own visual identity.
-          </p>
-
-        </div>
-
-
-
-        <div class="products">
-
-
-          <!-- =================================================
-               VIBEFIT
-               ================================================= -->
-
-          <article class="product vibefit reveal">
-
-
-            <div class="product-main">
-
-
-              <!-- NEW VIBEFIT BACKGROUND -->
-
-              <div class="product-visual vibefit-visual">
-
-
-                <img
-                  class="product-background"
-                  src="assets/vibefit-background.png"
-                  alt=""
-                  aria-hidden="true"
-                >
-
-
-                <div class="product-overlay">
-
-
-                  <div class="product-overlay-top">
-
-
-                    <span class="status">
-                      Play Store preparation
-                    </span>
-
-
-                    <span class="kicker coral">
-                      Wellness / Consumer
-                    </span>
-
-
-                  </div>
-
-
-
-                  <div class="product-overlay-content">
-
-
-                    <h3>
-                      VibeFit
-                    </h3>
-
-
-                    <p class="overlay-lead">
-
-                      An offline-first fitness and wellness companion
-                      bringing workouts, yoga, nutrition, progress tracking,
-                      lifestyle planning and wellness guidance into one
-                      experience.
-
-                    </p>
-
-
-                    <div class="overlay-tags">
-
-
-                      <span class="tag">
-                        Workout Tracking
-                      </span>
-
-                      <span class="tag">
-                        Yoga & Meditation
-                      </span>
-
-                      <span class="tag">
-                        Indian Nutrition
-                      </span>
-
-                      <span class="tag">
-                        Offline-First
-                      </span>
-
-                      <span class="tag">
-                        Local Data
-                      </span>
-
-                      <span class="tag">
-                        Progress Analytics
-                      </span>
-
-                      <span class="tag">
-                        Lifestyle Planner
-                      </span>
-
-                      <span class="tag">
-                        Privacy Focused
-                      </span>
-
-
-                    </div>
-
-                  </div>
-
-
-
-                  <div class="product-overlay-footer">
-
-                    <span>
-                      Play Store preparation
-                    </span>
-
-                    <i></i>
-
-                    <span>
-                      Build
-                    </span>
-
-                    <div class="overlay-progress">
-                      <span></span>
-                    </div>
-
-                  </div>
-
-
-                </div>
-
-              </div>
-
-
-
-              <!-- VIBEFIT INFORMATION -->
-
-              <div class="product-info">
-
-
-                <div class="info">
-
-                  <h4>
-                    Product experience
-                  </h4>
-
-
-                  <ul>
-
-                    <li>
-                      Workout library and session tracking
-                    </li>
-
-                    <li>
-                      Yoga, breathing, mobility and recovery
-                    </li>
-
-                    <li>
-                      Indian food and nutrition tracking
-                    </li>
-
-                    <li>
-                      Weight, measurements and progress photos
-                    </li>
-
-                    <li>
-                      Goals, planning, reports and reminders
-                    </li>
-
-                  </ul>
-
-                </div>
-
-
-
-                <div class="info">
-
-                  <h4>
-                    Product philosophy
-                  </h4>
-
-
-                  <p>
-                    Core fitness functionality is designed around an
-                    offline-first experience, with local storage helping
-                    the app remain useful without continuous internet access.
-                  </p>
-
-
-                  <div class="product-actions">
-
-
-                    <a
-                      class="btn primary"
-                      href="/vibefit-privacy.html"
-                    >
-                      VibeFit Privacy Policy ↗
-                    </a>
-
-
-                    <a
-                      class="btn secondary"
-                      href="mailto:support@cmsgroup.in?subject=VibeFit%20Support"
-                    >
-                      VibeFit Support →
-                    </a>
-
-
-                  </div>
-
-                </div>
-
-
-              </div>
-
-
-
-              <!-- OLD VIBEFIT SHOWCASE -->
-
-              <div class="product-image">
-
-                <img
-                  src="assets/vibefit-showcase.png"
-                  alt="VibeFit product showcase showing workouts, yoga, nutrition, recovery, progress and lifestyle screens"
-                  loading="lazy"
-                >
-
-              </div>
-
-
-            </div>
-
-          </article>
-
-
-
-          <!-- =================================================
-               KOKANKART
-               ================================================= -->
-
-          <article class="product kokankart reveal">
-
-
-            <div class="product-main">
-
-
-              <!-- NEW KOKANKART BACKGROUND -->
-
-              <div class="product-visual kokankart-visual">
-
-
-                <img
-                  class="product-background"
-                  src="assets/kokankart-background.png"
-                  alt=""
-                  aria-hidden="true"
-                >
-
-
-                <div class="product-overlay">
-
-
-                  <div class="product-overlay-top">
-
-
-                    <span class="status building">
-                      Product development
-                    </span>
-
-
-                    <span class="kicker teal">
-                      Commerce / Local
-                    </span>
-
-
-                  </div>
-
-
-
-                  <div class="product-overlay-content">
-
-
-                    <h3>
-                      KokanKart
-                    </h3>
-
-
-                    <p class="overlay-lead">
-
-                      A hyperlocal commerce platform connecting customers
-                      with local vendors and regional products through a
-                      connected shopping, vendor, delivery and administration
-                      experience.
-
-                    </p>
-
-
-                    <div class="overlay-tags">
-
-
-                      <span class="tag">
-                        Hyperlocal Marketplace
-                      </span>
-
-                      <span class="tag">
-                        Local Vendors
-                      </span>
-
-                      <span class="tag">
-                        Regional Products
-                      </span>
-
-                      <span class="tag">
-                        Smart Cart
-                      </span>
-
-                      <span class="tag">
-                        Order Tracking
-                      </span>
-
-                      <span class="tag">
-                        Vendor Dashboard
-                      </span>
-
-                      <span class="tag">
-                        Delivery Flow
-                      </span>
-
-                      <span class="tag">
-                        Admin Operations
-                      </span>
-
-
-                    </div>
-
-                  </div>
-
-
-
-                  <div class="product-overlay-footer">
-
-                    <span>
-                      Product development
-                    </span>
-
-                    <i></i>
-
-                    <span>
-                      Launch
-                    </span>
-
-                    <div class="overlay-progress">
-                      <span></span>
-                    </div>
-
-                  </div>
-
-
-                </div>
-
-              </div>
-
-
-
-              <!-- KOKANKART INFORMATION -->
-
-              <div class="product-info">
-
-
-                <div class="info">
-
-                  <h4>
-                    Connected ecosystem
-                  </h4>
-
-
-                  <ul>
-
-                    <li>
-                      Customer discovery and local shopping
-                    </li>
-
-                    <li>
-                      Vendor product and order management
-                    </li>
-
-                    <li>
-                      Delivery partner workflow and tracking
-                    </li>
-
-                    <li>
-                      Admin controls, monitoring and analytics
-                    </li>
-
-                    <li>
-                      Area-based commerce model
-                    </li>
-
-                  </ul>
-
-                </div>
-
-
-
-                <div class="info">
-
-                  <h4>
-                    Product philosophy
-                  </h4>
-
-
-                  <p>
-                    KokanKart is designed as more than a storefront —
-                    it connects local commerce participants into one
-                    practical digital ecosystem.
-                  </p>
-
-
-                  <div class="product-actions">
-
-                    <a
-                      class="btn primary"
-                      href="mailto:support@cmsgroup.in?subject=KokanKart%20Inquiry"
-                    >
-                      KokanKart Inquiry →
-                    </a>
-
-                  </div>
-
-                </div>
-
-
-              </div>
-
-
-
-              <!-- OLD KOKANKART SHOWCASE -->
-
-              <div class="product-image">
-
-                <img
-                  src="assets/kokankart-showcase.png"
-                  alt="KokanKart product showcase showing customer shopping, vendor dashboard, delivery and admin experiences"
-                  loading="lazy"
-                >
-
-              </div>
-
-
-            </div>
-
-          </article>
-
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-
-    <!-- =======================================================
-         APPROACH
-         ======================================================= -->
-
-    <section id="approach">
-
-      <div class="container">
-
-
-        <div class="section-head reveal">
-
-          <span class="kicker amber">
-            How we build
-          </span>
-
-          <h2>
-            From real problem to real product.
-          </h2>
-
-          <p>
-            CMS keeps the product cycle focused, practical and iterative.
-          </p>
-
-        </div>
-
-
-
-        <div class="approach">
-
-
-          <div class="card step reveal">
-
-            <div class="line"></div>
-
-            <b>
-              Identify
-            </b>
-
-            <p>
-              Understand the problem and the people experiencing it.
-            </p>
-
-          </div>
-
-
-          <div class="card step reveal">
-
-            <div class="line"></div>
-
-            <b>
-              Design
-            </b>
-
-            <p>
-              Shape a clear experience around the core user need.
-            </p>
-
-          </div>
-
-
-          <div class="card step reveal">
-
-            <div class="line"></div>
-
-            <b>
-              Build
-            </b>
-
-            <p>
-              Create reliable technology with quality at the foundation.
-            </p>
-
-          </div>
-
-
-          <div class="card step reveal">
-
-            <div class="line"></div>
-
-            <b>
-              Launch
-            </b>
-
-            <p>
-              Put the product into the real world and learn from usage.
-            </p>
-
-          </div>
-
-
-          <div class="card step reveal">
-
-            <div class="line"></div>
-
-            <b>
-              Iterate
-            </b>
-
-            <p>
-              Improve continuously as users, needs and opportunities evolve.
-            </p>
-
-          </div>
-
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-
-    <!-- =======================================================
-         VALUES
-         ======================================================= -->
-
-    <section id="values">
-
-      <div class="container">
-
-
-        <div class="section-head reveal">
-
-          <span class="kicker">
-            Core values
-          </span>
-
-          <h2>
-            Principles behind every product.
-          </h2>
-
-        </div>
-
-
-
-        <div class="values">
-
-
-          <div class="card value reveal">
-
-            <b>
-              Innovation
-            </b>
-
-            <p>
-              Think differently. Build meaningfully.
-            </p>
-
-          </div>
-
-
-          <div class="card value reveal">
-
-            <b>
-              Trust
-            </b>
-
-            <p>
-              Earn confidence through every interaction.
-            </p>
-
-          </div>
-
-
-          <div class="card value reveal">
-
-            <b>
-              Speed
-            </b>
-
-            <p>
-              Move from idea to execution with purpose.
-            </p>
-
-          </div>
-
-
-          <div class="card value reveal">
-
-            <b>
-              Customer Satisfaction
-            </b>
-
-            <p>
-              Create value users can feel.
-            </p>
-
-          </div>
-
-
-          <div class="card value reveal">
-
-            <b>
-              Transparency
-            </b>
-
-            <p>
-              Stay clear, honest and responsible.
-            </p>
-
-          </div>
-
-
-          <div class="card value reveal">
-
-            <b>
-              Quality
-            </b>
-
-            <p>
-              Build reliable experiences without shortcuts.
-            </p>
-
-          </div>
-
-
-          <div class="card value reveal">
-
-            <b>
-              Growth
-            </b>
-
-            <p>
-              Build today with tomorrow in mind.
-            </p>
-
-          </div>
-
-
-          <div class="card value reveal">
-
-            <b>
-              Service
-            </b>
-
-            <p>
-              Support products with responsibility.
-            </p>
-
-          </div>
-
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-
-    <!-- =======================================================
-         VISION
-         ======================================================= -->
-
-    <section>
-
-      <div class="container">
-
-
-        <div class="card vision reveal">
-
-
+      <div class="panel-grid">
+        <div class="tile big">
           <div>
-
-            <span class="kicker">
-              Long-term direction
-            </span>
-
-
-            <h3>
-              Build products today. Create ecosystems tomorrow.
-            </h3>
-
-
-            <p>
-              CMS is starting with an India-focused product portfolio
-              and aims to grow through useful technology products,
-              strong execution and long-term ownership.
-            </p>
-
+            <small>Product philosophy</small>
+            <strong>Build → Launch → Learn → Grow</strong>
           </div>
-
-
-
-          <div class="future">
-
-
-            <div>
-              Consumer Technology
-            </div>
-
-            <div>
-              Business Technology
-            </div>
-
-            <div>
-              Digital Commerce
-            </div>
-
-            <div>
-              Wellness Platforms
-            </div>
-
-            <div>
-              New Product Categories
-            </div>
-
-            <div>
-              Future Business Opportunities
-            </div>
-
-
+          <div>
+            <p>Independent products designed around real user needs.</p>
+            <div class="bar"><span></span></div>
           </div>
-
-
         </div>
-
-      </div>
-
-    </section>
-
-
-
-    <!-- =======================================================
-         CTA
-         ======================================================= -->
-
-    <section>
-
-      <div class="container">
-
-
-        <div class="card cta reveal">
-
-
-          <span class="kicker">
-            Creative Management Solutions
-          </span>
-
-
-          <h2>
-            Building what comes next.
-          </h2>
-
-
-          <p>
-            Follow the products we are building today and the ecosystems
-            we aim to create over time.
-          </p>
-
-
-          <a
-            class="btn primary"
-            href="mailto:support@cmsgroup.in"
-          >
-            Contact CMS →
-          </a>
-
-
+        <div class="tile">
+          <small>VibeFit</small>
+          <strong>Wellness</strong>
+          <p>Play Store preparation</p>
+          <div class="bar coral"><span></span></div>
         </div>
-
-      </div>
-
-    </section>
-
-
-  </main>
-
-
-
-  <!-- =======================================================
-       FOOTER
-       ======================================================= -->
-
-  <footer>
-
-    <div class="container">
-
-
-      <div class="footer-grid">
-
-
-        <div class="footer-brand">
-
-          Creative Management Solutions
-
-          <span>
-            India-focused digital product company.
-          </span>
-
+        <div class="tile">
+          <small>KokanKart</small>
+          <strong>Commerce</strong>
+          <p>Product development</p>
+          <div class="bar teal"><span></span></div>
         </div>
-
-
-
-        <div class="footer-links">
-
-          <a href="#about">
-            About
-          </a>
-
-          <a href="#products">
-            Products
-          </a>
-
-          <a href="#approach">
-            Approach
-          </a>
-
-          <a href="#values">
-            Values
-          </a>
-
-          <a href="/privacy.html">
-            Privacy
-          </a>
-
-          <a href="/terms.html">
-            Terms
-          </a>
-
-          <a href="mailto:support@cmsgroup.in">
-            support@cmsgroup.in
-          </a>
-
-        </div>
-
-
       </div>
+    </div>
+  </div>
+</section>
 
-
-
-      <div class="copyright">
-
-        ©
-        <span id="year"></span>
-        Creative Management Solutions.
-        All Rights Reserved.
-
-      </div>
-
-
+<!-- ABOUT -->
+<section id="about">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="kicker">About CMS</span>
+      <h2>We build. We own. We evolve.</h2>
+      <p>CMS is focused on creating and operating its own products rather than simply building software for others.</p>
     </div>
 
-  </footer>
+    <div class="story-grid">
+      <article class="card story reveal">
+        <h3>A product-first company.</h3>
+        <p>We start with a real problem, shape a useful experience, build the technology behind it, launch it, listen to users and continuously improve the product.</p>
+        <div class="pillars">
+          <div class="pillar"><b>Problem → Product</b><span>Start with what matters.</span></div>
+          <div class="pillar"><b>Experience → Trust</b><span>Keep products simple.</span></div>
+          <div class="pillar"><b>Launch → Learn</b><span>Improve through usage.</span></div>
+          <div class="pillar"><b>Product → Ecosystem</b><span>Build for scale.</span></div>
+        </div>
+      </article>
 
+      <article class="card story reveal">
+        <h3>Where CMS is heading.</h3>
+        <p>CMS is starting with focused digital products and an India-first approach. Over time, the company aims to build multiple technology-led businesses.</p>
+        <div class="pillars">
+          <div class="pillar"><b>Consumer Products</b><span>Useful everyday apps.</span></div>
+          <div class="pillar"><b>Business Products</b><span>Operations tech.</span></div>
+          <div class="pillar"><b>Digital Commerce</b><span>Local connectivity.</span></div>
+          <div class="pillar"><b>Wellness</b><span>Healthier living.</span></div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
 
+<!-- PRODUCTS -->
+<section id="products">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="kicker">Featured products</span>
+      <h2>Two products. One product philosophy.</h2>
+      <p>CMS is currently showcasing VibeFit and KokanKart — two products built around very different real-world needs.</p>
+    </div>
 
-  <!-- =======================================================
-       JAVASCRIPT
-       ======================================================= -->
+    <div class="products">
 
-  <script>
+      <!-- VIBEFIT -->
+      <article class="product vibefit reveal">
+        <div class="product-main">
+          
+          <div class="product-visual vibefit-visual">
+            <img class="product-background" src="assets/vibefit-background.png" alt="VibeFit background image" loading="lazy">
+            <div class="product-overlay">
+              <div class="product-overlay-top">
+                <span class="status vibefit-status">Play Store preparation</span>
+                <span class="kicker coral">Wellness / Consumer</span>
+              </div>
+              <div class="product-overlay-content">
+                <h3>VibeFit</h3>
+                <p class="overlay-lead">An offline-first fitness and wellness companion bringing workouts, yoga, nutrition, progress tracking, lifestyle planning and wellness guidance into one experience.</p>
+                <div class="overlay-tags">
+                  <span class="tag">Workout Tracking</span>
+                  <span class="tag">Yoga & Meditation</span>
+                  <span class="tag">Indian Nutrition</span>
+                  <span class="tag">Offline-First</span>
+                  <span class="tag">Privacy Focused</span>
+                </div>
+              </div>
+              <div class="product-overlay-footer">
+                <span>Play Store preparation</span>
+                <i></i>
+                <span>Build Phase</span>
+                <div class="overlay-progress"><span></span></div>
+              </div>
+            </div>
+          </div>
 
-    /* =======================================================
-       MOBILE MENU
-       ======================================================= */
+          <div class="product-info">
+            <div class="info">
+              <h4>Product experience</h4>
+              <ul>
+                <li>Workout library and session tracking</li>
+                <li>Yoga, breathing, mobility and recovery</li>
+                <li>Indian food and nutrition tracking</li>
+                <li>Progress analytics & lifestyle planning</li>
+              </ul>
+            </div>
+            <div class="info">
+              <h4>Product philosophy</h4>
+              <p>Core fitness functionality is designed around an offline-first experience, keeping data local and accessible anywhere.</p>
+              <div class="product-actions">
+                <a class="btn primary coral-btn" href="/vibefit-privacy.html">Privacy Policy ↗</a>
+                <a class="btn secondary" href="mailto:support@cmsgroup.in?subject=VibeFit%20Support">VibeFit Support →</a>
+              </div>
+            </div>
+          </div>
 
-    const menu = document.getElementById("menu");
-    const navLinks = document.getElementById("navLinks");
+        </div>
+      </article>
 
+      <!-- KOKANKART -->
+      <article class="product kokankart reveal">
+        <div class="product-main">
+          
+          <div class="product-visual kokankart-visual">
+            <img class="product-background" src="assets/kokankart-background.png" alt="KokanKart background image" loading="lazy">
+            <div class="product-overlay">
+              <div class="product-overlay-top">
+                <span class="status building">Product development</span>
+                <span class="kicker teal">Commerce / Local</span>
+              </div>
+              <div class="product-overlay-content">
+                <h3>KokanKart</h3>
+                <p class="overlay-lead">A hyperlocal commerce platform connecting customers with local vendors and regional products through a connected ecosystem.</p>
+                <div class="overlay-tags">
+                  <span class="tag">Hyperlocal Marketplace</span>
+                  <span class="tag">Local Vendors</span>
+                  <span class="tag">Regional Products</span>
+                  <span class="tag">Smart Cart</span>
+                  <span class="tag">Delivery Flow</span>
+                </div>
+              </div>
+              <div class="product-overlay-footer">
+                <span>Product development</span>
+                <i></i>
+                <span>Launch Phase</span>
+                <div class="overlay-progress"><span></span></div>
+              </div>
+            </div>
+          </div>
 
-    menu.addEventListener("click", () => {
+          <div class="product-info">
+            <div class="info">
+              <h4>Connected ecosystem</h4>
+              <ul>
+                <li>Customer discovery & local shopping</li>
+                <li>Vendor product & order management</li>
+                <li>Delivery partner workflows</li>
+                <li>Admin operations & analytics</li>
+              </ul>
+            </div>
+            <div class="info">
+              <h4>Product philosophy</h4>
+              <p>KokanKart connects local commerce participants into one practical and accessible digital ecosystem.</p>
+              <div class="product-actions">
+                <a class="btn primary" href="mailto:support@cmsgroup.in?subject=KokanKart%20Inquiry">KokanKart Inquiry →</a>
+              </div>
+            </div>
+          </div>
 
-      const isOpen =
-        navLinks.classList.toggle("open");
+        </div>
+      </article>
 
-      menu.setAttribute(
-        "aria-expanded",
-        isOpen
-      );
+    </div>
+  </div>
+</section>
 
-      menu.textContent =
-        isOpen ? "✕" : "☰";
+<!-- APPROACH -->
+<section id="approach">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="kicker amber">How we build</span>
+      <h2>From real problem to real product.</h2>
+      <p>CMS keeps the product cycle focused, practical and iterative.</p>
+    </div>
 
-    });
+    <div class="approach">
+      <div class="card step reveal"><b>Identify</b><p>Understand the real user problem.</p></div>
+      <div class="card step reveal"><b>Design</b><p>Shape a clear, reliable user experience.</p></div>
+      <div class="card step reveal"><b>Build</b><p>Create solid technology foundations.</p></div>
+      <div class="card step reveal"><b>Launch</b><p>Release to the real world and learn.</p></div>
+      <div class="card step reveal"><b>Iterate</b><p>Evolve continuously over time.</p></div>
+    </div>
+  </div>
+</section>
 
+<!-- VALUES -->
+<section id="values">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="kicker">Core values</span>
+      <h2>Principles behind every product.</h2>
+    </div>
 
-    /* Close menu after clicking a link */
+    <div class="values">
+      <div class="card value reveal"><b>Innovation</b><p>Think differently, build meaningfully.</p></div>
+      <div class="card value reveal"><b>Trust</b><p>Earn confidence through reliability.</p></div>
+      <div class="card value reveal"><b>Speed</b><p>Move from idea to execution.</p></div>
+      <div class="card value reveal"><b>Satisfaction</b><p>Create real value for users.</p></div>
+      <div class="card value reveal"><b>Transparency</b><p>Stay clear and responsible.</p></div>
+      <div class="card value reveal"><b>Quality</b><p>Build solid experiences without shortcuts.</p></div>
+      <div class="card value reveal"><b>Growth</b><p>Build today with tomorrow in mind.</p></div>
+      <div class="card value reveal"><b>Service</b><p>Support products responsibly.</p></div>
+    </div>
+  </div>
+</section>
 
-    document
-      .querySelectorAll(".nav-links a")
-      .forEach(link => {
+<!-- VISION & CTA -->
+<section>
+  <div class="container">
+    <div class="card vision reveal">
+      <div>
+        <span class="kicker">Long-term direction</span>
+        <h3>Build products today. Create ecosystems tomorrow.</h3>
+        <p>CMS aims to grow through useful technology products, strong execution and long-term ownership.</p>
+      </div>
+      <div class="future">
+        <div>Consumer Tech</div>
+        <div>Business Tech</div>
+        <div>Digital Commerce</div>
+        <div>Wellness Platforms</div>
+      </div>
+    </div>
+  </div>
+</section>
 
-        link.addEventListener("click", () => {
+<section>
+  <div class="container">
+    <div class="card cta reveal">
+      <span class="kicker">Creative Management Solutions</span>
+      <h2>Building what comes next.</h2>
+      <p>Follow the products we are building today and the ecosystems we aim to create over time.</p>
+      <a class="btn primary" href="mailto:support@cmsgroup.in">Contact CMS →</a>
+    </div>
+  </div>
+</section>
 
-          navLinks.classList.remove("open");
+</main>
 
-          menu.setAttribute(
-            "aria-expanded",
-            "false"
-          );
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        Creative Management Solutions
+        <span>India-focused digital product company.</span>
+      </div>
+      <div class="footer-links">
+        <a href="#about">About</a>
+        <a href="#products">Products</a>
+        <a href="#approach">Approach</a>
+        <a href="#values">Values</a>
+        <a href="/privacy.html">Privacy</a>
+        <a href="/terms.html">Terms</a>
+        <a href="mailto:support@cmsgroup.in">support@cmsgroup.in</a>
+      </div>
+    </div>
+    <div class="copyright">
+      © <span id="year"></span> Creative Management Solutions. All Rights Reserved.
+    </div>
+  </div>
+</footer>
 
-          menu.textContent = "☰";
+<script>
+// Mobile Menu
+const menu = document.getElementById("menu");
+const navLinks = document.getElementById("navLinks");
+menu.addEventListener("click", () => {
+  const open = navLinks.classList.toggle("open");
+  menu.textContent = open ? "✕" : "☰";
+});
 
-        });
+// Set Year
+document.getElementById("year").textContent = new Date().getFullYear();
 
-      });
-
-
-
-    /* =======================================================
-       CURRENT YEAR
-       ======================================================= */
-
-    document.getElementById("year").textContent =
-      new Date().getFullYear();
-
-
-
-    /* =======================================================
-       SCROLL REVEAL
-       ======================================================= */
-
-    const revealElements =
-      document.querySelectorAll(".reveal");
-
-
-    const revealObserver =
-      new IntersectionObserver(
-        (entries, observer) => {
-
-          entries.forEach(entry => {
-
-            if (entry.isIntersecting) {
-
-              entry.target.classList.add("visible");
-
-              observer.unobserve(entry.target);
-
-            }
-
-          });
-
-        },
-        {
-          threshold: 0.12
-        }
-      );
-
-
-    revealElements.forEach(element => {
-
-      revealObserver.observe(element);
-
-    });
-
-
-
-    /* =======================================================
-       FALLBACK FOR REDUCED MOTION
-       ======================================================= */
-
-    const prefersReducedMotion =
-      window.matchMedia(
-        "(prefers-reduced-motion: reduce)"
-      ).matches;
-
-
-    if (prefersReducedMotion) {
-
-      document
-        .querySelectorAll(".reveal")
-        .forEach(element => {
-
-          element.classList.add("visible");
-
-        });
-
+// Intersection Observer for Smooth Reveal
+const revealElements = document.querySelectorAll(".reveal");
+const revealObserver = new IntersectionObserver((entries, observer) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add("visible");
+      observer.unobserve(entry.target);
     }
+  });
+}, { threshold: 0.1 });
 
-  </script>
-
+revealElements.forEach(el => revealObserver.observe(el));
+</script>
 
 </body>
-
 </html>
