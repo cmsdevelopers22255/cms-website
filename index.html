@@ -1,860 +1,2238 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Creative Management Solutions — India-focused digital product company building products that solve real problems.">
-  <title>Creative Management Solutions | CMS</title>
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <meta
+    name="description"
+    content="Creative Management Solutions — India-focused digital product company building products across wellness, commerce and emerging real-world opportunities."
+  >
+
+  <meta
+    name="theme-color"
+    content="#070b14"
+  >
+
+  <title>Creative Management Solutions | Building Products</title>
+
+  <!-- =====================================================
+       FONTS
+       ===================================================== -->
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&family=Sora:wght@500;600;700;800&display=swap"
+    rel="stylesheet"
+  >
+
+
+  <!-- =====================================================
+       CSS
+       ===================================================== -->
 
   <style>
 
-    /* =========================================================
-       RESET
-    ========================================================= */
-
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-
-    body {
-      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: #08090d;
-      color: #f4f4f5;
-      line-height: 1.6;
-      overflow-x: hidden;
-    }
-
-    img { max-width: 100%; display: block; }
-    a { color: inherit; text-decoration: none; }
-    button { font: inherit; }
-
-    :focus-visible {
-      outline: 2px solid var(--teal);
-      outline-offset: 3px;
-      border-radius: 4px;
-    }
-
-
-    /* =========================================================
-       VARIABLES
-    ========================================================= */
+    /* =====================================================
+       ROOT
+       ===================================================== */
 
     :root {
-      --bg: #08090d;
-      --bg-soft: #0d0f14;
-      --surface: #11131a;
-      --surface-2: #151820;
 
-      --border: rgba(255,255,255,.09);
-      --border-strong: rgba(255,255,255,.15);
+      --bg: #070b14;
+      --bg-soft: #0a101c;
+      --bg-card: #0c1320;
 
-      --text: #f5f5f5;
-      --muted: #999da8;
-      --muted-2: #727783;
+      --text: #f4f7fb;
+      --text-soft: #a6b0c2;
+      --text-muted: #727d91;
 
-      --coral: #ff6b5f;
-      --coral-soft: #ff8b80;
+      --cyan: #22d3ee;
+      --indigo: #6366f1;
 
-      --teal: #31d4c7;
-      --teal-soft: #67e1d7;
+      /* VibeFit */
+      --coral: #f2555f;
+      --coral-soft: rgba(242, 85, 95, 0.12);
+      --coral-glow: rgba(242, 85, 95, 0.28);
 
-      --amber: #eab65b;
-      --amber-soft: #f2c980;
+      /* KokanKart */
+      --amber: #f4a636;
+      --amber-soft: rgba(244, 166, 54, 0.12);
+      --amber-glow: rgba(244, 166, 54, 0.28);
 
-      --radius: 24px;
-      --radius-small: 14px;
+      --border: rgba(255, 255, 255, 0.08);
+      --border-strong: rgba(255, 255, 255, 0.14);
 
       --container: 1180px;
 
-      --font-display: 'Sora', Inter, ui-sans-serif, system-ui, sans-serif;
-      --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+      --radius-sm: 10px;
+      --radius-md: 16px;
+      --radius-lg: 24px;
+      --radius-xl: 30px;
+
+      --shadow:
+        0 20px 60px rgba(0, 0, 0, 0.24);
+
+      --shadow-hover:
+        0 30px 80px rgba(0, 0, 0, 0.38);
+
+      --ease: cubic-bezier(.2,.75,.2,1);
     }
 
 
-    /* =========================================================
-       SCROLL PROGRESS — thread tying Build → Launch → Learn → Grow
-       to both product identities (coral / amber / teal)
-    ========================================================= */
+    /* =====================================================
+       RESET
+       ===================================================== */
 
-    .progress-bar {
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 90px;
+    }
+
+    body {
+      min-height: 100vh;
+
+      background:
+        radial-gradient(
+          circle at 15% 0%,
+          rgba(34, 211, 238, 0.055),
+          transparent 28%
+        ),
+        radial-gradient(
+          circle at 85% 20%,
+          rgba(99, 102, 241, 0.055),
+          transparent 30%
+        ),
+        var(--bg);
+
+      color: var(--text);
+
+      font-family: "Inter", sans-serif;
+      line-height: 1.65;
+
+      overflow-x: hidden;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button,
+    a {
+      -webkit-tap-highlight-color: transparent;
+    }
+
+
+    /* =====================================================
+       SCROLL PROGRESS
+       ===================================================== */
+
+    .scroll-progress {
       position: fixed;
-      top: 0; left: 0;
-      height: 3px;
+
+      top: 0;
+      left: 0;
+
       width: 0%;
-      z-index: 1200;
-      background: linear-gradient(90deg, var(--coral), var(--amber), var(--teal));
-      box-shadow: 0 0 14px rgba(49,212,199,.35);
-      transition: width .12s linear;
+      height: 3px;
+
+      z-index: 99999;
+
+      background:
+        linear-gradient(
+          90deg,
+          var(--cyan) 0%,
+          var(--indigo) 35%,
+          var(--coral) 68%,
+          var(--amber) 100%
+        );
+
+      box-shadow:
+        0 0 18px rgba(34, 211, 238, 0.35);
+
+      transition: width 0.08s linear;
     }
 
 
-    /* =========================================================
-       CONTAINER
-    ========================================================= */
+    /* =====================================================
+       COMMON
+       ===================================================== */
 
     .container {
-      width: min(calc(100% - 40px), var(--container));
-      margin: 0 auto;
+      width: min(
+        calc(100% - 40px),
+        var(--container)
+      );
+
+      margin-inline: auto;
+    }
+
+    section {
+      padding: 120px 0;
+      position: relative;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(22px);
+
+      transition:
+        opacity 0.75s var(--ease),
+        transform 0.75s var(--ease);
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
     }
 
 
-    /* =========================================================
-       NAVBAR
-    ========================================================= */
-
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      background: rgba(8,9,13,.78);
-      backdrop-filter: blur(18px);
-      border-bottom: 1px solid rgba(255,255,255,.06);
-    }
+    /* =====================================================
+       NAVIGATION
+       ===================================================== */
 
     nav {
+      position: sticky;
+      top: 0;
+
+      z-index: 1000;
+
+      border-bottom: 1px solid var(--border);
+
+      background:
+        rgba(7, 11, 20, 0.78);
+
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+    }
+
+    .nav-inner {
+      width: min(
+        calc(100% - 40px),
+        var(--container)
+      );
+
       min-height: 76px;
+
+      margin-inline: auto;
+
       display: flex;
       align-items: center;
       justify-content: space-between;
-      width: min(calc(100% - 40px), var(--container));
-      margin: 0 auto;
+
+      gap: 30px;
     }
 
     .brand {
       display: flex;
       align-items: center;
       gap: 12px;
-      font-family: var(--font-display);
+
+      font-family: "Sora", sans-serif;
       font-weight: 700;
-      letter-spacing: -.02em;
+      letter-spacing: -0.03em;
     }
 
     .brand-mark {
-      width: 38px;
-      height: 38px;
+      width: 36px;
+      height: 36px;
+
+      border-radius: 10px;
+
       display: grid;
       place-items: center;
-      border-radius: 12px;
-      background: linear-gradient(135deg, var(--coral), var(--amber) 55%, var(--teal));
-      color: #08090d;
-      font-family: var(--font-mono);
-      font-weight: 600;
+
+      color: #fff;
+
+      font-family: "Sora", sans-serif;
       font-size: 13px;
+      font-weight: 800;
+
+      background:
+        linear-gradient(
+          135deg,
+          var(--cyan),
+          var(--indigo)
+        );
+
+      box-shadow:
+        0 8px 25px rgba(34, 211, 238, 0.16);
     }
 
-    .brand-text { display: flex; flex-direction: column; line-height: 1.1; }
-    .brand-text strong { font-size: 15px; font-weight: 700; }
-    .brand-text span { font-family: Inter, sans-serif; font-size: 10px; color: var(--muted); margin-top: 4px; font-weight: 500; }
-
-    .nav-links { display: flex; align-items: center; gap: 28px; }
-    .nav-links a { color: #bfc2ca; font-size: 14px; transition: color .25s ease; }
-    .nav-links a:hover { color: white; }
-
-    .nav-links .nav-cta {
-      padding: 10px 16px;
-      border: 1px solid var(--border-strong);
-      border-radius: 999px;
-      color: white;
-      transition: border-color .2s ease, background .2s ease;
+    .brand-name {
+      font-size: 14px;
     }
-    .nav-links .nav-cta:hover { border-color: rgba(255,255,255,.3); background: rgba(255,255,255,.04); }
+
+    .brand-name span {
+      display: block;
+
+      color: var(--text-muted);
+
+      font-family: "JetBrains Mono", monospace;
+      font-size: 9px;
+      font-weight: 500;
+
+      margin-top: 1px;
+
+      letter-spacing: 0.04em;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+    }
+
+    .nav-links > a:not(.nav-cta) {
+      position: relative;
+
+      color: var(--text-soft);
+
+      font-family: "JetBrains Mono", monospace;
+      font-size: 12px;
+    }
+
+    .nav-links > a:not(.nav-cta)::after {
+      content: "";
+
+      position: absolute;
+
+      left: 0;
+      bottom: -7px;
+
+      width: 100%;
+      height: 1px;
+
+      transform: scaleX(0);
+      transform-origin: right;
+
+      background:
+        linear-gradient(
+          90deg,
+          var(--cyan),
+          var(--indigo)
+        );
+
+      transition:
+        transform 0.25s ease;
+    }
+
+    .nav-links > a:not(.nav-cta):hover {
+      color: var(--text);
+    }
+
+    .nav-links > a:not(.nav-cta):hover::after {
+      transform: scaleX(1);
+      transform-origin: left;
+    }
+
+    .nav-cta {
+      padding: 10px 15px;
+
+      border: 1px solid rgba(34, 211, 238, 0.22);
+      border-radius: 10px;
+
+      color: var(--cyan);
+
+      background: rgba(34, 211, 238, 0.05);
+
+      font-family: "JetBrains Mono", monospace;
+      font-size: 11px;
+
+      transition:
+        background .25s ease,
+        border-color .25s ease,
+        transform .25s ease;
+    }
+
+    .nav-cta:hover {
+      transform: translateY(-2px);
+
+      border-color: rgba(34, 211, 238, 0.45);
+
+      background: rgba(34, 211, 238, 0.09);
+    }
 
     .menu {
       display: none;
-      border: 0;
-      background: transparent;
-      color: white;
-      font-size: 25px;
+
+      border: 1px solid var(--border);
+      border-radius: 10px;
+
+      padding: 8px 10px;
+
+      background: rgba(255,255,255,.03);
+
+      color: var(--text);
+
+      font-size: 20px;
+
       cursor: pointer;
     }
 
 
-    /* =========================================================
+    /* =====================================================
        HERO
-    ========================================================= */
+       ===================================================== */
 
     .hero {
       min-height: calc(100vh - 76px);
-      display: grid;
-      grid-template-columns: 1.05fr .95fr;
+
+      display: flex;
       align-items: center;
+
+      padding:
+        100px 0
+        90px;
+    }
+
+    .hero-grid {
+      display: grid;
+
+      grid-template-columns:
+        minmax(0, 1.05fr)
+        minmax(380px, .95fr);
+
       gap: 70px;
-      padding-top: 90px;
-      padding-bottom: 100px;
-      position: relative;
+
+      align-items: center;
     }
 
-    .hero::before {
-      content: "";
-      position: absolute;
-      width: 520px;
-      height: 520px;
-      left: -220px;
-      top: 50px;
-      background: rgba(255,107,95,.08);
-      filter: blur(100px);
-      border-radius: 50%;
-      pointer-events: none;
-    }
-
-    .hero::after {
-      content: "";
-      position: absolute;
-      width: 380px;
-      height: 380px;
-      right: -160px;
-      bottom: -60px;
-      background: rgba(49,212,199,.07);
-      filter: blur(100px);
-      border-radius: 50%;
-      pointer-events: none;
+    .eyebrow,
+    .kicker,
+    .status,
+    .tag,
+    .panel-top,
+    .live,
+    .banner-tag,
+    .banner-footer {
+      font-family: "JetBrains Mono", monospace;
     }
 
     .eyebrow {
       display: inline-flex;
       align-items: center;
       gap: 9px;
-      color: #c4c6cc;
-      font-family: var(--font-mono);
+
+      color: var(--cyan);
+
       font-size: 11px;
-      text-transform: uppercase;
-      letter-spacing: .1em;
-      margin-bottom: 22px;
+      letter-spacing: .035em;
+
+      margin-bottom: 25px;
     }
 
     .dot {
       width: 7px;
       height: 7px;
-      display: inline-block;
-      background: var(--teal);
+
       border-radius: 50%;
-      box-shadow: 0 0 0 5px rgba(49,212,199,.08);
+
+      background: var(--cyan);
+
+      box-shadow:
+        0 0 14px rgba(34, 211, 238, .7);
     }
 
-    h1 {
-      font-family: var(--font-display);
-      font-weight: 700;
-      font-size: clamp(48px, 6vw, 82px);
-      line-height: .98;
-      letter-spacing: -.03em;
+    .hero h1 {
       max-width: 850px;
+
+      font-family: "Sora", sans-serif;
+      font-size: clamp(42px, 6vw, 76px);
+      line-height: 1.04;
+
+      letter-spacing: -0.055em;
+      font-weight: 700;
     }
 
     .gradient {
-      background: linear-gradient(90deg, var(--coral), var(--amber) 45%, var(--teal));
+      background:
+        linear-gradient(
+          100deg,
+          var(--cyan),
+          var(--indigo) 55%,
+          var(--coral)
+        );
+
       -webkit-background-clip: text;
       background-clip: text;
+
       color: transparent;
     }
 
     .hero-copy {
-      max-width: 650px;
+      max-width: 680px;
+
       margin-top: 28px;
-      color: var(--muted);
+
+      color: var(--text-soft);
+
       font-size: 17px;
       line-height: 1.8;
     }
 
-    .actions { display: flex; gap: 12px; margin-top: 34px; flex-wrap: wrap; }
+    .actions {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+
+      gap: 12px;
+
+      margin-top: 32px;
+    }
 
     .btn {
       position: relative;
+      overflow: hidden;
+      isolation: isolate;
+
       display: inline-flex;
       align-items: center;
       justify-content: center;
+
       min-height: 46px;
-      padding: 0 19px;
+
+      padding: 0 18px;
+
       border-radius: 12px;
-      font-size: 13px;
-      font-weight: 700;
-      overflow: hidden;
-      transition: transform .25s ease, background .25s ease, border-color .25s ease;
+
+      font-family: "JetBrains Mono", monospace;
+      font-size: 11px;
+      font-weight: 600;
+
+      transition:
+        transform .25s ease,
+        box-shadow .25s ease,
+        border-color .25s ease,
+        background .25s ease;
     }
 
     .btn::after {
       content: "";
+
       position: absolute;
-      top: 0; left: -60%;
-      width: 40%;
-      height: 100%;
-      background: linear-gradient(120deg, transparent, rgba(255,255,255,.35), transparent);
-      transform: skewX(-20deg);
-      transition: left .55s ease;
+      inset: 0;
+
+      width: 35%;
+
+      transform:
+        translateX(-180%)
+        skewX(-18deg);
+
+      background:
+        linear-gradient(
+          90deg,
+          transparent,
+          rgba(255,255,255,.2),
+          transparent
+        );
+
+      transition:
+        transform .65s ease;
+
+      pointer-events: none;
     }
-    .btn:hover::after { left: 130%; }
 
-    .btn.primary { background: white; color: #090a0d; }
-    .btn.primary:hover { transform: translateY(-2px); background: #f0f0f0; }
+    .btn:hover::after {
+      transform:
+        translateX(420%)
+        skewX(-18deg);
+    }
 
-    .btn.secondary { border: 1px solid var(--border-strong); color: #d6d7dc; }
-    .btn.secondary:hover { background: rgba(255,255,255,.05); border-color: rgba(255,255,255,.25); }
+    .btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .btn.primary {
+      color: #041018;
+
+      background:
+        linear-gradient(
+          135deg,
+          #4de5f5,
+          #6b73f7
+        );
+
+      box-shadow:
+        0 10px 30px rgba(34, 211, 238, .16);
+    }
+
+    .btn.primary:hover {
+      box-shadow:
+        0 16px 40px rgba(34, 211, 238, .25);
+    }
+
+    .btn.secondary {
+      border: 1px solid var(--border-strong);
+
+      color: var(--text-soft);
+
+      background:
+        rgba(255,255,255,.025);
+    }
+
+    .btn.secondary:hover {
+      color: var(--text);
+
+      border-color:
+        rgba(255,255,255,.22);
+
+      background:
+        rgba(255,255,255,.05);
+    }
 
 
-    /* =========================================================
+    /* =====================================================
        HERO PANEL
-    ========================================================= */
+       ===================================================== */
 
     .hero-panel {
+      position: relative;
+
       padding: 18px;
-      background: linear-gradient(145deg, rgba(255,255,255,.06), rgba(255,255,255,.018));
+
       border: 1px solid var(--border);
-      border-radius: 25px;
-      box-shadow: 0 30px 100px rgba(0,0,0,.35);
+
+      border-radius: var(--radius-lg);
+
+      background:
+        rgba(255,255,255,.025);
+
+      box-shadow:
+        var(--shadow);
+
+      transition:
+        transform .3s ease,
+        box-shadow .3s ease;
+    }
+
+    .hero-panel:hover {
+      transform: translateY(-4px);
+
+      box-shadow:
+        var(--shadow-hover);
     }
 
     .panel-top {
       display: flex;
       justify-content: space-between;
-      padding: 5px 4px 18px;
-      color: #777b85;
-      font-family: var(--font-mono);
-      font-size: 10px;
-      letter-spacing: .1em;
-      text-transform: uppercase;
+      align-items: center;
+
+      padding: 5px 4px 17px;
+
+      color: var(--text-muted);
+
+      font-size: 9px;
+      letter-spacing: .04em;
     }
 
-    .live { display: inline-flex; align-items: center; gap: 7px; color: #9da1aa; }
-    .live i { width: 6px; height: 6px; background: var(--teal); border-radius: 50%; }
+    .live {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
 
-    .panel-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+      color: var(--cyan);
+    }
+
+    .live i {
+      width: 6px;
+      height: 6px;
+
+      border-radius: 50%;
+
+      background: var(--cyan);
+
+      box-shadow:
+        0 0 12px rgba(34,211,238,.7);
+    }
+
+    .panel-grid {
+      display: grid;
+
+      grid-template-columns: 1fr 1fr;
+
+      gap: 10px;
+    }
 
     .tile {
-      min-height: 150px;
-      padding: 22px;
-      border-radius: 18px;
-      background: #101218;
-      border: 1px solid var(--border);
       position: relative;
+
+      min-height: 145px;
+
+      padding: 20px;
+
       overflow: hidden;
-      transition: border-color .25s ease;
+
+      border: 1px solid var(--border);
+
+      border-radius: 16px;
+
+      background:
+        rgba(255,255,255,.025);
+
+      transition:
+        transform .3s ease,
+        border-color .3s ease;
     }
-    .tile:hover { border-color: var(--border-strong); }
+
+    .tile:hover {
+      transform: translateY(-3px);
+
+      border-color:
+        rgba(255,255,255,.15);
+    }
 
     .tile.big {
-      grid-column: span 2;
-      min-height: 210px;
+      grid-column: 1 / -1;
+
       background:
-        radial-gradient(circle at 12% 0%, rgba(255,107,95,.10), transparent 55%),
-        radial-gradient(circle at 100% 0%, rgba(234,182,91,.08), transparent 50%),
-        radial-gradient(circle at 100% 100%, rgba(49,212,199,.10), transparent 55%),
-        #101218;
+        radial-gradient(
+          circle at 8% 20%,
+          rgba(34,211,238,.18),
+          transparent 34%
+        ),
+        radial-gradient(
+          circle at 88% 15%,
+          rgba(99,102,241,.20),
+          transparent 35%
+        ),
+        radial-gradient(
+          circle at 55% 100%,
+          rgba(242,85,95,.11),
+          transparent 36%
+        ),
+        linear-gradient(
+          145deg,
+          rgba(255,255,255,.05),
+          rgba(255,255,255,.015)
+        );
     }
 
-    .tile small { display: block; font-family: var(--font-mono); color: #727680; font-size: 10.5px; text-transform: uppercase; letter-spacing: .07em; margin-bottom: 13px; }
-    .tile strong { display: block; font-family: var(--font-display); font-weight: 700; font-size: 22px; letter-spacing: -.02em; }
-    .tile p { color: #858994; font-size: 12px; margin-top: 8px; }
+    .tile small {
+      display: block;
 
-    .signal {
-      position: absolute;
-      right: 22px;
-      bottom: 45px;
-      width: 70px;
-      height: 70px;
-      border-radius: 50%;
-      border: 1px solid rgba(49,212,199,.3);
-      box-shadow: 0 0 35px rgba(49,212,199,.08);
+      color: var(--text-muted);
+
+      font-size: 9px;
+
+      margin-bottom: 12px;
     }
 
-    .signal::before, .signal::after {
-      content: "";
-      position: absolute;
-      inset: 12px;
-      border: 1px solid rgba(255,107,95,.3);
-      border-radius: 50%;
+    .tile strong {
+      display: block;
+
+      font-family: "Sora", sans-serif;
+
+      font-size: 17px;
+
+      letter-spacing: -.03em;
     }
-    .signal::after { inset: 25px; border-color: rgba(234,182,91,.4); }
+
+    .tile p {
+      color: var(--text-muted);
+
+      font-size: 12px;
+
+      margin-top: 7px;
+    }
+
+    .tile.accent-coral {
+      border-top:
+        2px solid var(--coral);
+    }
+
+    .tile.accent-coral small {
+      color: var(--coral);
+    }
+
+    .tile.accent-teal {
+      border-top:
+        2px solid var(--cyan);
+    }
+
+    .tile.accent-teal small {
+      color: var(--cyan);
+    }
 
     .bar {
       position: absolute;
-      left: 22px; right: 22px; bottom: 20px;
+
+      left: 20px;
+      right: 20px;
+      bottom: 16px;
+
       height: 3px;
-      border-radius: 20px;
-      background: rgba(255,255,255,.06);
+
       overflow: hidden;
+
+      border-radius: 100px;
+
+      background: rgba(255,255,255,.07);
     }
-    .bar span { display: block; width: 65%; height: 100%; background: var(--coral); }
 
-    .accent-coral strong { color: var(--coral-soft); }
-    .accent-teal strong { color: var(--teal-soft); }
+    .bar span {
+      display: block;
 
-    .bar.coral span { background: var(--coral); width: 72%; }
-    .bar.teal span { background: var(--teal); width: 55%; }
+      width: 66%;
+      height: 100%;
+
+      border-radius: inherit;
+
+      background:
+        linear-gradient(
+          90deg,
+          var(--cyan),
+          var(--indigo)
+        );
+    }
+
+    .bar.coral span {
+      background: var(--coral);
+
+      box-shadow:
+        0 0 12px var(--coral-glow);
+    }
+
+    .bar.teal span {
+      background: var(--cyan);
+
+      box-shadow:
+        0 0 12px rgba(34,211,238,.3);
+    }
 
 
-    /* =========================================================
-       SECTIONS
-    ========================================================= */
+    /* =====================================================
+       SECTION HEAD
+       ===================================================== */
 
-    section { padding: 110px 0; position: relative; }
-    .section-head { max-width: 760px; margin-bottom: 48px; }
+    .section-head {
+      max-width: 760px;
+
+      margin-bottom: 55px;
+    }
 
     .kicker {
       display: inline-block;
-      font-family: var(--font-mono);
-      color: #a6a9b2;
-      font-size: 11px;
+
+      margin-bottom: 15px;
+
+      color: var(--cyan);
+
+      font-size: 10px;
+      font-weight: 600;
+
+      letter-spacing: .04em;
       text-transform: uppercase;
-      letter-spacing: .12em;
-      margin-bottom: 12px;
     }
-    .kicker.coral { color: var(--coral); }
-    .kicker.teal { color: var(--teal); }
-    .kicker.amber { color: var(--amber); }
+
+    .kicker.coral {
+      color: var(--coral);
+    }
+
+    .kicker.teal {
+      color: var(--cyan);
+    }
+
+    .kicker.amber {
+      color: var(--amber);
+    }
 
     .section-head h2 {
-      font-family: var(--font-display);
-      font-weight: 700;
-      font-size: clamp(34px, 4vw, 55px);
-      line-height: 1.05;
-      letter-spacing: -.025em;
+      font-family: "Sora", sans-serif;
+
+      font-size:
+        clamp(32px, 4vw, 50px);
+
+      line-height: 1.1;
+
+      letter-spacing: -.045em;
     }
 
-    .section-head p { margin-top: 16px; color: var(--muted); max-width: 670px; font-size: 15px; }
+    .section-head p {
+      max-width: 690px;
+
+      margin-top: 18px;
+
+      color: var(--text-soft);
+
+      font-size: 15px;
+    }
 
 
-    /* =========================================================
+    /* =====================================================
        ABOUT
-    ========================================================= */
+       ===================================================== */
 
-    .story-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+    .story-grid {
+      display: grid;
+
+      grid-template-columns:
+        repeat(2, minmax(0,1fr));
+
+      gap: 18px;
+    }
 
     .card {
-      background: linear-gradient(145deg, rgba(255,255,255,.045), rgba(255,255,255,.018));
       border: 1px solid var(--border);
-      border-radius: var(--radius);
-      transition: border-color .25s ease, transform .25s ease, box-shadow .25s ease;
+
+      border-radius: var(--radius-lg);
+
+      background:
+        linear-gradient(
+          145deg,
+          rgba(255,255,255,.035),
+          rgba(255,255,255,.012)
+        );
+
+      box-shadow:
+        0 16px 45px rgba(0,0,0,.12);
+
+      transition:
+        transform .3s ease,
+        box-shadow .3s ease,
+        border-color .3s ease;
     }
+
     .card:hover {
-      border-color: var(--border-strong);
-      transform: translateY(-3px);
-      box-shadow: 0 20px 55px rgba(0,0,0,.3);
+      transform: translateY(-4px);
+
+      box-shadow:
+        var(--shadow-hover);
+
+      border-color:
+        var(--border-strong);
     }
 
-    .story { padding: 34px; }
-    .story.alt { background: linear-gradient(145deg, rgba(49,212,199,.045), rgba(255,255,255,.018)); }
+    .story {
+      padding: 32px;
+    }
 
-    .story h3 { font-family: var(--font-display); font-weight: 700; font-size: 24px; letter-spacing: -.015em; }
-    .story > p { margin-top: 15px; color: var(--muted); font-size: 14px; line-height: 1.8; }
+    .story h3 {
+      font-family: "Sora", sans-serif;
 
-    .pillars { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 28px; }
+      font-size: 24px;
+
+      letter-spacing: -.035em;
+    }
+
+    .story > p {
+      color: var(--text-soft);
+
+      margin-top: 16px;
+
+      font-size: 14px;
+      line-height: 1.8;
+    }
+
+    .pillars {
+      display: grid;
+
+      grid-template-columns:
+        repeat(2, minmax(0,1fr));
+
+      gap: 10px;
+
+      margin-top: 28px;
+    }
 
     .pillar {
       position: relative;
-      padding: 16px 16px 16px 20px;
-      background: rgba(255,255,255,.025);
-      border: 1px solid rgba(255,255,255,.06);
-      border-radius: 14px;
+
+      min-height: 90px;
+
+      padding: 17px 17px 17px 21px;
+
+      overflow: hidden;
+
+      border: 1px solid var(--border);
+
+      border-radius: 13px;
+
+      background:
+        rgba(255,255,255,.018);
+
+      transition:
+        transform .25s ease,
+        border-color .25s ease;
     }
+
     .pillar::before {
       content: "";
+
       position: absolute;
-      left: 0; top: 14px; bottom: 14px;
+
+      left: 0;
+      top: 16px;
+
       width: 3px;
-      border-radius: 3px;
-      background: var(--pc, var(--coral));
+      height: 28px;
+
+      border-radius: 0 4px 4px 0;
+
+      background:
+        var(--pillar-color);
     }
-    .pillar:nth-child(3n+1) { --pc: var(--coral); }
-    .pillar:nth-child(3n+2) { --pc: var(--amber); }
-    .pillar:nth-child(3n+3) { --pc: var(--teal); }
 
-    .pillar b { display: block; font-size: 13px; }
-    .pillar span { display: block; color: #747883; font-size: 11px; margin-top: 4px; }
+    .pillar:nth-child(1) {
+      --pillar-color: var(--cyan);
+    }
+
+    .pillar:nth-child(2) {
+      --pillar-color: var(--indigo);
+    }
+
+    .pillar:nth-child(3) {
+      --pillar-color: var(--coral);
+    }
+
+    .pillar:nth-child(4) {
+      --pillar-color: var(--amber);
+    }
+
+    .pillar:hover {
+      transform: translateX(3px);
+
+      border-color:
+        color-mix(
+          in srgb,
+          var(--pillar-color) 35%,
+          transparent
+        );
+    }
+
+    .pillar b {
+      display: block;
+
+      color: var(--pillar-color);
+
+      font-size: 12px;
+    }
+
+    .pillar span {
+      display: block;
+
+      color: var(--text-muted);
+
+      font-size: 11px;
+
+      margin-top: 5px;
+    }
 
 
-    /* =========================================================
+    /* =====================================================
        PRODUCTS
-    ========================================================= */
+       ===================================================== */
 
-    .products { display: flex; flex-direction: column; gap: 35px; }
+    .products {
+      display: flex;
+      flex-direction: column;
+
+      gap: 50px;
+    }
 
     .product {
-      border: 1px solid var(--border);
-      border-radius: 28px;
-      overflow: hidden;
-      background: #0d0f14;
-      display: grid;
-      grid-template-columns: 1.15fr .85fr;
-      transition: border-color .3s ease, box-shadow .3s ease;
-    }
-    .product.vibefit:hover { border-color: rgba(255,107,95,.35); box-shadow: 0 25px 70px rgba(255,107,95,.08); }
-    .product.kokankart:hover { border-color: rgba(49,212,199,.35); box-shadow: 0 25px 70px rgba(49,212,199,.08); }
+      --product: var(--cyan);
+      --product-soft: rgba(34,211,238,.12);
+      --product-glow: rgba(34,211,238,.25);
 
-    .product-main { padding: 32px; }
-    .product-top { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 24px; }
+      position: relative;
+
+      overflow: hidden;
+
+      border: 1px solid var(--border);
+
+      border-radius: var(--radius-xl);
+
+      background:
+        linear-gradient(
+          145deg,
+          rgba(255,255,255,.035),
+          rgba(255,255,255,.012)
+        );
+
+      box-shadow:
+        var(--shadow);
+
+      transition:
+        transform .35s ease,
+        box-shadow .35s ease,
+        border-color .35s ease;
+    }
+
+    .product.vibefit {
+      --product: var(--coral);
+      --product-soft: var(--coral-soft);
+      --product-glow: var(--coral-glow);
+    }
+
+    .product.kokankart {
+      --product: var(--amber);
+      --product-soft: var(--amber-soft);
+      --product-glow: var(--amber-glow);
+    }
+
+    .product::before {
+      content: "";
+
+      position: absolute;
+
+      left: 0;
+      top: 0;
+      right: 0;
+
+      height: 3px;
+
+      z-index: 5;
+
+      background:
+        linear-gradient(
+          90deg,
+          var(--product),
+          transparent 75%
+        );
+    }
+
+    .product:hover {
+      transform: translateY(-5px);
+
+      border-color:
+        color-mix(
+          in srgb,
+          var(--product) 25%,
+          rgba(255,255,255,.08)
+        );
+
+      box-shadow:
+        0 30px 80px rgba(0,0,0,.35),
+        0 0 55px var(--product-glow);
+    }
+
+
+    /* =====================================================
+       NEW BACKGROUND PRODUCT HERO
+       ===================================================== */
+
+    .product-background {
+      position: relative;
+
+      min-height: 480px;
+
+      overflow: hidden;
+
+      display: flex;
+      align-items: flex-end;
+
+      background-color: #07101b;
+
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: cover;
+
+      isolation: isolate;
+    }
+
+    .vibefit .product-background {
+      background-image:
+        url("assets/vibefit-background.png");
+    }
+
+    .kokankart .product-background {
+      background-image:
+        url("assets/kokankart-background.png");
+    }
+
+    .product-background::after {
+      content: "";
+
+      position: absolute;
+      inset: 0;
+
+      z-index: -1;
+
+      background:
+        linear-gradient(
+          90deg,
+          rgba(5,9,17,.93) 0%,
+          rgba(5,9,17,.62) 38%,
+          rgba(5,9,17,.08) 75%,
+          rgba(5,9,17,.10) 100%
+        );
+    }
+
+    .product-background-content {
+      width: min(620px, 55%);
+
+      padding:
+        55px
+        55px
+        48px;
+    }
+
+    .product-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      gap: 15px;
+
+      margin-bottom: 20px;
+    }
 
     .status {
       display: inline-flex;
       align-items: center;
+
+      width: fit-content;
+
       padding: 7px 11px;
-      border-radius: 999px;
-      background: rgba(255,107,95,.08);
-      color: var(--coral);
-      font-family: var(--font-mono);
-      font-size: 10px;
+
+      border: 1px solid
+        color-mix(
+          in srgb,
+          var(--product) 38%,
+          transparent
+        );
+
+      border-radius: 8px;
+
+      color: var(--product);
+
+      background: var(--product-soft);
+
+      font-size: 9px;
+      font-weight: 600;
+
       text-transform: uppercase;
-      letter-spacing: .05em;
-      border: 1px solid rgba(255,107,95,.15);
-    }
-    .status.building { background: rgba(49,212,199,.08); color: var(--teal); border-color: rgba(49,212,199,.15); }
-
-
-    /* =========================================================
-       PRODUCT BACKGROUND BANNER
-    ========================================================= */
-
-    .product-banner {
-      position: relative;
-      min-height: 360px;
-      border-radius: 22px;
-      overflow: hidden;
-      border: 1px solid rgba(255,255,255,.1);
-      background-size: cover;
-      background-position: center;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      transition: border-color .3s ease;
+      letter-spacing: .025em;
     }
 
-    .vibefit-banner {
-      background-image:
-        linear-gradient(90deg, rgba(8,9,13,.82), rgba(8,9,13,.28), rgba(8,9,13,.65)),
-        url("assets/vibefit-bg.png");
-    }
-    .kokankart-banner {
-      background-image:
-        linear-gradient(90deg, rgba(8,9,13,.82), rgba(8,9,13,.25), rgba(8,9,13,.65)),
-        url("assets/kokankart-bg.png");
+    .product-background .kicker {
+      margin: 0;
+
+      color: var(--product);
     }
 
-    .product.vibefit:hover .product-banner { border-color: rgba(255,107,95,.4); }
-    .product.kokankart:hover .product-banner { border-color: rgba(49,212,199,.4); }
+    .product-background h3 {
+      margin-top: 12px;
 
-    .banner-glow {
-      position: absolute;
-      width: 250px;
-      height: 250px;
-      border-radius: 50%;
-      filter: blur(70px);
-      pointer-events: none;
-    }
-    .vibefit-banner .banner-glow { background: rgba(255,107,95,.15); left: 10%; top: 15%; }
-    .kokankart-banner .banner-glow { background: rgba(49,212,199,.14); left: 10%; top: 15%; }
+      font-family: "Sora", sans-serif;
 
-    .banner-content {
-      position: relative;
-      z-index: 2;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      min-height: 275px;
-      padding: 30px;
-    }
+      font-size:
+        clamp(36px, 5vw, 62px);
 
-    .banner-text { max-width: 280px; }
-
-    .banner-name {
-      display: block;
-      font-family: var(--font-display);
-      font-weight: 700;
-      font-size: clamp(40px, 5vw, 62px);
       line-height: 1;
-      letter-spacing: -.03em;
+
+      letter-spacing: -.055em;
     }
-    .vibefit-banner .banner-name { color: var(--coral-soft); }
-    .kokankart-banner .banner-name { color: var(--teal-soft); }
 
-    .banner-tag { display: block; margin-top: 12px; font-family: var(--font-mono); color: rgba(255,255,255,.65); font-size: 11px; letter-spacing: .03em; }
+    .product-background h3::before {
+      content: "";
 
-    .banner-footer {
-      position: relative;
-      z-index: 3;
+      display: inline-block;
+
+      width: 8px;
+      height: 8px;
+
+      margin-right: 12px;
+
+      vertical-align: middle;
+
+      border-radius: 50%;
+
+      background: var(--product);
+
+      box-shadow:
+        0 0 18px var(--product-glow);
+    }
+
+    .product-background .lead {
+      margin-top: 20px;
+
+      color: #d0d7e3;
+
+      font-size: 14px;
+
+      line-height: 1.75;
+
+      text-shadow:
+        0 2px 15px rgba(0,0,0,.7);
+    }
+
+    .product-background .tags {
       display: flex;
-      align-items: center;
-      gap: 12px;
-      padding: 16px 20px;
-      background: rgba(5,6,9,.68);
-      backdrop-filter: blur(10px);
-      border-top: 1px solid rgba(255,255,255,.08);
-      color: #b8bbc3;
-      font-family: var(--font-mono);
-      font-size: 10px;
+      flex-wrap: wrap;
+
+      gap: 7px;
+
+      margin-top: 22px;
     }
-    .banner-footer i { width: 4px; height: 4px; border-radius: 50%; background: rgba(255,255,255,.3); }
 
-    .banner-bar { flex: 1; height: 3px; background: rgba(255,255,255,.08); border-radius: 20px; overflow: hidden; margin-left: 5px; }
-    .banner-bar span { display: block; height: 100%; width: 68%; background: var(--coral); }
-    .kokankart-banner .banner-bar span { background: var(--teal); width: 52%; }
-
-
-    /* =========================================================
-       PRODUCT CONTENT
-    ========================================================= */
-
-    .product h3 { font-family: var(--font-display); font-weight: 700; margin-top: 30px; font-size: 32px; letter-spacing: -.02em; }
-    .product .lead { color: var(--muted); font-size: 14px; line-height: 1.8; margin-top: 10px; }
-
-    .tags { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 22px; }
     .tag {
-      padding: 7px 10px;
-      border: 1px solid rgba(255,255,255,.08);
-      background: rgba(255,255,255,.025);
-      border-radius: 999px;
-      color: #a7aab3;
-      font-family: var(--font-mono);
-      font-size: 10px;
-      transition: border-color .2s ease;
+      display: inline-flex;
+
+      padding: 7px 9px;
+
+      border: 1px solid
+        color-mix(
+          in srgb,
+          var(--product) 38%,
+          rgba(255,255,255,.08)
+        );
+
+      border-radius: 7px;
+
+      color: #d9e1eb;
+
+      background:
+        rgba(4,8,15,.55);
+
+      backdrop-filter: blur(7px);
+
+      font-size: 8px;
+
+      transition:
+        transform .2s ease,
+        background .2s ease,
+        color .2s ease,
+        border-color .2s ease;
     }
-    .product.vibefit:hover .tag { border-color: rgba(255,107,95,.25); }
-    .product.kokankart:hover .tag { border-color: rgba(49,212,199,.25); }
+
+    .tag:hover {
+      transform: translateY(-2px);
+
+      color: var(--product);
+
+      background: var(--product-soft);
+
+      border-color: var(--product);
+    }
+
+
+    /* =====================================================
+       PRODUCT DETAILS
+       ===================================================== */
+
+    .product-details {
+      padding: 34px 45px 40px;
+    }
 
     .product-info {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 25px;
-      margin-top: 32px;
-      padding-top: 28px;
-      border-top: 1px solid rgba(255,255,255,.07);
+
+      grid-template-columns:
+        repeat(2, minmax(0,1fr));
+
+      gap: 35px;
     }
 
-    .info h4 { font-family: var(--font-mono); text-transform: uppercase; letter-spacing: .08em; font-size: 11px; margin-bottom: 12px; }
-    .vibefit .info h4 { color: var(--coral-soft); }
-    .kokankart .info h4 { color: var(--teal-soft); }
+    .info h4 {
+      margin-bottom: 13px;
 
-    .info p, .info li { color: #858994; font-size: 12px; line-height: 1.75; }
-    .info ul { padding-left: 17px; }
-    .info li + li { margin-top: 5px; }
+      color: var(--product);
 
-    .product-actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px; }
-    .product-actions .btn { font-size: 11px; min-height: 40px; padding: 0 13px; }
+      font-family: "JetBrains Mono", monospace;
 
+      font-size: 10px;
 
-    /* =========================================================
-       SHOWCASE IMAGE
-    ========================================================= */
+      text-transform: uppercase;
+      letter-spacing: .04em;
+    }
 
-    .product-image {
-      min-height: 100%;
+    .info p,
+    .info li {
+      color: var(--text-soft);
+
+      font-size: 13px;
+      line-height: 1.75;
+    }
+
+    .info ul {
+      list-style: none;
+    }
+
+    .info li {
+      position: relative;
+
+      padding-left: 17px;
+
+      margin-bottom: 7px;
+    }
+
+    .info li::before {
+      content: "";
+
+      position: absolute;
+
+      left: 0;
+      top: .75em;
+
+      width: 5px;
+      height: 5px;
+
+      border-radius: 50%;
+
+      background: var(--product);
+
+      box-shadow:
+        0 0 8px var(--product-glow);
+    }
+
+    .product-actions {
       display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 30px;
-      background: radial-gradient(circle at center, rgba(255,255,255,.05), transparent 65%);
-      border-left: 1px solid rgba(255,255,255,.07);
+      flex-wrap: wrap;
+
+      gap: 9px;
+
+      margin-top: 20px;
     }
-    .product-image img {
+
+    .product-actions .btn.primary {
+      background: var(--product);
+
+      border-color: var(--product);
+
+      color: #fff;
+
+      box-shadow:
+        0 10px 28px var(--product-glow);
+    }
+
+    .product-actions .btn.primary:hover {
+      box-shadow:
+        0 16px 40px var(--product-glow);
+    }
+
+
+    /* =====================================================
+       OLD SHOWCASE IMAGE
+       ===================================================== */
+
+    .product-showcase {
+      padding:
+        0
+        45px
+        45px;
+    }
+
+    .showcase-frame {
+      position: relative;
+
+      overflow: hidden;
+
+      border:
+        1px solid
+        rgba(255,255,255,.08);
+
+      border-radius: 20px;
+
+      background:
+        rgba(0,0,0,.18);
+
+      box-shadow:
+        inset 0 0 0 1px rgba(255,255,255,.02);
+    }
+
+    .showcase-frame::after {
+      content: "";
+
+      position: absolute;
+      inset: 0;
+
+      pointer-events: none;
+
+      background:
+        linear-gradient(
+          180deg,
+          transparent 65%,
+          rgba(0,0,0,.08)
+        );
+    }
+
+    .showcase-frame img {
       width: 100%;
-      max-width: 520px;
       height: auto;
-      object-fit: contain;
-      filter: drop-shadow(0 25px 50px rgba(0,0,0,.5));
+
+      transition:
+        transform .65s var(--ease);
+    }
+
+    .product:hover .showcase-frame img {
+      transform: scale(1.012);
     }
 
 
-    /* =========================================================
+    /* =====================================================
        APPROACH
-    ========================================================= */
+       ===================================================== */
 
-    .approach { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; }
+    .approach {
+      display: grid;
 
-    .step { padding: 24px; min-height: 220px; position: relative; overflow: hidden; }
+      grid-template-columns:
+        repeat(5, minmax(0,1fr));
+
+      gap: 12px;
+    }
+
+    .step {
+      position: relative;
+
+      min-height: 220px;
+
+      padding: 25px;
+
+      overflow: hidden;
+    }
 
     .step .line {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 28px;
-      height: 28px;
-      margin-bottom: 26px;
-      border-radius: 8px;
-      border: 1px solid var(--sc, var(--amber));
-      background: color-mix(in srgb, var(--sc, var(--amber)) 12%, transparent);
-      color: var(--sc, var(--amber));
-      font-family: var(--font-mono);
-      font-size: 11px;
-      font-weight: 600;
+      width: 40px;
+      height: 3px;
+
+      margin-bottom: 25px;
+
+      border-radius: 100px;
+
+      background:
+        linear-gradient(
+          90deg,
+          var(--step-color),
+          transparent
+        );
     }
-    .step:nth-child(5n+1) { --sc: var(--coral); }
-    .step:nth-child(5n+2) { --sc: var(--amber); }
-    .step:nth-child(5n+3) { --sc: var(--teal); }
-    .step:nth-child(5n+4) { --sc: var(--coral); }
-    .step:nth-child(5n+5) { --sc: var(--amber); }
 
-    .step b { font-size: 17px; }
-    .step p { color: var(--muted); font-size: 12px; margin-top: 10px; }
+    .step:nth-child(1) {
+      --step-color: var(--cyan);
+    }
 
+    .step:nth-child(2) {
+      --step-color: var(--indigo);
+    }
 
-    /* =========================================================
-       VALUES
-    ========================================================= */
+    .step:nth-child(3) {
+      --step-color: var(--coral);
+    }
 
-    .values { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
-    .value { padding: 25px; min-height: 145px; }
+    .step:nth-child(4) {
+      --step-color: var(--amber);
+    }
 
-    .value .dot-marker {
-      display: inline-block;
-      width: 8px;
-      height: 8px;
-      margin-bottom: 12px;
+    .step:nth-child(5) {
+      --step-color: var(--cyan);
+    }
+
+    .step b {
+      color: var(--step-color);
+
+      font-family: "Sora", sans-serif;
+
+      font-size: 16px;
+    }
+
+    .step p {
+      color: var(--text-muted);
+
+      font-size: 12px;
+
+      margin-top: 10px;
+    }
+
+    .step::after {
+      content: "";
+
+      position: absolute;
+
+      right: 20px;
+      top: 20px;
+
+      width: 7px;
+      height: 7px;
+
       border-radius: 50%;
-      background: var(--vc, var(--coral));
-      box-shadow: 0 0 12px color-mix(in srgb, var(--vc, var(--coral)) 60%, transparent);
+
+      background: var(--step-color);
+
+      box-shadow:
+        0 0 14px var(--step-color);
     }
-    .value:nth-child(4n+1) { --vc: var(--coral); }
-    .value:nth-child(4n+2) { --vc: var(--amber); }
-    .value:nth-child(4n+3) { --vc: var(--teal); }
-    .value:nth-child(4n+4) { --vc: var(--coral-soft); }
-
-    .value b { font-size: 16px; }
-    .value p { color: var(--muted); font-size: 12px; margin-top: 8px; }
 
 
-    /* =========================================================
+    /* =====================================================
+       VALUES
+       ===================================================== */
+
+    .values {
+      display: grid;
+
+      grid-template-columns:
+        repeat(4, minmax(0,1fr));
+
+      gap: 12px;
+    }
+
+    .value {
+      position: relative;
+
+      min-height: 140px;
+
+      padding: 24px 24px 24px 28px;
+
+      overflow: hidden;
+    }
+
+    .value::before {
+      content: "";
+
+      position: absolute;
+
+      left: 0;
+      top: 0;
+      bottom: 0;
+
+      width: 3px;
+
+      background: var(--value-color);
+    }
+
+    .value:nth-child(1) {
+      --value-color: var(--cyan);
+    }
+
+    .value:nth-child(2) {
+      --value-color: var(--indigo);
+    }
+
+    .value:nth-child(3) {
+      --value-color: var(--coral);
+    }
+
+    .value:nth-child(4) {
+      --value-color: var(--amber);
+    }
+
+    .value:nth-child(5) {
+      --value-color: var(--cyan);
+    }
+
+    .value:nth-child(6) {
+      --value-color: var(--indigo);
+    }
+
+    .value:nth-child(7) {
+      --value-color: var(--coral);
+    }
+
+    .value:nth-child(8) {
+      --value-color: var(--amber);
+    }
+
+    .value b {
+      color: var(--value-color);
+
+      font-family: "Sora", sans-serif;
+
+      font-size: 15px;
+    }
+
+    .value p {
+      color: var(--text-muted);
+
+      font-size: 12px;
+
+      margin-top: 8px;
+    }
+
+    .value:hover {
+      border-color:
+        color-mix(
+          in srgb,
+          var(--value-color) 35%,
+          transparent
+        );
+    }
+
+
+    /* =====================================================
        VISION
-    ========================================================= */
+       ===================================================== */
 
-    .vision { padding: 38px; display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: center; }
-    .vision h3 { font-family: var(--font-display); font-weight: 700; font-size: 29px; line-height: 1.1; letter-spacing: -.02em; margin-top: 5px; }
-    .vision p { color: var(--muted); font-size: 13px; margin-top: 14px; max-width: 600px; }
+    .vision {
+      display: grid;
 
-    .future { display: grid; grid-template-columns: 1fr 1fr; gap: 9px; }
-    .future div {
-      padding: 15px;
-      border: 1px solid rgba(255,255,255,.07);
-      border-left: 2px solid var(--fc, var(--coral));
-      border-radius: 12px;
-      background: rgba(255,255,255,.025);
-      color: #b5b8c0;
-      font-size: 11px;
+      grid-template-columns:
+        minmax(0,1fr)
+        minmax(360px,.8fr);
+
+      gap: 50px;
+
+      padding: 40px;
     }
-    .future div:nth-child(3n+1) { --fc: var(--coral); }
-    .future div:nth-child(3n+2) { --fc: var(--amber); }
-    .future div:nth-child(3n+3) { --fc: var(--teal); }
+
+    .vision h3 {
+      max-width: 650px;
+
+      margin-top: 7px;
+
+      font-family: "Sora", sans-serif;
+
+      font-size:
+        clamp(28px, 3.5vw, 44px);
+
+      line-height: 1.12;
+
+      letter-spacing: -.045em;
+    }
+
+    .vision p {
+      max-width: 640px;
+
+      margin-top: 18px;
+
+      color: var(--text-soft);
+
+      font-size: 14px;
+    }
+
+    .future {
+      display: grid;
+
+      grid-template-columns: 1fr 1fr;
+
+      gap: 9px;
+
+      align-content: center;
+    }
+
+    .future div {
+      padding: 14px;
+
+      border: 1px solid var(--border);
+
+      border-radius: 11px;
+
+      color: var(--text-soft);
+
+      background:
+        rgba(255,255,255,.018);
+
+      font-family: "JetBrains Mono", monospace;
+
+      font-size: 9px;
+
+      transition:
+        transform .2s ease,
+        border-color .2s ease,
+        background .2s ease;
+    }
+
+    .future div:hover {
+      transform: translateY(-3px);
+
+      color: var(--text);
+
+      border-color:
+        rgba(34,211,238,.3);
+
+      background:
+        rgba(34,211,238,.05);
+    }
 
 
-    /* =========================================================
+    /* =====================================================
        CTA
-    ========================================================= */
+       ===================================================== */
 
-    .cta { padding: 65px 35px; text-align: center; position: relative; overflow: hidden; }
+    .cta {
+      position: relative;
+
+      overflow: hidden;
+
+      padding: 65px 50px;
+
+      text-align: center;
+    }
+
     .cta::before {
       content: "";
+
       position: absolute;
-      width: 320px;
-      height: 320px;
-      left: 50%;
-      top: -180px;
-      transform: translateX(-50%);
-      background: linear-gradient(120deg, rgba(255,107,95,.10), rgba(49,212,199,.08));
-      filter: blur(80px);
+
+      width: 360px;
+      height: 360px;
+
+      right: -130px;
+      bottom: -210px;
+
       border-radius: 50%;
+
+      background:
+        radial-gradient(
+          circle,
+          rgba(242,85,95,.16),
+          transparent 68%
+        );
+
+      pointer-events: none;
     }
-    .cta > * { position: relative; z-index: 2; }
 
-    .cta h2 { font-family: var(--font-display); font-weight: 700; font-size: clamp(35px, 5vw, 60px); letter-spacing: -.03em; line-height: 1; margin-top: 8px; }
-    .cta p { max-width: 560px; margin: 16px auto 25px; color: var(--muted); font-size: 14px; }
+    .cta::after {
+      content: "";
+
+      position: absolute;
+
+      width: 300px;
+      height: 300px;
+
+      left: -150px;
+      top: -180px;
+
+      border-radius: 50%;
+
+      background:
+        radial-gradient(
+          circle,
+          rgba(34,211,238,.12),
+          transparent 68%
+        );
+
+      pointer-events: none;
+    }
+
+    .cta .kicker,
+    .cta h2,
+    .cta p,
+    .cta .btn {
+      position: relative;
+      z-index: 2;
+    }
+
+    .cta h2 {
+      margin-top: 5px;
+
+      font-family: "Sora", sans-serif;
+
+      font-size:
+        clamp(32px, 5vw, 58px);
+
+      letter-spacing: -.05em;
+    }
+
+    .cta p {
+      max-width: 600px;
+
+      margin: 17px auto 25px;
+
+      color: var(--text-soft);
+
+      font-size: 14px;
+    }
 
 
-    /* =========================================================
+    /* =====================================================
        FOOTER
-    ========================================================= */
+       ===================================================== */
 
-    footer { padding: 65px 0 30px; border-top: 1px solid rgba(255,255,255,.06); margin-top: 50px; }
-    .footer-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+    footer {
+      padding: 55px 0 30px;
 
-    .footer-brand { font-family: var(--font-display); font-weight: 700; font-size: 15px; }
-    .footer-brand span { display: block; margin-top: 7px; font-family: Inter, sans-serif; color: var(--muted); font-size: 11px; font-weight: 400; }
+      border-top: 1px solid var(--border);
 
-    .footer-links { display: flex; justify-content: flex-end; flex-wrap: wrap; gap: 18px; }
-    .footer-links a { color: #858993; font-size: 11px; transition: color .2s ease; }
-    .footer-links a:hover { color: white; }
+      background:
+        rgba(0,0,0,.12);
+    }
 
-    .copyright { margin-top: 50px; padding-top: 22px; border-top: 1px solid rgba(255,255,255,.06); color: #626671; font-size: 10px; }
+    .footer-grid {
+      display: grid;
 
+      grid-template-columns:
+        1fr 1fr;
 
-    /* =========================================================
-       REVEAL ANIMATION
-    ========================================================= */
+      gap: 40px;
+    }
 
-    .reveal { opacity: 0; transform: translateY(20px); transition: opacity .7s ease, transform .7s ease; }
-    .reveal.show { opacity: 1; transform: translateY(0); }
+    .footer-brand {
+      font-family: "Sora", sans-serif;
 
-    @media (prefers-reduced-motion: reduce) {
-      html { scroll-behavior: auto; }
-      .reveal { opacity: 1; transform: none; transition: none; }
-      .btn::after { display: none; }
-      .progress-bar { transition: none; }
-      .card, .product, .tile { transition: none; }
+      font-size: 15px;
+      font-weight: 600;
+    }
+
+    .footer-brand span {
+      display: block;
+
+      margin-top: 8px;
+
+      color: var(--text-muted);
+
+      font-family: "Inter", sans-serif;
+
+      font-size: 12px;
+      font-weight: 400;
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: flex-end;
+      flex-wrap: wrap;
+
+      gap: 15px 22px;
+
+      color: var(--text-muted);
+
+      font-size: 9px;
+    }
+
+    .footer-links a:hover {
+      color: var(--cyan);
+    }
+
+    .copyright {
+      margin-top: 35px;
+      padding-top: 20px;
+
+      border-top: 1px solid var(--border);
+
+      color: var(--text-muted);
+
+      font-family: "JetBrains Mono", monospace;
+
+      font-size: 9px;
+
+      text-align: center;
     }
 
 
-    /* =========================================================
+    /* =====================================================
+       FOCUS
+       ===================================================== */
+
+    a:focus-visible,
+    button:focus-visible {
+      outline: 2px solid var(--cyan);
+      outline-offset: 4px;
+    }
+
+
+    /* =====================================================
        RESPONSIVE
-    ========================================================= */
+       ===================================================== */
 
-    @media (max-width: 1000px) {
-      .hero { grid-template-columns: 1fr; gap: 50px; }
-      .hero-panel { max-width: 700px; }
-      .product { grid-template-columns: 1fr; }
-      .product-image { border-left: 0; border-top: 1px solid rgba(255,255,255,.07); }
-      .approach { grid-template-columns: repeat(2, 1fr); }
-      .values { grid-template-columns: repeat(2, 1fr); }
+    @media (max-width: 1050px) {
+
+      .hero-grid {
+        grid-template-columns: 1fr;
+        gap: 45px;
+      }
+
+      .hero-copy {
+        max-width: 720px;
+      }
+
+      .hero-panel {
+        max-width: 700px;
+      }
+
+      .approach {
+        grid-template-columns:
+          repeat(3, minmax(0,1fr));
+      }
+
+      .values {
+        grid-template-columns:
+          repeat(2, minmax(0,1fr));
+      }
+
+      .product-background {
+        min-height: 430px;
+      }
+
+      .product-background-content {
+        width: 65%;
+      }
+
     }
 
-    @media (max-width: 720px) {
-      .container { width: min(calc(100% - 28px), var(--container)); }
-      nav { width: calc(100% - 28px); }
+
+    @media (max-width: 800px) {
+
+      section {
+        padding: 85px 0;
+      }
+
+      .nav-inner {
+        min-height: 68px;
+      }
+
+      .menu {
+        display: block;
+      }
 
       .nav-links {
         position: absolute;
-        left: 14px; right: 14px; top: 70px;
-        padding: 15px;
+
+        left: 20px;
+        right: 20px;
+        top: calc(100% + 10px);
+
+        padding: 12px;
+
+        display: flex;
         flex-direction: column;
         align-items: stretch;
-        background: rgba(13,15,20,.97);
+
+        gap: 4px;
+
         border: 1px solid var(--border);
-        border-radius: 18px;
-        display: none;
+
+        border-radius: 15px;
+
+        background:
+          rgba(7,11,20,.96);
+
+        backdrop-filter: blur(20px);
+
+        box-shadow:
+          0 25px 60px rgba(0,0,0,.35);
+
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-8px);
+
+        transition:
+          opacity .2s ease,
+          transform .2s ease,
+          visibility .2s ease;
       }
-      .nav-links.active { display: flex; }
-      .nav-links a { padding: 9px 8px; }
-      .menu { display: block; }
 
-      h1 { font-size: clamp(45px, 13vw, 65px); }
-      .hero { padding-top: 65px; }
-      section { padding: 80px 0; }
+      .nav-links.open {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+      }
 
-      .story-grid { grid-template-columns: 1fr; }
-      .pillars { grid-template-columns: 1fr; }
+      .nav-links a {
+        padding: 13px 12px;
+      }
 
-      .product-main { padding: 20px; }
-      .product-top { align-items: flex-start; flex-direction: column; }
-      .product-banner { min-height: 330px; }
-      .banner-content { padding: 23px; min-height: 255px; }
-      .banner-name { font-size: 43px; }
-      .product-info { grid-template-columns: 1fr; }
-      .product-image { padding: 20px; }
+      .nav-cta {
+        text-align: center;
+      }
 
-      .approach { grid-template-columns: 1fr; }
-      .values { grid-template-columns: 1fr; }
-      .vision { grid-template-columns: 1fr; padding: 25px; gap: 30px; }
-      .future { grid-template-columns: 1fr; }
+      .story-grid {
+        grid-template-columns: 1fr;
+      }
 
-      .footer-grid { grid-template-columns: 1fr; }
-      .footer-links { justify-content: flex-start; }
+      .product-background {
+        min-height: 500px;
+
+        align-items: flex-end;
+
+        background-position:
+          center right;
+      }
+
+      .product-background::after {
+        background:
+          linear-gradient(
+            180deg,
+            rgba(5,9,17,.08) 0%,
+            rgba(5,9,17,.25) 25%,
+            rgba(5,9,17,.9) 72%,
+            rgba(5,9,17,.98) 100%
+          );
+      }
+
+      .product-background-content {
+        width: 100%;
+
+        padding:
+          35px
+          28px
+          30px;
+      }
+
+      .product-details {
+        padding: 30px;
+      }
+
+      .product-info {
+        grid-template-columns: 1fr;
+        gap: 28px;
+      }
+
+      .product-showcase {
+        padding:
+          0
+          30px
+          30px;
+      }
+
+      .approach {
+        grid-template-columns:
+          repeat(2, minmax(0,1fr));
+      }
+
+      .vision {
+        grid-template-columns: 1fr;
+        gap: 30px;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-links {
+        justify-content: flex-start;
+      }
+
     }
 
-    @media (max-width: 450px) {
-      .panel-grid { grid-template-columns: 1fr; }
-      .tile.big { grid-column: span 1; }
-      .actions { flex-direction: column; }
-      .actions .btn { width: 100%; }
-      .banner-footer { flex-wrap: wrap; }
-      .banner-bar { flex-basis: 100%; margin-left: 0; }
+
+    @media (max-width: 560px) {
+
+      .container,
+      .nav-inner {
+        width: min(
+          calc(100% - 28px),
+          var(--container)
+        );
+      }
+
+      .hero {
+        padding:
+          75px 0
+          70px;
+      }
+
+      .hero h1 {
+        font-size: 40px;
+      }
+
+      .hero-copy {
+        font-size: 15px;
+      }
+
+      .actions {
+        align-items: stretch;
+        flex-direction: column;
+      }
+
+      .actions .btn {
+        width: 100%;
+      }
+
+      .panel-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .tile.big {
+        grid-column: auto;
+      }
+
+      .pillars {
+        grid-template-columns: 1fr;
+      }
+
+      .product-background {
+        min-height: 540px;
+      }
+
+      .product-background-content {
+        padding:
+          30px
+          20px
+          25px;
+      }
+
+      .product-background h3 {
+        font-size: 42px;
+      }
+
+      .product-details {
+        padding: 27px 20px 30px;
+      }
+
+      .product-showcase {
+        padding:
+          0
+          20px
+          20px;
+      }
+
+      .showcase-frame {
+        border-radius: 14px;
+      }
+
+      .approach {
+        grid-template-columns: 1fr;
+      }
+
+      .values {
+        grid-template-columns: 1fr;
+      }
+
+      .vision {
+        padding: 28px 22px;
+      }
+
+      .future {
+        grid-template-columns: 1fr;
+      }
+
+      .cta {
+        padding: 50px 25px;
+      }
+
+      .footer-links {
+        gap: 12px 16px;
+      }
+
+    }
+
+
+    /* =====================================================
+       REDUCED MOTION
+       ===================================================== */
+
+    @media (prefers-reduced-motion: reduce) {
+
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+
+        transition-duration: .01ms !important;
+      }
+
+      .reveal {
+        opacity: 1;
+        transform: none;
+      }
+
+      .btn::after {
+        display: none;
+      }
+
     }
 
   </style>
@@ -863,522 +2241,1407 @@
 
 <body>
 
-<div class="progress-bar" id="progressBar"></div>
+  <!-- =====================================================
+       SCROLL PROGRESS
+       ===================================================== -->
+
+  <div
+    class="scroll-progress"
+    id="scrollProgress"
+  ></div>
 
 
-<!-- =========================================================
-     NAVIGATION
-========================================================= -->
+  <!-- =====================================================
+       NAVIGATION
+       ===================================================== -->
 
-<header>
   <nav>
 
-    <a href="#" class="brand">
-      <span class="brand-mark">CMS</span>
-      <span class="brand-text">
-        <strong>Creative Management Solutions</strong>
-        <span>India-focused digital product company.</span>
-      </span>
-    </a>
+    <div class="nav-inner">
 
-    <button class="menu" id="menu" aria-label="Open navigation menu" aria-expanded="false">☰</button>
+      <a
+        class="brand"
+        href="#top"
+        aria-label="Creative Management Solutions home"
+      >
 
-    <div class="nav-links" id="navLinks">
-      <a href="#about">About</a>
-      <a href="#products">Products</a>
-      <a href="#approach">Approach</a>
-      <a href="#values">Values</a>
-      <a class="nav-cta" href="mailto:support@cmsgroup.in">Contact CMS</a>
+        <div class="brand-mark">
+          CMS
+        </div>
+
+        <div class="brand-name">
+          Creative Management Solutions
+          <span>PRODUCT STUDIO</span>
+        </div>
+
+      </a>
+
+
+      <button
+        class="menu"
+        id="menu"
+        aria-label="Open navigation menu"
+        aria-expanded="false"
+      >
+        ☰
+      </button>
+
+
+      <div
+        class="nav-links"
+        id="navLinks"
+      >
+
+        <a href="#about">
+          About
+        </a>
+
+        <a href="#products">
+          Products
+        </a>
+
+        <a href="#approach">
+          Approach
+        </a>
+
+        <a href="#values">
+          Values
+        </a>
+
+        <a
+          class="nav-cta"
+          href="mailto:support@cmsgroup.in"
+        >
+          Contact CMS
+        </a>
+
+      </div>
+
     </div>
 
   </nav>
-</header>
 
 
-<main>
+  <!-- =====================================================
+       MAIN
+       ===================================================== -->
+
+  <main id="top">
 
 
-<!-- =========================================================
-     HERO
-========================================================= -->
+    <!-- ===================================================
+         HERO
+         =================================================== -->
 
-<section class="hero container">
+    <section class="hero">
 
-  <div class="reveal">
+      <div class="container hero-grid">
 
-    <span class="eyebrow"><i class="dot"></i> India-focused digital product company</span>
+        <div class="reveal">
 
-    <h1>
-      <span class="gradient">Building products</span>
-      <br>
-      that solve real problems.
-    </h1>
-
-    <p class="hero-copy">
-      Creative Management Solutions (CMS) builds, launches and grows its own technology products — creating focused digital experiences across wellness, commerce and emerging real-world opportunities.
-    </p>
-
-    <div class="actions">
-      <a class="btn primary" href="#products">Explore Products →</a>
-      <a class="btn secondary" href="#about">Our Philosophy</a>
-    </div>
-
-  </div>
+          <span class="eyebrow">
+            <i class="dot"></i>
+            India-focused digital product company
+          </span>
 
 
-  <div class="hero-panel reveal">
-
-    <div class="panel-top">
-      <span>CMS / PRODUCT STUDIO</span>
-      <span class="live"><i></i> Building</span>
-    </div>
-
-    <div class="panel-grid">
-
-      <div class="tile big">
-        <small>Product philosophy</small>
-        <strong>Build → Launch → Learn → Grow</strong>
-        <p>Independent products designed around real user needs.</p>
-        <div class="signal"></div>
-        <div class="bar"><span></span></div>
-      </div>
-
-      <div class="tile accent-coral">
-        <small>VibeFit</small>
-        <strong>Wellness</strong>
-        <p>Play Store preparation</p>
-        <div class="bar coral"><span></span></div>
-      </div>
-
-      <div class="tile accent-teal">
-        <small>KokanKart</small>
-        <strong>Commerce</strong>
-        <p>Product development</p>
-        <div class="bar teal"><span></span></div>
-      </div>
-
-    </div>
-
-  </div>
-
-</section>
+          <h1>
+            <span class="gradient">
+              Building products
+            </span>
+            <br>
+            that solve real problems.
+          </h1>
 
 
-<!-- =========================================================
-     ABOUT
-========================================================= -->
-
-<section id="about">
-  <div class="container">
-
-    <div class="section-head reveal">
-      <span class="kicker">About CMS</span>
-      <h2>We build. We own. We evolve.</h2>
-      <p>CMS is focused on creating and operating its own products rather than simply building software for others.</p>
-    </div>
-
-    <div class="story-grid">
-
-      <article class="card story reveal">
-        <h3>A product-first company.</h3>
-        <p>
-          We start with a real problem, shape a useful experience, build the technology behind it, launch it, listen to users and continuously improve the product. Our long-term goal is to create independent products that can grow into meaningful ecosystems.
-        </p>
-
-        <div class="pillars">
-          <div class="pillar"><b>Problem → Product</b><span>Start with what matters.</span></div>
-          <div class="pillar"><b>Experience → Trust</b><span>Keep products simple and reliable.</span></div>
-          <div class="pillar"><b>Launch → Learn</b><span>Improve through real usage.</span></div>
-          <div class="pillar"><b>Product → Ecosystem</b><span>Build for long-term scale.</span></div>
-        </div>
-      </article>
-
-      <article class="card story alt reveal">
-        <h3>Where CMS is heading.</h3>
-        <p>
-          CMS is starting with focused digital products and an India-first approach. Over time, the company aims to build multiple technology-led businesses and explore opportunities beyond software when the right time and opportunity arrive.
-        </p>
-
-        <div class="pillars">
-          <div class="pillar"><b>Consumer Products</b><span>Useful everyday experiences.</span></div>
-          <div class="pillar"><b>Business Products</b><span>Technology for real operations.</span></div>
-          <div class="pillar"><b>Digital Commerce</b><span>Connecting people and businesses.</span></div>
-          <div class="pillar"><b>Wellness</b><span>Technology for healthier living.</span></div>
-        </div>
-      </article>
-
-    </div>
-  </div>
-</section>
-
-
-<!-- =========================================================
-     PRODUCTS
-========================================================= -->
-
-<section id="products">
-  <div class="container">
-
-    <div class="section-head reveal">
-      <span class="kicker">Featured products</span>
-      <h2>Two products. One product philosophy.</h2>
-      <p>CMS is currently showcasing VibeFit and KokanKart — two products built around very different real-world needs, each with its own visual identity.</p>
-    </div>
-
-    <div class="products">
-
-      <!-- VIBEFIT -->
-      <article class="product vibefit reveal">
-        <div class="product-main">
-
-          <div class="product-top">
-            <span class="status">Play Store preparation</span>
-            <span class="kicker coral">Wellness / Consumer</span>
-          </div>
-
-          <div class="product-banner vibefit-banner">
-            <div class="banner-glow"></div>
-            <div class="banner-content">
-              <div class="banner-text">
-                <span class="banner-name">VibeFit</span>
-                <span class="banner-tag">Wellness / Consumer</span>
-              </div>
-            </div>
-            <div class="banner-footer">
-              <span>Play Store preparation</span>
-              <i></i>
-              <span>Build</span>
-              <div class="banner-bar"><span></span></div>
-            </div>
-          </div>
-
-          <h3>VibeFit</h3>
-
-          <p class="lead">
-            An offline-first fitness and wellness companion bringing workouts, yoga, nutrition, progress tracking, lifestyle planning and wellness guidance into one experience.
+          <p class="hero-copy">
+            Creative Management Solutions (CMS) builds,
+            launches and grows its own technology products —
+            creating focused digital experiences across
+            wellness, commerce and emerging real-world
+            opportunities.
           </p>
 
-          <div class="tags">
-            <span class="tag">Workout Tracking</span>
-            <span class="tag">Yoga & Meditation</span>
-            <span class="tag">Indian Nutrition</span>
-            <span class="tag">Offline-First</span>
-            <span class="tag">Local Data</span>
-            <span class="tag">Progress Analytics</span>
-            <span class="tag">Lifestyle Planner</span>
-            <span class="tag">Privacy Focused</span>
-          </div>
 
-          <div class="product-info">
-            <div class="info">
-              <h4>Product experience</h4>
-              <ul>
-                <li>Workout library and session tracking</li>
-                <li>Yoga, breathing, mobility and recovery</li>
-                <li>Indian food and nutrition tracking</li>
-                <li>Weight, measurements and progress photos</li>
-                <li>Goals, planning, reports and reminders</li>
-              </ul>
-            </div>
+          <div class="actions">
 
-            <div class="info">
-              <h4>Product philosophy</h4>
-              <p>
-                Core fitness functionality is designed around an offline-first experience, with local storage helping the app remain useful without continuous internet access.
-              </p>
-              <div class="product-actions">
-                <a class="btn primary" href="/vibefit-privacy.html">VibeFit Privacy Policy ↗</a>
-                <a class="btn secondary" href="mailto:support@cmsgroup.in?subject=VibeFit%20Support">VibeFit Support →</a>
-              </div>
-            </div>
+            <a
+              class="btn primary"
+              href="#products"
+            >
+              Explore Products →
+            </a>
+
+            <a
+              class="btn secondary"
+              href="#about"
+            >
+              Our Philosophy
+            </a>
+
           </div>
 
         </div>
 
-        <div class="product-image">
-          <img
-            src="assets/vibefit-showcase.png"
-            alt="VibeFit product showcase showing workouts, yoga, nutrition, recovery, progress and lifestyle screens"
-            loading="lazy"
-          >
-        </div>
-      </article>
 
+        <!-- HERO PANEL -->
 
-      <!-- KOKANKART -->
-      <article class="product kokankart reveal">
-        <div class="product-main">
+        <div class="hero-panel reveal">
 
-          <div class="product-top">
-            <span class="status building">Product development</span>
-            <span class="kicker teal">Commerce / Local</span>
-          </div>
+          <div class="panel-top">
 
-          <div class="product-banner kokankart-banner">
-            <div class="banner-glow"></div>
-            <div class="banner-content">
-              <div class="banner-text">
-                <span class="banner-name">KokanKart</span>
-                <span class="banner-tag">Commerce / Local</span>
-              </div>
-            </div>
-            <div class="banner-footer">
-              <span>Product development</span>
+            <span>
+              CMS / PRODUCT STUDIO
+            </span>
+
+            <span class="live">
               <i></i>
-              <span>Launch</span>
-              <div class="banner-bar"><span></span></div>
-            </div>
+              Building
+            </span>
+
           </div>
 
-          <h3>KokanKart</h3>
 
-          <p class="lead">
-            A hyperlocal commerce platform connecting customers with local vendors and regional products through a connected shopping, vendor, delivery and administration experience.
+          <div class="panel-grid">
+
+            <div class="tile big">
+
+              <small>
+                Product philosophy
+              </small>
+
+              <strong>
+                Build → Launch → Learn → Grow
+              </strong>
+
+              <p>
+                Independent products designed
+                around real user needs.
+              </p>
+
+              <div class="bar">
+                <span></span>
+              </div>
+
+            </div>
+
+
+            <div class="tile accent-coral">
+
+              <small>
+                VibeFit
+              </small>
+
+              <strong>
+                Wellness
+              </strong>
+
+              <p>
+                Play Store preparation
+              </p>
+
+              <div class="bar coral">
+                <span></span>
+              </div>
+
+            </div>
+
+
+            <div class="tile accent-teal">
+
+              <small>
+                KokanKart
+              </small>
+
+              <strong>
+                Commerce
+              </strong>
+
+              <p>
+                Product development
+              </p>
+
+              <div class="bar teal">
+                <span></span>
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- ===================================================
+         ABOUT
+         =================================================== -->
+
+    <section id="about">
+
+      <div class="container">
+
+        <div class="section-head reveal">
+
+          <span class="kicker">
+            About CMS
+          </span>
+
+          <h2>
+            We build. We own. We evolve.
+          </h2>
+
+          <p>
+            CMS is focused on creating and operating
+            its own products rather than simply building
+            software for others.
           </p>
 
-          <div class="tags">
-            <span class="tag">Hyperlocal Marketplace</span>
-            <span class="tag">Local Vendors</span>
-            <span class="tag">Regional Products</span>
-            <span class="tag">Smart Cart</span>
-            <span class="tag">Order Tracking</span>
-            <span class="tag">Vendor Dashboard</span>
-            <span class="tag">Delivery Flow</span>
-            <span class="tag">Admin Operations</span>
-          </div>
+        </div>
 
-          <div class="product-info">
-            <div class="info">
-              <h4>Connected ecosystem</h4>
-              <ul>
-                <li>Customer discovery and local shopping</li>
-                <li>Vendor product and order management</li>
-                <li>Delivery partner workflow and tracking</li>
-                <li>Admin controls, monitoring and analytics</li>
-                <li>Area-based commerce model</li>
-              </ul>
-            </div>
 
-            <div class="info">
-              <h4>Product philosophy</h4>
-              <p>
-                KokanKart is designed as more than a storefront — it connects local commerce participants into one practical digital ecosystem.
-              </p>
-              <div class="product-actions">
-                <a class="btn primary" href="mailto:support@cmsgroup.in?subject=KokanKart%20Inquiry">KokanKart Inquiry →</a>
+        <div class="story-grid">
+
+
+          <!-- STORY 1 -->
+
+          <article class="card story reveal">
+
+            <h3>
+              A product-first company.
+            </h3>
+
+            <p>
+              We start with a real problem, shape a useful
+              experience, build the technology behind it,
+              launch it, listen to users and continuously
+              improve the product. Our long-term goal is
+              to create independent products that can grow
+              into meaningful ecosystems.
+            </p>
+
+
+            <div class="pillars">
+
+              <div class="pillar">
+                <b>Problem → Product</b>
+                <span>
+                  Start with what matters.
+                </span>
               </div>
+
+              <div class="pillar">
+                <b>Experience → Trust</b>
+                <span>
+                  Keep products simple and reliable.
+                </span>
+              </div>
+
+              <div class="pillar">
+                <b>Launch → Learn</b>
+                <span>
+                  Improve through real usage.
+                </span>
+              </div>
+
+              <div class="pillar">
+                <b>Product → Ecosystem</b>
+                <span>
+                  Build for long-term scale.
+                </span>
+              </div>
+
             </div>
+
+          </article>
+
+
+          <!-- STORY 2 -->
+
+          <article class="card story reveal">
+
+            <h3>
+              Where CMS is heading.
+            </h3>
+
+            <p>
+              CMS is starting with focused digital products
+              and an India-first approach. Over time, the
+              company aims to build multiple technology-led
+              businesses and explore opportunities beyond
+              software when the right time and opportunity
+              arrive.
+            </p>
+
+
+            <div class="pillars">
+
+              <div class="pillar">
+                <b>Consumer Products</b>
+                <span>
+                  Useful everyday experiences.
+                </span>
+              </div>
+
+              <div class="pillar">
+                <b>Business Products</b>
+                <span>
+                  Technology for real operations.
+                </span>
+              </div>
+
+              <div class="pillar">
+                <b>Digital Commerce</b>
+                <span>
+                  Connecting people and businesses.
+                </span>
+              </div>
+
+              <div class="pillar">
+                <b>Wellness</b>
+                <span>
+                  Technology for healthier living.
+                </span>
+              </div>
+
+            </div>
+
+          </article>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- ===================================================
+         PRODUCTS
+         =================================================== -->
+
+    <section id="products">
+
+      <div class="container">
+
+        <div class="section-head reveal">
+
+          <span class="kicker">
+            Featured products
+          </span>
+
+          <h2>
+            Two products. One product philosophy.
+          </h2>
+
+          <p>
+            CMS is currently showcasing VibeFit and KokanKart —
+            two products built around very different real-world
+            needs, each with its own visual identity.
+          </p>
+
+        </div>
+
+
+        <div class="products">
+
+
+          <!-- =================================================
+               VIBEFIT
+               ================================================= -->
+
+          <article
+            class="product vibefit reveal"
+          >
+
+
+            <!-- NEW BACKGROUND IMAGE -->
+
+            <div class="product-background">
+
+              <div class="product-background-content">
+
+
+                <div class="product-top">
+
+                  <span class="status">
+                    Play Store preparation
+                  </span>
+
+                  <span class="kicker">
+                    Wellness / Consumer
+                  </span>
+
+                </div>
+
+
+                <h3>
+                  VibeFit
+                </h3>
+
+
+                <p class="lead">
+                  An offline-first fitness and wellness
+                  companion bringing workouts, yoga,
+                  nutrition, progress tracking, lifestyle
+                  planning and wellness guidance into
+                  one experience.
+                </p>
+
+
+                <div class="tags">
+
+                  <span class="tag">
+                    Workout Tracking
+                  </span>
+
+                  <span class="tag">
+                    Yoga & Meditation
+                  </span>
+
+                  <span class="tag">
+                    Indian Nutrition
+                  </span>
+
+                  <span class="tag">
+                    Offline-First
+                  </span>
+
+                  <span class="tag">
+                    Local Data
+                  </span>
+
+                  <span class="tag">
+                    Progress Analytics
+                  </span>
+
+                  <span class="tag">
+                    Lifestyle Planner
+                  </span>
+
+                  <span class="tag">
+                    Privacy Focused
+                  </span>
+
+                </div>
+
+              </div>
+
+            </div>
+
+
+            <!-- PRODUCT DETAILS -->
+
+            <div class="product-details">
+
+              <div class="product-info">
+
+
+                <div class="info">
+
+                  <h4>
+                    Product experience
+                  </h4>
+
+                  <ul>
+
+                    <li>
+                      Workout library and session tracking
+                    </li>
+
+                    <li>
+                      Yoga, breathing, mobility and recovery
+                    </li>
+
+                    <li>
+                      Indian food and nutrition tracking
+                    </li>
+
+                    <li>
+                      Weight, measurements and progress photos
+                    </li>
+
+                    <li>
+                      Goals, planning, reports and reminders
+                    </li>
+
+                  </ul>
+
+                </div>
+
+
+                <div class="info">
+
+                  <h4>
+                    Product philosophy
+                  </h4>
+
+                  <p>
+                    Core fitness functionality is designed
+                    around an offline-first experience, with
+                    local storage helping the app remain useful
+                    without continuous internet access.
+                  </p>
+
+
+                  <div class="product-actions">
+
+                    <a
+                      class="btn primary"
+                      href="/vibefit-privacy.html"
+                    >
+                      VibeFit Privacy Policy ↗
+                    </a>
+
+                    <a
+                      class="btn secondary"
+                      href="mailto:support@cmsgroup.in?subject=VibeFit%20Support"
+                    >
+                      VibeFit Support →
+                    </a>
+
+                  </div>
+
+                </div>
+
+              </div>
+
+            </div>
+
+
+            <!-- EXISTING SHOWCASE -->
+
+            <div class="product-showcase">
+
+              <div class="showcase-frame">
+
+                <img
+                  src="assets/vibefit-showcase.png"
+                  alt="VibeFit product showcase showing workouts, yoga, nutrition, recovery, progress and lifestyle screens"
+                  loading="lazy"
+                >
+
+              </div>
+
+            </div>
+
+          </article>
+
+
+
+          <!-- =================================================
+               KOKANKART
+               ================================================= -->
+
+          <article
+            class="product kokankart reveal"
+          >
+
+
+            <!-- NEW BACKGROUND IMAGE -->
+
+            <div class="product-background">
+
+              <div class="product-background-content">
+
+
+                <div class="product-top">
+
+                  <span class="status">
+                    Product development
+                  </span>
+
+                  <span class="kicker">
+                    Commerce / Local
+                  </span>
+
+                </div>
+
+
+                <h3>
+                  KokanKart
+                </h3>
+
+
+                <p class="lead">
+                  A hyperlocal commerce platform connecting
+                  customers with local vendors and regional
+                  products through a connected shopping,
+                  vendor, delivery and administration experience.
+                </p>
+
+
+                <div class="tags">
+
+                  <span class="tag">
+                    Hyperlocal Marketplace
+                  </span>
+
+                  <span class="tag">
+                    Local Vendors
+                  </span>
+
+                  <span class="tag">
+                    Regional Products
+                  </span>
+
+                  <span class="tag">
+                    Smart Cart
+                  </span>
+
+                  <span class="tag">
+                    Order Tracking
+                  </span>
+
+                  <span class="tag">
+                    Vendor Dashboard
+                  </span>
+
+                  <span class="tag">
+                    Delivery Flow
+                  </span>
+
+                  <span class="tag">
+                    Admin Operations
+                  </span>
+
+                </div>
+
+              </div>
+
+            </div>
+
+
+            <!-- PRODUCT DETAILS -->
+
+            <div class="product-details">
+
+              <div class="product-info">
+
+
+                <div class="info">
+
+                  <h4>
+                    Connected ecosystem
+                  </h4>
+
+                  <ul>
+
+                    <li>
+                      Customer discovery and local shopping
+                    </li>
+
+                    <li>
+                      Vendor product and order management
+                    </li>
+
+                    <li>
+                      Delivery partner workflow and tracking
+                    </li>
+
+                    <li>
+                      Admin controls, monitoring and analytics
+                    </li>
+
+                    <li>
+                      Area-based commerce model
+                    </li>
+
+                  </ul>
+
+                </div>
+
+
+                <div class="info">
+
+                  <h4>
+                    Product philosophy
+                  </h4>
+
+                  <p>
+                    KokanKart is designed as more than a
+                    storefront — it connects local commerce
+                    participants into one practical digital
+                    ecosystem.
+                  </p>
+
+
+                  <div class="product-actions">
+
+                    <a
+                      class="btn primary"
+                      href="mailto:support@cmsgroup.in?subject=KokanKart%20Inquiry"
+                    >
+                      KokanKart Inquiry →
+                    </a>
+
+                  </div>
+
+                </div>
+
+              </div>
+
+            </div>
+
+
+            <!-- EXISTING SHOWCASE -->
+
+            <div class="product-showcase">
+
+              <div class="showcase-frame">
+
+                <img
+                  src="assets/kokankart-showcase.png"
+                  alt="KokanKart product showcase showing customer shopping, vendor dashboard, delivery and admin experiences"
+                  loading="lazy"
+                >
+
+              </div>
+
+            </div>
+
+          </article>
+
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- ===================================================
+         APPROACH
+         =================================================== -->
+
+    <section id="approach">
+
+      <div class="container">
+
+        <div class="section-head reveal">
+
+          <span class="kicker amber">
+            How we build
+          </span>
+
+          <h2>
+            From real problem to real product.
+          </h2>
+
+          <p>
+            CMS keeps the product cycle focused,
+            practical and iterative.
+          </p>
+
+        </div>
+
+
+        <div class="approach">
+
+
+          <div class="card step reveal">
+
+            <div class="line"></div>
+
+            <b>
+              Identify
+            </b>
+
+            <p>
+              Understand the problem and the people
+              experiencing it.
+            </p>
+
+          </div>
+
+
+          <div class="card step reveal">
+
+            <div class="line"></div>
+
+            <b>
+              Design
+            </b>
+
+            <p>
+              Shape a clear experience around the
+              core user need.
+            </p>
+
+          </div>
+
+
+          <div class="card step reveal">
+
+            <div class="line"></div>
+
+            <b>
+              Build
+            </b>
+
+            <p>
+              Create reliable technology with quality
+              at the foundation.
+            </p>
+
+          </div>
+
+
+          <div class="card step reveal">
+
+            <div class="line"></div>
+
+            <b>
+              Launch
+            </b>
+
+            <p>
+              Put the product into the real world and
+              learn from usage.
+            </p>
+
+          </div>
+
+
+          <div class="card step reveal">
+
+            <div class="line"></div>
+
+            <b>
+              Iterate
+            </b>
+
+            <p>
+              Improve continuously as users, needs
+              and opportunities evolve.
+            </p>
+
+          </div>
+
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- ===================================================
+         VALUES
+         =================================================== -->
+
+    <section id="values">
+
+      <div class="container">
+
+        <div class="section-head reveal">
+
+          <span class="kicker">
+            Core values
+          </span>
+
+          <h2>
+            Principles behind every product.
+          </h2>
+
+        </div>
+
+
+        <div class="values">
+
+
+          <div class="card value reveal">
+
+            <b>
+              Innovation
+            </b>
+
+            <p>
+              Think differently. Build meaningfully.
+            </p>
+
+          </div>
+
+
+          <div class="card value reveal">
+
+            <b>
+              Trust
+            </b>
+
+            <p>
+              Earn confidence through every interaction.
+            </p>
+
+          </div>
+
+
+          <div class="card value reveal">
+
+            <b>
+              Speed
+            </b>
+
+            <p>
+              Move from idea to execution with purpose.
+            </p>
+
+          </div>
+
+
+          <div class="card value reveal">
+
+            <b>
+              Customer Satisfaction
+            </b>
+
+            <p>
+              Create value users can feel.
+            </p>
+
+          </div>
+
+
+          <div class="card value reveal">
+
+            <b>
+              Transparency
+            </b>
+
+            <p>
+              Stay clear, honest and responsible.
+            </p>
+
+          </div>
+
+
+          <div class="card value reveal">
+
+            <b>
+              Quality
+            </b>
+
+            <p>
+              Build reliable experiences without shortcuts.
+            </p>
+
+          </div>
+
+
+          <div class="card value reveal">
+
+            <b>
+              Growth
+            </b>
+
+            <p>
+              Build today with tomorrow in mind.
+            </p>
+
+          </div>
+
+
+          <div class="card value reveal">
+
+            <b>
+              Service
+            </b>
+
+            <p>
+              Support products with responsibility.
+            </p>
+
+          </div>
+
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- ===================================================
+         VISION
+         =================================================== -->
+
+    <section>
+
+      <div class="container">
+
+        <div class="card vision reveal">
+
+          <div>
+
+            <span class="kicker">
+              Long-term direction
+            </span>
+
+            <h3>
+              Build products today.
+              Create ecosystems tomorrow.
+            </h3>
+
+            <p>
+              CMS is starting with an India-focused
+              product portfolio and aims to grow through
+              useful technology products, strong execution
+              and long-term ownership.
+            </p>
+
+          </div>
+
+
+          <div class="future">
+
+            <div>
+              Consumer Technology
+            </div>
+
+            <div>
+              Business Technology
+            </div>
+
+            <div>
+              Digital Commerce
+            </div>
+
+            <div>
+              Wellness Platforms
+            </div>
+
+            <div>
+              New Product Categories
+            </div>
+
+            <div>
+              Future Business Opportunities
+            </div>
+
           </div>
 
         </div>
 
-        <div class="product-image">
-          <img
-            src="assets/kokankart-showcase.png"
-            alt="KokanKart product showcase showing customer shopping, vendor dashboard, delivery and admin experiences"
-            loading="lazy"
+      </div>
+
+    </section>
+
+
+
+    <!-- ===================================================
+         CTA
+         =================================================== -->
+
+    <section>
+
+      <div class="container">
+
+        <div class="card cta reveal">
+
+          <span class="kicker">
+            Creative Management Solutions
+          </span>
+
+          <h2>
+            Building what comes next.
+          </h2>
+
+          <p>
+            Follow the products we are building today
+            and the ecosystems we aim to create over time.
+          </p>
+
+          <a
+            class="btn primary"
+            href="mailto:support@cmsgroup.in"
           >
+            Contact CMS →
+          </a>
+
         </div>
-      </article>
 
-    </div>
-  </div>
-</section>
-
-
-<!-- =========================================================
-     APPROACH
-========================================================= -->
-
-<section id="approach">
-  <div class="container">
-
-    <div class="section-head reveal">
-      <span class="kicker amber">How we build</span>
-      <h2>From real problem to real product.</h2>
-      <p>CMS keeps the product cycle focused, practical and iterative.</p>
-    </div>
-
-    <div class="approach">
-      <div class="card step reveal"><span class="line">01</span><b>Identify</b><p>Understand the problem and the people experiencing it.</p></div>
-      <div class="card step reveal"><span class="line">02</span><b>Design</b><p>Shape a clear experience around the core user need.</p></div>
-      <div class="card step reveal"><span class="line">03</span><b>Build</b><p>Create reliable technology with quality at the foundation.</p></div>
-      <div class="card step reveal"><span class="line">04</span><b>Launch</b><p>Put the product into the real world and learn from usage.</p></div>
-      <div class="card step reveal"><span class="line">05</span><b>Iterate</b><p>Improve continuously as users, needs and opportunities evolve.</p></div>
-    </div>
-
-  </div>
-</section>
-
-
-<!-- =========================================================
-     VALUES
-========================================================= -->
-
-<section id="values">
-  <div class="container">
-
-    <div class="section-head reveal">
-      <span class="kicker">Core values</span>
-      <h2>Principles behind every product.</h2>
-    </div>
-
-    <div class="values">
-      <div class="card value reveal"><span class="dot-marker"></span><b>Innovation</b><p>Think differently. Build meaningfully.</p></div>
-      <div class="card value reveal"><span class="dot-marker"></span><b>Trust</b><p>Earn confidence through every interaction.</p></div>
-      <div class="card value reveal"><span class="dot-marker"></span><b>Speed</b><p>Move from idea to execution with purpose.</p></div>
-      <div class="card value reveal"><span class="dot-marker"></span><b>Customer Satisfaction</b><p>Create value users can feel.</p></div>
-      <div class="card value reveal"><span class="dot-marker"></span><b>Transparency</b><p>Stay clear, honest and responsible.</p></div>
-      <div class="card value reveal"><span class="dot-marker"></span><b>Quality</b><p>Build reliable experiences without shortcuts.</p></div>
-      <div class="card value reveal"><span class="dot-marker"></span><b>Growth</b><p>Build today with tomorrow in mind.</p></div>
-      <div class="card value reveal"><span class="dot-marker"></span><b>Service</b><p>Support products with responsibility.</p></div>
-    </div>
-
-  </div>
-</section>
-
-
-<!-- =========================================================
-     VISION
-========================================================= -->
-
-<section>
-  <div class="container">
-
-    <div class="card vision reveal">
-
-      <div>
-        <span class="kicker">Long-term direction</span>
-        <h3>Build products today. Create ecosystems tomorrow.</h3>
-        <p>
-          CMS is starting with an India-focused product portfolio and aims to grow through useful technology products, strong execution and long-term ownership.
-        </p>
       </div>
 
-      <div class="future">
-        <div>Consumer Technology</div>
-        <div>Business Technology</div>
-        <div>Digital Commerce</div>
-        <div>Wellness Platforms</div>
-        <div>New Product Categories</div>
-        <div>Future Business Opportunities</div>
+    </section>
+
+
+  </main>
+
+
+
+  <!-- =====================================================
+       FOOTER
+       ===================================================== -->
+
+  <footer>
+
+    <div class="container">
+
+      <div class="footer-grid">
+
+
+        <div class="footer-brand">
+
+          Creative Management Solutions
+
+          <span>
+            India-focused digital product company.
+          </span>
+
+        </div>
+
+
+        <div class="footer-links">
+
+          <a href="#about">
+            About
+          </a>
+
+          <a href="#products">
+            Products
+          </a>
+
+          <a href="#approach">
+            Approach
+          </a>
+
+          <a href="#values">
+            Values
+          </a>
+
+          <a href="/privacy.html">
+            Privacy
+          </a>
+
+          <a href="/terms.html">
+            Terms
+          </a>
+
+          <a href="mailto:support@cmsgroup.in">
+            support@cmsgroup.in
+          </a>
+
+        </div>
+
       </div>
 
-    </div>
-  </div>
-</section>
 
+      <div class="copyright">
 
-<!-- =========================================================
-     CTA
-========================================================= -->
+        ©
+        <span id="year"></span>
+        Creative Management Solutions.
+        All Rights Reserved.
 
-<section>
-  <div class="container">
-
-    <div class="card cta reveal">
-      <span class="kicker">Creative Management Solutions</span>
-      <h2>Building what comes next.</h2>
-      <p>Follow the products we are building today and the ecosystems we aim to create over time.</p>
-      <a class="btn primary" href="mailto:support@cmsgroup.in">Contact CMS →</a>
-    </div>
-
-  </div>
-</section>
-
-
-</main>
-
-
-<!-- =========================================================
-     FOOTER
-========================================================= -->
-
-<footer>
-  <div class="container">
-
-    <div class="footer-grid">
-
-      <div class="footer-brand">
-        Creative Management Solutions
-        <span>India-focused digital product company.</span>
-      </div>
-
-      <div class="footer-links">
-        <a href="#about">About</a>
-        <a href="#products">Products</a>
-        <a href="#approach">Approach</a>
-        <a href="#values">Values</a>
-        <a href="/privacy.html">Privacy</a>
-        <a href="/terms.html">Terms</a>
-        <a href="mailto:support@cmsgroup.in">support@cmsgroup.in</a>
       </div>
 
     </div>
 
-    <div class="copyright">
-      © <span id="year"></span> Creative Management Solutions. All Rights Reserved.
-    </div>
-
-  </div>
-</footer>
+  </footer>
 
 
-<!-- =========================================================
-     JAVASCRIPT
-========================================================= -->
 
-<script>
+  <!-- =====================================================
+       JAVASCRIPT
+       ===================================================== -->
 
-  /* MOBILE MENU */
-  const menu = document.getElementById("menu");
-  const navLinks = document.getElementById("navLinks");
+  <script>
 
-  menu.addEventListener("click", () => {
-    navLinks.classList.toggle("active");
-    const expanded = navLinks.classList.contains("active");
-    menu.setAttribute("aria-expanded", expanded);
-  });
+    /* =====================================================
+       YEAR
+       ===================================================== */
 
-  document.querySelectorAll(".nav-links a").forEach(link => {
-    link.addEventListener("click", () => {
-      navLinks.classList.remove("active");
-      menu.setAttribute("aria-expanded", "false");
+    document.getElementById("year").textContent =
+      new Date().getFullYear();
+
+
+    /* =====================================================
+       MOBILE MENU
+       ===================================================== */
+
+    const menu =
+      document.getElementById("menu");
+
+    const navLinks =
+      document.getElementById("navLinks");
+
+
+    menu.addEventListener("click", function () {
+
+      const isOpen =
+        navLinks.classList.toggle("open");
+
+      menu.setAttribute(
+        "aria-expanded",
+        isOpen ? "true" : "false"
+      );
+
+      menu.setAttribute(
+        "aria-label",
+        isOpen
+          ? "Close navigation menu"
+          : "Open navigation menu"
+      );
+
     });
-  });
 
 
-  /* REVEAL ANIMATION */
-  const revealElements = document.querySelectorAll(".reveal");
+    /* Close mobile menu after navigation */
 
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add("show");
-        observer.unobserve(entry.target);
+    navLinks
+      .querySelectorAll("a")
+      .forEach(function (link) {
+
+        link.addEventListener("click", function () {
+
+          navLinks.classList.remove("open");
+
+          menu.setAttribute(
+            "aria-expanded",
+            "false"
+          );
+
+          menu.setAttribute(
+            "aria-label",
+            "Open navigation menu"
+          );
+
+        });
+
+      });
+
+
+    /* =====================================================
+       SCROLL PROGRESS
+       ===================================================== */
+
+    const scrollProgress =
+      document.getElementById("scrollProgress");
+
+
+    function updateScrollProgress() {
+
+      const scrollTop =
+        window.scrollY ||
+        document.documentElement.scrollTop;
+
+      const documentHeight =
+        document.documentElement.scrollHeight -
+        window.innerHeight;
+
+      if (documentHeight <= 0) {
+
+        scrollProgress.style.width = "0%";
+
+        return;
       }
+
+      const percentage =
+        (scrollTop / documentHeight) * 100;
+
+      scrollProgress.style.width =
+        Math.min(
+          100,
+          Math.max(0, percentage)
+        ) + "%";
+
+    }
+
+
+    window.addEventListener(
+      "scroll",
+      updateScrollProgress,
+      {
+        passive: true
+      }
+    );
+
+
+    window.addEventListener(
+      "resize",
+      updateScrollProgress
+    );
+
+
+    updateScrollProgress();
+
+
+    /* =====================================================
+       REVEAL ON SCROLL
+       ===================================================== */
+
+    const revealElements =
+      document.querySelectorAll(".reveal");
+
+
+    const revealObserver =
+      new IntersectionObserver(
+        function (entries, observer) {
+
+          entries.forEach(function (entry) {
+
+            if (entry.isIntersecting) {
+
+              entry.target.classList.add("visible");
+
+              observer.unobserve(
+                entry.target
+              );
+
+            }
+
+          });
+
+        },
+        {
+          threshold: 0.12,
+          rootMargin: "0px 0px -40px 0px"
+        }
+      );
+
+
+    revealElements.forEach(function (element) {
+
+      revealObserver.observe(element);
+
     });
-  }, { threshold: 0.12 });
-
-  revealElements.forEach(element => observer.observe(element));
 
 
-  /* SCROLL PROGRESS */
-  const progressBar = document.getElementById("progressBar");
-  function updateProgress() {
-    const h = document.documentElement;
-    const scrolled = (h.scrollTop) / (h.scrollHeight - h.clientHeight) * 100;
-    progressBar.style.width = (isFinite(scrolled) ? scrolled : 0) + "%";
-  }
-  window.addEventListener("scroll", updateProgress, { passive: true });
-  updateProgress();
+    /* =====================================================
+       ESCAPE KEY — MOBILE MENU
+       ===================================================== */
 
+    document.addEventListener(
+      "keydown",
+      function (event) {
 
-  /* CURRENT YEAR */
-  document.getElementById("year").textContent = new Date().getFullYear();
+        if (event.key === "Escape") {
 
-</script>
+          navLinks.classList.remove("open");
 
+          menu.setAttribute(
+            "aria-expanded",
+            "false"
+          );
+
+          menu.setAttribute(
+            "aria-label",
+            "Open navigation menu"
+          );
+
+        }
+
+      }
+    );
+
+  </script>
 
 </body>
 </html>
