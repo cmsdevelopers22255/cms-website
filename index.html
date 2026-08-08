@@ -3361,6 +3361,148 @@
       .tag { font-size: 8px; }
     }
 
+
+
+    /* =====================================================
+       SYMBOL POLISH — visual markers for key ideas
+       ===================================================== */
+
+    .pillar,
+    .step,
+    .value,
+    .future div {
+      --icon-color: var(--cyan);
+    }
+
+    /* About / product philosophy markers */
+    .pillar::after {
+      content: "✦";
+      position: absolute;
+      right: 13px;
+      top: 11px;
+      width: 22px;
+      height: 22px;
+      display: grid;
+      place-items: center;
+      border: 1px solid color-mix(in srgb, var(--pillar-color) 30%, transparent);
+      border-radius: 50%;
+      color: var(--pillar-color);
+      background: color-mix(in srgb, var(--pillar-color) 8%, transparent);
+      font-size: 11px;
+      line-height: 1;
+      opacity: .9;
+      transition: transform .25s ease, box-shadow .25s ease;
+    }
+
+    .pillar:nth-child(1)::after { content: "⌘"; }
+    .pillar:nth-child(2)::after { content: "◇"; }
+    .pillar:nth-child(3)::after { content: "↗"; }
+    .pillar:nth-child(4)::after { content: "▱"; }
+
+    .pillar:hover::after {
+      transform: rotate(8deg) scale(1.08);
+      box-shadow: 0 0 16px color-mix(in srgb, var(--pillar-color) 25%, transparent);
+    }
+
+    /* Approach — numbered visual markers */
+    .step::before {
+      content: "01";
+      position: absolute;
+      right: 18px;
+      bottom: 17px;
+      color: var(--step-color);
+      font-family: "JetBrains Mono", monospace;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: .08em;
+      opacity: .55;
+    }
+
+    .step:nth-child(1)::before { content: "◎ 01"; }
+    .step:nth-child(2)::before { content: "◇ 02"; }
+    .step:nth-child(3)::before { content: "▣ 03"; }
+    .step:nth-child(4)::before { content: "↗ 04"; }
+    .step:nth-child(5)::before { content: "↻ 05"; }
+
+    /* Values — small symbolic markers */
+    .value::after {
+      content: "✦";
+      position: absolute;
+      right: 17px;
+      top: 15px;
+      color: var(--value-color);
+      font-size: 15px;
+      opacity: .75;
+    }
+
+    .value:nth-child(1)::after { content: "✦"; }
+    .value:nth-child(2)::after { content: "◇"; }
+    .value:nth-child(3)::after { content: "↯"; }
+    .value:nth-child(4)::after { content: "♥"; }
+    .value:nth-child(5)::after { content: "◉"; }
+    .value:nth-child(6)::after { content: "✓"; }
+    .value:nth-child(7)::after { content: "↗"; }
+    .value:nth-child(8)::after { content: "⌁"; }
+
+    /* Long-term direction chips */
+    .future div {
+      position: relative;
+      padding-left: 34px;
+    }
+
+    .future div::before {
+      content: "→";
+      position: absolute;
+      left: 13px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--cyan);
+      font-family: "JetBrains Mono", monospace;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .future div:nth-child(2)::before { color: var(--indigo); content: "◇"; }
+    .future div:nth-child(3)::before { color: var(--coral); content: "↗"; }
+    .future div:nth-child(4)::before { color: var(--amber); content: "✦"; }
+    .future div:nth-child(5)::before { color: var(--cyan); content: "＋"; }
+    .future div:nth-child(6)::before { color: var(--indigo); content: "∞"; }
+
+    /* Product info headings — subtle semantic markers */
+    .info h4::before {
+      display: inline-block;
+      margin-right: 7px;
+      color: currentColor;
+      opacity: .8;
+      font-family: "JetBrains Mono", monospace;
+      font-size: .85em;
+    }
+
+    .vibefit .info h4::before { content: "✦"; }
+    .kokankart .info h4::before { content: "◇"; }
+
+    @media (max-width: 700px) {
+      .pillar::after {
+        right: 10px;
+        top: 9px;
+        width: 19px;
+        height: 19px;
+        font-size: 10px;
+      }
+
+      .step::before {
+        right: 14px;
+        bottom: 13px;
+        font-size: 9px;
+      }
+
+      .value::after {
+        right: 13px;
+        top: 12px;
+        font-size: 13px;
+      }
+    }
+
 </style>
 </head>
 
