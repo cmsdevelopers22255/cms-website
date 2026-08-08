@@ -3,93 +3,211 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Creative Management Solutions | CMS Group</title>
+    <title>Creative Management Solutions | Digital Product Ecosystem</title>
     <style>
+        :root {
+            --bg-main: #0f172a;
+            --bg-card: #1e293b;
+            --bg-card-hover: #334155;
+            --primary: #38bdf8;
+            --accent-green: #22c55e;
+            --accent-amber: #f59e0b;
+            --text-main: #f8fafc;
+            --text-sub: #94a3b8;
+            --border: #334155;
+        }
+
         * { box-sizing: border-box; margin: 0; padding: 0; }
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #0f172a; color: #f8fafc; line-height: 1.6; }
-        header { background: #1e293b; padding: 20px 0; border-bottom: 1px solid #334155; text-align: center; }
-        header h1 { color: #38bdf8; font-size: 2rem; }
-        header p { color: #94a3b8; font-size: 1rem; }
+        body { font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; background-color: var(--bg-main); color: var(--text-main); line-height: 1.6; }
         
-        .container { max-width: 1000px; margin: 40px auto; padding: 0 20px; }
-        .section { margin-bottom: 50px; }
-        .section-title { font-size: 1.8rem; color: #38bdf8; margin-bottom: 20px; border-bottom: 2px solid #334155; padding-bottom: 8px; }
+        /* Header / Hero */
+        header { background: linear-gradient(180deg, #1e293b 0%, #0f172a 100%); padding: 80px 20px 60px; border-bottom: 1px solid var(--border); text-align: center; }
+        .hero-badge { display: inline-block; background: rgba(56, 189, 248, 0.1); color: var(--primary); padding: 6px 16px; border-radius: 20px; font-size: 0.85rem; font-weight: 600; border: 1px solid rgba(56, 189, 248, 0.3); margin-bottom: 20px; }
+        header h1 { font-size: 2.8rem; color: var(--text-main); font-weight: 800; margin-bottom: 15px; letter-spacing: -0.5px; }
+        header h1 span { color: var(--primary); }
+        header p { color: var(--text-sub); font-size: 1.2rem; max-width: 700px; margin: 0 auto; }
+
+        /* Container */
+        .container { max-width: 1100px; margin: 0 auto; padding: 50px 20px; }
+        .section { margin-bottom: 70px; }
+        .section-title { font-size: 1.8rem; color: var(--text-main); margin-bottom: 10px; font-weight: 700; }
+        .section-subtitle { color: var(--text-sub); font-size: 1rem; margin-bottom: 30px; }
         
-        .card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
-        .card { background: #1e293b; border: 1px solid #334155; padding: 24px; border-radius: 12px; }
-        .card h3 { color: #f1f5f9; margin-bottom: 12px; }
-        .card p { color: #94a3b8; font-size: 0.95rem; }
+        /* Product Ecosystem Grid */
+        .products-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(480px, 1fr)); gap: 25px; }
+        @media (max-width: 600px) { .products-grid { grid-template-columns: 1fr; } }
+
+        .product-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; padding: 30px; display: flex; flex-direction: column; justify-content: space-between; transition: transform 0.2s, border-color 0.2s; }
+        .product-card:hover { border-color: var(--primary); transform: translateY(-3px); }
         
-        .badge { display: inline-block; background: #0284c7; color: #fff; font-size: 0.8rem; padding: 4px 10px; border-radius: 20px; margin-bottom: 10px; }
-        .badge-upcoming { background: #d97706; }
+        .card-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 15px; }
+        .product-name { font-size: 1.5rem; color: var(--text-main); font-weight: 700; }
+        .product-tagline { color: var(--primary); font-size: 0.9rem; font-weight: 600; margin-bottom: 15px; }
         
-        .btn { display: inline-block; margin-top: 15px; padding: 8px 16px; background: #38bdf8; color: #0f172a; text-decoration: none; font-weight: bold; border-radius: 6px; font-size: 0.9rem; }
-        .btn:hover { background: #7dd3fc; }
+        .status-badge { font-size: 0.75rem; font-weight: 700; padding: 4px 10px; border-radius: 12px; text-transform: uppercase; }
+        .status-ready { background: rgba(34, 197, 94, 0.15); color: var(--accent-green); border: 1px solid rgba(34, 197, 94, 0.3); }
+        .status-dev { background: rgba(245, 158, 11, 0.15); color: var(--accent-amber); border: 1px solid rgba(245, 158, 11, 0.3); }
+
+        .product-desc { color: var(--text-sub); font-size: 0.95rem; margin-bottom: 20px; flex-grow: 1; }
         
-        footer { text-align: center; padding: 30px 20px; background: #1e293b; color: #64748b; font-size: 0.9rem; border-top: 1px solid #334155; }
-        footer a { color: #38bdf8; text-decoration: none; }
+        .features-list { list-style: none; margin-bottom: 20px; }
+        .features-list li { font-size: 0.85rem; color: #cbd5e1; margin-bottom: 6px; display: flex; align-items: center; }
+        .features-list li::before { content: "•"; color: var(--primary); font-weight: bold; display: inline-block; width: 12px; font-size: 1.2rem; }
+
+        .card-action { margin-top: 15px; border-top: 1px solid var(--border); padding-top: 15px; }
+        .btn-link { color: var(--primary); text-decoration: none; font-size: 0.9rem; font-weight: 600; display: inline-flex; align-items: center; }
+        .btn-link:hover { text-decoration: underline; }
+
+        /* Company Overview Section */
+        .about-box { background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; padding: 35px; border-left: 4px solid var(--primary); }
+        .about-box p { color: #cbd5e1; font-size: 1.05rem; margin-bottom: 15px; }
+        
+        /* Contact Section */
+        .contact-box { background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%); border: 1px solid var(--border); border-radius: 16px; padding: 35px; text-align: center; }
+        .contact-box h3 { font-size: 1.4rem; margin-bottom: 10px; }
+        .contact-box p { color: var(--text-sub); margin-bottom: 20px; }
+        .contact-email { color: var(--primary); font-size: 1.2rem; font-weight: 700; text-decoration: none; }
+
+        /* Footer */
+        footer { text-align: center; padding: 30px 20px; background: #0b0f19; color: var(--text-sub); font-size: 0.85rem; border-top: 1px solid var(--border); }
+        footer a { color: var(--primary); text-decoration: none; margin: 0 10px; }
     </style>
 </head>
 <body>
 
     <header>
-        <h1>Creative Management Solutions</h1>
-        <p>Architecting Modern Digital Experiences & Mobile Applications</p>
+        <span class="hero-badge">Product Innovation Studio</span>
+        <h1>Creative Management <span>Solutions</span></h1>
+        <p>Architecting independent digital product ecosystems to solve real-world problems in fitness, hyperlocal commerce, and enterprise operations.</p>
     </header>
 
     <div class="container">
-        <!-- About CMS Group -->
+
+        <!-- About CMS -->
         <div class="section">
             <h2 class="section-title">About CMS Group</h2>
-            <p style="color: #cbd5e1; font-size: 1.1rem;">
-                Creative Management Solutions (CMS) is a forward-thinking technology studio dedicated to creating high-performance, user-centric mobile applications. We specialize in building seamless mobile UI/UX, integrating intelligent backend systems, and solving real-world user problems through technology.
-            </p>
-        </div>
-
-        <!-- Featured App: VibeFit -->
-        <div class="section">
-            <h2 class="section-title">Featured Application</h2>
-            <div class="card" style="border-left: 4px solid #38bdf8;">
-                <span class="badge">Live App</span>
-                <h3>VibeFit - Workout & Fitness Tracker</h3>
-                <p>
-                    VibeFit is an all-in-one fitness companion designed to help users track their daily workouts, log activity goals, and maintain a healthy lifestyle. Built with a modern interface and smooth performance, VibeFit ensures daily workout tracking is effortless and motivating.
-                </p>
-                <a href="/vibefit-privacy.html" class="btn">View Privacy Policy</a>
+            <p class="section-subtitle">Building long-term digital infrastructure and standalone software products.</p>
+            <div class="about-box">
+                <p><strong>Creative Management Solutions (CMS)</strong> is a product-focused digital architecture company. Rather than building generic tools, we build focused software ecosystems designed to operate seamlessly across mobile, web, and local environments.</p>
+                <p>Our 2026 initiative centers on four core digital products targeting individual wellness, regional commerce, fitness platform management, and business process automation.</p>
             </div>
         </div>
 
-        <!-- Coming Soon Apps -->
+        <!-- Product Ecosystem -->
         <div class="section">
-            <h2 class="section-title">Upcoming Projects</h2>
-            <div class="card-grid">
-                <div class="card">
-                    <span class="badge badge-upcoming">Coming Soon</span>
-                    <h3>Evado</h3>
-                    <p>An intuitive application designed for streamlined task management and daily productivity enhancement.</p>
+            <h2 class="section-title">Product Ecosystem</h2>
+            <p class="section-subtitle">Four tailored software platforms built with distinct domain strengths.</p>
+
+            <div class="products-grid">
+
+                <!-- VibeFit -->
+                <div class="product-card">
+                    <div>
+                        <div class="card-header">
+                            <div class="product-name">VibeFit</div>
+                            <span class="status-badge status-ready">Play Store Prep</span>
+                        </div>
+                        <div class="product-tagline">Offline-First Fitness & Wellness Platform</div>
+                        <div class="product-desc">
+                            A complete fitness companion designed to operate 100% offline using secure local storage (Room DB), ensuring users never lose access to their workout routines, yoga sessions, or nutrition plans due to internet connectivity.
+                        </div>
+                        <ul class="features-list">
+                            <li>500+ Workouts & Progressive Overload Tracking</li>
+                            <li>200+ Yoga Poses & Guided Recovery</li>
+                            <li>120+ Indian Meal Database & Offline Calorie Tracking</li>
+                            <li>Complete Privacy: Local Data Storage & Export</li>
+                        </ul>
+                    </div>
+                    <div class="card-action">
+                        <a href="/vibefit-privacy.html" class="btn-link">Read Privacy Policy &rarr;</a>
+                    </div>
                 </div>
-                <div class="card">
-                    <span class="badge badge-upcoming">Coming Soon</span>
-                    <h3>KokanKart</h3>
-                    <p>A specialized e-commerce platform curated to bring authentic regional coastal products directly to consumers.</p>
+
+                <!-- KokanKart -->
+                <div class="product-card">
+                    <div>
+                        <div class="card-header">
+                            <div class="product-name">KokanKart</div>
+                            <span class="status-badge status-dev">In Development</span>
+                        </div>
+                        <div class="product-tagline">Hyperlocal Coastal Product Marketplace</div>
+                        <div class="product-desc">
+                            A specialized regional e-commerce ecosystem designed to connect authentic coastal food, local artisans, and regional specialty vendors directly with consumers through a unified digital marketplace.
+                        </div>
+                        <ul class="features-list">
+                            <li>Direct Producer-to-Consumer Supply Link</li>
+                            <li>Hyperlocal Vendor Cataloging & Ordering</li>
+                            <li>Regional Product Authentication & Tracking</li>
+                        </ul>
+                    </div>
+                    <div class="card-action">
+                        <span style="color: var(--text-sub); font-size: 0.85rem;">Public Release Scheduled 2026</span>
+                    </div>
                 </div>
+
+                <!-- NutriFit -->
+                <div class="product-card">
+                    <div>
+                        <div class="card-header">
+                            <div class="product-name">NutriFit</div>
+                            <span class="status-badge status-dev">In Development</span>
+                        </div>
+                        <div class="product-tagline">Integrated Fitness & Gym Management Platform</div>
+                        <div class="product-desc">
+                            A dual-sided ecosystem connecting gym members with trainers and fitness center managers. Streamlines gym memberships, personalized diet plans, and trainer interactions into a single interface.
+                        </div>
+                        <ul class="features-list">
+                            <li>Gym Member & Attendance Management</li>
+                            <li>Trainer-to-Client Custom Workout Allocation</li>
+                            <li>Real-time Diet & Progress Synchronization</li>
+                        </ul>
+                    </div>
+                    <div class="card-action">
+                        <span style="color: var(--text-sub); font-size: 0.85rem;">Public Release Scheduled 2026</span>
+                    </div>
+                </div>
+
+                <!-- Evado -->
+                <div class="product-card">
+                    <div>
+                        <div class="card-header">
+                            <div class="product-name">Evado</div>
+                            <span class="status-badge status-dev">In Development</span>
+                        </div>
+                        <div class="product-tagline">ERP + POS & Customer Ordering Automation</div>
+                        <div class="product-desc">
+                            An end-to-end business operations suite providing small-to-medium retail businesses with Point-of-Sale (POS), inventory management, and digital customer self-ordering capabilities.
+                        </div>
+                        <ul class="features-list">
+                            <li>Real-Time Inventory & POS Synchronization</li>
+                            <li>Customer Self-Ordering & Billing Automation</li>
+                            <li>Business Performance & Sales Analytics</li>
+                        </ul>
+                    </div>
+                    <div class="card-action">
+                        <span style="color: var(--text-sub); font-size: 0.85rem;">Public Release Scheduled 2026</span>
+                    </div>
+                </div>
+
             </div>
         </div>
 
         <!-- Contact Section -->
         <div class="section">
-            <h2 class="section-title">Get in Touch</h2>
-            <div class="card">
-                <h3>Contact Support</h3>
-                <p>Have questions, feedback, or business inquiries? Reach out to our team at:</p>
-                <p style="margin-top: 10px;"><strong style="color: #38bdf8;">Email:</strong> support@cmsgroup.in</p>
+            <div class="contact-box">
+                <h3>Contact & Support</h3>
+                <p>For support, inquiries, or strategic partnerships regarding CMS products:</p>
+                <a href="mailto:support@cmsgroup.in" class="contact-email">support@cmsgroup.in</a>
             </div>
         </div>
+
     </div>
 
     <footer>
         <p>&copy; 2026 Creative Management Solutions. All Rights Reserved.</p>
-        <p style="margin-top: 8px;"><a href="/vibefit-privacy.html">VibeFit Privacy Policy</a></p>
+        <p style="margin-top: 10px;">
+            <a href="/vibefit-privacy.html">VibeFit Privacy Policy</a>
+        </p>
     </footer>
 
 </body>
