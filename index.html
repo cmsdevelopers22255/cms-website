@@ -7,55 +7,42 @@
   <meta name="description" content="Creative Management Solutions — India-focused digital product company building products that solve real problems.">
   <title>Creative Management Solutions | CMS</title>
 
-  <!-- Google Fonts: Sora, JetBrains Mono, Inter -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600;700&family=Sora:wght@600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
 
   <style>
+
     /* =========================================================
-       RESET & BASE STYLES
+       RESET
     ========================================================= */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
 
-    html {
-      scroll-behavior: smooth;
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      html { scroll-behavior: auto; }
-      * { animation-duration: 0.001ms !important; transition-duration: 0.001ms !important; }
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
 
     body {
-      font-family: 'Inter', ui-sans-serif, system-ui, sans-serif;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       background: #08090d;
       color: #f4f4f5;
       line-height: 1.6;
       overflow-x: hidden;
     }
 
-    img {
-      max-width: 100%;
-      display: block;
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; }
+
+    :focus-visible {
+      outline: 2px solid var(--teal);
+      outline-offset: 3px;
+      border-radius: 4px;
     }
 
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    button {
-      font: inherit;
-    }
 
     /* =========================================================
        VARIABLES
     ========================================================= */
+
     :root {
       --bg: #08090d;
       --bg-soft: #0d0f14;
@@ -69,56 +56,61 @@
       --muted: #999da8;
       --muted-2: #727783;
 
-      /* Studio Accents */
-      --cyan: #31d4c7;
-      --indigo: #6366f1;
-      --coral: #f2555f;   /* VibeFit Accent */
-      --amber: #f4a636;   /* KokanKart Accent */
+      --coral: #ff6b5f;
+      --coral-soft: #ff8b80;
+
+      --teal: #31d4c7;
+      --teal-soft: #67e1d7;
+
+      --amber: #eab65b;
+      --amber-soft: #f2c980;
 
       --radius: 24px;
       --radius-small: 14px;
+
       --container: 1180px;
 
-      --font-display: 'Sora', sans-serif;
-      --font-mono: 'JetBrains Mono', monospace;
+      --font-display: 'Sora', Inter, ui-sans-serif, system-ui, sans-serif;
+      --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
     }
 
-    /* Scroll progress bar */
-    .scroll-progress {
+
+    /* =========================================================
+       SCROLL PROGRESS — thread tying Build → Launch → Learn → Grow
+       to both product identities (coral / amber / teal)
+    ========================================================= */
+
+    .progress-bar {
       position: fixed;
-      top: 0;
-      left: 0;
+      top: 0; left: 0;
       height: 3px;
-      background: linear-gradient(90deg, var(--cyan), var(--indigo), var(--coral), var(--amber));
-      z-index: 2000;
       width: 0%;
-      transition: width 0.1s ease-out;
+      z-index: 1200;
+      background: linear-gradient(90deg, var(--coral), var(--amber), var(--teal));
+      box-shadow: 0 0 14px rgba(49,212,199,.35);
+      transition: width .12s linear;
     }
+
+
+    /* =========================================================
+       CONTAINER
+    ========================================================= */
 
     .container {
       width: min(calc(100% - 40px), var(--container));
       margin: 0 auto;
     }
 
-    /* =========================================================
-       TYPOGRAPHY & ACCENTS
-    ========================================================= */
-    h1, h2, h3, .brand-text strong, .banner-name, .tile strong {
-      font-family: var(--font-display);
-    }
-
-    .kicker, .tag, .status, .panel-top, small {
-      font-family: var(--font-mono);
-    }
 
     /* =========================================================
        NAVBAR
     ========================================================= */
+
     header {
       position: sticky;
       top: 0;
       z-index: 1000;
-      background: rgba(8,9,13,.85);
+      background: rgba(8,9,13,.78);
       backdrop-filter: blur(18px);
       border-bottom: 1px solid rgba(255,255,255,.06);
     }
@@ -136,8 +128,9 @@
       display: flex;
       align-items: center;
       gap: 12px;
-      font-weight: 800;
-      letter-spacing: -.03em;
+      font-family: var(--font-display);
+      font-weight: 700;
+      letter-spacing: -.02em;
     }
 
     .brand-mark {
@@ -146,59 +139,29 @@
       display: grid;
       place-items: center;
       border-radius: 12px;
-      background: linear-gradient(135deg, var(--coral), var(--amber));
+      background: linear-gradient(135deg, var(--coral), var(--amber) 55%, var(--teal));
       color: #08090d;
-      font-weight: 900;
-      font-family: var(--font-display);
+      font-family: var(--font-mono);
+      font-weight: 600;
+      font-size: 13px;
     }
 
-    .brand-text {
-      display: flex;
-      flex-direction: column;
-      line-height: 1.1;
-    }
+    .brand-text { display: flex; flex-direction: column; line-height: 1.1; }
+    .brand-text strong { font-size: 15px; font-weight: 700; }
+    .brand-text span { font-family: Inter, sans-serif; font-size: 10px; color: var(--muted); margin-top: 4px; font-weight: 500; }
 
-    .brand-text strong {
-      font-size: 15px;
-    }
-
-    .brand-text span {
-      font-size: 10px;
-      color: var(--muted);
-      margin-top: 4px;
-      font-weight: 500;
-    }
-
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 28px;
-    }
-
-    .nav-links a {
-      color: #bfc2ca;
-      font-size: 14px;
-      transition: .25s ease;
-    }
-
-    .nav-links a:hover {
-      color: white;
-    }
+    .nav-links { display: flex; align-items: center; gap: 28px; }
+    .nav-links a { color: #bfc2ca; font-size: 14px; transition: color .25s ease; }
+    .nav-links a:hover { color: white; }
 
     .nav-links .nav-cta {
-      padding: 10px 18px;
+      padding: 10px 16px;
       border: 1px solid var(--border-strong);
       border-radius: 999px;
       color: white;
-      font-weight: 600;
-      position: relative;
-      overflow: hidden;
+      transition: border-color .2s ease, background .2s ease;
     }
-
-    .nav-links .nav-cta:hover {
-      border-color: rgba(255,255,255,.4);
-      background: rgba(255,255,255,.06);
-    }
+    .nav-links .nav-cta:hover { border-color: rgba(255,255,255,.3); background: rgba(255,255,255,.04); }
 
     .menu {
       display: none;
@@ -209,9 +172,11 @@
       cursor: pointer;
     }
 
+
     /* =========================================================
        HERO
     ========================================================= */
+
     .hero {
       min-height: calc(100vh - 76px);
       display: grid;
@@ -230,7 +195,20 @@
       height: 520px;
       left: -220px;
       top: 50px;
-      background: rgba(242,85,95,.08);
+      background: rgba(255,107,95,.08);
+      filter: blur(100px);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      width: 380px;
+      height: 380px;
+      right: -160px;
+      bottom: -60px;
+      background: rgba(49,212,199,.07);
       filter: blur(100px);
       border-radius: 50%;
       pointer-events: none;
@@ -241,8 +219,10 @@
       align-items: center;
       gap: 9px;
       color: #c4c6cc;
-      font-size: 12px;
-      letter-spacing: .04em;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: .1em;
       margin-bottom: 22px;
     }
 
@@ -250,20 +230,22 @@
       width: 7px;
       height: 7px;
       display: inline-block;
-      background: var(--cyan);
+      background: var(--teal);
       border-radius: 50%;
-      box-shadow: 0 0 0 5px rgba(49,212,199,.12);
+      box-shadow: 0 0 0 5px rgba(49,212,199,.08);
     }
 
     h1 {
-      font-size: clamp(48px, 6vw, 76px);
-      line-height: 1.05;
-      letter-spacing: -.04em;
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: clamp(48px, 6vw, 82px);
+      line-height: .98;
+      letter-spacing: -.03em;
       max-width: 850px;
     }
 
     .gradient {
-      background: linear-gradient(90deg, var(--coral), #ff9e8b 40%, var(--amber));
+      background: linear-gradient(90deg, var(--coral), var(--amber) 45%, var(--teal));
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
@@ -277,74 +259,51 @@
       line-height: 1.8;
     }
 
-    .actions {
-      display: flex;
-      gap: 12px;
-      margin-top: 34px;
-      flex-wrap: wrap;
-    }
+    .actions { display: flex; gap: 12px; margin-top: 34px; flex-wrap: wrap; }
 
     .btn {
+      position: relative;
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      min-height: 48px;
-      padding: 0 22px;
+      min-height: 46px;
+      padding: 0 19px;
       border-radius: 12px;
       font-size: 13px;
       font-weight: 700;
-      transition: all .25s ease;
-      position: relative;
       overflow: hidden;
-      border: 1px solid transparent;
+      transition: transform .25s ease, background .25s ease, border-color .25s ease;
     }
 
-    .btn:hover {
-      transform: translateY(-2px);
+    .btn::after {
+      content: "";
+      position: absolute;
+      top: 0; left: -60%;
+      width: 40%;
+      height: 100%;
+      background: linear-gradient(120deg, transparent, rgba(255,255,255,.35), transparent);
+      transform: skewX(-20deg);
+      transition: left .55s ease;
     }
+    .btn:hover::after { left: 130%; }
 
-    .btn.primary {
-      background: white;
-      color: #090a0d;
-    }
+    .btn.primary { background: white; color: #090a0d; }
+    .btn.primary:hover { transform: translateY(-2px); background: #f0f0f0; }
 
-    .btn.primary:hover {
-      background: #f0f0f0;
-      box-shadow: 0 10px 25px rgba(255,255,255,0.15);
-    }
+    .btn.secondary { border: 1px solid var(--border-strong); color: #d6d7dc; }
+    .btn.secondary:hover { background: rgba(255,255,255,.05); border-color: rgba(255,255,255,.25); }
 
-    .btn.secondary {
-      border-color: var(--border-strong);
-      color: #d6d7dc;
-      background: rgba(255,255,255,.02);
-    }
-
-    .btn.secondary:hover {
-      background: rgba(255,255,255,.06);
-      border-color: rgba(255,255,255,.3);
-    }
-
-    .btn.coral-btn {
-      background: linear-gradient(135deg, var(--coral), #ff887b);
-      color: white;
-      box-shadow: 0 8px 20px rgba(242,85,95,0.25);
-    }
-
-    .btn.amber-btn {
-      background: linear-gradient(135deg, var(--amber), #f7c36d);
-      color: #08090d;
-      box-shadow: 0 8px 20px rgba(244,166,54,0.25);
-    }
 
     /* =========================================================
        HERO PANEL
     ========================================================= */
+
     .hero-panel {
       padding: 18px;
       background: linear-gradient(145deg, rgba(255,255,255,.06), rgba(255,255,255,.018));
       border: 1px solid var(--border);
       border-radius: 25px;
-      box-shadow: 0 30px 100px rgba(0,0,0,.45);
+      box-shadow: 0 30px 100px rgba(0,0,0,.35);
     }
 
     .panel-top {
@@ -352,31 +311,16 @@
       justify-content: space-between;
       padding: 5px 4px 18px;
       color: #777b85;
+      font-family: var(--font-mono);
       font-size: 10px;
       letter-spacing: .1em;
       text-transform: uppercase;
     }
 
-    .live {
-      display: inline-flex;
-      align-items: center;
-      gap: 7px;
-      color: #9da1aa;
-    }
+    .live { display: inline-flex; align-items: center; gap: 7px; color: #9da1aa; }
+    .live i { width: 6px; height: 6px; background: var(--teal); border-radius: 50%; }
 
-    .live i {
-      width: 6px;
-      height: 6px;
-      background: var(--cyan);
-      border-radius: 50%;
-      box-shadow: 0 0 8px var(--cyan);
-    }
-
-    .panel-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 12px;
-    }
+    .panel-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
 
     .tile {
       min-height: 150px;
@@ -386,35 +330,23 @@
       border: 1px solid var(--border);
       position: relative;
       overflow: hidden;
-      transition: border-color 0.3s ease;
+      transition: border-color .25s ease;
     }
+    .tile:hover { border-color: var(--border-strong); }
 
     .tile.big {
       grid-column: span 2;
       min-height: 210px;
-      background: radial-gradient(circle at top right, rgba(49,212,199,0.08), rgba(16,18,24,0.95));
+      background:
+        radial-gradient(circle at 12% 0%, rgba(255,107,95,.10), transparent 55%),
+        radial-gradient(circle at 100% 0%, rgba(234,182,91,.08), transparent 50%),
+        radial-gradient(circle at 100% 100%, rgba(49,212,199,.10), transparent 55%),
+        #101218;
     }
 
-    .tile small {
-      display: block;
-      color: #727680;
-      font-size: 10px;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      margin-bottom: 13px;
-    }
-
-    .tile strong {
-      display: block;
-      font-size: 22px;
-      letter-spacing: -.02em;
-    }
-
-    .tile p {
-      color: #858994;
-      font-size: 12px;
-      margin-top: 8px;
-    }
+    .tile small { display: block; font-family: var(--font-mono); color: #727680; font-size: 10.5px; text-transform: uppercase; letter-spacing: .07em; margin-bottom: 13px; }
+    .tile strong { display: block; font-family: var(--font-display); font-weight: 700; font-size: 22px; letter-spacing: -.02em; }
+    .tile p { color: #858994; font-size: 12px; margin-top: 8px; }
 
     .signal {
       position: absolute;
@@ -431,144 +363,113 @@
       content: "";
       position: absolute;
       inset: 12px;
-      border: 1px solid rgba(242,85,95,.3);
+      border: 1px solid rgba(255,107,95,.3);
       border-radius: 50%;
     }
-
-    .signal::after {
-      inset: 25px;
-      border-color: rgba(244,166,54,.4);
-    }
+    .signal::after { inset: 25px; border-color: rgba(234,182,91,.4); }
 
     .bar {
       position: absolute;
-      left: 22px;
-      right: 22px;
-      bottom: 20px;
+      left: 22px; right: 22px; bottom: 20px;
       height: 3px;
       border-radius: 20px;
       background: rgba(255,255,255,.06);
       overflow: hidden;
     }
+    .bar span { display: block; width: 65%; height: 100%; background: var(--coral); }
 
-    .bar span {
-      display: block;
-      width: 65%;
-      height: 100%;
-      background: linear-gradient(90deg, var(--cyan), var(--indigo));
-    }
-
-    .accent-coral strong { color: var(--coral); }
-    .accent-amber strong { color: var(--amber); }
+    .accent-coral strong { color: var(--coral-soft); }
+    .accent-teal strong { color: var(--teal-soft); }
 
     .bar.coral span { background: var(--coral); width: 72%; }
-    .bar.amber span { background: var(--amber); width: 55%; }
+    .bar.teal span { background: var(--teal); width: 55%; }
+
 
     /* =========================================================
        SECTIONS
     ========================================================= */
-    section {
-      padding: 110px 0;
-      position: relative;
-    }
 
-    .section-head {
-      max-width: 760px;
-      margin-bottom: 48px;
-    }
+    section { padding: 110px 0; position: relative; }
+    .section-head { max-width: 760px; margin-bottom: 48px; }
 
     .kicker {
       display: inline-block;
+      font-family: var(--font-mono);
       color: #a6a9b2;
       font-size: 11px;
       text-transform: uppercase;
       letter-spacing: .12em;
       margin-bottom: 12px;
     }
-
     .kicker.coral { color: var(--coral); }
+    .kicker.teal { color: var(--teal); }
     .kicker.amber { color: var(--amber); }
 
     .section-head h2 {
-      font-size: clamp(34px, 4vw, 52px);
-      line-height: 1.1;
-      letter-spacing: -.03em;
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: clamp(34px, 4vw, 55px);
+      line-height: 1.05;
+      letter-spacing: -.025em;
     }
 
-    .section-head p {
-      margin-top: 16px;
-      color: var(--muted);
-      max-width: 670px;
-      font-size: 15px;
-    }
+    .section-head p { margin-top: 16px; color: var(--muted); max-width: 670px; font-size: 15px; }
+
 
     /* =========================================================
        ABOUT
     ========================================================= */
-    .story-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 18px;
-    }
+
+    .story-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
 
     .card {
       background: linear-gradient(145deg, rgba(255,255,255,.045), rgba(255,255,255,.018));
       border: 1px solid var(--border);
       border-radius: var(--radius);
-      transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+      transition: border-color .25s ease, transform .25s ease, box-shadow .25s ease;
     }
-
     .card:hover {
+      border-color: var(--border-strong);
       transform: translateY(-3px);
-      border-color: rgba(255,255,255,0.2);
-      box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+      box-shadow: 0 20px 55px rgba(0,0,0,.3);
     }
 
     .story { padding: 34px; }
     .story.alt { background: linear-gradient(145deg, rgba(49,212,199,.045), rgba(255,255,255,.018)); }
 
-    .story h3 {
-      font-size: 24px;
-      letter-spacing: -.02em;
-    }
+    .story h3 { font-family: var(--font-display); font-weight: 700; font-size: 24px; letter-spacing: -.015em; }
+    .story > p { margin-top: 15px; color: var(--muted); font-size: 14px; line-height: 1.8; }
 
-    .story > p {
-      margin-top: 15px;
-      color: var(--muted);
-      font-size: 14px;
-      line-height: 1.8;
-    }
-
-    .pillars {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 10px;
-      margin-top: 28px;
-    }
+    .pillars { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 28px; }
 
     .pillar {
-      padding: 16px;
+      position: relative;
+      padding: 16px 16px 16px 20px;
       background: rgba(255,255,255,.025);
       border: 1px solid rgba(255,255,255,.06);
       border-radius: 14px;
-      border-left: 3px solid var(--cyan);
     }
-
-    .pillar:nth-child(2) { border-left-color: var(--indigo); }
-    .pillar:nth-child(3) { border-left-color: var(--coral); }
-    .pillar:nth-child(4) { border-left-color: var(--amber); }
+    .pillar::before {
+      content: "";
+      position: absolute;
+      left: 0; top: 14px; bottom: 14px;
+      width: 3px;
+      border-radius: 3px;
+      background: var(--pc, var(--coral));
+    }
+    .pillar:nth-child(3n+1) { --pc: var(--coral); }
+    .pillar:nth-child(3n+2) { --pc: var(--amber); }
+    .pillar:nth-child(3n+3) { --pc: var(--teal); }
 
     .pillar b { display: block; font-size: 13px; }
     .pillar span { display: block; color: #747883; font-size: 11px; margin-top: 4px; }
 
+
     /* =========================================================
        PRODUCTS
     ========================================================= */
-    .products {
-      display: flex;
-      flex-direction: column;
-      gap: 40px;
-    }
+
+    .products { display: flex; flex-direction: column; gap: 35px; }
 
     .product {
       border: 1px solid var(--border);
@@ -577,48 +478,34 @@
       background: #0d0f14;
       display: grid;
       grid-template-columns: 1.15fr .85fr;
-      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+      transition: border-color .3s ease, box-shadow .3s ease;
     }
-
-    .product.vibefit:hover {
-      border-color: rgba(242,85,95,0.35);
-      box-shadow: 0 20px 50px rgba(242,85,95,0.08);
-    }
-
-    .product.kokankart:hover {
-      border-color: rgba(244,166,54,0.35);
-      box-shadow: 0 20px 50px rgba(244,166,54,0.08);
-    }
+    .product.vibefit:hover { border-color: rgba(255,107,95,.35); box-shadow: 0 25px 70px rgba(255,107,95,.08); }
+    .product.kokankart:hover { border-color: rgba(49,212,199,.35); box-shadow: 0 25px 70px rgba(49,212,199,.08); }
 
     .product-main { padding: 32px; }
-
-    .product-top {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 12px;
-      margin-bottom: 24px;
-    }
+    .product-top { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 24px; }
 
     .status {
       display: inline-flex;
       align-items: center;
-      padding: 6px 12px;
+      padding: 7px 11px;
       border-radius: 999px;
-      background: rgba(242,85,95,.08);
+      background: rgba(255,107,95,.08);
       color: var(--coral);
+      font-family: var(--font-mono);
       font-size: 10px;
-      border: 1px solid rgba(242,85,95,.2);
-      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      border: 1px solid rgba(255,107,95,.15);
     }
+    .status.building { background: rgba(49,212,199,.08); color: var(--teal); border-color: rgba(49,212,199,.15); }
 
-    .status.building {
-      background: rgba(244,166,54,.08);
-      color: var(--amber);
-      border-color: rgba(244,166,54,.2);
-    }
 
-    /* PRODUCT BANNER OVERLAY WITH BACKGROUND IMAGES */
+    /* =========================================================
+       PRODUCT BACKGROUND BANNER
+    ========================================================= */
+
     .product-banner {
       position: relative;
       min-height: 360px;
@@ -630,15 +517,22 @@
       display: flex;
       flex-direction: column;
       justify-content: space-between;
+      transition: border-color .3s ease;
     }
 
     .vibefit-banner {
-      background-image: linear-gradient(90deg, rgba(8,9,13,.88) 0%, rgba(8,9,13,.4) 50%, rgba(8,9,13,.7) 100%), url("assets/vibefit-bg.png");
+      background-image:
+        linear-gradient(90deg, rgba(8,9,13,.82), rgba(8,9,13,.28), rgba(8,9,13,.65)),
+        url("assets/vibefit-bg.png");
+    }
+    .kokankart-banner {
+      background-image:
+        linear-gradient(90deg, rgba(8,9,13,.82), rgba(8,9,13,.25), rgba(8,9,13,.65)),
+        url("assets/kokankart-bg.png");
     }
 
-    .kokankart-banner {
-      background-image: linear-gradient(90deg, rgba(8,9,13,.88) 0%, rgba(8,9,13,.4) 50%, rgba(8,9,13,.7) 100%), url("assets/kokankart-bg.png");
-    }
+    .product.vibefit:hover .product-banner { border-color: rgba(255,107,95,.4); }
+    .product.kokankart:hover .product-banner { border-color: rgba(49,212,199,.4); }
 
     .banner-glow {
       position: absolute;
@@ -648,9 +542,8 @@
       filter: blur(70px);
       pointer-events: none;
     }
-
-    .vibefit-banner .banner-glow { background: rgba(242,85,95,.18); left: 10%; top: 15%; }
-    .kokankart-banner .banner-glow { background: rgba(244,166,54,.18); left: 10%; top: 15%; }
+    .vibefit-banner .banner-glow { background: rgba(255,107,95,.15); left: 10%; top: 15%; }
+    .kokankart-banner .banner-glow { background: rgba(49,212,199,.14); left: 10%; top: 15%; }
 
     .banner-content {
       position: relative;
@@ -662,25 +555,20 @@
       padding: 30px;
     }
 
-    .banner-text { max-width: 320px; }
+    .banner-text { max-width: 280px; }
 
     .banner-name {
       display: block;
-      font-size: clamp(38px, 5vw, 58px);
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: clamp(40px, 5vw, 62px);
       line-height: 1;
-      font-weight: 800;
-      letter-spacing: -.04em;
+      letter-spacing: -.03em;
     }
+    .vibefit-banner .banner-name { color: var(--coral-soft); }
+    .kokankart-banner .banner-name { color: var(--teal-soft); }
 
-    .vibefit-banner .banner-name { color: var(--coral); }
-    .kokankart-banner .banner-name { color: var(--amber); }
-
-    .banner-tag {
-      display: block;
-      margin-top: 12px;
-      color: rgba(255,255,255,.75);
-      font-size: 12px;
-    }
+    .banner-tag { display: block; margin-top: 12px; font-family: var(--font-mono); color: rgba(255,255,255,.65); font-size: 11px; letter-spacing: .03em; }
 
     .banner-footer {
       position: relative;
@@ -689,353 +577,232 @@
       align-items: center;
       gap: 12px;
       padding: 16px 20px;
-      background: rgba(5,6,9,.75);
+      background: rgba(5,6,9,.68);
       backdrop-filter: blur(10px);
       border-top: 1px solid rgba(255,255,255,.08);
       color: #b8bbc3;
+      font-family: var(--font-mono);
       font-size: 10px;
     }
+    .banner-footer i { width: 4px; height: 4px; border-radius: 50%; background: rgba(255,255,255,.3); }
 
-    .banner-footer i {
-      width: 4px;
-      height: 4px;
-      border-radius: 50%;
-      background: rgba(255,255,255,.3);
-    }
+    .banner-bar { flex: 1; height: 3px; background: rgba(255,255,255,.08); border-radius: 20px; overflow: hidden; margin-left: 5px; }
+    .banner-bar span { display: block; height: 100%; width: 68%; background: var(--coral); }
+    .kokankart-banner .banner-bar span { background: var(--teal); width: 52%; }
 
-    .banner-bar {
-      flex: 1;
-      height: 3px;
-      background: rgba(255,255,255,.08);
-      border-radius: 20px;
-      overflow: hidden;
-      margin-left: 5px;
-    }
 
-    .banner-bar span {
-      display: block;
-      height: 100%;
-      width: 72%;
-      background: var(--coral);
-    }
+    /* =========================================================
+       PRODUCT CONTENT
+    ========================================================= */
 
-    .kokankart-banner .banner-bar span {
-      background: var(--amber);
-      width: 55%;
-    }
+    .product h3 { font-family: var(--font-display); font-weight: 700; margin-top: 30px; font-size: 32px; letter-spacing: -.02em; }
+    .product .lead { color: var(--muted); font-size: 14px; line-height: 1.8; margin-top: 10px; }
 
-    /* PRODUCT CONTENT DETAILS */
-    .product h3 {
-      margin-top: 28px;
-      font-size: 30px;
-      letter-spacing: -.03em;
-    }
-
-    .product .lead {
-      color: var(--muted);
-      font-size: 14px;
-      line-height: 1.8;
-      margin-top: 10px;
-    }
-
-    .tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 7px;
-      margin-top: 20px;
-    }
-
+    .tags { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 22px; }
     .tag {
-      padding: 6px 12px;
+      padding: 7px 10px;
       border: 1px solid rgba(255,255,255,.08);
       background: rgba(255,255,255,.025);
       border-radius: 999px;
       color: #a7aab3;
+      font-family: var(--font-mono);
       font-size: 10px;
+      transition: border-color .2s ease;
     }
+    .product.vibefit:hover .tag { border-color: rgba(255,107,95,.25); }
+    .product.kokankart:hover .tag { border-color: rgba(49,212,199,.25); }
 
     .product-info {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 25px;
-      margin-top: 28px;
-      padding-top: 24px;
+      margin-top: 32px;
+      padding-top: 28px;
       border-top: 1px solid rgba(255,255,255,.07);
     }
 
-    .info h4 {
-      font-size: 13px;
-      margin-bottom: 12px;
-    }
+    .info h4 { font-family: var(--font-mono); text-transform: uppercase; letter-spacing: .08em; font-size: 11px; margin-bottom: 12px; }
+    .vibefit .info h4 { color: var(--coral-soft); }
+    .kokankart .info h4 { color: var(--teal-soft); }
 
-    .vibefit .info h4 { color: var(--coral); }
-    .kokankart .info h4 { color: var(--amber); }
-
-    .info p, .info li {
-      color: #858994;
-      font-size: 12px;
-      line-height: 1.75;
-    }
-
+    .info p, .info li { color: #858994; font-size: 12px; line-height: 1.75; }
     .info ul { padding-left: 17px; }
     .info li + li { margin-top: 5px; }
 
-    .product-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-top: 18px;
-    }
+    .product-actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px; }
+    .product-actions .btn { font-size: 11px; min-height: 40px; padding: 0 13px; }
 
-    .product-actions .btn {
-      font-size: 12px;
-      min-height: 42px;
-      padding: 0 16px;
-    }
 
-    /* SHOWCASE IMAGE CONTAINER */
+    /* =========================================================
+       SHOWCASE IMAGE
+    ========================================================= */
+
     .product-image {
       min-height: 100%;
       display: flex;
       align-items: center;
       justify-content: center;
       padding: 30px;
-      background: radial-gradient(circle at center, rgba(255,255,255,.04), transparent 70%);
+      background: radial-gradient(circle at center, rgba(255,255,255,.05), transparent 65%);
       border-left: 1px solid rgba(255,255,255,.07);
     }
-
     .product-image img {
       width: 100%;
       max-width: 520px;
       height: auto;
       object-fit: contain;
-      filter: drop-shadow(0 25px 40px rgba(0,0,0,.6));
-      transition: transform 0.4s ease;
+      filter: drop-shadow(0 25px 50px rgba(0,0,0,.5));
     }
 
-    .product:hover .product-image img {
-      transform: scale(1.02);
-    }
 
     /* =========================================================
        APPROACH
     ========================================================= */
-    .approach {
-      display: grid;
-      grid-template-columns: repeat(5, 1fr);
-      gap: 12px;
-    }
 
-    .step {
-      padding: 24px;
-      min-height: 200px;
-      border-top: 3px solid var(--amber);
-    }
+    .approach { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; }
 
-    .step:nth-child(1) { border-top-color: var(--cyan); }
-    .step:nth-child(2) { border-top-color: var(--indigo); }
-    .step:nth-child(3) { border-top-color: var(--amber); }
-    .step:nth-child(4) { border-top-color: var(--coral); }
-    .step:nth-child(5) { border-top-color: #10b981; }
+    .step { padding: 24px; min-height: 220px; position: relative; overflow: hidden; }
 
-    .step b {
-      font-size: 16px;
-      font-family: var(--font-display);
+    .step .line {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 28px;
+      height: 28px;
+      margin-bottom: 26px;
+      border-radius: 8px;
+      border: 1px solid var(--sc, var(--amber));
+      background: color-mix(in srgb, var(--sc, var(--amber)) 12%, transparent);
+      color: var(--sc, var(--amber));
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 600;
     }
+    .step:nth-child(5n+1) { --sc: var(--coral); }
+    .step:nth-child(5n+2) { --sc: var(--amber); }
+    .step:nth-child(5n+3) { --sc: var(--teal); }
+    .step:nth-child(5n+4) { --sc: var(--coral); }
+    .step:nth-child(5n+5) { --sc: var(--amber); }
 
-    .step p {
-      color: var(--muted);
-      font-size: 12px;
-      margin-top: 10px;
-    }
+    .step b { font-size: 17px; }
+    .step p { color: var(--muted); font-size: 12px; margin-top: 10px; }
+
 
     /* =========================================================
        VALUES
     ========================================================= */
-    .values {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 12px;
-    }
 
-    .value {
-      padding: 24px;
-      min-height: 140px;
-      border-top: 2px solid var(--border-strong);
-    }
+    .values { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+    .value { padding: 25px; min-height: 145px; }
 
-    .value:nth-child(4n+1) { border-top-color: var(--cyan); }
-    .value:nth-child(4n+2) { border-top-color: var(--indigo); }
-    .value:nth-child(4n+3) { border-top-color: var(--coral); }
-    .value:nth-child(4n+4) { border-top-color: var(--amber); }
-
-    .value b {
-      font-size: 15px;
-      font-family: var(--font-display);
+    .value .dot-marker {
+      display: inline-block;
+      width: 8px;
+      height: 8px;
+      margin-bottom: 12px;
+      border-radius: 50%;
+      background: var(--vc, var(--coral));
+      box-shadow: 0 0 12px color-mix(in srgb, var(--vc, var(--coral)) 60%, transparent);
     }
+    .value:nth-child(4n+1) { --vc: var(--coral); }
+    .value:nth-child(4n+2) { --vc: var(--amber); }
+    .value:nth-child(4n+3) { --vc: var(--teal); }
+    .value:nth-child(4n+4) { --vc: var(--coral-soft); }
 
-    .value p {
-      color: var(--muted);
-      font-size: 12px;
-      margin-top: 8px;
-    }
+    .value b { font-size: 16px; }
+    .value p { color: var(--muted); font-size: 12px; margin-top: 8px; }
+
 
     /* =========================================================
        VISION
     ========================================================= */
-    .vision {
-      padding: 38px;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 50px;
-      align-items: center;
-    }
 
-    .vision h3 {
-      font-size: 28px;
-      line-height: 1.15;
-      letter-spacing: -.03em;
-      margin-top: 5px;
-    }
+    .vision { padding: 38px; display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: center; }
+    .vision h3 { font-family: var(--font-display); font-weight: 700; font-size: 29px; line-height: 1.1; letter-spacing: -.02em; margin-top: 5px; }
+    .vision p { color: var(--muted); font-size: 13px; margin-top: 14px; max-width: 600px; }
 
-    .vision p {
-      color: var(--muted);
-      font-size: 13px;
-      margin-top: 14px;
-      max-width: 600px;
-    }
-
-    .future {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 9px;
-    }
-
+    .future { display: grid; grid-template-columns: 1fr 1fr; gap: 9px; }
     .future div {
       padding: 15px;
       border: 1px solid rgba(255,255,255,.07);
+      border-left: 2px solid var(--fc, var(--coral));
       border-radius: 12px;
       background: rgba(255,255,255,.025);
       color: #b5b8c0;
       font-size: 11px;
-      border-left: 2px solid var(--border-strong);
     }
+    .future div:nth-child(3n+1) { --fc: var(--coral); }
+    .future div:nth-child(3n+2) { --fc: var(--amber); }
+    .future div:nth-child(3n+3) { --fc: var(--teal); }
 
-    .future div:nth-child(1) { border-left-color: var(--cyan); }
-    .future div:nth-child(2) { border-left-color: var(--indigo); }
-    .future div:nth-child(3) { border-left-color: var(--amber); }
-    .future div:nth-child(4) { border-left-color: var(--coral); }
 
     /* =========================================================
-       CTA & FOOTER
+       CTA
     ========================================================= */
-    .cta {
-      padding: 65px 35px;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-    }
 
+    .cta { padding: 65px 35px; text-align: center; position: relative; overflow: hidden; }
     .cta::before {
       content: "";
       position: absolute;
-      width: 300px;
-      height: 300px;
+      width: 320px;
+      height: 320px;
       left: 50%;
       top: -180px;
       transform: translateX(-50%);
-      background: rgba(242,85,95,.12);
+      background: linear-gradient(120deg, rgba(255,107,95,.10), rgba(49,212,199,.08));
       filter: blur(80px);
       border-radius: 50%;
     }
-
     .cta > * { position: relative; z-index: 2; }
 
-    .cta h2 {
-      font-size: clamp(35px, 5vw, 56px);
-      letter-spacing: -.04em;
-      line-height: 1;
-      margin-top: 8px;
-    }
+    .cta h2 { font-family: var(--font-display); font-weight: 700; font-size: clamp(35px, 5vw, 60px); letter-spacing: -.03em; line-height: 1; margin-top: 8px; }
+    .cta p { max-width: 560px; margin: 16px auto 25px; color: var(--muted); font-size: 14px; }
 
-    .cta p {
-      max-width: 560px;
-      margin: 16px auto 25px;
-      color: var(--muted);
-      font-size: 14px;
-    }
-
-    footer {
-      padding: 65px 0 30px;
-      border-top: 1px solid rgba(255,255,255,.06);
-      margin-top: 50px;
-    }
-
-    .footer-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 40px;
-    }
-
-    .footer-brand {
-      font-weight: 800;
-      font-size: 15px;
-    }
-
-    .footer-brand span {
-      display: block;
-      margin-top: 7px;
-      color: var(--muted);
-      font-size: 11px;
-      font-weight: 400;
-    }
-
-    .footer-links {
-      display: flex;
-      justify-content: flex-end;
-      flex-wrap: wrap;
-      gap: 18px;
-    }
-
-    .footer-links a {
-      color: #858993;
-      font-size: 11px;
-      transition: .2s ease;
-    }
-
-    .footer-links a:hover { color: white; }
-
-    .copyright {
-      margin-top: 50px;
-      padding-top: 22px;
-      border-top: 1px solid rgba(255,255,255,.06);
-      color: #626671;
-      font-size: 10px;
-    }
 
     /* =========================================================
-       REVEAL ANIMATIONS
+       FOOTER
     ========================================================= */
-    .reveal {
-      opacity: 0;
-      transform: translateY(20px);
-      transition: opacity .7s ease, transform .7s ease;
+
+    footer { padding: 65px 0 30px; border-top: 1px solid rgba(255,255,255,.06); margin-top: 50px; }
+    .footer-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+
+    .footer-brand { font-family: var(--font-display); font-weight: 700; font-size: 15px; }
+    .footer-brand span { display: block; margin-top: 7px; font-family: Inter, sans-serif; color: var(--muted); font-size: 11px; font-weight: 400; }
+
+    .footer-links { display: flex; justify-content: flex-end; flex-wrap: wrap; gap: 18px; }
+    .footer-links a { color: #858993; font-size: 11px; transition: color .2s ease; }
+    .footer-links a:hover { color: white; }
+
+    .copyright { margin-top: 50px; padding-top: 22px; border-top: 1px solid rgba(255,255,255,.06); color: #626671; font-size: 10px; }
+
+
+    /* =========================================================
+       REVEAL ANIMATION
+    ========================================================= */
+
+    .reveal { opacity: 0; transform: translateY(20px); transition: opacity .7s ease, transform .7s ease; }
+    .reveal.show { opacity: 1; transform: translateY(0); }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .reveal { opacity: 1; transform: none; transition: none; }
+      .btn::after { display: none; }
+      .progress-bar { transition: none; }
+      .card, .product, .tile { transition: none; }
     }
 
-    .reveal.show {
-      opacity: 1;
-      transform: translateY(0);
-    }
 
     /* =========================================================
        RESPONSIVE
     ========================================================= */
+
     @media (max-width: 1000px) {
       .hero { grid-template-columns: 1fr; gap: 50px; }
       .hero-panel { max-width: 700px; }
       .product { grid-template-columns: 1fr; }
       .product-image { border-left: 0; border-top: 1px solid rgba(255,255,255,.07); }
-      .approach, .values { grid-template-columns: repeat(2, 1fr); }
+      .approach { grid-template-columns: repeat(2, 1fr); }
+      .values { grid-template-columns: repeat(2, 1fr); }
     }
 
     @media (max-width: 720px) {
@@ -1044,27 +811,40 @@
 
       .nav-links {
         position: absolute;
-        left: 14px;
-        right: 14px;
-        top: 70px;
-        padding: 18px;
+        left: 14px; right: 14px; top: 70px;
+        padding: 15px;
         flex-direction: column;
         align-items: stretch;
-        background: rgba(13,15,20,.98);
+        background: rgba(13,15,20,.97);
         border: 1px solid var(--border);
         border-radius: 18px;
         display: none;
       }
-
       .nav-links.active { display: flex; }
+      .nav-links a { padding: 9px 8px; }
       .menu { display: block; }
-      h1 { font-size: clamp(40px, 11vw, 60px); }
-      .hero { padding-top: 50px; }
-      section { padding: 70px 0; }
-      .story-grid, .pillars, .product-info, .approach, .values, .vision, .future, .footer-grid { grid-template-columns: 1fr; }
-      .product-main, .product-image, .vision { padding: 20px; }
+
+      h1 { font-size: clamp(45px, 13vw, 65px); }
+      .hero { padding-top: 65px; }
+      section { padding: 80px 0; }
+
+      .story-grid { grid-template-columns: 1fr; }
+      .pillars { grid-template-columns: 1fr; }
+
+      .product-main { padding: 20px; }
       .product-top { align-items: flex-start; flex-direction: column; }
-      .banner-name { font-size: 38px; }
+      .product-banner { min-height: 330px; }
+      .banner-content { padding: 23px; min-height: 255px; }
+      .banner-name { font-size: 43px; }
+      .product-info { grid-template-columns: 1fr; }
+      .product-image { padding: 20px; }
+
+      .approach { grid-template-columns: 1fr; }
+      .values { grid-template-columns: 1fr; }
+      .vision { grid-template-columns: 1fr; padding: 25px; gap: 30px; }
+      .future { grid-template-columns: 1fr; }
+
+      .footer-grid { grid-template-columns: 1fr; }
       .footer-links { justify-content: flex-start; }
     }
 
@@ -1076,16 +856,23 @@
       .banner-footer { flex-wrap: wrap; }
       .banner-bar { flex-basis: 100%; margin-left: 0; }
     }
+
   </style>
 </head>
 
+
 <body>
 
-<div class="scroll-progress" id="scrollProgress"></div>
+<div class="progress-bar" id="progressBar"></div>
 
-<!-- NAVIGATION -->
+
+<!-- =========================================================
+     NAVIGATION
+========================================================= -->
+
 <header>
   <nav>
+
     <a href="#" class="brand">
       <span class="brand-mark">CMS</span>
       <span class="brand-text">
@@ -1103,31 +890,51 @@
       <a href="#values">Values</a>
       <a class="nav-cta" href="mailto:support@cmsgroup.in">Contact CMS</a>
     </div>
+
   </nav>
 </header>
 
+
 <main>
 
-<!-- HERO -->
+
+<!-- =========================================================
+     HERO
+========================================================= -->
+
 <section class="hero container">
+
   <div class="reveal">
+
     <span class="eyebrow"><i class="dot"></i> India-focused digital product company</span>
-    <h1><span class="gradient">Building products</span><br>that solve real problems.</h1>
-    <p class="hero-copy">Creative Management Solutions (CMS) builds, launches and grows its own technology products — creating focused digital experiences across wellness, commerce and emerging real-world opportunities.</p>
-    
+
+    <h1>
+      <span class="gradient">Building products</span>
+      <br>
+      that solve real problems.
+    </h1>
+
+    <p class="hero-copy">
+      Creative Management Solutions (CMS) builds, launches and grows its own technology products — creating focused digital experiences across wellness, commerce and emerging real-world opportunities.
+    </p>
+
     <div class="actions">
       <a class="btn primary" href="#products">Explore Products →</a>
       <a class="btn secondary" href="#about">Our Philosophy</a>
     </div>
+
   </div>
 
+
   <div class="hero-panel reveal">
+
     <div class="panel-top">
       <span>CMS / PRODUCT STUDIO</span>
       <span class="live"><i></i> Building</span>
     </div>
 
     <div class="panel-grid">
+
       <div class="tile big">
         <small>Product philosophy</small>
         <strong>Build → Launch → Learn → Grow</strong>
@@ -1143,19 +950,27 @@
         <div class="bar coral"><span></span></div>
       </div>
 
-      <div class="tile accent-amber">
+      <div class="tile accent-teal">
         <small>KokanKart</small>
         <strong>Commerce</strong>
         <p>Product development</p>
-        <div class="bar amber"><span></span></div>
+        <div class="bar teal"><span></span></div>
       </div>
+
     </div>
+
   </div>
+
 </section>
 
-<!-- ABOUT -->
+
+<!-- =========================================================
+     ABOUT
+========================================================= -->
+
 <section id="about">
   <div class="container">
+
     <div class="section-head reveal">
       <span class="kicker">About CMS</span>
       <h2>We build. We own. We evolve.</h2>
@@ -1163,13 +978,16 @@
     </div>
 
     <div class="story-grid">
+
       <article class="card story reveal">
         <h3>A product-first company.</h3>
-        <p>We start with a real problem, shape a useful experience, build the technology behind it, launch it, listen to users and continuously improve the product. Our long-term goal is to create independent products that can grow into meaningful ecosystems.</p>
-        
+        <p>
+          We start with a real problem, shape a useful experience, build the technology behind it, launch it, listen to users and continuously improve the product. Our long-term goal is to create independent products that can grow into meaningful ecosystems.
+        </p>
+
         <div class="pillars">
           <div class="pillar"><b>Problem → Product</b><span>Start with what matters.</span></div>
-          <div class="pillar"><b>Experience → Trust</b><span>Keep products simple & reliable.</span></div>
+          <div class="pillar"><b>Experience → Trust</b><span>Keep products simple and reliable.</span></div>
           <div class="pillar"><b>Launch → Learn</b><span>Improve through real usage.</span></div>
           <div class="pillar"><b>Product → Ecosystem</b><span>Build for long-term scale.</span></div>
         </div>
@@ -1177,22 +995,30 @@
 
       <article class="card story alt reveal">
         <h3>Where CMS is heading.</h3>
-        <p>CMS is starting with focused digital products and an India-first approach. Over time, the company aims to build multiple technology-led businesses and explore opportunities beyond software when the right time and opportunity arrive.</p>
+        <p>
+          CMS is starting with focused digital products and an India-first approach. Over time, the company aims to build multiple technology-led businesses and explore opportunities beyond software when the right time and opportunity arrive.
+        </p>
 
         <div class="pillars">
           <div class="pillar"><b>Consumer Products</b><span>Useful everyday experiences.</span></div>
           <div class="pillar"><b>Business Products</b><span>Technology for real operations.</span></div>
-          <div class="pillar"><b>Digital Commerce</b><span>Connecting people & businesses.</span></div>
+          <div class="pillar"><b>Digital Commerce</b><span>Connecting people and businesses.</span></div>
           <div class="pillar"><b>Wellness</b><span>Technology for healthier living.</span></div>
         </div>
       </article>
+
     </div>
   </div>
 </section>
 
-<!-- PRODUCTS -->
+
+<!-- =========================================================
+     PRODUCTS
+========================================================= -->
+
 <section id="products">
   <div class="container">
+
     <div class="section-head reveal">
       <span class="kicker">Featured products</span>
       <h2>Two products. One product philosophy.</h2>
@@ -1204,13 +1030,12 @@
       <!-- VIBEFIT -->
       <article class="product vibefit reveal">
         <div class="product-main">
-          
+
           <div class="product-top">
             <span class="status">Play Store preparation</span>
             <span class="kicker coral">Wellness / Consumer</span>
           </div>
 
-          <!-- NEW BACKGROUND IMAGE BANNER -->
           <div class="product-banner vibefit-banner">
             <div class="banner-glow"></div>
             <div class="banner-content">
@@ -1228,7 +1053,10 @@
           </div>
 
           <h3>VibeFit</h3>
-          <p class="lead">An offline-first fitness and wellness companion bringing workouts, yoga, nutrition, progress tracking, lifestyle planning and wellness guidance into one experience.</p>
+
+          <p class="lead">
+            An offline-first fitness and wellness companion bringing workouts, yoga, nutrition, progress tracking, lifestyle planning and wellness guidance into one experience.
+          </p>
 
           <div class="tags">
             <span class="tag">Workout Tracking</span>
@@ -1255,21 +1083,27 @@
 
             <div class="info">
               <h4>Product philosophy</h4>
-              <p>Core fitness functionality is designed around an offline-first experience, with local storage helping the app remain useful without continuous internet access.</p>
-
+              <p>
+                Core fitness functionality is designed around an offline-first experience, with local storage helping the app remain useful without continuous internet access.
+              </p>
               <div class="product-actions">
-                <a class="btn coral-btn" href="/vibefit-privacy.html">VibeFit Privacy Policy ↗</a>
+                <a class="btn primary" href="/vibefit-privacy.html">VibeFit Privacy Policy ↗</a>
                 <a class="btn secondary" href="mailto:support@cmsgroup.in?subject=VibeFit%20Support">VibeFit Support →</a>
               </div>
             </div>
           </div>
+
         </div>
 
-        <!-- EXISTING SHOWCASE IMAGE -->
         <div class="product-image">
-          <img src="assets/vibefit-showcase.png" alt="VibeFit product showcase showing workouts, yoga, nutrition, recovery, progress and lifestyle screens" loading="lazy">
+          <img
+            src="assets/vibefit-showcase.png"
+            alt="VibeFit product showcase showing workouts, yoga, nutrition, recovery, progress and lifestyle screens"
+            loading="lazy"
+          >
         </div>
       </article>
+
 
       <!-- KOKANKART -->
       <article class="product kokankart reveal">
@@ -1277,10 +1111,9 @@
 
           <div class="product-top">
             <span class="status building">Product development</span>
-            <span class="kicker amber">Commerce / Local</span>
+            <span class="kicker teal">Commerce / Local</span>
           </div>
 
-          <!-- NEW BACKGROUND IMAGE BANNER -->
           <div class="product-banner kokankart-banner">
             <div class="banner-glow"></div>
             <div class="banner-content">
@@ -1298,7 +1131,10 @@
           </div>
 
           <h3>KokanKart</h3>
-          <p class="lead">A hyperlocal commerce platform connecting customers with local vendors and regional products through a connected shopping, vendor, delivery and administration experience.</p>
+
+          <p class="lead">
+            A hyperlocal commerce platform connecting customers with local vendors and regional products through a connected shopping, vendor, delivery and administration experience.
+          </p>
 
           <div class="tags">
             <span class="tag">Hyperlocal Marketplace</span>
@@ -1325,18 +1161,23 @@
 
             <div class="info">
               <h4>Product philosophy</h4>
-              <p>KokanKart is designed as more than a storefront — it connects local commerce participants into one practical digital ecosystem.</p>
-
+              <p>
+                KokanKart is designed as more than a storefront — it connects local commerce participants into one practical digital ecosystem.
+              </p>
               <div class="product-actions">
-                <a class="btn amber-btn" href="mailto:support@cmsgroup.in?subject=KokanKart%20Inquiry">KokanKart Inquiry →</a>
+                <a class="btn primary" href="mailto:support@cmsgroup.in?subject=KokanKart%20Inquiry">KokanKart Inquiry →</a>
               </div>
             </div>
           </div>
+
         </div>
 
-        <!-- EXISTING SHOWCASE IMAGE -->
         <div class="product-image">
-          <img src="assets/kokankart-showcase.png" alt="KokanKart product showcase showing customer shopping, vendor dashboard, delivery and admin experiences" loading="lazy">
+          <img
+            src="assets/kokankart-showcase.png"
+            alt="KokanKart product showcase showing customer shopping, vendor dashboard, delivery and admin experiences"
+            loading="lazy"
+          >
         </div>
       </article>
 
@@ -1344,9 +1185,14 @@
   </div>
 </section>
 
-<!-- APPROACH -->
+
+<!-- =========================================================
+     APPROACH
+========================================================= -->
+
 <section id="approach">
   <div class="container">
+
     <div class="section-head reveal">
       <span class="kicker amber">How we build</span>
       <h2>From real problem to real product.</h2>
@@ -1354,63 +1200,59 @@
     </div>
 
     <div class="approach">
-      <div class="card step reveal">
-        <b>Identify</b>
-        <p>Understand the problem and the people experiencing it.</p>
-      </div>
-
-      <div class="card step reveal">
-        <b>Design</b>
-        <p>Shape a clear experience around the core user need.</p>
-      </div>
-
-      <div class="card step reveal">
-        <b>Build</b>
-        <p>Create reliable technology with quality at the foundation.</p>
-      </div>
-
-      <div class="card step reveal">
-        <b>Launch</b>
-        <p>Put the product into the real world and learn from usage.</p>
-      </div>
-
-      <div class="card step reveal">
-        <b>Iterate</b>
-        <p>Improve continuously as users, needs and opportunities evolve.</p>
-      </div>
+      <div class="card step reveal"><span class="line">01</span><b>Identify</b><p>Understand the problem and the people experiencing it.</p></div>
+      <div class="card step reveal"><span class="line">02</span><b>Design</b><p>Shape a clear experience around the core user need.</p></div>
+      <div class="card step reveal"><span class="line">03</span><b>Build</b><p>Create reliable technology with quality at the foundation.</p></div>
+      <div class="card step reveal"><span class="line">04</span><b>Launch</b><p>Put the product into the real world and learn from usage.</p></div>
+      <div class="card step reveal"><span class="line">05</span><b>Iterate</b><p>Improve continuously as users, needs and opportunities evolve.</p></div>
     </div>
+
   </div>
 </section>
 
-<!-- VALUES -->
+
+<!-- =========================================================
+     VALUES
+========================================================= -->
+
 <section id="values">
   <div class="container">
+
     <div class="section-head reveal">
       <span class="kicker">Core values</span>
       <h2>Principles behind every product.</h2>
     </div>
 
     <div class="values">
-      <div class="card value reveal"><b>Innovation</b><p>Think differently. Build meaningfully.</p></div>
-      <div class="card value reveal"><b>Trust</b><p>Earn confidence through every interaction.</p></div>
-      <div class="card value reveal"><b>Speed</b><p>Move from idea to execution with purpose.</p></div>
-      <div class="card value reveal"><b>Customer Satisfaction</b><p>Create value users can feel.</p></div>
-      <div class="card value reveal"><b>Transparency</b><p>Stay clear, honest and responsible.</p></div>
-      <div class="card value reveal"><b>Quality</b><p>Build reliable experiences without shortcuts.</p></div>
-      <div class="card value reveal"><b>Growth</b><p>Build today with tomorrow in mind.</p></div>
-      <div class="card value reveal"><b>Service</b><p>Support products with responsibility.</p></div>
+      <div class="card value reveal"><span class="dot-marker"></span><b>Innovation</b><p>Think differently. Build meaningfully.</p></div>
+      <div class="card value reveal"><span class="dot-marker"></span><b>Trust</b><p>Earn confidence through every interaction.</p></div>
+      <div class="card value reveal"><span class="dot-marker"></span><b>Speed</b><p>Move from idea to execution with purpose.</p></div>
+      <div class="card value reveal"><span class="dot-marker"></span><b>Customer Satisfaction</b><p>Create value users can feel.</p></div>
+      <div class="card value reveal"><span class="dot-marker"></span><b>Transparency</b><p>Stay clear, honest and responsible.</p></div>
+      <div class="card value reveal"><span class="dot-marker"></span><b>Quality</b><p>Build reliable experiences without shortcuts.</p></div>
+      <div class="card value reveal"><span class="dot-marker"></span><b>Growth</b><p>Build today with tomorrow in mind.</p></div>
+      <div class="card value reveal"><span class="dot-marker"></span><b>Service</b><p>Support products with responsibility.</p></div>
     </div>
+
   </div>
 </section>
 
-<!-- VISION -->
+
+<!-- =========================================================
+     VISION
+========================================================= -->
+
 <section>
   <div class="container">
+
     <div class="card vision reveal">
+
       <div>
         <span class="kicker">Long-term direction</span>
         <h3>Build products today. Create ecosystems tomorrow.</h3>
-        <p>CMS is starting with an India-focused product portfolio and aims to grow through useful technology products, strong execution and long-term ownership.</p>
+        <p>
+          CMS is starting with an India-focused product portfolio and aims to grow through useful technology products, strong execution and long-term ownership.
+        </p>
       </div>
 
       <div class="future">
@@ -1421,28 +1263,42 @@
         <div>New Product Categories</div>
         <div>Future Business Opportunities</div>
       </div>
+
     </div>
   </div>
 </section>
 
-<!-- CTA -->
+
+<!-- =========================================================
+     CTA
+========================================================= -->
+
 <section>
   <div class="container">
+
     <div class="card cta reveal">
       <span class="kicker">Creative Management Solutions</span>
       <h2>Building what comes next.</h2>
       <p>Follow the products we are building today and the ecosystems we aim to create over time.</p>
       <a class="btn primary" href="mailto:support@cmsgroup.in">Contact CMS →</a>
     </div>
+
   </div>
 </section>
 
+
 </main>
 
-<!-- FOOTER -->
+
+<!-- =========================================================
+     FOOTER
+========================================================= -->
+
 <footer>
   <div class="container">
+
     <div class="footer-grid">
+
       <div class="footer-brand">
         Creative Management Solutions
         <span>India-focused digital product company.</span>
@@ -1457,17 +1313,24 @@
         <a href="/terms.html">Terms</a>
         <a href="mailto:support@cmsgroup.in">support@cmsgroup.in</a>
       </div>
+
     </div>
 
     <div class="copyright">
       © <span id="year"></span> Creative Management Solutions. All Rights Reserved.
     </div>
+
   </div>
 </footer>
 
-<!-- JAVASCRIPT -->
+
+<!-- =========================================================
+     JAVASCRIPT
+========================================================= -->
+
 <script>
-  // Mobile Menu
+
+  /* MOBILE MENU */
   const menu = document.getElementById("menu");
   const navLinks = document.getElementById("navLinks");
 
@@ -1484,16 +1347,10 @@
     });
   });
 
-  // Scroll Progress Bar
-  window.addEventListener("scroll", () => {
-    const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
-    const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-    const scrolled = (winScroll / height) * 100;
-    document.getElementById("scrollProgress").style.width = scrolled + "%";
-  });
 
-  // Scroll Reveal
+  /* REVEAL ANIMATION */
   const revealElements = document.querySelectorAll(".reveal");
+
   const observer = new IntersectionObserver(entries => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
@@ -1505,9 +1362,23 @@
 
   revealElements.forEach(element => observer.observe(element));
 
-  // Current Year
+
+  /* SCROLL PROGRESS */
+  const progressBar = document.getElementById("progressBar");
+  function updateProgress() {
+    const h = document.documentElement;
+    const scrolled = (h.scrollTop) / (h.scrollHeight - h.clientHeight) * 100;
+    progressBar.style.width = (isFinite(scrolled) ? scrolled : 0) + "%";
+  }
+  window.addEventListener("scroll", updateProgress, { passive: true });
+  updateProgress();
+
+
+  /* CURRENT YEAR */
   document.getElementById("year").textContent = new Date().getFullYear();
+
 </script>
+
 
 </body>
 </html>
