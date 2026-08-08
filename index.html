@@ -1,214 +1,356 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Creative Management Solutions | Digital Product Ecosystem</title>
-    <style>
-        :root {
-            --bg-main: #0f172a;
-            --bg-card: #1e293b;
-            --bg-card-hover: #334155;
-            --primary: #38bdf8;
-            --accent-green: #22c55e;
-            --accent-amber: #f59e0b;
-            --text-main: #f8fafc;
-            --text-sub: #94a3b8;
-            --border: #334155;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#07111f">
+  <meta name="description" content="Creative Management Solutions (CMS) builds its own digital products that solve real-world problems across fitness, local commerce and business operations.">
+  <meta name="keywords" content="Creative Management Solutions, CMS, VibeFit, KokanKart, NutriFit, Evado, digital products, India">
+  <meta property="og:title" content="Creative Management Solutions — Technology. Products. Innovation.">
+  <meta property="og:description" content="Building digital products for real-world problems.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://cmsgroup.in/">
+  <title>Creative Management Solutions | Technology. Products. Innovation.</title>
 
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-        body { font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; background-color: var(--bg-main); color: var(--text-main); line-height: 1.6; }
-        
-        /* Header / Hero */
-        header { background: linear-gradient(180deg, #1e293b 0%, #0f172a 100%); padding: 80px 20px 60px; border-bottom: 1px solid var(--border); text-align: center; }
-        .hero-badge { display: inline-block; background: rgba(56, 189, 248, 0.1); color: var(--primary); padding: 6px 16px; border-radius: 20px; font-size: 0.85rem; font-weight: 600; border: 1px solid rgba(56, 189, 248, 0.3); margin-bottom: 20px; }
-        header h1 { font-size: 2.8rem; color: var(--text-main); font-weight: 800; margin-bottom: 15px; letter-spacing: -0.5px; }
-        header h1 span { color: var(--primary); }
-        header p { color: var(--text-sub); font-size: 1.2rem; max-width: 700px; margin: 0 auto; }
-
-        /* Container */
-        .container { max-width: 1100px; margin: 0 auto; padding: 50px 20px; }
-        .section { margin-bottom: 70px; }
-        .section-title { font-size: 1.8rem; color: var(--text-main); margin-bottom: 10px; font-weight: 700; }
-        .section-subtitle { color: var(--text-sub); font-size: 1rem; margin-bottom: 30px; }
-        
-        /* Product Ecosystem Grid */
-        .products-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(480px, 1fr)); gap: 25px; }
-        @media (max-width: 600px) { .products-grid { grid-template-columns: 1fr; } }
-
-        .product-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; padding: 30px; display: flex; flex-direction: column; justify-content: space-between; transition: transform 0.2s, border-color 0.2s; }
-        .product-card:hover { border-color: var(--primary); transform: translateY(-3px); }
-        
-        .card-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 15px; }
-        .product-name { font-size: 1.5rem; color: var(--text-main); font-weight: 700; }
-        .product-tagline { color: var(--primary); font-size: 0.9rem; font-weight: 600; margin-bottom: 15px; }
-        
-        .status-badge { font-size: 0.75rem; font-weight: 700; padding: 4px 10px; border-radius: 12px; text-transform: uppercase; }
-        .status-ready { background: rgba(34, 197, 94, 0.15); color: var(--accent-green); border: 1px solid rgba(34, 197, 94, 0.3); }
-        .status-dev { background: rgba(245, 158, 11, 0.15); color: var(--accent-amber); border: 1px solid rgba(245, 158, 11, 0.3); }
-
-        .product-desc { color: var(--text-sub); font-size: 0.95rem; margin-bottom: 20px; flex-grow: 1; }
-        
-        .features-list { list-style: none; margin-bottom: 20px; }
-        .features-list li { font-size: 0.85rem; color: #cbd5e1; margin-bottom: 6px; display: flex; align-items: center; }
-        .features-list li::before { content: "•"; color: var(--primary); font-weight: bold; display: inline-block; width: 12px; font-size: 1.2rem; }
-
-        .card-action { margin-top: 15px; border-top: 1px solid var(--border); padding-top: 15px; }
-        .btn-link { color: var(--primary); text-decoration: none; font-size: 0.9rem; font-weight: 600; display: inline-flex; align-items: center; }
-        .btn-link:hover { text-decoration: underline; }
-
-        /* Company Overview Section */
-        .about-box { background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; padding: 35px; border-left: 4px solid var(--primary); }
-        .about-box p { color: #cbd5e1; font-size: 1.05rem; margin-bottom: 15px; }
-        
-        /* Contact Section */
-        .contact-box { background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%); border: 1px solid var(--border); border-radius: 16px; padding: 35px; text-align: center; }
-        .contact-box h3 { font-size: 1.4rem; margin-bottom: 10px; }
-        .contact-box p { color: var(--text-sub); margin-bottom: 20px; }
-        .contact-email { color: var(--primary); font-size: 1.2rem; font-weight: 700; text-decoration: none; }
-
-        /* Footer */
-        footer { text-align: center; padding: 30px 20px; background: #0b0f19; color: var(--text-sub); font-size: 0.85rem; border-top: 1px solid var(--border); }
-        footer a { color: var(--primary); text-decoration: none; margin: 0 10px; }
-    </style>
+  <style>
+    :root{
+      --bg:#050b14;
+      --bg-soft:#091321;
+      --surface:rgba(15,28,45,.72);
+      --surface-2:#0d1a2b;
+      --line:rgba(148,163,184,.15);
+      --text:#f8fafc;
+      --muted:#94a3b8;
+      --muted-2:#64748b;
+      --primary:#38bdf8;
+      --primary-2:#22d3ee;
+      --accent:#818cf8;
+      --success:#34d399;
+      --warning:#f59e0b;
+      --max:1180px;
+      --radius:22px;
+      --shadow:0 25px 80px rgba(0,0,0,.35);
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{
+      font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+      background:
+        radial-gradient(circle at 15% 5%,rgba(56,189,248,.12),transparent 28rem),
+        radial-gradient(circle at 85% 12%,rgba(129,140,248,.10),transparent 30rem),
+        var(--bg);
+      color:var(--text);line-height:1.65;overflow-x:hidden;
+    }
+    a{color:inherit;text-decoration:none}
+    .container{width:min(var(--max),calc(100% - 40px));margin:auto}
+    .nav{
+      position:fixed;top:0;left:0;right:0;z-index:50;
+      background:rgba(5,11,20,.72);backdrop-filter:blur(18px);
+      border-bottom:1px solid rgba(148,163,184,.08);
+    }
+    .nav-inner{height:76px;display:flex;align-items:center;justify-content:space-between}
+    .brand{display:flex;align-items:center;gap:11px;font-weight:800;letter-spacing:-.02em}
+    .brand-mark{
+      width:38px;height:38px;border-radius:11px;display:grid;place-items:center;
+      background:linear-gradient(135deg,var(--primary),var(--accent));color:#04111d;
+      font-size:14px;box-shadow:0 10px 30px rgba(56,189,248,.2)
+    }
+    .brand span{font-size:15px}
+    .nav-links{display:flex;gap:26px;align-items:center}
+    .nav-links a{font-size:14px;color:#cbd5e1;transition:.2s}
+    .nav-links a:hover{color:#fff}
+    .nav-cta{padding:10px 16px;border:1px solid var(--line);border-radius:999px}
+    .menu{display:none;background:none;border:0;color:white;font-size:25px}
+    .hero{min-height:100vh;padding:160px 0 90px;display:grid;align-items:center}
+    .hero-grid{display:grid;grid-template-columns:1.12fr .88fr;gap:70px;align-items:center}
+    .eyebrow{
+      display:inline-flex;gap:9px;align-items:center;padding:7px 12px;border:1px solid rgba(56,189,248,.2);
+      background:rgba(56,189,248,.07);border-radius:999px;color:#bae6fd;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase
+    }
+    .dot{width:7px;height:7px;background:var(--success);border-radius:50%;box-shadow:0 0 15px var(--success)}
+    h1{font-size:clamp(48px,7vw,86px);line-height:.98;letter-spacing:-.065em;margin:24px 0}
+    .gradient{background:linear-gradient(100deg,#fff 15%,#7dd3fc 55%,#a5b4fc);-webkit-background-clip:text;background-clip:text;color:transparent}
+    .hero p{max-width:680px;color:#aab8c9;font-size:19px}
+    .actions{display:flex;gap:13px;flex-wrap:wrap;margin-top:32px}
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;padding:13px 19px;border-radius:12px;font-weight:750;font-size:14px;transition:.2s}
+    .btn-primary{background:linear-gradient(135deg,var(--primary),var(--primary-2));color:#04111d;box-shadow:0 14px 35px rgba(34,211,238,.14)}
+    .btn-primary:hover{transform:translateY(-2px)}
+    .btn-ghost{border:1px solid var(--line);background:rgba(255,255,255,.025);color:#e2e8f0}
+    .btn-ghost:hover{background:rgba(255,255,255,.06)}
+    .hero-panel{
+      position:relative;border:1px solid var(--line);border-radius:30px;background:linear-gradient(180deg,rgba(15,28,45,.85),rgba(7,17,31,.75));
+      padding:25px;box-shadow:var(--shadow);overflow:hidden
+    }
+    .hero-panel:before{content:"";position:absolute;width:220px;height:220px;border-radius:50%;background:rgba(56,189,248,.12);filter:blur(50px);top:-80px;right:-60px}
+    .panel-top{display:flex;justify-content:space-between;align-items:center;color:#94a3b8;font-size:12px}
+    .live{color:#86efac;display:flex;gap:7px;align-items:center}
+    .product-stack{margin-top:25px;display:grid;gap:12px}
+    .mini-product{padding:17px;border:1px solid var(--line);border-radius:17px;background:rgba(255,255,255,.025);display:flex;justify-content:space-between;gap:20px}
+    .mini-product strong{display:block;font-size:15px}.mini-product small{color:var(--muted);font-size:12px}
+    .progress{width:80px;height:5px;background:#1e293b;border-radius:99px;margin-top:9px;overflow:hidden}
+    .progress i{display:block;height:100%;background:linear-gradient(90deg,var(--primary),var(--accent));border-radius:99px}
+    .section{padding:105px 0}
+    .section-head{display:flex;justify-content:space-between;gap:35px;align-items:end;margin-bottom:42px}
+    .kicker{font-size:12px;color:#7dd3fc;font-weight:800;text-transform:uppercase;letter-spacing:.14em;margin-bottom:10px}
+    h2{font-size:clamp(32px,5vw,54px);line-height:1.05;letter-spacing:-.045em}
+    .section-head p{max-width:470px;color:var(--muted)}
+    .about-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:20px}
+    .glass,.card{
+      border:1px solid var(--line);background:linear-gradient(145deg,rgba(15,28,45,.78),rgba(9,19,33,.65));
+      border-radius:var(--radius);box-shadow:0 15px 50px rgba(0,0,0,.14)
+    }
+    .about-copy{padding:34px}
+    .about-copy p{color:#aab8c9;font-size:17px;margin-top:15px}
+    .principles{display:grid;grid-template-columns:1fr 1fr}
+    .principle{padding:25px;border-right:1px solid var(--line);border-bottom:1px solid var(--line)}
+    .principle:nth-child(even){border-right:0}.principle:nth-last-child(-n+2){border-bottom:0}
+    .principle b{display:block;margin-bottom:5px}.principle span{font-size:13px;color:var(--muted)}
+    .product-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+    .product{padding:28px;position:relative;overflow:hidden}
+    .product:after{content:"";position:absolute;width:170px;height:170px;border-radius:50%;background:rgba(56,189,248,.05);right:-80px;bottom:-90px}
+    .product-head{display:flex;justify-content:space-between;gap:20px;align-items:start}
+    .product-icon{width:48px;height:48px;border-radius:14px;background:rgba(56,189,248,.1);border:1px solid rgba(56,189,248,.16);display:grid;place-items:center;font-weight:900;color:#7dd3fc}
+    .status{font-size:11px;font-weight:800;padding:5px 9px;border-radius:999px;background:rgba(52,211,153,.1);color:#86efac;border:1px solid rgba(52,211,153,.16)}
+    .status-dev{background:rgba(245,158,11,.09);color:#fcd34d;border-color:rgba(245,158,11,.15)}
+    .product h3{font-size:25px;margin-top:20px;letter-spacing:-.03em}.product .type{color:#7dd3fc;font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.1em}
+    .product p{color:var(--muted);margin-top:10px;font-size:14px}
+    .tags{display:flex;flex-wrap:wrap;gap:7px;margin-top:19px}.tag{font-size:11px;color:#cbd5e1;border:1px solid var(--line);padding:5px 8px;border-radius:999px}
+    .product-footer{margin-top:24px;padding-top:18px;border-top:1px solid var(--line);display:flex;justify-content:space-between;align-items:center}
+    .product-footer span{font-size:12px;color:var(--muted)}
+    .arrow{font-size:18px;color:#7dd3fc}
+    .architecture{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-top:35px}
+    .step{padding:23px 15px;text-align:center;border:1px solid var(--line);border-radius:16px;background:rgba(255,255,255,.02)}
+    .step strong{display:block;font-size:13px}.step span{color:var(--muted-2);font-size:11px}
+    .step-no{width:30px;height:30px;border-radius:50%;display:grid;place-items:center;margin:0 auto 10px;background:rgba(56,189,248,.09);color:#7dd3fc;font-size:12px;font-weight:800}
+    .values{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+    .value{padding:24px;border:1px solid var(--line);border-radius:17px;background:rgba(255,255,255,.02)}
+    .value strong{font-size:15px}.value p{font-size:12px;color:var(--muted);margin-top:7px}
+    .roadmap{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .roadmap .card{padding:27px}.roadmap small{color:#7dd3fc;font-weight:800}.roadmap h3{margin:9px 0}.roadmap p{font-size:13px;color:var(--muted)}
+    .cta{padding:55px;border-radius:28px;border:1px solid rgba(56,189,248,.18);background:radial-gradient(circle at 80% 20%,rgba(129,140,248,.12),transparent 30%),rgba(15,28,45,.72);display:flex;justify-content:space-between;align-items:center;gap:30px}
+    .cta p{color:var(--muted);max-width:650px;margin-top:8px}
+    footer{border-top:1px solid var(--line);padding:45px 0;color:var(--muted)}
+    .footer-grid{display:flex;justify-content:space-between;gap:30px}.footer-brand{color:#e2e8f0;font-weight:800}.footer-links{display:flex;gap:18px;font-size:13px}.footer-links a:hover{color:#fff}
+    .copyright{margin-top:30px;padding-top:20px;border-top:1px solid var(--line);font-size:12px;color:var(--muted-2)}
+    .reveal{opacity:0;transform:translateY(22px);transition:.7s ease}.reveal.show{opacity:1;transform:none}
+    @media(max-width:900px){
+      .nav-links{display:none;position:absolute;top:76px;left:0;right:0;background:#07111f;border-bottom:1px solid var(--line);padding:20px;flex-direction:column;align-items:flex-start}
+      .nav-links.open{display:flex}.menu{display:block}
+      .hero-grid,.about-grid{grid-template-columns:1fr}.hero{padding-top:130px}
+      .product-grid{grid-template-columns:1fr}.architecture{grid-template-columns:1fr 1fr}.values{grid-template-columns:1fr 1fr}.roadmap{grid-template-columns:1fr}
+      .section-head{align-items:start;flex-direction:column}.cta{flex-direction:column;align-items:start}
+    }
+    @media(max-width:520px){
+      .container{width:min(var(--max),calc(100% - 28px))}
+      h1{font-size:49px}.hero p{font-size:16px}.section{padding:75px 0}
+      .principles{grid-template-columns:1fr}.principle{border-right:0}.principle:nth-last-child(-n+2){border-bottom:1px solid var(--line)}.principle:last-child{border-bottom:0}
+      .architecture{grid-template-columns:1fr}.values{grid-template-columns:1fr}.footer-grid{flex-direction:column}.footer-links{flex-wrap:wrap}
+    }
+  </style>
 </head>
+
 <body>
+<header class="nav">
+  <div class="container nav-inner">
+    <a class="brand" href="#home" aria-label="Creative Management Solutions home">
+      <span class="brand-mark">CMS</span><span>Creative Management Solutions</span>
+    </a>
+    <button class="menu" id="menu" aria-label="Open navigation">☰</button>
+    <nav class="nav-links" id="navLinks">
+      <a href="#about">About</a>
+      <a href="#products">Products</a>
+      <a href="#approach">Approach</a>
+      <a href="#vision">Vision</a>
+      <a href="#contact" class="nav-cta">Contact</a>
+    </nav>
+  </div>
+</header>
 
-    <header>
-        <span class="hero-badge">Product Innovation Studio</span>
-        <h1>Creative Management <span>Solutions</span></h1>
-        <p>Architecting independent digital product ecosystems to solve real-world problems in fitness, hyperlocal commerce, and enterprise operations.</p>
-    </header>
+<main>
+<section class="hero" id="home">
+  <div class="container hero-grid">
+    <div class="reveal">
+      <div class="eyebrow"><span class="dot"></span> India-focused product company</div>
+      <h1>Technology.<br><span class="gradient">Products. Innovation.</span></h1>
+      <p>Creative Management Solutions (CMS) builds its own digital products to solve real-world problems — from personal wellness and local commerce to business operations.</p>
+      <div class="actions">
+        <a class="btn btn-primary" href="#products">Explore Products →</a>
+        <a class="btn btn-ghost" href="#about">Discover CMS</a>
+      </div>
+    </div>
+    <div class="hero-panel reveal">
+      <div class="panel-top"><span>CMS Product Portfolio</span><span class="live"><span class="dot"></span> Building</span></div>
+      <div class="product-stack">
+        <div class="mini-product"><div><strong>VibeFit</strong><small>Offline-first fitness & wellness</small></div><div><small>99%</small><div class="progress"><i style="width:99%"></i></div></div></div>
+        <div class="mini-product"><div><strong>KokanKart</strong><small>Hyperlocal marketplace</small></div><div><small>80%</small><div class="progress"><i style="width:80%"></i></div></div></div>
+        <div class="mini-product"><div><strong>NutriFit</strong><small>Fitness & gym platform</small></div><div><small>60%</small><div class="progress"><i style="width:60%"></i></div></div></div>
+        <div class="mini-product"><div><strong>Evado</strong><small>ERP + POS + ordering platform</small></div><div><small>60%</small><div class="progress"><i style="width:60%"></i></div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <div class="container">
+<section class="section" id="about">
+  <div class="container">
+    <div class="section-head reveal">
+      <div><div class="kicker">About CMS</div><h2>We build products,<br>not client software.</h2></div>
+      <p>CMS is focused on creating and launching its own products. We identify practical problems, turn ideas into technology, and continuously improve what we build around real customer needs.</p>
+    </div>
+    <div class="about-grid">
+      <div class="glass about-copy reveal">
+        <div class="kicker">Our purpose</div>
+        <h3>From real-world problems to useful products.</h3>
+        <p>Our work starts with a problem worth solving. Each CMS product is designed around a specific user, a clear use case, and a path toward sustainable growth.</p>
+        <p>Our current portfolio spans fitness and wellness, hyperlocal commerce, gym operations, and business management — four different problem spaces connected by one product-first philosophy.</p>
+      </div>
+      <div class="glass principles reveal">
+        <div class="principle"><b>Product First</b><span>We build and own our products.</span></div>
+        <div class="principle"><b>Real Problems</b><span>Technology follows genuine user needs.</span></div>
+        <div class="principle"><b>Continuous Improvement</b><span>Launch, learn, refine and grow.</span></div>
+        <div class="principle"><b>Long-Term Thinking</b><span>Build products designed to evolve.</span></div>
+      </div>
+    </div>
+  </div>
+</section>
 
-        <!-- About CMS -->
-        <div class="section">
-            <h2 class="section-title">About CMS Group</h2>
-            <p class="section-subtitle">Building long-term digital infrastructure and standalone software products.</p>
-            <div class="about-box">
-                <p><strong>Creative Management Solutions (CMS)</strong> is a product-focused digital architecture company. Rather than building generic tools, we build focused software ecosystems designed to operate seamlessly across mobile, web, and local environments.</p>
-                <p>Our 2026 initiative centers on four core digital products targeting individual wellness, regional commerce, fitness platform management, and business process automation.</p>
-            </div>
-        </div>
-
-        <!-- Product Ecosystem -->
-        <div class="section">
-            <h2 class="section-title">Product Ecosystem</h2>
-            <p class="section-subtitle">Four tailored software platforms built with distinct domain strengths.</p>
-
-            <div class="products-grid">
-
-                <!-- VibeFit -->
-                <div class="product-card">
-                    <div>
-                        <div class="card-header">
-                            <div class="product-name">VibeFit</div>
-                            <span class="status-badge status-ready">Play Store Prep</span>
-                        </div>
-                        <div class="product-tagline">Offline-First Fitness & Wellness Platform</div>
-                        <div class="product-desc">
-                            A complete fitness companion designed to operate 100% offline using secure local storage (Room DB), ensuring users never lose access to their workout routines, yoga sessions, or nutrition plans due to internet connectivity.
-                        </div>
-                        <ul class="features-list">
-                            <li>500+ Workouts & Progressive Overload Tracking</li>
-                            <li>200+ Yoga Poses & Guided Recovery</li>
-                            <li>120+ Indian Meal Database & Offline Calorie Tracking</li>
-                            <li>Complete Privacy: Local Data Storage & Export</li>
-                        </ul>
-                    </div>
-                    <div class="card-action">
-                        <a href="/vibefit-privacy.html" class="btn-link">Read Privacy Policy &rarr;</a>
-                    </div>
-                </div>
-
-                <!-- KokanKart -->
-                <div class="product-card">
-                    <div>
-                        <div class="card-header">
-                            <div class="product-name">KokanKart</div>
-                            <span class="status-badge status-dev">In Development</span>
-                        </div>
-                        <div class="product-tagline">Hyperlocal Coastal Product Marketplace</div>
-                        <div class="product-desc">
-                            A specialized regional e-commerce ecosystem designed to connect authentic coastal food, local artisans, and regional specialty vendors directly with consumers through a unified digital marketplace.
-                        </div>
-                        <ul class="features-list">
-                            <li>Direct Producer-to-Consumer Supply Link</li>
-                            <li>Hyperlocal Vendor Cataloging & Ordering</li>
-                            <li>Regional Product Authentication & Tracking</li>
-                        </ul>
-                    </div>
-                    <div class="card-action">
-                        <span style="color: var(--text-sub); font-size: 0.85rem;">Public Release Scheduled 2026</span>
-                    </div>
-                </div>
-
-                <!-- NutriFit -->
-                <div class="product-card">
-                    <div>
-                        <div class="card-header">
-                            <div class="product-name">NutriFit</div>
-                            <span class="status-badge status-dev">In Development</span>
-                        </div>
-                        <div class="product-tagline">Integrated Fitness & Gym Management Platform</div>
-                        <div class="product-desc">
-                            A dual-sided ecosystem connecting gym members with trainers and fitness center managers. Streamlines gym memberships, personalized diet plans, and trainer interactions into a single interface.
-                        </div>
-                        <ul class="features-list">
-                            <li>Gym Member & Attendance Management</li>
-                            <li>Trainer-to-Client Custom Workout Allocation</li>
-                            <li>Real-time Diet & Progress Synchronization</li>
-                        </ul>
-                    </div>
-                    <div class="card-action">
-                        <span style="color: var(--text-sub); font-size: 0.85rem;">Public Release Scheduled 2026</span>
-                    </div>
-                </div>
-
-                <!-- Evado -->
-                <div class="product-card">
-                    <div>
-                        <div class="card-header">
-                            <div class="product-name">Evado</div>
-                            <span class="status-badge status-dev">In Development</span>
-                        </div>
-                        <div class="product-tagline">ERP + POS & Customer Ordering Automation</div>
-                        <div class="product-desc">
-                            An end-to-end business operations suite providing small-to-medium retail businesses with Point-of-Sale (POS), inventory management, and digital customer self-ordering capabilities.
-                        </div>
-                        <ul class="features-list">
-                            <li>Real-Time Inventory & POS Synchronization</li>
-                            <li>Customer Self-Ordering & Billing Automation</li>
-                            <li>Business Performance & Sales Analytics</li>
-                        </ul>
-                    </div>
-                    <div class="card-action">
-                        <span style="color: var(--text-sub); font-size: 0.85rem;">Public Release Scheduled 2026</span>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-
-        <!-- Contact Section -->
-        <div class="section">
-            <div class="contact-box">
-                <h3>Contact & Support</h3>
-                <p>For support, inquiries, or strategic partnerships regarding CMS products:</p>
-                <a href="mailto:support@cmsgroup.in" class="contact-email">support@cmsgroup.in</a>
-            </div>
-        </div>
-
+<section class="section" id="products">
+  <div class="container">
+    <div class="section-head reveal">
+      <div><div class="kicker">Product portfolio</div><h2>Four products.<br>Four real-world problems.</h2></div>
+      <p>Our current product portfolio is being built in India, with each product serving a distinct category and use case.</p>
     </div>
 
-    <footer>
-        <p>&copy; 2026 Creative Management Solutions. All Rights Reserved.</p>
-        <p style="margin-top: 10px;">
-            <a href="/vibefit-privacy.html">VibeFit Privacy Policy</a>
-        </p>
-    </footer>
+    <div class="product-grid">
+      <article class="card product reveal">
+        <div class="product-head"><div class="product-icon">VF</div><span class="status">99% Complete</span></div>
+        <div class="type">Fitness & Wellness</div>
+        <h3>VibeFit</h3>
+        <p>A 100% offline-first fitness and wellness application bringing workouts, yoga, nutrition, lifestyle planning and progress tracking into one experience.</p>
+        <div class="tags"><span class="tag">Offline-first</span><span class="tag">Workout</span><span class="tag">Nutrition</span><span class="tag">Wellness</span></div>
+        <div class="product-footer"><span>Preparing for Play Store launch</span><span class="arrow">↗</span></div>
+      </article>
 
+      <article class="card product reveal">
+        <div class="product-head"><div class="product-icon">KK</div><span class="status status-dev">80% Complete</span></div>
+        <div class="type">Hyperlocal Commerce</div>
+        <h3>KokanKart</h3>
+        <p>A hyperlocal marketplace connecting customers with verified local vendors, helping people discover products and businesses available in their area.</p>
+        <div class="tags"><span class="tag">Local commerce</span><span class="tag">Vendor network</span><span class="tag">Area-based</span><span class="tag">Ordering</span></div>
+        <div class="product-footer"><span>In active development</span><span class="arrow">↗</span></div>
+      </article>
+
+      <article class="card product reveal">
+        <div class="product-head"><div class="product-icon">NF</div><span class="status status-dev">60% Complete</span></div>
+        <div class="type">Fitness & Gym Platform</div>
+        <h3>NutriFit</h3>
+        <p>A fitness platform designed to combine workout tracking, nutrition, progress monitoring, gym discovery and educational content in one experience.</p>
+        <div class="tags"><span class="tag">Fitness</span><span class="tag">Nutrition</span><span class="tag">Gym</span><span class="tag">Progress</span></div>
+        <div class="product-footer"><span>In development</span><span class="arrow">↗</span></div>
+      </article>
+
+      <article class="card product reveal">
+        <div class="product-head"><div class="product-icon">EV</div><span class="status status-dev">60% Complete</span></div>
+        <div class="type">Business Management</div>
+        <h3>Evado</h3>
+        <p>A smart ERP, POS and customer ordering platform designed for electrical, hardware, building material and related businesses.</p>
+        <div class="tags"><span class="tag">ERP</span><span class="tag">POS</span><span class="tag">Inventory</span><span class="tag">Ordering</span></div>
+        <div class="product-footer"><span>In development</span><span class="arrow">↗</span></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="approach">
+  <div class="container">
+    <div class="section-head reveal">
+      <div><div class="kicker">How we build</div><h2>Idea to product.<br>Product to impact.</h2></div>
+      <p>CMS follows a simple product loop: understand the problem, build a useful solution, launch it, learn from customers and improve continuously.</p>
+    </div>
+    <div class="architecture">
+      <div class="step reveal"><div class="step-no">01</div><strong>Identify</strong><span>Understand the problem</span></div>
+      <div class="step reveal"><div class="step-no">02</div><strong>Build</strong><span>Turn ideas into products</span></div>
+      <div class="step reveal"><div class="step-no">03</div><strong>Launch</strong><span>Put products in users' hands</span></div>
+      <div class="step reveal"><div class="step-no">04</div><strong>Listen</strong><span>Learn from customer needs</span></div>
+      <div class="step reveal"><div class="step-no">05</div><strong>Improve</strong><span>Grow through iteration</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-head reveal">
+      <div><div class="kicker">What drives us</div><h2>Our values.</h2></div>
+      <p>The principles we want every CMS product and customer experience to reflect.</p>
+    </div>
+    <div class="values">
+      <div class="value reveal"><strong>Innovation</strong><p>We look for better ways to solve meaningful problems.</p></div>
+      <div class="value reveal"><strong>Trust</strong><p>We aim to build dependable products and relationships.</p></div>
+      <div class="value reveal"><strong>Speed</strong><p>We move ideas toward execution without unnecessary friction.</p></div>
+      <div class="value reveal"><strong>Customer Satisfaction</strong><p>We listen, learn and improve around user needs.</p></div>
+      <div class="value reveal"><strong>Transparency</strong><p>We value clarity, honesty and accountability.</p></div>
+      <div class="value reveal"><strong>Quality</strong><p>We build with care, reliability and attention to detail.</p></div>
+      <div class="value reveal"><strong>Growth</strong><p>We continuously learn, improve and expand.</p></div>
+      <div class="value reveal"><strong>Service</strong><p>We focus on creating useful and lasting value.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="vision">
+  <div class="container">
+    <div class="section-head reveal">
+      <div><div class="kicker">The road ahead</div><h2>Start with products.<br>Build for the future.</h2></div>
+      <p>CMS is beginning with digital products and intends to explore new products, opportunities and business ventures as the company grows.</p>
+    </div>
+    <div class="roadmap">
+      <div class="card reveal"><small>NOW</small><h3>Build & Launch</h3><p>Focus on our current portfolio across fitness, local commerce and business operations, starting with the Indian market.</p></div>
+      <div class="card reveal"><small>NEXT</small><h3>Expand the Product Ecosystem</h3><p>Improve existing products, introduce new digital products and build stronger customer value across categories.</p></div>
+      <div class="card reveal"><small>FUTURE</small><h3>Explore New Ventures</h3><p>As CMS grows, the vision extends beyond digital products toward new business opportunities and ventures.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="contact">
+  <div class="container">
+    <div class="cta reveal">
+      <div>
+        <div class="kicker">Get in touch</div>
+        <h2>Have a question about CMS?</h2>
+        <p>For support, product feedback or business enquiries, contact the CMS team by email.</p>
+      </div>
+      <a class="btn btn-primary" href="mailto:support@cmsgroup.in">support@cmsgroup.in ↗</a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div><div class="footer-brand">Creative Management Solutions</div><div style="font-size:13px;margin-top:6px">Technology. Products. Innovation.</div></div>
+      <div class="footer-links">
+        <a href="#about">About</a><a href="#products">Products</a><a href="#vision">Vision</a><a href="mailto:support@cmsgroup.in">Support</a>
+      </div>
+    </div>
+    <div class="copyright">© <span id="year"></span> Creative Management Solutions. All Rights Reserved.</div>
+  </div>
+</footer>
+
+<script>
+  const menu=document.getElementById('menu'), links=document.getElementById('navLinks');
+  menu.addEventListener('click',()=>links.classList.toggle('open'));
+  links.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>links.classList.remove('open')));
+  document.getElementById('year').textContent=new Date().getFullYear();
+
+  const observer=new IntersectionObserver(entries=>{
+    entries.forEach((entry,i)=>{
+      if(entry.isIntersecting){
+        entry.target.style.transitionDelay=(i%5)*70+'ms';
+        entry.target.classList.add('show');
+        observer.unobserve(entry.target);
+      }
+    });
+  },{threshold:.1});
+  document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+</script>
 </body>
 </html>
