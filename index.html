@@ -86,7 +86,7 @@ nav{
   align-items:center;
   gap:9px;
   min-width:0;
-  font-size:12px;
+  font-size:1.15rem;
   font-weight:760;
   letter-spacing:-.02em;
 }
@@ -110,7 +110,7 @@ nav{
   gap:21px;
 }
 .nav-links a{
-  font-size:11px;
+  font-size:1rem;
   color:#9caabd;
   transition:color .2s ease;
 }
@@ -133,7 +133,7 @@ nav{
 
 /* HERO */
 .hero{
-  padding:72px 0 48px;
+  padding:72px 0 42px;
 }
 .hero-grid{
   display:grid;
@@ -651,6 +651,118 @@ footer{
   .product-top{align-items:flex-start;flex-direction:column}
   h1{font-size:43px}
 }
+
+/* Typography scale-up polish */
+@media (min-width: 768px) {
+  .nav { padding: 20px 30px; }
+  .brand { font-size: 1.25rem; }
+  .nav-links a { font-size: 1.02rem; }
+  .hero p, .hero-subtitle, .hero-subtext { font-size: 1.22rem; line-height: 1.75; }
+}
+
+@media (max-width: 767px) {
+  .nav { padding: 16px 18px; }
+  .brand { font-size: 1.1rem; }
+  .hero p, .hero-subtitle, .hero-subtext { font-size: 1.08rem; line-height: 1.65; }
+}
+
+
+/* Final spacing polish — compact premium layout */
+.container { max-width: 1080px; }
+.section { margin-bottom: 30px; }
+.section-title { margin-bottom: 10px; }
+.card, .product-card { padding: 18px; }
+.card-grid, .product-grid, .values-grid { gap: 14px; }
+.hero { padding-top: 64px; padding-bottom: 36px; }
+.hero-content { gap: 16px; }
+
+@media (max-width: 767px) {
+  .container { padding-left: 16px; padding-right: 16px; }
+  .section { margin-bottom: 24px; }
+  .hero { padding-top: 46px; padding-bottom: 28px; }
+  .card, .product-card { padding: 16px; }
+}
+
+
+/* V6 — readability + tighter vertical rhythm */
+:root{
+  --section:34px;
+}
+
+/* Section-level gaps */
+section{padding:var(--section) 0}
+.section-head{margin-bottom:13px}
+.section-head p{
+  font-size:15px;
+  line-height:1.55;
+}
+
+/* About / CMS information */
+.story-grid{gap:7px}
+.story{padding:17px}
+.story h3{
+  margin-bottom:6px;
+  font-size:21px;
+}
+.story p{
+  font-size:15px;
+  line-height:1.55;
+}
+.pillars{
+  gap:5px;
+  margin-top:10px;
+}
+.pillar{
+  padding:9px 10px;
+}
+.pillar b{font-size:12px}
+.pillar span{
+  margin-top:2px;
+  font-size:11px;
+  line-height:1.35;
+}
+
+/* Product information */
+.products{gap:8px}
+.product-main{padding:17px 18px 15px}
+.product h3{margin:8px 0 7px}
+.product .lead{
+  font-size:15px;
+  line-height:1.55;
+}
+.product-info{gap:15px}
+.info h4{font-size:13px}
+.info li,.info p{
+  font-size:13px;
+  line-height:1.5;
+}
+
+/* Other supporting copy across the site */
+.card p,.vision p,.approach p,.value p{
+  font-size:13px;
+  line-height:1.5;
+}
+
+/* Keep the layout compact on desktop */
+@media (min-width:921px){
+  .container{max-width:1160px}
+  .story-grid{gap:7px}
+  section{padding:32px 0}
+}
+
+/* Mobile: readable, but still compact */
+@media (max-width:700px){
+  :root{--section:28px}
+  .section-head{margin-bottom:12px}
+  .section-head p{font-size:14px}
+  .story{padding:15px}
+  .story p{font-size:14px}
+  .pillar b{font-size:11px}
+  .pillar span{font-size:10px}
+  .product-main{padding:15px}
+  .product .lead{font-size:14px}
+}
+
 </style>
 </head>
 
