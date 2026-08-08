@@ -1,356 +1,3430 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#07111f">
-  <meta name="description" content="Creative Management Solutions (CMS) builds its own digital products that solve real-world problems across fitness, local commerce and business operations.">
-  <meta name="keywords" content="Creative Management Solutions, CMS, VibeFit, KokanKart, NutriFit, Evado, digital products, India">
-  <meta property="og:title" content="Creative Management Solutions — Technology. Products. Innovation.">
-  <meta property="og:description" content="Building digital products for real-world problems.">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://cmsgroup.in/">
-  <title>Creative Management Solutions | Technology. Products. Innovation.</title>
+    <meta charset="UTF-8">
 
-  <style>
-    :root{
-      --bg:#050b14;
-      --bg-soft:#091321;
-      --surface:rgba(15,28,45,.72);
-      --surface-2:#0d1a2b;
-      --line:rgba(148,163,184,.15);
-      --text:#f8fafc;
-      --muted:#94a3b8;
-      --muted-2:#64748b;
-      --primary:#38bdf8;
-      --primary-2:#22d3ee;
-      --accent:#818cf8;
-      --success:#34d399;
-      --warning:#f59e0b;
-      --max:1180px;
-      --radius:22px;
-      --shadow:0 25px 80px rgba(0,0,0,.35);
-    }
-    *{box-sizing:border-box;margin:0;padding:0}
-    html{scroll-behavior:smooth}
-    body{
-      font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
-      background:
-        radial-gradient(circle at 15% 5%,rgba(56,189,248,.12),transparent 28rem),
-        radial-gradient(circle at 85% 12%,rgba(129,140,248,.10),transparent 30rem),
-        var(--bg);
-      color:var(--text);line-height:1.65;overflow-x:hidden;
-    }
-    a{color:inherit;text-decoration:none}
-    .container{width:min(var(--max),calc(100% - 40px));margin:auto}
-    .nav{
-      position:fixed;top:0;left:0;right:0;z-index:50;
-      background:rgba(5,11,20,.72);backdrop-filter:blur(18px);
-      border-bottom:1px solid rgba(148,163,184,.08);
-    }
-    .nav-inner{height:76px;display:flex;align-items:center;justify-content:space-between}
-    .brand{display:flex;align-items:center;gap:11px;font-weight:800;letter-spacing:-.02em}
-    .brand-mark{
-      width:38px;height:38px;border-radius:11px;display:grid;place-items:center;
-      background:linear-gradient(135deg,var(--primary),var(--accent));color:#04111d;
-      font-size:14px;box-shadow:0 10px 30px rgba(56,189,248,.2)
-    }
-    .brand span{font-size:15px}
-    .nav-links{display:flex;gap:26px;align-items:center}
-    .nav-links a{font-size:14px;color:#cbd5e1;transition:.2s}
-    .nav-links a:hover{color:#fff}
-    .nav-cta{padding:10px 16px;border:1px solid var(--line);border-radius:999px}
-    .menu{display:none;background:none;border:0;color:white;font-size:25px}
-    .hero{min-height:100vh;padding:160px 0 90px;display:grid;align-items:center}
-    .hero-grid{display:grid;grid-template-columns:1.12fr .88fr;gap:70px;align-items:center}
-    .eyebrow{
-      display:inline-flex;gap:9px;align-items:center;padding:7px 12px;border:1px solid rgba(56,189,248,.2);
-      background:rgba(56,189,248,.07);border-radius:999px;color:#bae6fd;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase
-    }
-    .dot{width:7px;height:7px;background:var(--success);border-radius:50%;box-shadow:0 0 15px var(--success)}
-    h1{font-size:clamp(48px,7vw,86px);line-height:.98;letter-spacing:-.065em;margin:24px 0}
-    .gradient{background:linear-gradient(100deg,#fff 15%,#7dd3fc 55%,#a5b4fc);-webkit-background-clip:text;background-clip:text;color:transparent}
-    .hero p{max-width:680px;color:#aab8c9;font-size:19px}
-    .actions{display:flex;gap:13px;flex-wrap:wrap;margin-top:32px}
-    .btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;padding:13px 19px;border-radius:12px;font-weight:750;font-size:14px;transition:.2s}
-    .btn-primary{background:linear-gradient(135deg,var(--primary),var(--primary-2));color:#04111d;box-shadow:0 14px 35px rgba(34,211,238,.14)}
-    .btn-primary:hover{transform:translateY(-2px)}
-    .btn-ghost{border:1px solid var(--line);background:rgba(255,255,255,.025);color:#e2e8f0}
-    .btn-ghost:hover{background:rgba(255,255,255,.06)}
-    .hero-panel{
-      position:relative;border:1px solid var(--line);border-radius:30px;background:linear-gradient(180deg,rgba(15,28,45,.85),rgba(7,17,31,.75));
-      padding:25px;box-shadow:var(--shadow);overflow:hidden
-    }
-    .hero-panel:before{content:"";position:absolute;width:220px;height:220px;border-radius:50%;background:rgba(56,189,248,.12);filter:blur(50px);top:-80px;right:-60px}
-    .panel-top{display:flex;justify-content:space-between;align-items:center;color:#94a3b8;font-size:12px}
-    .live{color:#86efac;display:flex;gap:7px;align-items:center}
-    .product-stack{margin-top:25px;display:grid;gap:12px}
-    .mini-product{padding:17px;border:1px solid var(--line);border-radius:17px;background:rgba(255,255,255,.025);display:flex;justify-content:space-between;gap:20px}
-    .mini-product strong{display:block;font-size:15px}.mini-product small{color:var(--muted);font-size:12px}
-    .progress{width:80px;height:5px;background:#1e293b;border-radius:99px;margin-top:9px;overflow:hidden}
-    .progress i{display:block;height:100%;background:linear-gradient(90deg,var(--primary),var(--accent));border-radius:99px}
-    .section{padding:105px 0}
-    .section-head{display:flex;justify-content:space-between;gap:35px;align-items:end;margin-bottom:42px}
-    .kicker{font-size:12px;color:#7dd3fc;font-weight:800;text-transform:uppercase;letter-spacing:.14em;margin-bottom:10px}
-    h2{font-size:clamp(32px,5vw,54px);line-height:1.05;letter-spacing:-.045em}
-    .section-head p{max-width:470px;color:var(--muted)}
-    .about-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:20px}
-    .glass,.card{
-      border:1px solid var(--line);background:linear-gradient(145deg,rgba(15,28,45,.78),rgba(9,19,33,.65));
-      border-radius:var(--radius);box-shadow:0 15px 50px rgba(0,0,0,.14)
-    }
-    .about-copy{padding:34px}
-    .about-copy p{color:#aab8c9;font-size:17px;margin-top:15px}
-    .principles{display:grid;grid-template-columns:1fr 1fr}
-    .principle{padding:25px;border-right:1px solid var(--line);border-bottom:1px solid var(--line)}
-    .principle:nth-child(even){border-right:0}.principle:nth-last-child(-n+2){border-bottom:0}
-    .principle b{display:block;margin-bottom:5px}.principle span{font-size:13px;color:var(--muted)}
-    .product-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
-    .product{padding:28px;position:relative;overflow:hidden}
-    .product:after{content:"";position:absolute;width:170px;height:170px;border-radius:50%;background:rgba(56,189,248,.05);right:-80px;bottom:-90px}
-    .product-head{display:flex;justify-content:space-between;gap:20px;align-items:start}
-    .product-icon{width:48px;height:48px;border-radius:14px;background:rgba(56,189,248,.1);border:1px solid rgba(56,189,248,.16);display:grid;place-items:center;font-weight:900;color:#7dd3fc}
-    .status{font-size:11px;font-weight:800;padding:5px 9px;border-radius:999px;background:rgba(52,211,153,.1);color:#86efac;border:1px solid rgba(52,211,153,.16)}
-    .status-dev{background:rgba(245,158,11,.09);color:#fcd34d;border-color:rgba(245,158,11,.15)}
-    .product h3{font-size:25px;margin-top:20px;letter-spacing:-.03em}.product .type{color:#7dd3fc;font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.1em}
-    .product p{color:var(--muted);margin-top:10px;font-size:14px}
-    .tags{display:flex;flex-wrap:wrap;gap:7px;margin-top:19px}.tag{font-size:11px;color:#cbd5e1;border:1px solid var(--line);padding:5px 8px;border-radius:999px}
-    .product-footer{margin-top:24px;padding-top:18px;border-top:1px solid var(--line);display:flex;justify-content:space-between;align-items:center}
-    .product-footer span{font-size:12px;color:var(--muted)}
-    .arrow{font-size:18px;color:#7dd3fc}
-    .architecture{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-top:35px}
-    .step{padding:23px 15px;text-align:center;border:1px solid var(--line);border-radius:16px;background:rgba(255,255,255,.02)}
-    .step strong{display:block;font-size:13px}.step span{color:var(--muted-2);font-size:11px}
-    .step-no{width:30px;height:30px;border-radius:50%;display:grid;place-items:center;margin:0 auto 10px;background:rgba(56,189,248,.09);color:#7dd3fc;font-size:12px;font-weight:800}
-    .values{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
-    .value{padding:24px;border:1px solid var(--line);border-radius:17px;background:rgba(255,255,255,.02)}
-    .value strong{font-size:15px}.value p{font-size:12px;color:var(--muted);margin-top:7px}
-    .roadmap{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-    .roadmap .card{padding:27px}.roadmap small{color:#7dd3fc;font-weight:800}.roadmap h3{margin:9px 0}.roadmap p{font-size:13px;color:var(--muted)}
-    .cta{padding:55px;border-radius:28px;border:1px solid rgba(56,189,248,.18);background:radial-gradient(circle at 80% 20%,rgba(129,140,248,.12),transparent 30%),rgba(15,28,45,.72);display:flex;justify-content:space-between;align-items:center;gap:30px}
-    .cta p{color:var(--muted);max-width:650px;margin-top:8px}
-    footer{border-top:1px solid var(--line);padding:45px 0;color:var(--muted)}
-    .footer-grid{display:flex;justify-content:space-between;gap:30px}.footer-brand{color:#e2e8f0;font-weight:800}.footer-links{display:flex;gap:18px;font-size:13px}.footer-links a:hover{color:#fff}
-    .copyright{margin-top:30px;padding-top:20px;border-top:1px solid var(--line);font-size:12px;color:var(--muted-2)}
-    .reveal{opacity:0;transform:translateY(22px);transition:.7s ease}.reveal.show{opacity:1;transform:none}
-    @media(max-width:900px){
-      .nav-links{display:none;position:absolute;top:76px;left:0;right:0;background:#07111f;border-bottom:1px solid var(--line);padding:20px;flex-direction:column;align-items:flex-start}
-      .nav-links.open{display:flex}.menu{display:block}
-      .hero-grid,.about-grid{grid-template-columns:1fr}.hero{padding-top:130px}
-      .product-grid{grid-template-columns:1fr}.architecture{grid-template-columns:1fr 1fr}.values{grid-template-columns:1fr 1fr}.roadmap{grid-template-columns:1fr}
-      .section-head{align-items:start;flex-direction:column}.cta{flex-direction:column;align-items:start}
-    }
-    @media(max-width:520px){
-      .container{width:min(var(--max),calc(100% - 28px))}
-      h1{font-size:49px}.hero p{font-size:16px}.section{padding:75px 0}
-      .principles{grid-template-columns:1fr}.principle{border-right:0}.principle:nth-last-child(-n+2){border-bottom:1px solid var(--line)}.principle:last-child{border-bottom:0}
-      .architecture{grid-template-columns:1fr}.values{grid-template-columns:1fr}.footer-grid{flex-direction:column}.footer-links{flex-wrap:wrap}
-    }
-  </style>
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <meta name="description"
+          content="Creative Management Solutions (CMS Group) is an India-focused digital product studio building and owning independent software platforms across wellness, commerce, and business operations.">
+
+    <meta name="theme-color" content="#030712">
+
+    <meta property="og:title"
+          content="Creative Management Solutions | CMS Group">
+
+    <meta property="og:description"
+          content="Technology. Products. Innovation.">
+
+    <meta property="og:type" content="website">
+
+    <title>Creative Management Solutions | CMS Group</title>
+
+    <style>
+        /* =========================================================
+           RESET
+        ========================================================= */
+
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: #030712;
+            color: #f8fafc;
+            font-family:
+                Inter,
+                ui-sans-serif,
+                system-ui,
+                -apple-system,
+                BlinkMacSystemFont,
+                "Segoe UI",
+                sans-serif;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        button {
+            font: inherit;
+        }
+
+        /* =========================================================
+           GLOBAL BACKGROUND
+        ========================================================= */
+
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: -3;
+
+            background-image:
+                linear-gradient(
+                    rgba(56, 189, 248, 0.035) 1px,
+                    transparent 1px
+                ),
+                linear-gradient(
+                    90deg,
+                    rgba(56, 189, 248, 0.035) 1px,
+                    transparent 1px
+                );
+
+            background-size: 60px 60px;
+
+            mask-image: linear-gradient(
+                to bottom,
+                black,
+                transparent 90%
+            );
+        }
+
+        body::after {
+            content: "";
+            position: fixed;
+            width: 700px;
+            height: 700px;
+            top: -300px;
+            right: -250px;
+            pointer-events: none;
+            z-index: -2;
+
+            background:
+                radial-gradient(
+                    circle,
+                    rgba(99, 102, 241, 0.14),
+                    transparent 65%
+                );
+        }
+
+        .container {
+            width: min(1160px, calc(100% - 40px));
+            margin: auto;
+        }
+
+        /* =========================================================
+           NAVIGATION
+        ========================================================= */
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+
+            z-index: 1000;
+
+            border-bottom: 1px solid rgba(148, 163, 184, 0.08);
+
+            background:
+                rgba(3, 7, 18, 0.72);
+
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+
+        .nav-inner {
+            height: 72px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .brand-mark {
+            width: 38px;
+            height: 38px;
+
+            display: grid;
+            place-items: center;
+
+            border-radius: 10px;
+
+            font-size: 15px;
+            font-weight: 900;
+            letter-spacing: -1px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #38bdf8,
+                    #6366f1
+                );
+
+            color: #020617;
+
+            box-shadow:
+                0 0 25px rgba(56, 189, 248, 0.18);
+        }
+
+        .brand-name {
+            font-size: 14px;
+            font-weight: 700;
+            letter-spacing: -0.2px;
+        }
+
+        .brand-name span {
+            display: block;
+
+            color: #64748b;
+
+            font-size: 10px;
+            font-weight: 500;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 28px;
+
+            color: #94a3b8;
+
+            font-size: 13px;
+            font-weight: 500;
+        }
+
+        .nav-links a {
+            transition: color 0.25s ease;
+        }
+
+        .nav-links a:hover {
+            color: #f8fafc;
+        }
+
+        .nav-cta {
+            padding: 9px 15px;
+
+            border: 1px solid rgba(56, 189, 248, 0.35);
+            border-radius: 8px;
+
+            color: #bae6fd !important;
+
+            background:
+                rgba(56, 189, 248, 0.07);
+
+            transition:
+                background 0.25s ease,
+                border-color 0.25s ease;
+        }
+
+        .nav-cta:hover {
+            background: rgba(56, 189, 248, 0.13);
+            border-color: rgba(56, 189, 248, 0.7);
+        }
+
+        .hamburger {
+            display: none;
+
+            width: 42px;
+            height: 42px;
+
+            border: 1px solid #1e293b;
+            border-radius: 9px;
+
+            background: #0b0f19;
+            color: #f8fafc;
+
+            cursor: pointer;
+        }
+
+        /* =========================================================
+           HERO
+        ========================================================= */
+
+        .hero {
+            min-height: 100vh;
+
+            display: flex;
+            align-items: center;
+
+            padding:
+                150px 0
+                90px;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns:
+                minmax(0, 1.05fr)
+                minmax(380px, 0.95fr);
+
+            gap: 80px;
+            align-items: center;
+        }
+
+        .eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 9px;
+
+            margin-bottom: 25px;
+            padding: 7px 12px;
+
+            border: 1px solid rgba(16, 185, 129, 0.25);
+            border-radius: 999px;
+
+            background: rgba(16, 185, 129, 0.06);
+
+            color: #a7f3d0;
+
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 0.3px;
+        }
+
+        .status-dot {
+            width: 7px;
+            height: 7px;
+
+            border-radius: 50%;
+
+            background: #10b981;
+
+            box-shadow: 0 0 12px #10b981;
+
+            animation: pulse 1.8s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+
+            50% {
+                opacity: 0.45;
+                transform: scale(0.7);
+            }
+        }
+
+        .hero h1 {
+            max-width: 800px;
+
+            font-size:
+                clamp(46px, 7vw, 84px);
+
+            line-height: 0.98;
+
+            letter-spacing: -0.065em;
+            font-weight: 850;
+        }
+
+        .gradient-text {
+            background:
+                linear-gradient(
+                    100deg,
+                    #f8fafc 10%,
+                    #7dd3fc 50%,
+                    #818cf8 90%
+                );
+
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .hero-description {
+            max-width: 650px;
+
+            margin-top: 28px;
+
+            color: #94a3b8;
+
+            font-size:
+                clamp(16px, 2vw, 19px);
+
+            line-height: 1.75;
+        }
+
+        .hero-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+
+            margin-top: 35px;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+
+            padding: 13px 20px;
+
+            border-radius: 9px;
+
+            font-size: 13px;
+            font-weight: 700;
+
+            transition:
+                transform 0.25s ease,
+                box-shadow 0.25s ease,
+                border-color 0.25s ease;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .btn-primary {
+            color: #020617;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #38bdf8,
+                    #818cf8
+                );
+
+            box-shadow:
+                0 10px 35px
+                rgba(56, 189, 248, 0.16);
+        }
+
+        .btn-secondary {
+            border: 1px solid #1e293b;
+
+            color: #cbd5e1;
+
+            background: rgba(15, 23, 42, 0.55);
+        }
+
+        .btn-secondary:hover {
+            border-color: #334155;
+        }
+
+        /* =========================================================
+           HERO WIDGET
+        ========================================================= */
+
+        .hero-widget {
+            position: relative;
+
+            min-height: 430px;
+
+            padding: 20px;
+
+            border: 1px solid rgba(148, 163, 184, 0.13);
+            border-radius: 24px;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(15, 23, 42, 0.92),
+                    rgba(7, 11, 22, 0.82)
+                );
+
+            box-shadow:
+                0 30px 100px
+                rgba(0, 0, 0, 0.45);
+
+            transform:
+                perspective(1000px)
+                rotateY(-4deg)
+                rotateX(2deg);
+
+            transition: transform 0.5s ease;
+        }
+
+        .hero-widget:hover {
+            transform:
+                perspective(1000px)
+                rotateY(0deg)
+                rotateX(0deg)
+                translateY(-5px);
+        }
+
+        .widget-glow {
+            position: absolute;
+            inset: -1px;
+
+            border-radius: 24px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(56, 189, 248, 0.35),
+                    transparent 35%,
+                    rgba(99, 102, 241, 0.2)
+                );
+
+            opacity: 0.35;
+
+            pointer-events: none;
+        }
+
+        .widget-top {
+            position: relative;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            padding-bottom: 18px;
+
+            border-bottom: 1px solid #1e293b;
+        }
+
+        .widget-title {
+            font-size: 13px;
+            font-weight: 700;
+        }
+
+        .live-status {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+
+            color: #6ee7b7;
+
+            font-size: 10px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .live-status::before {
+            content: "";
+
+            width: 6px;
+            height: 6px;
+
+            border-radius: 50%;
+            background: #10b981;
+        }
+
+        .metric-grid {
+            position: relative;
+
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+
+            gap: 12px;
+
+            margin-top: 18px;
+        }
+
+        .metric {
+            padding: 18px;
+
+            border: 1px solid #1e293b;
+            border-radius: 14px;
+
+            background: rgba(15, 23, 42, 0.65);
+        }
+
+        .metric-label {
+            color: #64748b;
+
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .metric-value {
+            margin-top: 5px;
+
+            font-size: 25px;
+            font-weight: 800;
+            letter-spacing: -1px;
+        }
+
+        .metric-change {
+            margin-top: 4px;
+
+            color: #34d399;
+
+            font-size: 10px;
+        }
+
+        .ecosystem-mini {
+            position: relative;
+
+            margin-top: 12px;
+            padding: 18px;
+
+            border: 1px solid #1e293b;
+            border-radius: 14px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(56, 189, 248, 0.06),
+                    rgba(99, 102, 241, 0.06)
+                );
+        }
+
+        .mini-header {
+            display: flex;
+            justify-content: space-between;
+
+            margin-bottom: 13px;
+
+            color: #94a3b8;
+
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .progress-row {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+
+            margin-top: 9px;
+        }
+
+        .progress-name {
+            width: 68px;
+
+            color: #cbd5e1;
+
+            font-size: 11px;
+            font-weight: 600;
+        }
+
+        .progress-track {
+            flex: 1;
+
+            height: 5px;
+
+            overflow: hidden;
+
+            border-radius: 999px;
+
+            background: #1e293b;
+        }
+
+        .progress-fill {
+            height: 100%;
+
+            border-radius: inherit;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    #38bdf8,
+                    #6366f1
+                );
+        }
+
+        .progress-number {
+            width: 35px;
+
+            color: #64748b;
+
+            font-size: 10px;
+            text-align: right;
+        }
+
+        /* =========================================================
+           SECTION
+        ========================================================= */
+
+        section {
+            padding: 110px 0;
+        }
+
+        .section-heading {
+            max-width: 760px;
+
+            margin-bottom: 55px;
+        }
+
+        .section-label {
+            margin-bottom: 12px;
+
+            color: #38bdf8;
+
+            font-size: 11px;
+            font-weight: 800;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .section-heading h2 {
+            font-size:
+                clamp(32px, 5vw, 54px);
+
+            line-height: 1.05;
+
+            letter-spacing: -0.05em;
+        }
+
+        .section-heading p {
+            margin-top: 18px;
+
+            color: #64748b;
+
+            font-size: 16px;
+        }
+
+        /* =========================================================
+           ABOUT
+        ========================================================= */
+
+        .about-grid {
+            display: grid;
+            grid-template-columns:
+                1.1fr
+                0.9fr;
+
+            gap: 24px;
+        }
+
+        .glass-card {
+            position: relative;
+
+            padding: 30px;
+
+            border: 1px solid #1e293b;
+            border-radius: 18px;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(15, 23, 42, 0.7),
+                    rgba(2, 6, 23, 0.72)
+                );
+
+            overflow: hidden;
+
+            transition:
+                transform 0.3s ease,
+                border-color 0.3s ease;
+        }
+
+        .glass-card::before {
+            content: "";
+
+            position: absolute;
+            inset: 0;
+
+            opacity: 0;
+
+            background:
+                radial-gradient(
+                    circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+                    rgba(56, 189, 248, 0.12),
+                    transparent 35%
+                );
+
+            transition: opacity 0.3s ease;
+        }
+
+        .glass-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(56, 189, 248, 0.35);
+        }
+
+        .glass-card:hover::before {
+            opacity: 1;
+        }
+
+        .about-copy {
+            color: #94a3b8;
+
+            font-size: 16px;
+            line-height: 1.9;
+        }
+
+        .about-copy strong {
+            color: #e2e8f0;
+        }
+
+        .about-stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+
+        .stat-box {
+            padding: 22px;
+
+            border: 1px solid #1e293b;
+            border-radius: 14px;
+
+            background: #080d18;
+        }
+
+        .stat-box strong {
+            display: block;
+
+            color: #f8fafc;
+
+            font-size: 25px;
+            letter-spacing: -1px;
+        }
+
+        .stat-box span {
+            color: #64748b;
+
+            font-size: 11px;
+        }
+
+        /* =========================================================
+           PRODUCTS
+        ========================================================= */
+
+        .product-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(2, minmax(0, 1fr));
+
+            gap: 18px;
+        }
+
+        .product-card {
+            position: relative;
+
+            padding: 28px;
+
+            border: 1px solid #1e293b;
+            border-radius: 18px;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(15, 23, 42, 0.8),
+                    rgba(5, 9, 20, 0.9)
+                );
+
+            overflow: hidden;
+
+            transition:
+                transform 0.3s ease,
+                border-color 0.3s ease;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(56, 189, 248, 0.38);
+        }
+
+        .product-card.featured {
+            grid-column: span 2;
+
+            border-color:
+                rgba(56, 189, 248, 0.24);
+        }
+
+        .product-top {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+
+            gap: 15px;
+        }
+
+        .product-icon {
+            width: 45px;
+            height: 45px;
+
+            display: grid;
+            place-items: center;
+
+            border: 1px solid #334155;
+            border-radius: 12px;
+
+            background: #0b1220;
+
+            color: #38bdf8;
+
+            font-size: 16px;
+            font-weight: 900;
+        }
+
+        .product-status {
+            padding: 5px 9px;
+
+            border-radius: 999px;
+
+            color: #bae6fd;
+
+            background:
+                rgba(56, 189, 248, 0.08);
+
+            font-size: 9px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.7px;
+        }
+
+        .product-card h3 {
+            margin-top: 24px;
+
+            font-size: 26px;
+            letter-spacing: -0.04em;
+        }
+
+        .product-card p {
+            margin-top: 10px;
+
+            color: #64748b;
+
+            font-size: 14px;
+            line-height: 1.7;
+        }
+
+        .feature-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 7px;
+
+            margin-top: 18px;
+        }
+
+        .feature {
+            padding: 5px 8px;
+
+            border: 1px solid #1e293b;
+            border-radius: 6px;
+
+            color: #94a3b8;
+
+            font-size: 9px;
+        }
+
+        .product-progress {
+            margin-top: 24px;
+        }
+
+        .progress-meta {
+            display: flex;
+            justify-content: space-between;
+
+            margin-bottom: 8px;
+
+            color: #64748b;
+
+            font-size: 10px;
+        }
+
+        .large-track {
+            height: 6px;
+
+            overflow: hidden;
+
+            border-radius: 999px;
+
+            background: #1e293b;
+        }
+
+        .large-fill {
+            height: 100%;
+
+            border-radius: inherit;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    #38bdf8,
+                    #6366f1
+                );
+        }
+
+        .product-link {
+            display: inline-flex;
+
+            margin-top: 18px;
+
+            color: #7dd3fc;
+
+            font-size: 11px;
+            font-weight: 700;
+        }
+
+        /* =========================================================
+           ECOSYSTEM / ARCHITECTURE
+        ========================================================= */
+
+        .pipeline {
+            display: grid;
+            grid-template-columns:
+                repeat(5, 1fr);
+
+            border: 1px solid #1e293b;
+            border-radius: 18px;
+
+            overflow: hidden;
+        }
+
+        .pipeline-step {
+            min-height: 190px;
+
+            padding: 28px 22px;
+
+            border-right: 1px solid #1e293b;
+
+            background:
+                rgba(8, 13, 24, 0.7);
+        }
+
+        .pipeline-step:last-child {
+            border-right: 0;
+        }
+
+        .step-number {
+            color: #38bdf8;
+
+            font-size: 11px;
+            font-weight: 800;
+        }
+
+        .pipeline-step h3 {
+            margin-top: 30px;
+
+            font-size: 16px;
+        }
+
+        .pipeline-step p {
+            margin-top: 8px;
+
+            color: #64748b;
+
+            font-size: 12px;
+        }
+
+        /* =========================================================
+           VALUES
+        ========================================================= */
+
+        .values-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(4, 1fr);
+
+            gap: 14px;
+        }
+
+        .value-card {
+            min-height: 190px;
+
+            padding: 25px;
+
+            border: 1px solid #1e293b;
+            border-radius: 16px;
+
+            background: rgba(8, 13, 24, 0.72);
+
+            transition:
+                transform 0.3s ease,
+                border-color 0.3s ease;
+        }
+
+        .value-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(99, 102, 241, 0.4);
+        }
+
+        .value-number {
+            color: #475569;
+
+            font-size: 11px;
+            font-weight: 800;
+        }
+
+        .value-card h3 {
+            margin-top: 30px;
+
+            font-size: 16px;
+        }
+
+        .value-card p {
+            margin-top: 7px;
+
+            color: #64748b;
+
+            font-size: 12px;
+        }
+
+        /* =========================================================
+           CTA
+        ========================================================= */
+
+        .final-cta {
+            position: relative;
+
+            padding: 75px 40px;
+
+            border: 1px solid rgba(56, 189, 248, 0.2);
+            border-radius: 24px;
+
+            overflow: hidden;
+
+            text-align: center;
+
+            background:
+                radial-gradient(
+                    circle at 50% 0%,
+                    rgba(56, 189, 248, 0.12),
+                    transparent 55%
+                ),
+                #080d18;
+        }
+
+        .final-cta h2 {
+            max-width: 700px;
+
+            margin: auto;
+
+            font-size:
+                clamp(32px, 5vw, 52px);
+
+            line-height: 1.05;
+            letter-spacing: -0.05em;
+        }
+
+        .final-cta p {
+            max-width: 600px;
+
+            margin: 18px auto 28px;
+
+            color: #64748b;
+        }
+
+        /* =========================================================
+           FOOTER
+        ========================================================= */
+
+        footer {
+            margin-top: 70px;
+
+            padding:
+                50px 0
+                30px;
+
+            border-top: 1px solid #111827;
+
+            color: #64748b;
+        }
+
+        .footer-main {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+
+            gap: 40px;
+        }
+
+        .footer-brand {
+            max-width: 330px;
+        }
+
+        .footer-brand strong {
+            color: #f8fafc;
+        }
+
+        .footer-brand p {
+            margin-top: 10px;
+
+            font-size: 12px;
+            line-height: 1.7;
+        }
+
+        .footer-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+
+            font-size: 12px;
+        }
+
+        .footer-links a:hover {
+            color: #7dd3fc;
+        }
+
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+
+            margin-top: 45px;
+            padding-top: 20px;
+
+            border-top: 1px solid #111827;
+
+            font-size: 10px;
+        }
+
+        /* =========================================================
+           SCROLL ANIMATION
+        ========================================================= */
+
+        .reveal {
+            opacity: 0;
+
+            transform: translateY(25px);
+
+            transition:
+                opacity 0.7s ease,
+                transform 0.7s ease;
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .reveal-stagger.visible {
+            transition-delay: var(--stagger-delay, 0s);
+        }
+
+        /* =========================================================
+           SCROLL PROGRESS BAR
+        ========================================================= */
+
+        .scroll-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+
+            width: 100%;
+            height: 2px;
+
+            z-index: 1200;
+
+            background: transparent;
+        }
+
+        .scroll-progress-fill {
+            height: 100%;
+            width: 0%;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    #38bdf8,
+                    #818cf8
+                );
+
+            box-shadow:
+                0 0 12px rgba(56, 189, 248, 0.6);
+
+            transition: width 0.08s linear;
+        }
+
+        /* =========================================================
+           CUSTOM CURSOR
+        ========================================================= */
+
+        html.custom-cursor-active,
+        html.custom-cursor-active body {
+            cursor: none;
+        }
+
+        html.custom-cursor-active a,
+        html.custom-cursor-active button,
+        html.custom-cursor-active .hamburger {
+            cursor: none;
+        }
+
+        @media (hover: hover) and (pointer: fine) {
+
+            .cursor-dot,
+            .cursor-ring {
+                position: fixed;
+                top: 0;
+                left: 0;
+
+                z-index: 1300;
+
+                pointer-events: none;
+
+                border-radius: 50%;
+
+                transform: translate(-50%, -50%);
+
+                will-change: transform;
+            }
+
+            .cursor-dot {
+                width: 6px;
+                height: 6px;
+
+                background: #38bdf8;
+            }
+
+            .cursor-ring {
+                width: 34px;
+                height: 34px;
+
+                border: 1px solid rgba(56, 189, 248, 0.45);
+
+                transition:
+                    width 0.25s ease,
+                    height 0.25s ease,
+                    border-color 0.25s ease,
+                    background 0.25s ease;
+            }
+
+            .cursor-ring.is-active {
+                width: 58px;
+                height: 58px;
+
+                background: rgba(56, 189, 248, 0.08);
+                border-color: rgba(56, 189, 248, 0.75);
+            }
+        }
+
+        @media (hover: none), (pointer: coarse) {
+
+            .cursor-dot,
+            .cursor-ring {
+                display: none;
+            }
+        }
+
+        /* =========================================================
+           HERO CANVAS (NETWORK FIELD)
+        ========================================================= */
+
+        .hero {
+            position: relative;
+        }
+
+        .hero-canvas {
+            position: absolute;
+            inset: 0;
+
+            z-index: -1;
+
+            width: 100%;
+            height: 100%;
+
+            opacity: 0.65;
+
+            mask-image:
+                radial-gradient(
+                    ellipse 70% 60% at 30% 40%,
+                    black 40%,
+                    transparent 85%
+                );
+        }
+
+        /* =========================================================
+           SPLIT TEXT / HERO HEADLINE
+        ========================================================= */
+
+        .word-wrap {
+            display: inline-block;
+            overflow: hidden;
+            vertical-align: top;
+        }
+
+        .word {
+            display: inline-block;
+
+            transform: translateY(110%);
+
+            animation:
+                word-rise 0.9s
+                cubic-bezier(0.22, 1, 0.36, 1)
+                forwards;
+        }
+
+        @keyframes word-rise {
+
+            to {
+                transform: translateY(0%);
+            }
+
+        }
+
+        .gradient-text {
+            background-size: 200% 100%;
+
+            animation:
+                shimmer 6s ease-in-out infinite;
+        }
+
+        @keyframes shimmer {
+
+            0%, 100% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+        }
+
+        /* =========================================================
+           INTRO SEQUENCE
+        ========================================================= */
+
+        .intro-item {
+            opacity: 0;
+
+            transform: translateY(18px);
+
+            animation:
+                intro-rise 0.8s
+                cubic-bezier(0.22, 1, 0.36, 1)
+                forwards;
+
+            animation-delay:
+                var(--intro-delay, 0s);
+        }
+
+        @keyframes intro-rise {
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+        }
+
+        /* =========================================================
+           MAGNETIC BUTTONS
+        ========================================================= */
+
+        .btn {
+            will-change: transform;
+        }
+
+        /* =========================================================
+           TICKER STRIP
+        ========================================================= */
+
+        .ticker-strip {
+            position: relative;
+
+            padding: 16px 0;
+
+            border-top: 1px solid rgba(148, 163, 184, 0.08);
+            border-bottom: 1px solid rgba(148, 163, 184, 0.08);
+
+            background: rgba(8, 13, 24, 0.5);
+
+            overflow: hidden;
+        }
+
+        .ticker-track {
+            display: flex;
+            align-items: center;
+            gap: 44px;
+
+            width: max-content;
+
+            animation:
+                ticker-scroll 32s linear infinite;
+        }
+
+        .ticker-strip:hover .ticker-track {
+            animation-play-state: paused;
+        }
+
+        @keyframes ticker-scroll {
+
+            from {
+                transform: translateX(0);
+            }
+
+            to {
+                transform: translateX(-50%);
+            }
+
+        }
+
+        .ticker-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+
+            color: #64748b;
+
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+
+            white-space: nowrap;
+        }
+
+        .ticker-item strong {
+            color: #cbd5e1;
+        }
+
+        .ticker-dot {
+            width: 5px;
+            height: 5px;
+
+            border-radius: 50%;
+
+            background: #38bdf8;
+
+            box-shadow: 0 0 8px rgba(56, 189, 248, 0.8);
+        }
+
+        /* =========================================================
+           TILT CARDS (product / value)
+        ========================================================= */
+
+        .product-card,
+        .value-card {
+            will-change: transform;
+            transform-style: preserve-3d;
+        }
+
+        .product-card::before {
+            content: "";
+
+            position: absolute;
+            inset: 0;
+
+            opacity: 0;
+
+            background:
+                radial-gradient(
+                    circle at var(--mx, 50%) var(--my, 50%),
+                    rgba(56, 189, 248, 0.1),
+                    transparent 40%
+                );
+
+            transition: opacity 0.3s ease;
+
+            pointer-events: none;
+        }
+
+        .product-card:hover::before {
+            opacity: 1;
+        }
+
+        /* =========================================================
+           COUNT-UP STATS
+        ========================================================= */
+
+        .stat-box strong {
+            display: block;
+
+            font-variant-numeric: tabular-nums;
+        }
+
+        /* =========================================================
+           RESPONSIVE
+        ========================================================= */
+
+        @media (max-width: 900px) {
+
+            .hero-grid {
+                grid-template-columns: 1fr;
+                gap: 50px;
+            }
+
+            .hero-widget {
+                max-width: 650px;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .values-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .pipeline {
+                grid-template-columns: 1fr;
+            }
+
+            .pipeline-step {
+                min-height: auto;
+                border-right: 0;
+                border-bottom: 1px solid #1e293b;
+            }
+
+            .pipeline-step:last-child {
+                border-bottom: 0;
+            }
+        }
+
+        @media (max-width: 700px) {
+
+            .container {
+                width: min(100% - 28px, 1160px);
+            }
+
+            .nav-links {
+                display: none;
+
+                position: absolute;
+
+                top: 72px;
+                left: 14px;
+                right: 14px;
+
+                flex-direction: column;
+                align-items: stretch;
+
+                gap: 0;
+
+                padding: 10px;
+
+                border: 1px solid #1e293b;
+                border-radius: 14px;
+
+                background:
+                    rgba(3, 7, 18, 0.97);
+
+                backdrop-filter: blur(20px);
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .nav-links a {
+                padding: 13px;
+            }
+
+            .hamburger {
+                display: block;
+            }
+
+            .nav-cta {
+                text-align: center;
+            }
+
+            .hero {
+                padding-top: 125px;
+            }
+
+            .hero h1 {
+                font-size: 48px;
+            }
+
+            .hero-widget {
+                min-height: auto;
+
+                transform: none;
+            }
+
+            .product-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .product-card.featured {
+                grid-column: span 1;
+            }
+
+            .values-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-main,
+            .footer-bottom {
+                flex-direction: column;
+            }
+
+            .final-cta {
+                padding: 55px 22px;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+
+            html {
+                scroll-behavior: auto;
+            }
+
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+    </style>
 </head>
 
 <body>
-<header class="nav">
-  <div class="container nav-inner">
-    <a class="brand" href="#home" aria-label="Creative Management Solutions home">
-      <span class="brand-mark">CMS</span><span>Creative Management Solutions</span>
-    </a>
-    <button class="menu" id="menu" aria-label="Open navigation">☰</button>
-    <nav class="nav-links" id="navLinks">
-      <a href="#about">About</a>
-      <a href="#products">Products</a>
-      <a href="#approach">Approach</a>
-      <a href="#vision">Vision</a>
-      <a href="#contact" class="nav-cta">Contact</a>
-    </nav>
-  </div>
-</header>
+
+<div class="scroll-progress">
+    <div class="scroll-progress-fill" id="scrollProgressFill"></div>
+</div>
+
+<div class="cursor-ring" id="cursorRing"></div>
+<div class="cursor-dot" id="cursorDot"></div>
+
+<!-- =============================================================
+     NAVIGATION
+============================================================= -->
+
+<nav class="navbar">
+    <div class="container nav-inner">
+
+        <a href="#" class="brand">
+
+            <div class="brand-mark">
+                CMS
+            </div>
+
+            <div class="brand-name">
+                Creative Management Solutions
+                <span>CMS Group</span>
+            </div>
+
+        </a>
+
+        <div class="nav-links" id="navLinks">
+
+            <a href="#about">About</a>
+            <a href="#products">Products</a>
+            <a href="#ecosystem">Ecosystem</a>
+            <a href="#values">Values</a>
+
+            <a
+                class="nav-cta"
+                href="mailto:support@cmsgroup.in"
+            >
+                Contact CMS
+            </a>
+
+        </div>
+
+        <button
+            class="hamburger"
+            id="hamburger"
+            aria-label="Open navigation menu"
+            aria-expanded="false"
+        >
+            ☰
+        </button>
+
+    </div>
+</nav>
+
+
+<!-- =============================================================
+     HERO
+============================================================= -->
 
 <main>
-<section class="hero" id="home">
-  <div class="container hero-grid">
-    <div class="reveal">
-      <div class="eyebrow"><span class="dot"></span> India-focused product company</div>
-      <h1>Technology.<br><span class="gradient">Products. Innovation.</span></h1>
-      <p>Creative Management Solutions (CMS) builds its own digital products to solve real-world problems — from personal wellness and local commerce to business operations.</p>
-      <div class="actions">
-        <a class="btn btn-primary" href="#products">Explore Products →</a>
-        <a class="btn btn-ghost" href="#about">Discover CMS</a>
-      </div>
+
+<section class="hero">
+
+    <canvas class="hero-canvas" id="heroCanvas"></canvas>
+
+    <div class="container hero-grid">
+
+        <div class="hero-content">
+
+            <div class="eyebrow intro-item" style="--intro-delay:0.05s">
+                <span class="status-dot"></span>
+                India-Focused Digital Product Studio
+            </div>
+
+            <h1 class="intro-item" style="--intro-delay:0.15s">
+                <span class="word-wrap"><span class="word" style="animation-delay:0.25s">Architecting</span></span>
+                <br>
+                <span class="gradient-text">
+                    <span class="word-wrap"><span class="word" style="animation-delay:0.35s">Next-Gen</span></span>
+                    <span class="word-wrap"><span class="word" style="animation-delay:0.42s">Digital</span></span>
+                    <span class="word-wrap"><span class="word" style="animation-delay:0.49s">Product</span></span>
+                    <span class="word-wrap"><span class="word" style="animation-delay:0.56s">Ecosystems.</span></span>
+                </span>
+            </h1>
+
+            <p class="hero-description intro-item" style="--intro-delay:0.65s">
+                We build, scale, and own independent software platforms
+                solving real-world problems in personal wellness,
+                hyperlocal commerce, and enterprise operations.
+            </p>
+
+            <div class="hero-actions intro-item" style="--intro-delay:0.78s">
+
+                <a
+                    href="#products"
+                    class="btn btn-primary magnetic"
+                >
+                    Explore Products →
+                </a>
+
+                <a
+                    href="#values"
+                    class="btn btn-secondary magnetic"
+                >
+                    Our Philosophy
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <!-- HERO WIDGET -->
+
+        <div class="hero-widget intro-item" style="--intro-delay:0.4s">
+
+            <div class="widget-glow"></div>
+
+            <div class="widget-top">
+
+                <span class="widget-title">
+                    CMS Product Network
+                </span>
+
+                <span class="live-status">
+                    Systems Active
+                </span>
+
+            </div>
+
+            <div class="metric-grid">
+
+                <div class="metric">
+                    <div class="metric-label">
+                        Active Products
+                    </div>
+
+                    <div class="metric-value">
+                        04
+                    </div>
+
+                    <div class="metric-change">
+                        ● Building
+                    </div>
+                </div>
+
+                <div class="metric">
+                    <div class="metric-label">
+                        Market
+                    </div>
+
+                    <div class="metric-value">
+                        India
+                    </div>
+
+                    <div class="metric-change">
+                        ● Focused
+                    </div>
+                </div>
+
+                <div class="metric">
+                    <div class="metric-label">
+                        Product Model
+                    </div>
+
+                    <div class="metric-value">
+                        Own
+                    </div>
+
+                    <div class="metric-change">
+                        ● Product-first
+                    </div>
+                </div>
+
+                <div class="metric">
+                    <div class="metric-label">
+                        Direction
+                    </div>
+
+                    <div class="metric-value">
+                        Scale
+                    </div>
+
+                    <div class="metric-change">
+                        ● Long-term
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="ecosystem-mini">
+
+                <div class="mini-header">
+                    <span>Development Portfolio</span>
+                    <span>Progress</span>
+                </div>
+
+                <div class="progress-row">
+                    <span class="progress-name">
+                        VibeFit
+                    </span>
+
+                    <div class="progress-track">
+                        <div
+                            class="progress-fill"
+                            style="width:99%"
+                        ></div>
+                    </div>
+
+                    <span class="progress-number">
+                        99%
+                    </span>
+                </div>
+
+                <div class="progress-row">
+                    <span class="progress-name">
+                        KokanKart
+                    </span>
+
+                    <div class="progress-track">
+                        <div
+                            class="progress-fill"
+                            style="width:80%"
+                        ></div>
+                    </div>
+
+                    <span class="progress-number">
+                        80%
+                    </span>
+                </div>
+
+                <div class="progress-row">
+                    <span class="progress-name">
+                        NutriFit
+                    </span>
+
+                    <div class="progress-track">
+                        <div
+                            class="progress-fill"
+                            style="width:60%"
+                        ></div>
+                    </div>
+
+                    <span class="progress-number">
+                        60%
+                    </span>
+                </div>
+
+                <div class="progress-row">
+                    <span class="progress-name">
+                        Evado
+                    </span>
+
+                    <div class="progress-track">
+                        <div
+                            class="progress-fill"
+                            style="width:60%"
+                        ></div>
+                    </div>
+
+                    <span class="progress-number">
+                        60%
+                    </span>
+                </div>
+
+            </div>
+
+        </div>
+
     </div>
-    <div class="hero-panel reveal">
-      <div class="panel-top"><span>CMS Product Portfolio</span><span class="live"><span class="dot"></span> Building</span></div>
-      <div class="product-stack">
-        <div class="mini-product"><div><strong>VibeFit</strong><small>Offline-first fitness & wellness</small></div><div><small>99%</small><div class="progress"><i style="width:99%"></i></div></div></div>
-        <div class="mini-product"><div><strong>KokanKart</strong><small>Hyperlocal marketplace</small></div><div><small>80%</small><div class="progress"><i style="width:80%"></i></div></div></div>
-        <div class="mini-product"><div><strong>NutriFit</strong><small>Fitness & gym platform</small></div><div><small>60%</small><div class="progress"><i style="width:60%"></i></div></div></div>
-        <div class="mini-product"><div><strong>Evado</strong><small>ERP + POS + ordering platform</small></div><div><small>60%</small><div class="progress"><i style="width:60%"></i></div></div></div>
-      </div>
-    </div>
-  </div>
+
 </section>
 
-<section class="section" id="about">
-  <div class="container">
-    <div class="section-head reveal">
-      <div><div class="kicker">About CMS</div><h2>We build products,<br>not client software.</h2></div>
-      <p>CMS is focused on creating and launching its own products. We identify practical problems, turn ideas into technology, and continuously improve what we build around real customer needs.</p>
+
+<!-- =============================================================
+     TICKER STRIP
+============================================================= -->
+
+<div class="ticker-strip">
+    <div class="ticker-track" id="tickerTrack">
+        <span class="ticker-item"><span class="ticker-dot"></span><strong>VibeFit</strong>&nbsp;99% ready</span>
+        <span class="ticker-item"><span class="ticker-dot"></span><strong>KokanKart</strong>&nbsp;80% built</span>
+        <span class="ticker-item"><span class="ticker-dot"></span><strong>NutriFit</strong>&nbsp;60% built</span>
+        <span class="ticker-item"><span class="ticker-dot"></span><strong>Evado</strong>&nbsp;60% built</span>
+        <span class="ticker-item"><span class="ticker-dot"></span>Product-first · India-focused</span>
+        <span class="ticker-item"><span class="ticker-dot"></span>Owned, not outsourced</span>
     </div>
-    <div class="about-grid">
-      <div class="glass about-copy reveal">
-        <div class="kicker">Our purpose</div>
-        <h3>From real-world problems to useful products.</h3>
-        <p>Our work starts with a problem worth solving. Each CMS product is designed around a specific user, a clear use case, and a path toward sustainable growth.</p>
-        <p>Our current portfolio spans fitness and wellness, hyperlocal commerce, gym operations, and business management — four different problem spaces connected by one product-first philosophy.</p>
-      </div>
-      <div class="glass principles reveal">
-        <div class="principle"><b>Product First</b><span>We build and own our products.</span></div>
-        <div class="principle"><b>Real Problems</b><span>Technology follows genuine user needs.</span></div>
-        <div class="principle"><b>Continuous Improvement</b><span>Launch, learn, refine and grow.</span></div>
-        <div class="principle"><b>Long-Term Thinking</b><span>Build products designed to evolve.</span></div>
-      </div>
+</div>
+
+
+<!-- =============================================================
+     ABOUT
+============================================================= -->
+
+<section id="about">
+
+    <div class="container">
+
+        <div class="section-heading reveal">
+
+            <div class="section-label">
+                01 / About CMS
+            </div>
+
+            <h2>
+                We don't build software
+                for others. We build
+                products we believe in.
+            </h2>
+
+            <p>
+                CMS is a product-focused technology company creating,
+                launching, and operating its own digital platforms.
+            </p>
+
+        </div>
+
+
+        <div class="about-grid">
+
+            <div class="glass-card reveal">
+
+                <p class="about-copy">
+
+                    <strong>
+                        Creative Management Solutions (CMS Group)
+                    </strong>
+                    is an India-focused digital product studio
+                    focused on building independent technology
+                    products that solve practical, everyday problems.
+
+                    <br><br>
+
+                    Our current product ecosystem spans
+                    <strong>
+                        fitness and wellness, hyperlocal commerce,
+                        gym management, and retail business operations.
+                    </strong>
+
+                    <br><br>
+
+                    CMS follows a simple philosophy:
+                    identify a real problem, engineer a useful product,
+                    launch it, learn from users, and continuously improve.
+
+                </p>
+
+            </div>
+
+
+            <div class="glass-card reveal">
+
+                <div class="about-stats">
+
+                    <div class="stat-box">
+                        <strong data-count="4" data-pad="2">00</strong>
+                        <span>Products in development</span>
+                    </div>
+
+                    <div class="stat-box">
+                        <strong data-count="1" data-pad="2">00</strong>
+                        <span>Primary market: India</span>
+                    </div>
+
+                    <div class="stat-box">
+                        <strong data-count="100" data-suffix="%">0%</strong>
+                        <span>Product ownership mindset</span>
+                    </div>
+
+                    <div class="stat-box">
+                        <strong>∞</strong>
+                        <span>Long-term product vision</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
     </div>
-  </div>
+
 </section>
 
-<section class="section" id="products">
-  <div class="container">
-    <div class="section-head reveal">
-      <div><div class="kicker">Product portfolio</div><h2>Four products.<br>Four real-world problems.</h2></div>
-      <p>Our current product portfolio is being built in India, with each product serving a distinct category and use case.</p>
+
+<!-- =============================================================
+     PRODUCTS
+============================================================= -->
+
+<section id="products">
+
+    <div class="container">
+
+        <div class="section-heading reveal">
+
+            <div class="section-label">
+                02 / Product Ecosystem
+            </div>
+
+            <h2>
+                Four products.
+                One product-first philosophy.
+            </h2>
+
+            <p>
+                Each platform is independently designed around a
+                specific real-world problem and built for long-term
+                ownership and evolution.
+            </p>
+
+        </div>
+
+
+        <div class="product-grid">
+
+
+            <!-- VIBEFIT -->
+
+            <article class="product-card featured reveal">
+
+                <div class="product-top">
+
+                    <div class="product-icon">
+                        VF
+                    </div>
+
+                    <div class="product-status">
+                        99% Ready · Play Store Prep
+                    </div>
+
+                </div>
+
+                <h3>
+                    VibeFit
+                </h3>
+
+                <p>
+                    An offline-first fitness and wellness platform
+                    designed to help users manage workouts, yoga,
+                    nutrition, lifestyle habits, and personal progress
+                    without depending on continuous internet access.
+                </p>
+
+                <div class="feature-list">
+
+                    <span class="feature">
+                        500+ Exercises
+                    </span>
+
+                    <span class="feature">
+                        200+ Yoga Poses
+                    </span>
+
+                    <span class="feature">
+                        Indian Diet Tracker
+                    </span>
+
+                    <span class="feature">
+                        Room Database
+                    </span>
+
+                    <span class="feature">
+                        Offline-First
+                    </span>
+
+                </div>
+
+                <div class="product-progress">
+
+                    <div class="progress-meta">
+                        <span>
+                            Production readiness
+                        </span>
+
+                        <span>
+                            99%
+                        </span>
+                    </div>
+
+                    <div class="large-track">
+
+                        <div
+                            class="large-fill"
+                            style="width:99%"
+                        ></div>
+
+                    </div>
+
+                </div>
+
+                <a
+                    href="privacy.html"
+                    class="product-link"
+                >
+                    VibeFit Privacy Policy ↗
+                </a>
+
+            </article>
+
+
+            <!-- KOKANKART -->
+
+            <article class="product-card reveal">
+
+                <div class="product-top">
+
+                    <div class="product-icon">
+                        KK
+                    </div>
+
+                    <div class="product-status">
+                        80% Complete
+                    </div>
+
+                </div>
+
+                <h3>
+                    KokanKart
+                </h3>
+
+                <p>
+                    A hyperlocal regional commerce platform designed
+                    to connect local vendors and producers directly
+                    with consumers while making neighborhood shopping
+                    simpler and faster.
+                </p>
+
+                <div class="feature-list">
+
+                    <span class="feature">
+                        Hyperlocal Commerce
+                    </span>
+
+                    <span class="feature">
+                        Vendor Network
+                    </span>
+
+                    <span class="feature">
+                        Customer Ordering
+                    </span>
+
+                    <span class="feature">
+                        Local Marketplace
+                    </span>
+
+                </div>
+
+                <div class="product-progress">
+
+                    <div class="progress-meta">
+                        <span>
+                            Development
+                        </span>
+
+                        <span>
+                            80%
+                        </span>
+                    </div>
+
+                    <div class="large-track">
+
+                        <div
+                            class="large-fill"
+                            style="width:80%"
+                        ></div>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <!-- NUTRIFIT -->
+
+            <article class="product-card reveal">
+
+                <div class="product-top">
+
+                    <div class="product-icon">
+                        NF
+                    </div>
+
+                    <div class="product-status">
+                        60% Complete
+                    </div>
+
+                </div>
+
+                <h3>
+                    NutriFit
+                </h3>
+
+                <p>
+                    An integrated gym ecosystem designed around
+                    gym operations, member management, trainer
+                    synchronization, and a connected fitness
+                    management experience.
+                </p>
+
+                <div class="feature-list">
+
+                    <span class="feature">
+                        Gym SaaS
+                    </span>
+
+                    <span class="feature">
+                        Member Management
+                    </span>
+
+                    <span class="feature">
+                        Trainer Sync
+                    </span>
+
+                    <span class="feature">
+                        Gym Operations
+                    </span>
+
+                </div>
+
+                <div class="product-progress">
+
+                    <div class="progress-meta">
+                        <span>
+                            Development
+                        </span>
+
+                        <span>
+                            60%
+                        </span>
+                    </div>
+
+                    <div class="large-track">
+
+                        <div
+                            class="large-fill"
+                            style="width:60%"
+                        ></div>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <!-- EVADO -->
+
+            <article class="product-card reveal">
+
+                <div class="product-top">
+
+                    <div class="product-icon">
+                        EV
+                    </div>
+
+                    <div class="product-status">
+                        60% Complete
+                    </div>
+
+                </div>
+
+                <h3>
+                    Evado
+                </h3>
+
+                <p>
+                    A smart ERP, POS, inventory, and customer ordering
+                    platform designed for electrical, hardware,
+                    building-material, and related retail businesses.
+                </p>
+
+                <div class="feature-list">
+
+                    <span class="feature">
+                        ERP
+                    </span>
+
+                    <span class="feature">
+                        POS
+                    </span>
+
+                    <span class="feature">
+                        Inventory
+                    </span>
+
+                    <span class="feature">
+                        Customer Ordering
+                    </span>
+
+                </div>
+
+                <div class="product-progress">
+
+                    <div class="progress-meta">
+                        <span>
+                            Development
+                        </span>
+
+                        <span>
+                            60%
+                        </span>
+                    </div>
+
+                    <div class="large-track">
+
+                        <div
+                            class="large-fill"
+                            style="width:60%"
+                        ></div>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+        </div>
+
     </div>
 
-    <div class="product-grid">
-      <article class="card product reveal">
-        <div class="product-head"><div class="product-icon">VF</div><span class="status">99% Complete</span></div>
-        <div class="type">Fitness & Wellness</div>
-        <h3>VibeFit</h3>
-        <p>A 100% offline-first fitness and wellness application bringing workouts, yoga, nutrition, lifestyle planning and progress tracking into one experience.</p>
-        <div class="tags"><span class="tag">Offline-first</span><span class="tag">Workout</span><span class="tag">Nutrition</span><span class="tag">Wellness</span></div>
-        <div class="product-footer"><span>Preparing for Play Store launch</span><a class="arrow" href="privacy.html" aria-label="VibeFit Privacy Policy">Privacy Policy ↗</a></div>
-      </article>
-
-      <article class="card product reveal">
-        <div class="product-head"><div class="product-icon">KK</div><span class="status status-dev">80% Complete</span></div>
-        <div class="type">Hyperlocal Commerce</div>
-        <h3>KokanKart</h3>
-        <p>A hyperlocal marketplace connecting customers with verified local vendors, helping people discover products and businesses available in their area.</p>
-        <div class="tags"><span class="tag">Local commerce</span><span class="tag">Vendor network</span><span class="tag">Area-based</span><span class="tag">Ordering</span></div>
-        <div class="product-footer"><span>In active development</span><span class="arrow">↗</span></div>
-      </article>
-
-      <article class="card product reveal">
-        <div class="product-head"><div class="product-icon">NF</div><span class="status status-dev">60% Complete</span></div>
-        <div class="type">Fitness & Gym Platform</div>
-        <h3>NutriFit</h3>
-        <p>A fitness platform designed to combine workout tracking, nutrition, progress monitoring, gym discovery and educational content in one experience.</p>
-        <div class="tags"><span class="tag">Fitness</span><span class="tag">Nutrition</span><span class="tag">Gym</span><span class="tag">Progress</span></div>
-        <div class="product-footer"><span>In development</span><span class="arrow">↗</span></div>
-      </article>
-
-      <article class="card product reveal">
-        <div class="product-head"><div class="product-icon">EV</div><span class="status status-dev">60% Complete</span></div>
-        <div class="type">Business Management</div>
-        <h3>Evado</h3>
-        <p>A smart ERP, POS and customer ordering platform designed for electrical, hardware, building material and related businesses.</p>
-        <div class="tags"><span class="tag">ERP</span><span class="tag">POS</span><span class="tag">Inventory</span><span class="tag">Ordering</span></div>
-        <div class="product-footer"><span>In development</span><span class="arrow">↗</span></div>
-      </article>
-    </div>
-  </div>
 </section>
 
-<section class="section" id="approach">
-  <div class="container">
-    <div class="section-head reveal">
-      <div><div class="kicker">How we build</div><h2>Idea to product.<br>Product to impact.</h2></div>
-      <p>CMS follows a simple product loop: understand the problem, build a useful solution, launch it, learn from customers and improve continuously.</p>
+
+<!-- =============================================================
+     ECOSYSTEM / ENGINEERING
+============================================================= -->
+
+<section id="ecosystem">
+
+    <div class="container">
+
+        <div class="section-heading reveal">
+
+            <div class="section-label">
+                03 / Engineering Approach
+            </div>
+
+            <h2>
+                From real-world problem
+                to continuously evolving product.
+            </h2>
+
+            <p>
+                CMS follows a structured product engineering pipeline
+                designed around ownership, reliability, speed, and
+                continuous improvement.
+            </p>
+
+        </div>
+
+
+        <div class="pipeline reveal">
+
+            <div class="pipeline-step">
+
+                <div class="step-number">
+                    01
+                </div>
+
+                <h3>
+                    Identify
+                </h3>
+
+                <p>
+                    Understand a genuine problem and validate the
+                    opportunity before building.
+                </p>
+
+            </div>
+
+
+            <div class="pipeline-step">
+
+                <div class="step-number">
+                    02
+                </div>
+
+                <h3>
+                    Architecture
+                </h3>
+
+                <p>
+                    Design scalable foundations around the product's
+                    actual requirements.
+                </p>
+
+            </div>
+
+
+            <div class="pipeline-step">
+
+                <div class="step-number">
+                    03
+                </div>
+
+                <h3>
+                    Local-First Engine
+                </h3>
+
+                <p>
+                    Prioritize reliability, performance, privacy,
+                    and resilient user experiences where appropriate.
+                </p>
+
+            </div>
+
+
+            <div class="pipeline-step">
+
+                <div class="step-number">
+                    04
+                </div>
+
+                <h3>
+                    Deploy
+                </h3>
+
+                <p>
+                    Ship usable products, observe real-world usage,
+                    and make the product available to users.
+                </p>
+
+            </div>
+
+
+            <div class="pipeline-step">
+
+                <div class="step-number">
+                    05
+                </div>
+
+                <h3>
+                    Iterate
+                </h3>
+
+                <p>
+                    Learn from customers, improve continuously,
+                    and scale what works.
+                </p>
+
+            </div>
+
+        </div>
+
     </div>
-    <div class="architecture">
-      <div class="step reveal"><div class="step-no">01</div><strong>Identify</strong><span>Understand the problem</span></div>
-      <div class="step reveal"><div class="step-no">02</div><strong>Build</strong><span>Turn ideas into products</span></div>
-      <div class="step reveal"><div class="step-no">03</div><strong>Launch</strong><span>Put products in users' hands</span></div>
-      <div class="step reveal"><div class="step-no">04</div><strong>Listen</strong><span>Learn from customer needs</span></div>
-      <div class="step reveal"><div class="step-no">05</div><strong>Improve</strong><span>Grow through iteration</span></div>
-    </div>
-  </div>
+
 </section>
 
-<section class="section">
-  <div class="container">
-    <div class="section-head reveal">
-      <div><div class="kicker">What drives us</div><h2>Our values.</h2></div>
-      <p>The principles we want every CMS product and customer experience to reflect.</p>
+
+<!-- =============================================================
+     VALUES
+============================================================= -->
+
+<section id="values">
+
+    <div class="container">
+
+        <div class="section-heading reveal">
+
+            <div class="section-label">
+                04 / Core Principles
+            </div>
+
+            <h2>
+                Principles that shape
+                every CMS product.
+            </h2>
+
+        </div>
+
+
+        <div class="values-grid">
+
+            <div class="value-card reveal">
+
+                <div class="value-number">
+                    01
+                </div>
+
+                <h3>
+                    Innovation
+                </h3>
+
+                <p>
+                    Explore better ways to solve real problems
+                    through technology and product thinking.
+                </p>
+
+            </div>
+
+
+            <div class="value-card reveal">
+
+                <div class="value-number">
+                    02
+                </div>
+
+                <h3>
+                    Trust
+                </h3>
+
+                <p>
+                    Build products and relationships around
+                    reliability, responsibility, and integrity.
+                </p>
+
+            </div>
+
+
+            <div class="value-card reveal">
+
+                <div class="value-number">
+                    03
+                </div>
+
+                <h3>
+                    Speed
+                </h3>
+
+                <p>
+                    Move quickly without compromising the
+                    fundamentals of quality.
+                </p>
+
+            </div>
+
+
+            <div class="value-card reveal">
+
+                <div class="value-number">
+                    04
+                </div>
+
+                <h3>
+                    Customer Satisfaction
+                </h3>
+
+                <p>
+                    Product decisions ultimately begin and end
+                    with the people using them.
+                </p>
+
+            </div>
+
+
+            <div class="value-card reveal">
+
+                <div class="value-number">
+                    05
+                </div>
+
+                <h3>
+                    Transparency
+                </h3>
+
+                <p>
+                    Communicate clearly and build products users
+                    can understand and trust.
+                </p>
+
+            </div>
+
+
+            <div class="value-card reveal">
+
+                <div class="value-number">
+                    06
+                </div>
+
+                <h3>
+                    Quality
+                </h3>
+
+                <p>
+                    Treat engineering quality and user experience
+                    as long-term investments.
+                </p>
+
+            </div>
+
+
+            <div class="value-card reveal">
+
+                <div class="value-number">
+                    07
+                </div>
+
+                <h3>
+                    Growth
+                </h3>
+
+                <p>
+                    Keep learning, improving, and building products
+                    capable of growing with their users.
+                </p>
+
+            </div>
+
+
+            <div class="value-card reveal">
+
+                <div class="value-number">
+                    08
+                </div>
+
+                <h3>
+                    Service
+                </h3>
+
+                <p>
+                    Technology matters most when it creates
+                    practical value for people and businesses.
+                </p>
+
+            </div>
+
+        </div>
+
     </div>
-    <div class="values">
-      <div class="value reveal"><strong>Innovation</strong><p>We look for better ways to solve meaningful problems.</p></div>
-      <div class="value reveal"><strong>Trust</strong><p>We aim to build dependable products and relationships.</p></div>
-      <div class="value reveal"><strong>Speed</strong><p>We move ideas toward execution without unnecessary friction.</p></div>
-      <div class="value reveal"><strong>Customer Satisfaction</strong><p>We listen, learn and improve around user needs.</p></div>
-      <div class="value reveal"><strong>Transparency</strong><p>We value clarity, honesty and accountability.</p></div>
-      <div class="value reveal"><strong>Quality</strong><p>We build with care, reliability and attention to detail.</p></div>
-      <div class="value reveal"><strong>Growth</strong><p>We continuously learn, improve and expand.</p></div>
-      <div class="value reveal"><strong>Service</strong><p>We focus on creating useful and lasting value.</p></div>
-    </div>
-  </div>
+
 </section>
 
-<section class="section" id="vision">
-  <div class="container">
-    <div class="section-head reveal">
-      <div><div class="kicker">The road ahead</div><h2>Start with products.<br>Build for the future.</h2></div>
-      <p>CMS is beginning with digital products and intends to explore new products, opportunities and business ventures as the company grows.</p>
+
+<!-- =============================================================
+     FINAL CTA
+============================================================= -->
+
+<section>
+
+    <div class="container">
+
+        <div class="final-cta reveal">
+
+            <h2>
+                Technology.
+                Products.
+                <span class="gradient-text">
+                    Innovation.
+                </span>
+            </h2>
+
+            <p>
+                Creative Management Solutions is building an
+                independent ecosystem of digital products focused
+                on solving meaningful problems in India.
+            </p>
+
+            <a
+                href="mailto:support@cmsgroup.in"
+                class="btn btn-primary"
+            >
+                Connect with CMS →
+            </a>
+
+        </div>
+
     </div>
-    <div class="roadmap">
-      <div class="card reveal"><small>NOW</small><h3>Build & Launch</h3><p>Focus on our current portfolio across fitness, local commerce and business operations, starting with the Indian market.</p></div>
-      <div class="card reveal"><small>NEXT</small><h3>Expand the Product Ecosystem</h3><p>Improve existing products, introduce new digital products and build stronger customer value across categories.</p></div>
-      <div class="card reveal"><small>FUTURE</small><h3>Explore New Ventures</h3><p>As CMS grows, the vision extends beyond digital products toward new business opportunities and ventures.</p></div>
-    </div>
-  </div>
+
 </section>
 
-<section class="section" id="contact">
-  <div class="container">
-    <div class="cta reveal">
-      <div>
-        <div class="kicker">Get in touch</div>
-        <h2>Have a question about CMS?</h2>
-        <p>For support, product feedback or business enquiries, contact the CMS team by email.</p>
-      </div>
-      <a class="btn btn-primary" href="mailto:support@cmsgroup.in">support@cmsgroup.in ↗</a>
-    </div>
-  </div>
-</section>
 </main>
 
+
+<!-- =============================================================
+     FOOTER
+============================================================= -->
+
 <footer>
-  <div class="container">
-    <div class="footer-grid">
-      <div><div class="footer-brand">Creative Management Solutions</div><div style="font-size:13px;margin-top:6px">Technology. Products. Innovation.</div></div>
-      <div class="footer-links">
-        <a href="#about">About</a><a href="#products">Products</a><a href="#vision">Vision</a><a href="privacy.html">Privacy Policy</a><a href="terms.html">Terms</a><a href="mailto:support@cmsgroup.in">Support</a>
-      </div>
+
+    <div class="container">
+
+        <div class="footer-main">
+
+            <div class="footer-brand">
+
+                <strong>
+                    Creative Management Solutions
+                </strong>
+
+                <p>
+                    An India-focused digital product studio
+                    building and owning independent technology
+                    products.
+                </p>
+
+            </div>
+
+
+            <div class="footer-links">
+
+                <a href="#about">
+                    About
+                </a>
+
+                <a href="#products">
+                    Products
+                </a>
+
+                <a href="#ecosystem">
+                    Ecosystem
+                </a>
+
+                <a href="#values">
+                    Values
+                </a>
+
+                <a href="privacy.html">
+                    Privacy Policy
+                </a>
+
+                <a href="terms.html">
+                    Terms
+                </a>
+
+                <a href="mailto:support@cmsgroup.in">
+                    Support
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <div class="footer-bottom">
+
+            <span>
+                © <span id="year"></span>
+                Creative Management Solutions.
+                All Rights Reserved.
+            </span>
+
+            <span>
+                cmsgroup.in
+            </span>
+
+        </div>
+
     </div>
-    <div class="copyright">© <span id="year"></span> Creative Management Solutions. All Rights Reserved.</div>
-  </div>
+
 </footer>
 
-<script>
-  const menu=document.getElementById('menu'), links=document.getElementById('navLinks');
-  menu.addEventListener('click',()=>links.classList.toggle('open'));
-  links.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>links.classList.remove('open')));
-  document.getElementById('year').textContent=new Date().getFullYear();
 
-  const observer=new IntersectionObserver(entries=>{
-    entries.forEach((entry,i)=>{
-      if(entry.isIntersecting){
-        entry.target.style.transitionDelay=(i%5)*70+'ms';
-        entry.target.classList.add('show');
-        observer.unobserve(entry.target);
-      }
+<!-- =============================================================
+     JAVASCRIPT
+============================================================= -->
+
+<script>
+
+    /* =========================================================
+       MOBILE NAVIGATION
+    ========================================================= */
+
+    const hamburger =
+        document.getElementById("hamburger");
+
+    const navLinks =
+        document.getElementById("navLinks");
+
+    hamburger.addEventListener("click", () => {
+
+        const isOpen =
+            navLinks.classList.toggle("active");
+
+        hamburger.setAttribute(
+            "aria-expanded",
+            isOpen
+        );
+
+        hamburger.textContent =
+            isOpen ? "✕" : "☰";
+
     });
-  },{threshold:.1});
-  document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+
+
+    document
+        .querySelectorAll(".nav-links a")
+        .forEach(link => {
+
+            link.addEventListener("click", () => {
+
+                navLinks.classList.remove("active");
+
+                hamburger.setAttribute(
+                    "aria-expanded",
+                    "false"
+                );
+
+                hamburger.textContent = "☰";
+
+            });
+
+        });
+
+
+    /* =========================================================
+       REDUCED MOTION CHECK
+    ========================================================= */
+
+    const prefersReducedMotion =
+        window.matchMedia(
+            "(prefers-reduced-motion: reduce)"
+        ).matches;
+
+    const isTouchDevice =
+        !window.matchMedia(
+            "(hover: hover) and (pointer: fine)"
+        ).matches;
+
+
+    /* =========================================================
+       STAGGERED GRID REVEALS
+    ========================================================= */
+
+    function applyStagger(selector, step) {
+
+        document.querySelectorAll(selector)
+            .forEach((el, i) => {
+
+                el.classList.add("reveal", "reveal-stagger");
+
+                el.style.setProperty(
+                    "--stagger-delay",
+                    `${(i % 8) * step}s`
+                );
+
+            });
+
+    }
+
+    applyStagger(".product-grid > .product-card", 0.09);
+    applyStagger(".values-grid > .value-card", 0.07);
+    applyStagger(".pipeline > .pipeline-step", 0.08);
+
+
+    /* =========================================================
+       INTERSECTION OBSERVER
+    ========================================================= */
+
+    const observer =
+        new IntersectionObserver(
+            entries => {
+
+                entries.forEach(entry => {
+
+                    if (entry.isIntersecting) {
+
+                        entry.target.classList.add(
+                            "visible"
+                        );
+
+                        observer.unobserve(
+                            entry.target
+                        );
+
+                    }
+
+                });
+
+            },
+            {
+                threshold: 0.12
+            }
+        );
+
+
+    document
+        .querySelectorAll(".reveal")
+        .forEach(element => {
+
+            observer.observe(element);
+
+        });
+
+
+    /* =========================================================
+       COUNT-UP STATS
+    ========================================================= */
+
+    function animateCount(el) {
+
+        const target =
+            parseInt(el.dataset.count, 10);
+
+        const pad =
+            parseInt(el.dataset.pad || "0", 10);
+
+        const suffix =
+            el.dataset.suffix || "";
+
+        const duration = 1400;
+
+        const start = performance.now();
+
+        function tick(now) {
+
+            const progress =
+                Math.min((now - start) / duration, 1);
+
+            const eased =
+                1 - Math.pow(1 - progress, 3);
+
+            const value =
+                Math.round(target * eased);
+
+            el.textContent =
+                String(value).padStart(pad, "0") + suffix;
+
+            if (progress < 1) {
+                requestAnimationFrame(tick);
+            }
+
+        }
+
+        requestAnimationFrame(tick);
+
+    }
+
+    const countObserver =
+        new IntersectionObserver(
+            entries => {
+
+                entries.forEach(entry => {
+
+                    if (entry.isIntersecting) {
+
+                        if (prefersReducedMotion) {
+
+                            const el = entry.target;
+
+                            const pad =
+                                parseInt(el.dataset.pad || "0", 10);
+
+                            el.textContent =
+                                el.dataset.count.padStart(pad, "0") +
+                                (el.dataset.suffix || "");
+
+                        } else {
+
+                            animateCount(entry.target);
+
+                        }
+
+                        countObserver.unobserve(entry.target);
+
+                    }
+
+                });
+
+            },
+            { threshold: 0.5 }
+        );
+
+    document
+        .querySelectorAll("[data-count]")
+        .forEach(el => countObserver.observe(el));
+
+
+    /* =========================================================
+       DYNAMIC FOOTER YEAR
+    ========================================================= */
+
+    document.getElementById("year").textContent =
+        new Date().getFullYear();
+
+
+    /* =========================================================
+       GLASS CARD MOUSE GLOW
+    ========================================================= */
+
+    document
+        .querySelectorAll(".glass-card")
+        .forEach(card => {
+
+            card.addEventListener(
+                "mousemove",
+                event => {
+
+                    const rect =
+                        card.getBoundingClientRect();
+
+                    const x =
+                        event.clientX - rect.left;
+
+                    const y =
+                        event.clientY - rect.top;
+
+                    card.style.setProperty(
+                        "--mouse-x",
+                        `${x}px`
+                    );
+
+                    card.style.setProperty(
+                        "--mouse-y",
+                        `${y}px`
+                    );
+
+                }
+            );
+
+        });
+
+
+    /* =========================================================
+       SCROLL PROGRESS BAR
+    ========================================================= */
+
+    const progressFill =
+        document.getElementById("scrollProgressFill");
+
+    function updateScrollProgress() {
+
+        const scrollTop =
+            window.scrollY;
+
+        const docHeight =
+            document.documentElement.scrollHeight -
+            window.innerHeight;
+
+        const percent =
+            docHeight > 0 ?
+                (scrollTop / docHeight) * 100 :
+                0;
+
+        progressFill.style.width = `${percent}%`;
+
+    }
+
+    window.addEventListener(
+        "scroll",
+        updateScrollProgress,
+        { passive: true }
+    );
+
+    updateScrollProgress();
+
+
+    /* =========================================================
+       CUSTOM CURSOR
+    ========================================================= */
+
+    if (!isTouchDevice && !prefersReducedMotion) {
+
+        document.documentElement.classList.add("custom-cursor-active");
+
+        const cursorDot =
+            document.getElementById("cursorDot");
+
+        const cursorRing =
+            document.getElementById("cursorRing");
+
+        let mouseX = window.innerWidth / 2;
+        let mouseY = window.innerHeight / 2;
+
+        let ringX = mouseX;
+        let ringY = mouseY;
+
+        window.addEventListener("mousemove", e => {
+
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+
+            cursorDot.style.transform =
+                `translate(${mouseX}px, ${mouseY}px) translate(-50%, -50%)`;
+
+        });
+
+        function renderCursorRing() {
+
+            ringX += (mouseX - ringX) * 0.18;
+            ringY += (mouseY - ringY) * 0.18;
+
+            cursorRing.style.transform =
+                `translate(${ringX}px, ${ringY}px) translate(-50%, -50%)`;
+
+            requestAnimationFrame(renderCursorRing);
+
+        }
+
+        renderCursorRing();
+
+        document
+            .querySelectorAll(
+                "a, button, .product-card, .value-card, .glass-card"
+            )
+            .forEach(el => {
+
+                el.addEventListener("mouseenter", () => {
+                    cursorRing.classList.add("is-active");
+                });
+
+                el.addEventListener("mouseleave", () => {
+                    cursorRing.classList.remove("is-active");
+                });
+
+            });
+
+    }
+
+
+    /* =========================================================
+       MAGNETIC BUTTONS
+    ========================================================= */
+
+    if (!isTouchDevice && !prefersReducedMotion) {
+
+        document
+            .querySelectorAll(".magnetic")
+            .forEach(btn => {
+
+                btn.addEventListener("mousemove", e => {
+
+                    const rect =
+                        btn.getBoundingClientRect();
+
+                    const x =
+                        e.clientX - rect.left - rect.width / 2;
+
+                    const y =
+                        e.clientY - rect.top - rect.height / 2;
+
+                    btn.style.transform =
+                        `translate(${x * 0.25}px, ${y * 0.35}px)`;
+
+                });
+
+                btn.addEventListener("mouseleave", () => {
+                    btn.style.transform = "translate(0, 0)";
+                });
+
+            });
+
+    }
+
+
+    /* =========================================================
+       3D TILT — PRODUCT & VALUE CARDS
+    ========================================================= */
+
+    if (!isTouchDevice && !prefersReducedMotion) {
+
+        document
+            .querySelectorAll(".product-card, .value-card")
+            .forEach(card => {
+
+                card.addEventListener("mousemove", e => {
+
+                    const rect =
+                        card.getBoundingClientRect();
+
+                    const px =
+                        (e.clientX - rect.left) / rect.width;
+
+                    const py =
+                        (e.clientY - rect.top) / rect.height;
+
+                    const rotateX =
+                        (0.5 - py) * 8;
+
+                    const rotateY =
+                        (px - 0.5) * 8;
+
+                    card.style.transform =
+                        `perspective(700px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-5px)`;
+
+                    card.style.setProperty("--mx", `${px * 100}%`);
+                    card.style.setProperty("--my", `${py * 100}%`);
+
+                });
+
+                card.addEventListener("mouseleave", () => {
+                    card.style.transform = "";
+                });
+
+            });
+
+    }
+
+
+    /* =========================================================
+       TICKER — SEAMLESS DUPLICATION
+    ========================================================= */
+
+    const tickerTrack =
+        document.getElementById("tickerTrack");
+
+    if (tickerTrack) {
+
+        tickerTrack.innerHTML +=
+            tickerTrack.innerHTML;
+
+    }
+
+
+    /* =========================================================
+       HERO NETWORK CANVAS
+    ========================================================= */
+
+    const heroCanvas =
+        document.getElementById("heroCanvas");
+
+    if (heroCanvas && !prefersReducedMotion) {
+
+        const ctx = heroCanvas.getContext("2d");
+
+        const heroSection =
+            document.querySelector(".hero");
+
+        let nodes = [];
+        let canvasW = 0;
+        let canvasH = 0;
+
+        let pointerX = null;
+        let pointerY = null;
+
+        function resizeCanvas() {
+
+            const rect =
+                heroSection.getBoundingClientRect();
+
+            canvasW = rect.width;
+            canvasH = rect.height;
+
+            heroCanvas.width =
+                canvasW * window.devicePixelRatio;
+
+            heroCanvas.height =
+                canvasH * window.devicePixelRatio;
+
+            heroCanvas.style.width = `${canvasW}px`;
+            heroCanvas.style.height = `${canvasH}px`;
+
+            ctx.setTransform(
+                window.devicePixelRatio, 0, 0,
+                window.devicePixelRatio, 0, 0
+            );
+
+            const density =
+                canvasW < 700 ? 26000 : 15000;
+
+            const nodeCount =
+                Math.round((canvasW * canvasH) / density);
+
+            nodes = Array.from(
+                { length: nodeCount },
+                () => ({
+                    x: Math.random() * canvasW,
+                    y: Math.random() * canvasH,
+                    vx: (Math.random() - 0.5) * 0.25,
+                    vy: (Math.random() - 0.5) * 0.25,
+                    r: Math.random() * 1.6 + 0.6
+                })
+            );
+
+        }
+
+        heroSection.addEventListener("mousemove", e => {
+
+            const rect =
+                heroSection.getBoundingClientRect();
+
+            pointerX = e.clientX - rect.left;
+            pointerY = e.clientY - rect.top;
+
+        });
+
+        heroSection.addEventListener("mouseleave", () => {
+            pointerX = null;
+            pointerY = null;
+        });
+
+        function drawFrame() {
+
+            ctx.clearRect(0, 0, canvasW, canvasH);
+
+            for (let i = 0; i < nodes.length; i++) {
+
+                const n = nodes[i];
+
+                n.x += n.vx;
+                n.y += n.vy;
+
+                if (n.x < 0 || n.x > canvasW) n.vx *= -1;
+                if (n.y < 0 || n.y > canvasH) n.vy *= -1;
+
+                if (pointerX !== null) {
+
+                    const dx = n.x - pointerX;
+                    const dy = n.y - pointerY;
+                    const dist = Math.hypot(dx, dy);
+
+                    if (dist < 140) {
+
+                        const force =
+                            (140 - dist) / 140;
+
+                        n.x += (dx / (dist || 1)) * force * 1.1;
+                        n.y += (dy / (dist || 1)) * force * 1.1;
+
+                    }
+
+                }
+
+                for (let j = i + 1; j < nodes.length; j++) {
+
+                    const other = nodes[j];
+
+                    const dx = n.x - other.x;
+                    const dy = n.y - other.y;
+                    const dist = Math.hypot(dx, dy);
+
+                    if (dist < 120) {
+
+                        ctx.strokeStyle =
+                            `rgba(56, 189, 248, ${0.16 * (1 - dist / 120)})`;
+
+                        ctx.lineWidth = 1;
+
+                        ctx.beginPath();
+                        ctx.moveTo(n.x, n.y);
+                        ctx.lineTo(other.x, other.y);
+                        ctx.stroke();
+
+                    }
+
+                }
+
+                ctx.fillStyle = "rgba(125, 211, 252, 0.55)";
+
+                ctx.beginPath();
+                ctx.arc(n.x, n.y, n.r, 0, Math.PI * 2);
+                ctx.fill();
+
+            }
+
+            requestAnimationFrame(drawFrame);
+
+        }
+
+        resizeCanvas();
+        drawFrame();
+
+        let resizeTimer;
+
+        window.addEventListener("resize", () => {
+
+            clearTimeout(resizeTimer);
+
+            resizeTimer =
+                setTimeout(resizeCanvas, 200);
+
+        });
+
+    }
+
 </script>
+
 </body>
 </html>
