@@ -10,7 +10,7 @@
 
   <meta
     name="description"
-    content="Creative Management Solutions — India-focused digital product company building products across wellness, commerce and emerging real-world opportunities."
+    content="Creative Management Solutions — India-focused technology and digital product company creating products, technology solutions and connected experiences across wellness, commerce, business and emerging opportunities."
   >
 
   <meta
@@ -35,17 +35,6 @@
 
   <!-- =====================================================
        CSS
-       This file was previously assembled from several separate
-       "polish" passes layered on top of each other as overriding
-       media queries (visible in the diff history as duplicate
-       "RESPONSIVE POLISH" / "FINAL SPACING" / "FINAL CONTRAST"
-       blocks). Because later CSS wins the cascade, the last block
-       silently undid parts of earlier fixes — e.g. font sizes that
-       had been raised back to 11px for readability were re-shrunk
-       to 8–9px on mobile, and the amber/teal color-tinting fix on
-       the KokanKart photo got reverted to a flat neutral overlay.
-       This version consolidates everything into ONE definition per
-       property, so there is no hidden override chain to reason about.
        ===================================================== -->
 
   <style>
@@ -185,9 +174,6 @@
 
     /* =====================================================
        COMMON
-       Section padding and section-head spacing scale fluidly
-       with clamp() instead of five overlapping breakpoints,
-       so there is one number to reason about, not a cascade.
        ===================================================== */
 
     .container {
@@ -200,7 +186,7 @@
     }
 
     section {
-      padding: clamp(40px, 6vw, 84px) 0;
+      padding: 120px 0;
       position: relative;
     }
 
@@ -244,7 +230,7 @@
         var(--container)
       );
 
-      min-height: 72px;
+      min-height: 76px;
 
       margin-inline: auto;
 
@@ -265,17 +251,34 @@
       letter-spacing: -0.03em;
     }
 
-    .brand-logo {
-      height: 28px;
-      width: auto;
+    .brand-mark {
+      width: 36px;
+      height: 36px;
 
-      display: block;
+      border-radius: 10px;
+
+      display: grid;
+      place-items: center;
+
+      color: #fff;
+
+      font-family: "Sora", sans-serif;
+      font-size: 13px;
+      font-weight: 800;
+
+      background:
+        linear-gradient(
+          135deg,
+          var(--cyan),
+          var(--indigo)
+        );
+
+      box-shadow:
+        0 8px 25px rgba(34, 211, 238, 0.16);
     }
 
     .brand-name {
-      padding-left: 14px;
-
-      border-left: 1px solid var(--border-strong);
+      font-size: 14px;
     }
 
     .brand-name span {
@@ -284,8 +287,10 @@
       color: var(--text-muted);
 
       font-family: "JetBrains Mono", monospace;
-      font-size: 11px;
+      font-size: 9px;
       font-weight: 500;
+
+      margin-top: 1px;
 
       letter-spacing: 0.04em;
     }
@@ -293,7 +298,7 @@
     .nav-links {
       display: flex;
       align-items: center;
-      gap: 26px;
+      gap: 28px;
     }
 
     .nav-links > a:not(.nav-cta) {
@@ -386,16 +391,17 @@
 
     /* =====================================================
        HERO
-       No forced min-height: the hero sizes to its own content
-       plus padding, so it never leaves a dead gap on shorter
-       laptop screens the way a forced 100vh block did.
        ===================================================== */
 
     .hero {
+      min-height: calc(100vh - 76px);
+
       display: flex;
       align-items: center;
 
-      padding: clamp(36px, 6vw, 76px) 0 clamp(40px, 6vw, 70px);
+      padding:
+        100px 0
+        90px;
     }
 
     .hero-grid {
@@ -403,9 +409,9 @@
 
       grid-template-columns:
         minmax(0, 1.05fr)
-        minmax(340px, .95fr);
+        minmax(380px, .95fr);
 
-      gap: clamp(32px, 4vw, 60px);
+      gap: 70px;
 
       align-items: center;
     }
@@ -431,7 +437,7 @@
       font-size: 11px;
       letter-spacing: .035em;
 
-      margin-bottom: 20px;
+      margin-bottom: 25px;
     }
 
     .dot {
@@ -450,10 +456,10 @@
       max-width: 850px;
 
       font-family: "Sora", sans-serif;
-      font-size: clamp(36px, 5.6vw, 76px);
-      line-height: 1.06;
+      font-size: clamp(42px, 6vw, 76px);
+      line-height: 1.04;
 
-      letter-spacing: -0.05em;
+      letter-spacing: -0.055em;
       font-weight: 700;
     }
 
@@ -475,12 +481,12 @@
     .hero-copy {
       max-width: 680px;
 
-      margin-top: 24px;
+      margin-top: 28px;
 
       color: var(--text-soft);
 
-      font-size: clamp(14px, 1.1vw, 17px);
-      line-height: 1.75;
+      font-size: 17px;
+      line-height: 1.8;
     }
 
     .actions {
@@ -490,7 +496,7 @@
 
       gap: 12px;
 
-      margin-top: 28px;
+      margin-top: 32px;
     }
 
     .btn {
@@ -593,11 +599,6 @@
         rgba(255,255,255,.05);
     }
 
-    .actions .btn,
-    .product-actions .btn {
-      width: auto;
-    }
-
 
     /* =====================================================
        HERO PANEL
@@ -606,7 +607,7 @@
     .hero-panel {
       position: relative;
 
-      padding: 16px;
+      padding: 18px;
 
       border: 1px solid var(--border);
 
@@ -635,11 +636,11 @@
       justify-content: space-between;
       align-items: center;
 
-      padding: 5px 4px 15px;
+      padding: 5px 4px 17px;
 
       color: var(--text-muted);
 
-      font-size: 11px;
+      font-size: 10px;
       letter-spacing: .04em;
     }
 
@@ -678,9 +679,9 @@
       flex-direction: column;
       justify-content: center;
 
-      min-height: 116px;
+      min-height: 130px;
 
-      padding: 18px 20px;
+      padding: 20px;
 
       overflow: hidden;
 
@@ -696,6 +697,10 @@
         border-color .3s ease;
     }
 
+    .tile.big {
+      justify-content: flex-start;
+    }
+
     .tile:hover {
       transform: translateY(-3px);
 
@@ -705,8 +710,6 @@
 
     .tile.big {
       grid-column: 1 / -1;
-
-      justify-content: flex-start;
 
       background:
         radial-gradient(
@@ -736,7 +739,7 @@
 
       color: var(--text-muted);
 
-      font-size: 11px;
+      font-size: 10px;
 
       margin-bottom: 12px;
     }
@@ -831,17 +834,17 @@
     .section-head {
       max-width: 760px;
 
-      margin-bottom: clamp(24px, 3.2vw, 40px);
+      margin-bottom: 55px;
     }
 
     .kicker {
       display: inline-block;
 
-      margin-bottom: 14px;
+      margin-bottom: 15px;
 
       color: var(--cyan);
 
-      font-size: 11px;
+      font-size: 10px;
       font-weight: 600;
 
       letter-spacing: .04em;
@@ -864,9 +867,9 @@
       font-family: "Sora", sans-serif;
 
       font-size:
-        clamp(28px, 3.6vw, 50px);
+        clamp(32px, 4vw, 50px);
 
-      line-height: 1.12;
+      line-height: 1.1;
 
       letter-spacing: -.045em;
     }
@@ -874,11 +877,11 @@
     .section-head p {
       max-width: 690px;
 
-      margin-top: 16px;
+      margin-top: 18px;
 
       color: var(--text-soft);
 
-      font-size: clamp(13px, 1vw, 15px);
+      font-size: 15px;
     }
 
 
@@ -927,13 +930,13 @@
     }
 
     .story {
-      padding: clamp(22px, 2.4vw, 30px);
+      padding: 32px;
     }
 
     .story h3 {
       font-family: "Sora", sans-serif;
 
-      font-size: clamp(20px, 1.8vw, 24px);
+      font-size: 24px;
 
       letter-spacing: -.035em;
     }
@@ -941,9 +944,9 @@
     .story > p {
       color: var(--text-soft);
 
-      margin-top: 14px;
+      margin-top: 16px;
 
-      font-size: 13.5px;
+      font-size: 14px;
       line-height: 1.8;
     }
 
@@ -955,7 +958,7 @@
 
       gap: 10px;
 
-      margin-top: 24px;
+      margin-top: 28px;
     }
 
     .pillar {
@@ -965,9 +968,9 @@
       flex-direction: column;
       justify-content: center;
 
-      min-height: 74px;
+      min-height: 76px;
 
-      padding: 15px 40px 15px 20px;
+      padding: 17px 17px 17px 21px;
 
       overflow: hidden;
 
@@ -1042,7 +1045,7 @@
 
       color: var(--text-muted);
 
-      font-size: 11.5px;
+      font-size: 11px;
 
       margin-top: 5px;
     }
@@ -1056,7 +1059,7 @@
       display: flex;
       flex-direction: column;
 
-      gap: clamp(22px, 3vw, 44px);
+      gap: 50px;
     }
 
     .product {
@@ -1088,9 +1091,6 @@
         border-color .35s ease;
     }
 
-    /* VibeFit = coral, KokanKart = amber — kept distinct from CMS's
-       own cyan/indigo brand pair so each product still reads as its
-       own identity. */
     .product.vibefit {
       --product: var(--coral);
       --product-soft: var(--coral-soft);
@@ -1141,13 +1141,13 @@
 
 
     /* =====================================================
-       PRODUCT BACKGROUND HERO
+       NEW BACKGROUND PRODUCT HERO
        ===================================================== */
 
     .product-background {
       position: relative;
 
-      min-height: clamp(260px, 30vw, 400px);
+      min-height: 480px;
 
       overflow: hidden;
 
@@ -1174,9 +1174,8 @@
     }
 
     /* Tint the scrim with each product's accent so the photography
-       always reads as belonging to that product — this is what
-       keeps KokanKart's cool teal render from clashing with its
-       amber UI accents, without touching the source image. */
+       always reads as belonging to that product, regardless of the
+       colors in the source image itself. */
     .product-background::after {
       content: "";
 
@@ -1198,7 +1197,10 @@
     .product-background-content {
       width: min(620px, 55%);
 
-      padding: clamp(28px, 3.4vw, 55px) clamp(24px, 3.4vw, 55px) clamp(24px, 3vw, 48px);
+      padding:
+        55px
+        55px
+        48px;
     }
 
     .product-top {
@@ -1208,7 +1210,7 @@
 
       gap: 15px;
 
-      margin-bottom: 18px;
+      margin-bottom: 20px;
     }
 
     .status {
@@ -1232,7 +1234,7 @@
 
       background: var(--product-soft);
 
-      font-size: 11px;
+      font-size: 10px;
       font-weight: 600;
 
       text-transform: uppercase;
@@ -1246,16 +1248,16 @@
     }
 
     .product-background h3 {
-      margin-top: 10px;
+      margin-top: 12px;
 
       font-family: "Sora", sans-serif;
 
       font-size:
-        clamp(30px, 4.6vw, 62px);
+        clamp(36px, 5vw, 62px);
 
       line-height: 1;
 
-      letter-spacing: -.05em;
+      letter-spacing: -.055em;
     }
 
     .product-background h3::before {
@@ -1279,13 +1281,13 @@
     }
 
     .product-background .lead {
-      margin-top: 16px;
+      margin-top: 20px;
 
       color: #d0d7e3;
 
-      font-size: 13.5px;
+      font-size: 14px;
 
-      line-height: 1.7;
+      line-height: 1.75;
 
       text-shadow:
         0 2px 15px rgba(0,0,0,.7);
@@ -1297,13 +1299,13 @@
 
       gap: 7px;
 
-      margin-top: 18px;
+      margin-top: 22px;
     }
 
     .tag {
       display: inline-flex;
 
-      padding: 7px 10px;
+      padding: 8px 11px;
 
       border: 1px solid
         color-mix(
@@ -1321,7 +1323,7 @@
 
       backdrop-filter: blur(7px);
 
-      font-size: 11px;
+      font-size: 10px;
 
       transition:
         transform .2s ease,
@@ -1346,7 +1348,7 @@
        ===================================================== */
 
     .product-details {
-      padding: clamp(18px, 2vw, 28px) clamp(20px, 3vw, 40px) clamp(20px, 2.4vw, 32px);
+      padding: 34px 45px 40px;
     }
 
     .product-info {
@@ -1355,17 +1357,17 @@
       grid-template-columns:
         repeat(2, minmax(0,1fr));
 
-      gap: clamp(18px, 2vw, 30px);
+      gap: 35px;
     }
 
     .info h4 {
-      margin-bottom: 12px;
+      margin-bottom: 13px;
 
       color: var(--product);
 
       font-family: "JetBrains Mono", monospace;
 
-      font-size: 11px;
+      font-size: 10px;
 
       text-transform: uppercase;
       letter-spacing: .04em;
@@ -1376,7 +1378,7 @@
       color: var(--text-soft);
 
       font-size: 13px;
-      line-height: 1.72;
+      line-height: 1.75;
     }
 
     .info ul {
@@ -1388,7 +1390,7 @@
 
       padding-left: 17px;
 
-      margin-bottom: 6px;
+      margin-bottom: 7px;
     }
 
     .info li::before {
@@ -1416,7 +1418,7 @@
 
       gap: 9px;
 
-      margin-top: 18px;
+      margin-top: 20px;
     }
 
     .product-actions .btn.primary {
@@ -1437,11 +1439,14 @@
 
 
     /* =====================================================
-       SHOWCASE IMAGE
+       OLD SHOWCASE IMAGE
        ===================================================== */
 
     .product-showcase {
-      padding: 0 clamp(20px, 3vw, 40px) clamp(20px, 3vw, 40px);
+      padding:
+        0
+        45px
+        45px;
     }
 
     .showcase-frame {
@@ -1534,9 +1539,9 @@
       flex-direction: column;
       justify-content: center;
 
-      min-height: 168px;
+      min-height: 190px;
 
-      padding: 22px;
+      padding: 25px;
 
       overflow: hidden;
     }
@@ -1545,7 +1550,7 @@
       width: 40px;
       height: 3px;
 
-      margin-bottom: 22px;
+      margin-bottom: 25px;
 
       border-radius: 100px;
 
@@ -1588,9 +1593,9 @@
     .step p {
       color: var(--text-muted);
 
-      font-size: 12.5px;
+      font-size: 12px;
 
-      margin-top: 9px;
+      margin-top: 10px;
     }
 
     .step::after {
@@ -1633,9 +1638,9 @@
       flex-direction: column;
       justify-content: center;
 
-      min-height: 100px;
+      min-height: 120px;
 
-      padding: 20px 40px 20px 26px;
+      padding: 24px 24px 24px 28px;
 
       overflow: hidden;
     }
@@ -1697,9 +1702,9 @@
     .value p {
       color: var(--text-muted);
 
-      font-size: 12.5px;
+      font-size: 12px;
 
-      margin-top: 7px;
+      margin-top: 8px;
     }
 
     .value:hover {
@@ -1721,11 +1726,11 @@
 
       grid-template-columns:
         minmax(0,1fr)
-        minmax(300px,.8fr);
+        minmax(360px,.8fr);
 
-      gap: clamp(24px, 3vw, 50px);
+      gap: 50px;
 
-      padding: clamp(24px, 2.6vw, 40px);
+      padding: 40px;
     }
 
     .vision h3 {
@@ -1736,9 +1741,9 @@
       font-family: "Sora", sans-serif;
 
       font-size:
-        clamp(24px, 3vw, 44px);
+        clamp(28px, 3.5vw, 44px);
 
-      line-height: 1.15;
+      line-height: 1.12;
 
       letter-spacing: -.045em;
     }
@@ -1746,11 +1751,11 @@
     .vision p {
       max-width: 640px;
 
-      margin-top: 16px;
+      margin-top: 18px;
 
       color: var(--text-soft);
 
-      font-size: 13.5px;
+      font-size: 14px;
     }
 
     .future {
@@ -1764,9 +1769,7 @@
     }
 
     .future div {
-      padding: 13px 13px 13px 34px;
-
-      position: relative;
+      padding: 14px;
 
       border: 1px solid var(--border);
 
@@ -1779,7 +1782,7 @@
 
       font-family: "JetBrains Mono", monospace;
 
-      font-size: 11px;
+      font-size: 10px;
 
       transition:
         transform .2s ease,
@@ -1809,7 +1812,7 @@
 
       overflow: hidden;
 
-      padding: clamp(38px, 4vw, 65px) clamp(22px, 3vw, 50px);
+      padding: 65px 50px;
 
       text-align: center;
     }
@@ -1874,7 +1877,7 @@
       font-family: "Sora", sans-serif;
 
       font-size:
-        clamp(28px, 4.4vw, 58px);
+        clamp(32px, 5vw, 58px);
 
       letter-spacing: -.05em;
     }
@@ -1882,11 +1885,11 @@
     .cta p {
       max-width: 600px;
 
-      margin: 15px auto 22px;
+      margin: 17px auto 25px;
 
       color: var(--text-soft);
 
-      font-size: 13.5px;
+      font-size: 14px;
     }
 
 
@@ -1895,7 +1898,7 @@
        ===================================================== */
 
     footer {
-      padding: clamp(32px, 3.2vw, 55px) 0 clamp(20px, 2vw, 30px);
+      padding: 55px 0 30px;
 
       border-top: 1px solid var(--border);
 
@@ -1909,7 +1912,7 @@
       grid-template-columns:
         1fr 1fr;
 
-      gap: 30px;
+      gap: 40px;
     }
 
     .footer-brand {
@@ -1937,11 +1940,11 @@
       justify-content: flex-end;
       flex-wrap: wrap;
 
-      gap: 13px 20px;
+      gap: 15px 22px;
 
       color: var(--text-muted);
 
-      font-size: 11px;
+      font-size: 10px;
     }
 
     .footer-links a:hover {
@@ -1949,8 +1952,8 @@
     }
 
     .copyright {
-      margin-top: 28px;
-      padding-top: 18px;
+      margin-top: 35px;
+      padding-top: 20px;
 
       border-top: 1px solid var(--border);
 
@@ -1958,7 +1961,7 @@
 
       font-family: "JetBrains Mono", monospace;
 
-      font-size: 11px;
+      font-size: 10px;
 
       text-align: center;
     }
@@ -1976,122 +1979,14 @@
 
 
     /* =====================================================
-       SYMBOL POLISH — small visual markers for key ideas.
-       Purely decorative iconography, not reading text, so
-       these stay compact by design.
-       ===================================================== */
-
-    .pillar::after {
-      content: "✦";
-      position: absolute;
-      right: 13px;
-      top: 50%;
-      transform: translateY(-50%);
-      width: 22px;
-      height: 22px;
-      display: grid;
-      place-items: center;
-      border: 1px solid color-mix(in srgb, var(--pillar-color) 30%, transparent);
-      border-radius: 50%;
-      color: var(--pillar-color);
-      background: color-mix(in srgb, var(--pillar-color) 8%, transparent);
-      font-size: 11px;
-      line-height: 1;
-      opacity: .9;
-      transition: transform .25s ease, box-shadow .25s ease;
-    }
-
-    .pillar:nth-child(1)::after { content: "⌘"; }
-    .pillar:nth-child(2)::after { content: "◇"; }
-    .pillar:nth-child(3)::after { content: "↗"; }
-    .pillar:nth-child(4)::after { content: "▱"; }
-
-    .pillar:hover::after {
-      transform: translateY(-50%) rotate(8deg) scale(1.08);
-      box-shadow: 0 0 16px color-mix(in srgb, var(--pillar-color) 25%, transparent);
-    }
-
-    .step::before {
-      content: "01";
-      position: absolute;
-      right: 18px;
-      bottom: 17px;
-      color: var(--step-color);
-      font-family: "JetBrains Mono", monospace;
-      font-size: 10px;
-      font-weight: 700;
-      letter-spacing: .08em;
-      opacity: .55;
-    }
-
-    .step:nth-child(1)::before { content: "◎ 01"; }
-    .step:nth-child(2)::before { content: "◇ 02"; }
-    .step:nth-child(3)::before { content: "▣ 03"; }
-    .step:nth-child(4)::before { content: "↗ 04"; }
-    .step:nth-child(5)::before { content: "↻ 05"; }
-
-    .value::after {
-      content: "✦";
-      position: absolute;
-      right: 17px;
-      top: 18px;
-      color: var(--value-color);
-      font-size: 15px;
-      opacity: .75;
-    }
-
-    .value:nth-child(1)::after { content: "✦"; }
-    .value:nth-child(2)::after { content: "◇"; }
-    .value:nth-child(3)::after { content: "↯"; }
-    .value:nth-child(4)::after { content: "♥"; }
-    .value:nth-child(5)::after { content: "◉"; }
-    .value:nth-child(6)::after { content: "✓"; }
-    .value:nth-child(7)::after { content: "↗"; }
-    .value:nth-child(8)::after { content: "⌁"; }
-
-    .future div::before {
-      content: "→";
-      position: absolute;
-      left: 13px;
-      top: 50%;
-      transform: translateY(-50%);
-      color: var(--cyan);
-      font-family: "JetBrains Mono", monospace;
-      font-size: 12px;
-      font-weight: 700;
-    }
-
-    .future div:nth-child(2)::before { color: var(--indigo); content: "◇"; }
-    .future div:nth-child(3)::before { color: var(--coral); content: "↗"; }
-    .future div:nth-child(4)::before { color: var(--amber); content: "✦"; }
-    .future div:nth-child(5)::before { color: var(--cyan); content: "＋"; }
-    .future div:nth-child(6)::before { color: var(--indigo); content: "∞"; }
-
-    .info h4::before {
-      display: inline-block;
-      margin-right: 7px;
-      color: currentColor;
-      opacity: .8;
-      font-family: "JetBrains Mono", monospace;
-      font-size: .85em;
-    }
-
-    .vibefit .info h4::before { content: "✦"; }
-    .kokankart .info h4::before { content: "◇"; }
-
-
-    /* =====================================================
-       RESPONSIVE — layout / structural changes only.
-       Scalar spacing above already flexes via clamp(), so
-       these breakpoints only handle things clamp() can't do:
-       column-count changes, stacking, and the product-image
-       crop/legibility treatment on narrow screens.
+       RESPONSIVE
        ===================================================== */
 
     @media (max-width: 1050px) {
 
       .hero-grid {
         grid-template-columns: 1fr;
+        gap: 45px;
       }
 
       .hero-copy {
@@ -2112,6 +2007,10 @@
           repeat(2, minmax(0,1fr));
       }
 
+      .product-background {
+        min-height: 430px;
+      }
+
       .product-background-content {
         width: 65%;
       }
@@ -2121,8 +2020,12 @@
 
     @media (max-width: 800px) {
 
+      section {
+        padding: 85px 0;
+      }
+
       .nav-inner {
-        min-height: 64px;
+        min-height: 68px;
       }
 
       .menu {
@@ -2184,23 +2087,64 @@
         grid-template-columns: 1fr;
       }
 
-      /* Shorter min-height means less forced zoom on these wide
-         source images, so more of each phone mockup stays in
-         frame instead of being cropped to a sliver. */
       .product-background {
+        min-height: 380px;
+
         align-items: flex-end;
+
+        background-position:
+          right center;
+      }
+
+      /* A shorter min-height means less forced zoom on these wide
+         source images, so more of each phone mockup stays in frame.
+         The scrim is also darkened from the very top now, since on
+         mobile the status badge sits full-width over the artwork
+         and needs a reliable backdrop no matter what the crop shows. */
+      .product-background::after {
+        background:
+          linear-gradient(
+            180deg,
+            color-mix(in srgb, var(--product) 10%, rgba(5,9,17,.6)) 0%,
+            color-mix(in srgb, var(--product) 8%, rgba(5,9,17,.42)) 28%,
+            color-mix(in srgb, var(--product) 6%, rgba(5,9,17,.93)) 70%,
+            rgba(5,9,17,.98) 100%
+          );
       }
 
       .product-background-content {
         width: 100%;
+
+        padding:
+          35px
+          28px
+          30px;
+      }
+
+      .product-details {
+        padding: 30px;
       }
 
       .product-info {
         grid-template-columns: 1fr;
+        gap: 28px;
+      }
+
+      .product-showcase {
+        padding:
+          0
+          30px
+          30px;
+      }
+
+      .approach {
+        grid-template-columns:
+          repeat(2, minmax(0,1fr));
       }
 
       .vision {
         grid-template-columns: 1fr;
+        gap: 30px;
       }
 
       .footer-grid {
@@ -2218,11 +2162,24 @@
 
       .container,
       .nav-inner {
-        width: calc(100% - 28px);
+        width: min(
+          calc(100% - 28px),
+          var(--container)
+        );
       }
 
-      .brand-name {
-        display: none;
+      .hero {
+        padding:
+          75px 0
+          70px;
+      }
+
+      .hero h1 {
+        font-size: 40px;
+      }
+
+      .hero-copy {
+        font-size: 15px;
       }
 
       .actions {
@@ -2246,23 +2203,34 @@
         grid-template-columns: 1fr;
       }
 
-      /* On phones the status badge sits full-width over the
-         artwork, so the scrim is darkened from the very top —
-         it needs a reliable backdrop no matter what the crop
-         shows underneath. */
-      .product-background::after {
-        background:
-          linear-gradient(
-            180deg,
-            color-mix(in srgb, var(--product) 10%, rgba(5,9,17,.6)) 0%,
-            color-mix(in srgb, var(--product) 8%, rgba(5,9,17,.42)) 28%,
-            color-mix(in srgb, var(--product) 6%, rgba(5,9,17,.93)) 70%,
-            rgba(5,9,17,.98) 100%
-          );
+      .product-background {
+        min-height: 400px;
       }
 
-      .product-actions .btn {
-        width: 100%;
+      .product-background-content {
+        padding:
+          30px
+          20px
+          25px;
+      }
+
+      .product-background h3 {
+        font-size: 42px;
+      }
+
+      .product-details {
+        padding: 27px 20px 30px;
+      }
+
+      .product-showcase {
+        padding:
+          0
+          20px
+          20px;
+      }
+
+      .showcase-frame {
+        border-radius: 14px;
       }
 
       .approach {
@@ -2273,12 +2241,20 @@
         grid-template-columns: 1fr;
       }
 
+      .vision {
+        padding: 28px 22px;
+      }
+
       .future {
         grid-template-columns: 1fr;
       }
 
+      .cta {
+        padding: 50px 25px;
+      }
+
       .footer-links {
-        gap: 10px 14px;
+        gap: 12px 16px;
       }
 
     }
@@ -2312,9 +2288,1223 @@
 
     }
 
-  </style>
-</head>
 
+
+    /* =====================================================
+       RESPONSIVE POLISH — SPACING / TYPE / IMAGE HEIGHTS
+       Keeps the existing visual design and palette intact.
+       ===================================================== */
+
+    /* Large desktop: use the available width without oversized gaps. */
+    @media (min-width: 1201px) {
+      .container,
+      .nav-inner {
+        width: min(calc(100% - 64px), var(--container));
+      }
+
+      section {
+        padding: 88px 0;
+      }
+
+      .hero {
+        min-height: auto;
+        padding: 72px 0 78px;
+      }
+
+      .hero-grid {
+        gap: 54px;
+      }
+
+      .section-head {
+        margin-bottom: 40px;
+      }
+
+      .products {
+        gap: 34px;
+      }
+
+      .product-background {
+        min-height: 405px;
+      }
+
+      .product-background-content {
+        padding: 42px 48px 38px;
+      }
+
+      .product-details {
+        padding: 28px 40px 32px;
+      }
+
+      .product-showcase {
+        padding: 0 40px 40px;
+      }
+
+      .approach {
+        gap: 10px;
+      }
+
+      .step {
+        min-height: 165px;
+        padding: 22px;
+      }
+
+      .value {
+        min-height: 105px;
+        padding: 21px 21px 21px 26px;
+      }
+
+      .vision {
+        gap: 36px;
+        padding: 34px;
+      }
+
+      .cta {
+        padding: 52px 42px;
+      }
+    }
+
+    /* Laptop / medium desktop. */
+    @media (min-width: 801px) and (max-width: 1200px) {
+      .container,
+      .nav-inner {
+        width: min(calc(100% - 48px), var(--container));
+      }
+
+      section {
+        padding: 76px 0;
+      }
+
+      .hero {
+        min-height: auto;
+        padding: 64px 0 70px;
+      }
+
+      .hero-grid {
+        gap: 40px;
+      }
+
+      .hero h1 {
+        font-size: clamp(40px, 5.4vw, 62px);
+      }
+
+      .hero-copy {
+        font-size: 16px;
+        line-height: 1.72;
+      }
+
+      .section-head {
+        margin-bottom: 36px;
+      }
+
+      .section-head h2 {
+        font-size: clamp(30px, 4vw, 44px);
+      }
+
+      .products {
+        gap: 30px;
+      }
+
+      .product-background {
+        min-height: 390px;
+      }
+
+      .product-background-content {
+        width: 62%;
+        padding: 38px 40px 34px;
+      }
+
+      .product-background h3 {
+        font-size: clamp(34px, 4.5vw, 52px);
+      }
+
+      .product-details {
+        padding: 27px 34px 30px;
+      }
+
+      .product-showcase {
+        padding: 0 34px 34px;
+      }
+
+      .vision {
+        gap: 30px;
+        padding: 32px;
+      }
+    }
+
+    /* Tablet. */
+    @media (min-width: 561px) and (max-width: 800px) {
+      section {
+        padding: 68px 0;
+      }
+
+      .hero {
+        min-height: auto;
+        padding: 58px 0 64px;
+      }
+
+      .hero-grid {
+        gap: 34px;
+      }
+
+      .hero h1 {
+        font-size: clamp(40px, 7vw, 54px);
+      }
+
+      .hero-copy {
+        margin-top: 22px;
+        font-size: 15px;
+        line-height: 1.72;
+      }
+
+      .section-head {
+        margin-bottom: 32px;
+      }
+
+      .section-head h2 {
+        font-size: clamp(29px, 5.5vw, 40px);
+      }
+
+      .story {
+        padding: 27px;
+      }
+
+      .products {
+        gap: 26px;
+      }
+
+      .product-background {
+        min-height: 345px;
+        background-size: auto 100%;
+      }
+
+      .product-background-content {
+        width: 100%;
+        padding: 30px 28px 26px;
+      }
+
+      .product-background h3 {
+        font-size: 40px;
+      }
+
+      .product-details {
+        padding: 26px 28px 28px;
+      }
+
+      .product-showcase {
+        padding: 0 28px 28px;
+      }
+
+      .approach {
+        gap: 10px;
+      }
+
+      .step {
+        min-height: 155px;
+        padding: 21px;
+      }
+
+      .value {
+        min-height: 105px;
+        padding: 20px 20px 20px 25px;
+      }
+
+      .vision {
+        gap: 26px;
+        padding: 28px;
+      }
+
+      .cta {
+        padding: 46px 28px;
+      }
+    }
+
+    /* Phone: compact, readable, and no artificial vertical space. */
+    @media (max-width: 560px) {
+      section {
+        padding: 54px 0;
+      }
+
+      .container,
+      .nav-inner {
+        width: calc(100% - 24px);
+      }
+
+      .nav-inner {
+        min-height: 64px;
+      }
+
+      .hero {
+        min-height: auto;
+        padding: 48px 0 52px;
+      }
+
+      .eyebrow {
+        margin-bottom: 18px;
+        font-size: 9px;
+      }
+
+      .hero h1 {
+        font-size: clamp(34px, 10vw, 40px);
+        line-height: 1.06;
+      }
+
+      .hero-copy {
+        margin-top: 19px;
+        font-size: 14px;
+        line-height: 1.7;
+      }
+
+      .actions {
+        margin-top: 24px;
+      }
+
+      .hero-panel {
+        padding: 13px;
+        border-radius: 18px;
+      }
+
+      .panel-top {
+        padding: 3px 3px 12px;
+        font-size: 8px;
+      }
+
+      .tile {
+        min-height: 112px;
+        padding: 17px;
+      }
+
+      .tile.big {
+        min-height: 128px;
+      }
+
+      .tile strong {
+        font-size: 15px;
+      }
+
+      .tile p {
+        font-size: 11px;
+      }
+
+      .section-head {
+        margin-bottom: 28px;
+      }
+
+      .section-head h2 {
+        font-size: clamp(27px, 8vw, 34px);
+        line-height: 1.12;
+      }
+
+      .section-head p {
+        margin-top: 13px;
+        font-size: 13px;
+        line-height: 1.7;
+      }
+
+      .story {
+        padding: 23px 20px;
+      }
+
+      .story h3 {
+        font-size: 21px;
+      }
+
+      .story > p {
+        margin-top: 12px;
+        font-size: 13px;
+        line-height: 1.72;
+      }
+
+      .pillars {
+        gap: 8px;
+        margin-top: 20px;
+      }
+
+      .pillar {
+        min-height: 68px;
+        padding: 13px 13px 13px 18px;
+      }
+
+      .pillar b {
+        font-size: 11px;
+      }
+
+      .pillar span {
+        font-size: 10px;
+        margin-top: 3px;
+      }
+
+      .products {
+        gap: 22px;
+      }
+
+      /* New product-background images: shorter so they don't create a huge
+         empty vertical block on phones. The artwork remains right-aligned. */
+      .product-background {
+        min-height: 315px;
+        align-items: flex-end;
+        background-size: auto 100%;
+        background-position: right center;
+      }
+
+      .product-background::after {
+        background:
+          linear-gradient(
+            180deg,
+            color-mix(in srgb, var(--product) 7%, rgba(5,9,17,.35)) 0%,
+            color-mix(in srgb, var(--product) 8%, rgba(5,9,17,.62)) 40%,
+            rgba(5,9,17,.96) 100%
+          );
+      }
+
+      .product-background-content {
+        width: 100%;
+        padding: 22px 18px 21px;
+      }
+
+      .product-top {
+        margin-bottom: 13px;
+        align-items: flex-start;
+      }
+
+      .status {
+        padding: 6px 8px;
+        font-size: 8px;
+      }
+
+      .product-background .kicker {
+        font-size: 8px;
+        text-align: right;
+      }
+
+      .product-background h3 {
+        margin-top: 7px;
+        font-size: 34px;
+      }
+
+      .product-background h3::before {
+        width: 6px;
+        height: 6px;
+        margin-right: 8px;
+      }
+
+      .product-background .lead {
+        margin-top: 12px;
+        font-size: 12px;
+        line-height: 1.62;
+      }
+
+      .product-background .tags {
+        gap: 5px;
+        margin-top: 14px;
+      }
+
+      .tag {
+        padding: 6px 8px;
+        font-size: 8px;
+      }
+
+      .product-details {
+        padding: 22px 18px 23px;
+      }
+
+      .product-info {
+        gap: 20px;
+      }
+
+      .info h4 {
+        margin-bottom: 9px;
+        font-size: 9px;
+      }
+
+      .info p,
+      .info li {
+        font-size: 12px;
+        line-height: 1.65;
+      }
+
+      .info li {
+        padding-left: 14px;
+        margin-bottom: 5px;
+      }
+
+      .product-actions {
+        gap: 7px;
+        margin-top: 15px;
+      }
+
+      .product-actions .btn {
+        width: 100%;
+      }
+
+      .product-showcase {
+        padding: 0 18px 18px;
+      }
+
+      .showcase-frame {
+        border-radius: 12px;
+      }
+
+      .approach {
+        gap: 9px;
+      }
+
+      .step {
+        min-height: 128px;
+        padding: 18px;
+      }
+
+      .step .line {
+        width: 30px;
+        margin-bottom: 17px;
+      }
+
+      .step b {
+        font-size: 14px;
+      }
+
+      .step p {
+        font-size: 11px;
+        line-height: 1.55;
+        margin-top: 7px;
+      }
+
+      .values {
+        gap: 9px;
+      }
+
+      .value {
+        min-height: 88px;
+        padding: 18px 18px 18px 23px;
+      }
+
+      .value b {
+        font-size: 14px;
+      }
+
+      .value p {
+        font-size: 11px;
+        margin-top: 5px;
+      }
+
+      .vision {
+        gap: 22px;
+        padding: 23px 19px;
+      }
+
+      .vision h3 {
+        font-size: 26px;
+      }
+
+      .vision p {
+        margin-top: 12px;
+        font-size: 12px;
+        line-height: 1.7;
+      }
+
+      .future {
+        gap: 7px;
+      }
+
+      .future div {
+        padding: 11px;
+        font-size: 9px;
+      }
+
+      .cta {
+        padding: 42px 20px;
+      }
+
+      .cta h2 {
+        font-size: clamp(28px, 8vw, 36px);
+      }
+
+      .cta p {
+        margin: 13px auto 20px;
+        font-size: 12px;
+        line-height: 1.7;
+      }
+
+      footer {
+        padding: 40px 0 24px;
+      }
+
+      .footer-grid {
+        gap: 25px;
+      }
+
+      .footer-links {
+        gap: 11px 15px;
+        font-size: 9px;
+      }
+
+      .copyright {
+        margin-top: 25px;
+        padding-top: 16px;
+        font-size: 9px;
+      }
+    }
+
+    /* Very narrow phones. */
+    @media (max-width: 380px) {
+      .hero h1 {
+        font-size: 32px;
+      }
+
+      .product-background {
+        min-height: 300px;
+      }
+
+      .product-background h3 {
+        font-size: 31px;
+      }
+
+      .product-background .lead {
+        font-size: 11px;
+      }
+
+      .tag {
+        font-size: 7.5px;
+      }
+    }
+
+  
+    /* =====================================================
+       FINAL RESPONSIVE SPACING + READABILITY POLISH
+       Keeps the existing layout, palette and visual language.
+       Only reduces empty space and improves small text sizing.
+       ===================================================== */
+
+    /* Desktop: tighter vertical rhythm */
+    @media (min-width: 1201px) {
+      section {
+        padding: 62px 0;
+      }
+
+      .hero {
+        padding: 42px 0 54px;
+      }
+
+      .section-head {
+        margin-bottom: 30px;
+      }
+
+      .products {
+        gap: 24px;
+      }
+
+      .product-background {
+        min-height: 340px;
+      }
+
+      .product-background-content {
+        padding: 34px 42px 30px;
+      }
+
+      .product-details {
+        padding: 24px 36px 28px;
+      }
+
+      .product-showcase {
+        padding: 0 36px 36px;
+      }
+
+      /* Readability: don't let utility text become microscopic. */
+      .kicker,
+      .status,
+      .panel-top,
+      .tile small,
+      .info h4 {
+        font-size: 11px;
+      }
+
+      .tag {
+        font-size: 10px;
+      }
+
+      .info p,
+      .info li,
+      .step p,
+      .value p,
+      .future div {
+        font-size: 13px;
+      }
+    }
+
+    /* Laptop */
+    @media (min-width: 801px) and (max-width: 1200px) {
+      section {
+        padding: 56px 0;
+      }
+
+      .hero {
+        padding: 42px 0 52px;
+      }
+
+      .section-head {
+        margin-bottom: 28px;
+      }
+
+      .products {
+        gap: 22px;
+      }
+
+      .product-background {
+        min-height: 325px;
+      }
+
+      .product-background-content {
+        padding: 30px 34px 28px;
+      }
+
+      .product-details {
+        padding: 23px 30px 27px;
+      }
+
+      .product-showcase {
+        padding: 0 30px 30px;
+      }
+
+      .kicker,
+      .status,
+      .panel-top,
+      .tile small,
+      .info h4 {
+        font-size: 10.5px;
+      }
+
+      .tag {
+        font-size: 9.5px;
+      }
+
+      .info p,
+      .info li,
+      .step p,
+      .value p,
+      .future div {
+        font-size: 12.5px;
+      }
+    }
+
+    /* Tablet */
+    @media (min-width: 561px) and (max-width: 800px) {
+      section {
+        padding: 48px 0;
+      }
+
+      .hero {
+        padding: 38px 0 48px;
+      }
+
+      .section-head {
+        margin-bottom: 24px;
+      }
+
+      .products {
+        gap: 18px;
+      }
+
+      .product-background {
+        min-height: 305px;
+      }
+
+      .product-background-content {
+        padding: 26px 26px 24px;
+      }
+
+      .product-details {
+        padding: 22px 25px 25px;
+      }
+
+      .product-showcase {
+        padding: 0 25px 25px;
+      }
+
+      .kicker,
+      .status,
+      .panel-top,
+      .tile small,
+      .info h4 {
+        font-size: 10px;
+      }
+
+      .tag {
+        font-size: 9px;
+      }
+
+      .info p,
+      .info li,
+      .step p,
+      .value p,
+      .future div {
+        font-size: 12px;
+      }
+    }
+
+    /* Mobile */
+    @media (max-width: 560px) {
+      section {
+        padding: 38px 0;
+      }
+
+      .hero {
+        padding: 32px 0 40px;
+      }
+
+      .section-head {
+        margin-bottom: 21px;
+      }
+
+      .section-head p {
+        font-size: 14px;
+        line-height: 1.65;
+      }
+
+      .products {
+        gap: 14px;
+      }
+
+      /* The two new product background sections should feel like
+         compact hero banners, not tall empty blocks. */
+      .product-background {
+        min-height: 285px;
+        background-size: auto 100%;
+      }
+
+      .product-background-content {
+        padding: 20px 17px 18px;
+      }
+
+      .product-background h3 {
+        font-size: 33px;
+      }
+
+      .product-background .lead {
+        margin-top: 10px;
+        font-size: 13px;
+        line-height: 1.58;
+      }
+
+      .product-background .tags {
+        gap: 5px;
+        margin-top: 11px;
+      }
+
+      .tag {
+        padding: 6px 8px;
+        font-size: 9px;
+      }
+
+      .status {
+        padding: 6px 8px;
+        font-size: 9px;
+      }
+
+      .product-background .kicker {
+        font-size: 9px;
+      }
+
+      .product-details {
+        padding: 20px 17px 21px;
+      }
+
+      .product-info {
+        gap: 17px;
+      }
+
+      .info h4 {
+        margin-bottom: 8px;
+        font-size: 10px;
+      }
+
+      .info p,
+      .info li {
+        font-size: 13px;
+        line-height: 1.6;
+      }
+
+      .info li {
+        margin-bottom: 4px;
+      }
+
+      .product-showcase {
+        padding: 0 17px 17px;
+      }
+
+      .panel-top {
+        font-size: 9px;
+      }
+
+      .tile small {
+        font-size: 10px;
+      }
+
+      .tile strong {
+        font-size: 16px;
+      }
+
+      .tile p {
+        font-size: 12px;
+      }
+
+      .step {
+        min-height: 116px;
+        padding: 17px;
+      }
+
+      .step b {
+        font-size: 15px;
+      }
+
+      .step p {
+        font-size: 12px;
+        line-height: 1.55;
+      }
+
+      .value {
+        min-height: 82px;
+        padding: 17px 17px 17px 22px;
+      }
+
+      .value b {
+        font-size: 15px;
+      }
+
+      .value p {
+        font-size: 12px;
+      }
+
+      .vision {
+        padding: 21px 18px;
+        gap: 19px;
+      }
+
+      .vision p {
+        font-size: 13px;
+      }
+
+      .future div {
+        padding: 10px;
+        font-size: 10px;
+      }
+
+      .cta {
+        padding: 38px 19px;
+      }
+
+      .cta p {
+        font-size: 13px;
+      }
+
+      footer {
+        padding: 34px 0 22px;
+      }
+
+      .footer-links {
+        font-size: 10px;
+      }
+
+      .copyright {
+        font-size: 9px;
+      }
+    }
+
+    /* Very small phones */
+    @media (max-width: 380px) {
+      section {
+        padding: 34px 0;
+      }
+
+      .hero {
+        padding: 28px 0 36px;
+      }
+
+      .product-background {
+        min-height: 275px;
+      }
+
+      .product-background h3 {
+        font-size: 30px;
+      }
+
+      .product-background .lead {
+        font-size: 12.5px;
+      }
+
+      .tag {
+        font-size: 8.5px;
+      }
+    }
+
+
+    /* =====================================================
+       FINAL PRODUCT CONTRAST + COMPACT SPACING
+       Keep the existing layout and artwork; only improve
+       contrast against the two supplied background images.
+       ===================================================== */
+
+    /* VibeFit artwork is red/orange, so use cyan as its UI identity.
+       KokanKart artwork is teal, so amber remains clearly separated. */
+    .product.vibefit {
+      --product: var(--cyan);
+      --product-soft: rgba(34, 211, 238, .12);
+      --product-glow: rgba(34, 211, 238, .28);
+    }
+
+    .product.kokankart {
+      --product: var(--amber);
+      --product-soft: rgba(244, 166, 54, .12);
+      --product-glow: rgba(244, 166, 54, .28);
+    }
+
+    /* Don't wash the supplied artwork with its own accent colour. */
+    .product-background::after {
+      background:
+        linear-gradient(
+          90deg,
+          rgba(5, 7, 13, .84) 0%,
+          rgba(5, 9, 17, .56) 38%,
+          rgba(5, 9, 17, .10) 76%,
+          rgba(5, 9, 17, .08) 100%
+        );
+    }
+
+    /* Compact global rhythm */
+    section { padding: 46px 0; }
+    .hero { padding: 34px 0 42px; }
+    .section-head { margin-bottom: 24px; }
+    .products { gap: 18px; }
+
+    /* Product artwork blocks: less artificial empty height. */
+    .product-background { min-height: 300px; }
+    .product-background-content { padding: 30px 38px 26px; }
+    .product-top { margin-bottom: 12px; }
+    .product-background h3 { margin-top: 8px; }
+    .product-background .lead { margin-top: 13px; line-height: 1.65; }
+    .product-background .tags { margin-top: 15px; }
+    .product-details { padding: 20px 32px 24px; }
+    .product-info { gap: 24px; }
+    .info li { margin-bottom: 4px; }
+    .product-actions { margin-top: 14px; }
+    .product-showcase { padding: 0 32px 28px; }
+
+    /* Readable utility text without making the visual system heavy. */
+    .kicker,
+    .status,
+    .panel-top,
+    .live,
+    .tile small,
+    .info h4 { font-size: 10.5px; }
+    .tag { font-size: 9px; }
+    .info p,
+    .info li,
+    .step p,
+    .value p,
+    .future div { font-size: 13px; }
+
+    /* Tablet */
+    @media (max-width: 800px) {
+      section { padding: 38px 0; }
+      .hero { padding: 30px 0 38px; }
+      .section-head { margin-bottom: 20px; }
+      .products { gap: 16px; }
+      .product-background { min-height: 275px; }
+      .product-background-content { padding: 24px 24px 22px; }
+      .product-details { padding: 19px 24px 22px; }
+      .product-showcase { padding: 0 24px 24px; }
+    }
+
+    /* Phone: compact but comfortably readable. */
+    @media (max-width: 560px) {
+      section { padding: 32px 0; }
+      .hero { padding: 26px 0 32px; }
+      .section-head { margin-bottom: 17px; }
+      .products { gap: 13px; }
+      .product-background {
+        min-height: 255px;
+        background-size: auto 100%;
+      }
+      .product-background::after {
+        background:
+          linear-gradient(
+            180deg,
+            rgba(5, 7, 13, .18) 0%,
+            rgba(5, 9, 17, .45) 42%,
+            rgba(5, 9, 17, .94) 100%
+          );
+      }
+      .product-background-content { padding: 18px 16px 17px; }
+      .product-top { margin-bottom: 8px; gap: 8px; }
+      .status { padding: 5px 8px; font-size: 9px; }
+      .product-background .kicker { font-size: 9px; }
+      .product-background h3 { margin-top: 5px; font-size: 31px; }
+      .product-background h3::before { width: 6px; height: 6px; margin-right: 7px; }
+      .product-background .lead { margin-top: 9px; font-size: 12.5px; line-height: 1.55; }
+      .product-background .tags { gap: 4px; margin-top: 10px; }
+      .tag { padding: 5px 7px; font-size: 8.5px; }
+      .product-details { padding: 17px 16px 19px; }
+      .product-info { gap: 15px; }
+      .info h4 { margin-bottom: 7px; font-size: 9.5px; }
+      .info p,
+      .info li { font-size: 12px; line-height: 1.58; }
+      .info li { padding-left: 13px; margin-bottom: 3px; }
+      .product-actions { gap: 6px; margin-top: 11px; }
+      .product-showcase { padding: 0 16px 16px; }
+    }
+
+    @media (max-width: 380px) {
+      section { padding: 28px 0; }
+      .hero { padding: 22px 0 28px; }
+      .product-background { min-height: 242px; }
+      .product-background-content { padding: 16px 14px 15px; }
+      .product-background h3 { font-size: 29px; }
+      .product-background .lead { font-size: 12px; }
+      .tag { font-size: 8px; }
+    }
+
+
+
+    /* =====================================================
+       SYMBOL POLISH — visual markers for key ideas
+       ===================================================== */
+
+    .pillar,
+    .step,
+    .value,
+    .future div {
+      --icon-color: var(--cyan);
+    }
+
+    /* About / product philosophy markers */
+    .pillar::after {
+      content: "✦";
+      position: absolute;
+      right: 13px;
+      top: 11px;
+      width: 22px;
+      height: 22px;
+      display: grid;
+      place-items: center;
+      border: 1px solid color-mix(in srgb, var(--pillar-color) 30%, transparent);
+      border-radius: 50%;
+      color: var(--pillar-color);
+      background: color-mix(in srgb, var(--pillar-color) 8%, transparent);
+      font-size: 11px;
+      line-height: 1;
+      opacity: .9;
+      transition: transform .25s ease, box-shadow .25s ease;
+    }
+
+    .pillar:nth-child(1)::after { content: "⌘"; }
+    .pillar:nth-child(2)::after { content: "◇"; }
+    .pillar:nth-child(3)::after { content: "↗"; }
+    .pillar:nth-child(4)::after { content: "▱"; }
+
+    .pillar:hover::after {
+      transform: rotate(8deg) scale(1.08);
+      box-shadow: 0 0 16px color-mix(in srgb, var(--pillar-color) 25%, transparent);
+    }
+
+    /* Approach — numbered visual markers */
+    .step::before {
+      content: "01";
+      position: absolute;
+      right: 18px;
+      bottom: 17px;
+      color: var(--step-color);
+      font-family: "JetBrains Mono", monospace;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: .08em;
+      opacity: .55;
+    }
+
+    .step:nth-child(1)::before { content: "◎ 01"; }
+    .step:nth-child(2)::before { content: "◇ 02"; }
+    .step:nth-child(3)::before { content: "▣ 03"; }
+    .step:nth-child(4)::before { content: "↗ 04"; }
+    .step:nth-child(5)::before { content: "↻ 05"; }
+
+    /* Values — small symbolic markers */
+    .value::after {
+      content: "✦";
+      position: absolute;
+      right: 17px;
+      top: 15px;
+      color: var(--value-color);
+      font-size: 15px;
+      opacity: .75;
+    }
+
+    .value:nth-child(1)::after { content: "✦"; }
+    .value:nth-child(2)::after { content: "◇"; }
+    .value:nth-child(3)::after { content: "↯"; }
+    .value:nth-child(4)::after { content: "♥"; }
+    .value:nth-child(5)::after { content: "◉"; }
+    .value:nth-child(6)::after { content: "✓"; }
+    .value:nth-child(7)::after { content: "↗"; }
+    .value:nth-child(8)::after { content: "⌁"; }
+
+    /* Long-term direction chips */
+    .future div {
+      position: relative;
+      padding-left: 34px;
+    }
+
+    .future div::before {
+      content: "→";
+      position: absolute;
+      left: 13px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--cyan);
+      font-family: "JetBrains Mono", monospace;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .future div:nth-child(2)::before { color: var(--indigo); content: "◇"; }
+    .future div:nth-child(3)::before { color: var(--coral); content: "↗"; }
+    .future div:nth-child(4)::before { color: var(--amber); content: "✦"; }
+    .future div:nth-child(5)::before { color: var(--cyan); content: "＋"; }
+    .future div:nth-child(6)::before { color: var(--indigo); content: "∞"; }
+
+    /* Product info headings — subtle semantic markers */
+    .info h4::before {
+      display: inline-block;
+      margin-right: 7px;
+      color: currentColor;
+      opacity: .8;
+      font-family: "JetBrains Mono", monospace;
+      font-size: .85em;
+    }
+
+    .vibefit .info h4::before { content: "✦"; }
+    .kokankart .info h4::before { content: "◇"; }
+
+    @media (max-width: 700px) {
+      .pillar::after {
+        right: 10px;
+        top: 9px;
+        width: 19px;
+        height: 19px;
+        font-size: 10px;
+      }
+
+      .step::before {
+        right: 14px;
+        bottom: 13px;
+        font-size: 9px;
+      }
+
+      .value::after {
+        right: 13px;
+        top: 12px;
+        font-size: 13px;
+      }
+    }
+
+</style>
+</head>
 
 
 <body>
@@ -2343,18 +3533,16 @@
         aria-label="Creative Management Solutions home"
       >
 
-        <img
-          class="brand-logo"
-          src="assets/cms-logo.png"
-          alt="Creative Management Solutions"
-        >
+        <div class="brand-mark">
+          CMS
+        </div>
 
         <div class="brand-name">
+          Creative Management Solutions
           <span>PRODUCT STUDIO</span>
         </div>
 
       </a>
-
 
 
       <button
@@ -2421,13 +3609,13 @@
 
           <span class="eyebrow">
             <i class="dot"></i>
-            India-focused digital product company
+            India-focused technology & digital product company
           </span>
 
 
           <h1>
             <span class="gradient">
-              Building products
+              Building technology
             </span>
             <br>
             that solve real problems.
@@ -2435,11 +3623,10 @@
 
 
           <p class="hero-copy">
-            Creative Management Solutions (CMS) builds,
-            launches and grows its own technology products —
-            creating focused digital experiences across
-            wellness, commerce and emerging real-world
-            opportunities.
+            Creative Management Solutions (CMS) creates digital products,
+            technology solutions and connected experiences designed
+            around real-world needs across wellness, commerce,
+            business and emerging opportunities.
           </p>
 
 
@@ -2491,11 +3678,11 @@
               </small>
 
               <strong>
-                Build → Launch → Learn → Grow
+                Build → Deliver → Learn → Grow
               </strong>
 
               <p>
-                Independent products designed
+                Technology and products designed
                 around real user needs.
               </p>
 
@@ -2572,13 +3759,13 @@
           </span>
 
           <h2>
-            We build. We own. We evolve.
+            We build. We solve. We evolve.
           </h2>
 
           <p>
-            CMS is focused on creating and operating
-            its own products rather than simply building
-            software for others.
+            CMS focuses on turning real-world needs into useful digital
+            products, technology solutions and experiences that can
+            create lasting value for people and businesses.
           </p>
 
         </div>
@@ -2592,23 +3779,23 @@
           <article class="card story reveal">
 
             <h3>
-              A product-first company.
+              A problem-first technology company.
             </h3>
 
             <p>
-              We start with a real problem, shape a useful
-              experience, build the technology behind it,
-              launch it, listen to users and continuously
-              improve the product. Our long-term goal is
-              to create independent products that can grow
-              into meaningful ecosystems.
+              We start with a real problem, understand the people and businesses
+              affected by it, shape the right experience and build
+              technology around the need. Depending on the opportunity,
+              that can become a digital product, platform, business
+              solution or a new technology-led venture. We launch,
+              learn from real usage and continuously improve.
             </p>
 
 
             <div class="pillars">
 
               <div class="pillar">
-                <b>Problem → Product</b>
+                <b>Problem → Solution</b>
                 <span>
                   Start with what matters.
                 </span>
@@ -2629,9 +3816,9 @@
               </div>
 
               <div class="pillar">
-                <b>Product → Ecosystem</b>
+                <b>Solution → Scale</b>
                 <span>
-                  Build for long-term scale.
+                  Build for long-term value.
                 </span>
               </div>
 
@@ -2649,26 +3836,26 @@
             </h3>
 
             <p>
-              CMS is starting with focused digital products
-              and an India-first approach. Over time, the
-              company aims to build multiple technology-led
-              businesses and explore opportunities beyond
-              software when the right time and opportunity
-              arrive.
+              CMS is starting with an India-focused approach to technology,
+              digital products and practical business opportunities.
+              Over time, the company aims to create and grow its own
+              products, develop technology solutions, collaborate on
+              meaningful opportunities and explore new businesses
+              across and beyond software.
             </p>
 
 
             <div class="pillars">
 
               <div class="pillar">
-                <b>Consumer Products</b>
+                <b>Consumer Technology</b>
                 <span>
                   Useful everyday experiences.
                 </span>
               </div>
 
               <div class="pillar">
-                <b>Business Products</b>
+                <b>Business Technology</b>
                 <span>
                   Technology for real operations.
                 </span>
@@ -2682,9 +3869,9 @@
               </div>
 
               <div class="pillar">
-                <b>Wellness</b>
+                <b>Emerging Opportunities</b>
                 <span>
-                  Technology for healthier living.
+                  Exploring what comes next.
                 </span>
               </div>
 
@@ -2719,9 +3906,9 @@
           </h2>
 
           <p>
-            CMS is currently showcasing VibeFit and KokanKart —
-            two products built around very different real-world
-            needs, each with its own visual identity.
+            CMS currently showcases VibeFit and KokanKart — two technology
+            products addressing different real-world needs across
+            wellness and local commerce.
           </p>
 
         </div>
@@ -3117,12 +4304,13 @@
           </span>
 
           <h2>
-            From real problem to real product.
+            From real problem to real solution.
           </h2>
 
           <p>
-            CMS keeps the product cycle focused,
-            practical and iterative.
+            CMS keeps technology development focused, practical and iterative —
+            from understanding the need to delivering, learning and
+            improving the solution.
           </p>
 
         </div>
@@ -3136,7 +4324,7 @@
             <div class="line"></div>
 
             <b>
-              Identify
+              Understand
             </b>
 
             <p>
@@ -3184,12 +4372,11 @@
             <div class="line"></div>
 
             <b>
-              Launch
+              Deliver
             </b>
 
             <p>
-              Put the product into the real world and
-              learn from usage.
+              Put the solution into real-world use.
             </p>
 
           </div>
@@ -3200,12 +4387,11 @@
             <div class="line"></div>
 
             <b>
-              Iterate
+              Improve
             </b>
 
             <p>
-              Improve continuously as users, needs
-              and opportunities evolve.
+              Learn continuously and evolve with changing needs.
             </p>
 
           </div>
@@ -3234,7 +4420,7 @@
           </span>
 
           <h2>
-            Principles behind every product.
+            Principles behind everything we build.
           </h2>
 
         </div>
@@ -3372,15 +4558,14 @@
             </span>
 
             <h3>
-              Build products today.
-              Create ecosystems tomorrow.
+              Build technology today.
+              Create opportunities tomorrow.
             </h3>
 
             <p>
-              CMS is starting with an India-focused
-              product portfolio and aims to grow through
-              useful technology products, strong execution
-              and long-term ownership.
+              CMS aims to grow through useful technology, strong execution and
+              meaningful opportunities — developing products, platforms,
+              solutions and businesses that can create lasting value.
             </p>
 
           </div>
@@ -3405,7 +4590,7 @@
             </div>
 
             <div>
-              New Product Categories
+              Technology Solutions
             </div>
 
             <div>
@@ -3441,8 +4626,8 @@
           </h2>
 
           <p>
-            Follow the products we are building today
-            and the ecosystems we aim to create over time.
+            Have a product idea, technology opportunity or business problem
+            worth exploring? Connect with CMS and let's build what comes next.
           </p>
 
           <a
@@ -3479,7 +4664,7 @@
           Creative Management Solutions
 
           <span>
-            India-focused digital product company.
+            India-focused technology & digital product company.
           </span>
 
         </div>
