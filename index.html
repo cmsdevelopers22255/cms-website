@@ -249,11 +249,12 @@
       font-family: "Sora", sans-serif;
       font-weight: 700;
       letter-spacing: -0.03em;
+      flex-shrink: 0;
     }
 
     .brand-mark {
-      width: 36px;
-      height: 36px;
+      width: 40px;
+      height: 40px;
 
       border-radius: 10px;
 
@@ -261,12 +262,13 @@
       place-items: center;
 
       overflow: hidden;
+      flex-shrink: 0;
     }
 
     .brand-mark img {
       width: 100%;
       height: 100%;
-      object-fit: cover;
+      object-fit: contain;
     }
 
     .brand-name {
@@ -291,6 +293,7 @@
       display: flex;
       align-items: center;
       gap: 28px;
+      margin-left: auto;
     }
 
     .nav-links > a:not(.nav-cta) {
@@ -391,9 +394,11 @@
       display: flex;
       align-items: center;
 
-      padding:
-        100px 0
-        90px;
+      padding: 100px 0 90px;
+    }
+
+    .hero .container {
+      width: 100%;
     }
 
     .hero-grid {
@@ -818,214 +823,6 @@
         0 0 12px rgba(34,211,238,.3);
     }
 
-
-    /* =====================================================
-       SECTION HEAD
-       ===================================================== */
-
-    .section-head {
-      max-width: 760px;
-
-      margin-bottom: 55px;
-    }
-
-    .kicker {
-      display: inline-block;
-
-      margin-bottom: 15px;
-
-      color: var(--cyan);
-
-      font-size: 10px;
-      font-weight: 600;
-
-      letter-spacing: .04em;
-      text-transform: uppercase;
-    }
-
-    .kicker.coral {
-      color: var(--coral);
-    }
-
-    .kicker.teal {
-      color: var(--cyan);
-    }
-
-    .kicker.amber {
-      color: var(--amber);
-    }
-
-    .section-head h2 {
-      font-family: "Sora", sans-serif;
-
-      font-size:
-        clamp(32px, 4vw, 50px);
-
-      line-height: 1.1;
-
-      letter-spacing: -.045em;
-    }
-
-    .section-head p {
-      max-width: 690px;
-
-      margin-top: 18px;
-
-      color: var(--text-soft);
-
-      font-size: 15px;
-    }
-
-
-    /* =====================================================
-       ABOUT
-       ===================================================== */
-
-    .story-grid {
-      display: grid;
-
-      grid-template-columns:
-        repeat(2, minmax(0,1fr));
-
-      gap: 18px;
-    }
-
-    .card {
-      border: 1px solid var(--border);
-
-      border-radius: var(--radius-lg);
-
-      background:
-        linear-gradient(
-          145deg,
-          rgba(255,255,255,.035),
-          rgba(255,255,255,.012)
-        );
-
-      box-shadow:
-        0 16px 45px rgba(0,0,0,.12);
-
-      transition:
-        transform .3s ease,
-        box-shadow .3s ease,
-        border-color .3s ease;
-    }
-
-    .card:hover {
-      transform: translateY(-4px);
-
-      box-shadow:
-        var(--shadow-hover);
-
-      border-color:
-        var(--border-strong);
-    }
-
-    .story {
-      padding: 32px;
-    }
-
-    .story h3 {
-      font-family: "Sora", sans-serif;
-
-      font-size: 24px;
-
-      letter-spacing: -.035em;
-    }
-
-    .story > p {
-      color: var(--text-soft);
-
-      margin-top: 16px;
-
-      font-size: 14px;
-      line-height: 1.8;
-    }
-
-    .pillars {
-      display: grid;
-
-      grid-template-columns:
-        repeat(2, minmax(0,1fr));
-
-      gap: 10px;
-
-      margin-top: 28px;
-    }
-
-    .pillar {
-      position: relative;
-
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-
-      min-height: 76px;
-
-      padding: 17px 17px 17px 21px;
-
-      overflow: hidden;
-
-      border: 1px solid var(--border);
-
-      border-radius: 13px;
-
-      background:
-        rgba(255,255,255,.018);
-
-      transition:
-        transform .25s ease,
-        border-color .25s ease;
-    }
-
-    .pillar::before {
-      content: "";
-
-      position: absolute;
-
-      left: 0;
-      top: 50%;
-
-      width: 3px;
-      height: 28px;
-
-      transform: translateY(-50%);
-
-      border-radius: 100px;
-
-      background: var(--cyan);
-
-      box-shadow:
-        0 0 12px var(--cyan);
-
-      opacity: 0;
-
-      transition:
-        opacity .25s ease;
-    }
-
-    .pillar:hover::before {
-      opacity: 1;
-    }
-
-    .pillar strong {
-      display: block;
-
-      font-family: "Sora", sans-serif;
-
-      font-size: 15px;
-
-      letter-spacing: -.03em;
-    }
-
-    .pillar p {
-      color: var(--text-muted);
-
-      font-size: 12px;
-
-      margin-top: 5px;
-    }
-
   </style>
 
 </head>
@@ -1061,6 +858,75 @@
 
     </div>
   </nav>
+
+
+  <!-- =====================================================
+       HERO
+       ===================================================== -->
+
+  <section class="hero">
+    <div class="container">
+      <div class="hero-grid">
+
+        <!-- Hero Content -->
+        <div>
+          <div class="eyebrow">
+            <span class="dot"></span>
+            Build the future
+          </div>
+
+          <h1>
+            India's leading
+            <span class="gradient">digital product company</span>
+          </h1>
+
+          <p class="hero-copy">
+            We craft innovative digital solutions across wellness, commerce, and emerging real-world opportunities. Turning ideas into impact.
+          </p>
+
+          <div class="actions">
+            <button class="btn primary">Get Started</button>
+            <button class="btn secondary">Learn More</button>
+          </div>
+        </div>
+
+        <!-- Hero Panel -->
+        <div class="hero-panel">
+          <div class="panel-top">
+            <span>LIVE METRICS</span>
+            <span class="live">
+              <i></i>
+              Active
+            </span>
+          </div>
+
+          <div class="panel-grid">
+            <div class="tile accent-teal">
+              <small>Users</small>
+              <strong>10K+</strong>
+              <p>Active worldwide</p>
+            </div>
+
+            <div class="tile accent-coral">
+              <small>Growth</small>
+              <strong>45%</strong>
+              <p>Month-over-month</p>
+            </div>
+
+            <div class="tile big">
+              <small>Projects</small>
+              <strong>15+</strong>
+              <p>Innovative solutions deployed</p>
+              <div class="bar teal">
+                <span></span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
 
 </body>
 
