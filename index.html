@@ -35,6 +35,17 @@
 
   <!-- =====================================================
        CSS
+       This file was previously assembled from several separate
+       "polish" passes layered on top of each other as overriding
+       media queries (visible in the diff history as duplicate
+       "RESPONSIVE POLISH" / "FINAL SPACING" / "FINAL CONTRAST"
+       blocks). Because later CSS wins the cascade, the last block
+       silently undid parts of earlier fixes — e.g. font sizes that
+       had been raised back to 11px for readability were re-shrunk
+       to 8–9px on mobile, and the amber/teal color-tinting fix on
+       the KokanKart photo got reverted to a flat neutral overlay.
+       This version consolidates everything into ONE definition per
+       property, so there is no hidden override chain to reason about.
        ===================================================== -->
 
   <style>
@@ -174,6 +185,9 @@
 
     /* =====================================================
        COMMON
+       Section padding and section-head spacing scale fluidly
+       with clamp() instead of five overlapping breakpoints,
+       so there is one number to reason about, not a cascade.
        ===================================================== */
 
     .container {
@@ -186,7 +200,7 @@
     }
 
     section {
-      padding: 120px 0;
+      padding: clamp(40px, 6vw, 84px) 0;
       position: relative;
     }
 
@@ -230,7 +244,7 @@
         var(--container)
       );
 
-      min-height: 76px;
+      min-height: 72px;
 
       margin-inline: auto;
 
@@ -249,30 +263,19 @@
       font-family: "Sora", sans-serif;
       font-weight: 700;
       letter-spacing: -0.03em;
-      flex-shrink: 0;
     }
 
-    .brand-mark {
-      width: 40px;
-      height: 40px;
+    .brand-logo {
+      height: 28px;
+      width: auto;
 
-      border-radius: 10px;
-
-      display: grid;
-      place-items: center;
-
-      overflow: hidden;
-      flex-shrink: 0;
-    }
-
-    .brand-mark img {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
+      display: block;
     }
 
     .brand-name {
-      font-size: 14px;
+      padding-left: 14px;
+
+      border-left: 1px solid var(--border-strong);
     }
 
     .brand-name span {
@@ -281,10 +284,8 @@
       color: var(--text-muted);
 
       font-family: "JetBrains Mono", monospace;
-      font-size: 9px;
+      font-size: 11px;
       font-weight: 500;
-
-      margin-top: 1px;
 
       letter-spacing: 0.04em;
     }
@@ -292,8 +293,7 @@
     .nav-links {
       display: flex;
       align-items: center;
-      gap: 28px;
-      margin-left: auto;
+      gap: 26px;
     }
 
     .nav-links > a:not(.nav-cta) {
@@ -386,19 +386,16 @@
 
     /* =====================================================
        HERO
+       No forced min-height: the hero sizes to its own content
+       plus padding, so it never leaves a dead gap on shorter
+       laptop screens the way a forced 100vh block did.
        ===================================================== */
 
     .hero {
-      min-height: calc(100vh - 76px);
-
       display: flex;
       align-items: center;
 
-      padding: 100px 0 90px;
-    }
-
-    .hero .container {
-      width: 100%;
+      padding: clamp(36px, 6vw, 76px) 0 clamp(40px, 6vw, 70px);
     }
 
     .hero-grid {
@@ -406,9 +403,9 @@
 
       grid-template-columns:
         minmax(0, 1.05fr)
-        minmax(380px, .95fr);
+        minmax(340px, .95fr);
 
-      gap: 70px;
+      gap: clamp(32px, 4vw, 60px);
 
       align-items: center;
     }
@@ -434,7 +431,7 @@
       font-size: 11px;
       letter-spacing: .035em;
 
-      margin-bottom: 25px;
+      margin-bottom: 20px;
     }
 
     .dot {
@@ -453,10 +450,10 @@
       max-width: 850px;
 
       font-family: "Sora", sans-serif;
-      font-size: clamp(42px, 6vw, 76px);
-      line-height: 1.04;
+      font-size: clamp(36px, 5.6vw, 76px);
+      line-height: 1.06;
 
-      letter-spacing: -0.055em;
+      letter-spacing: -0.05em;
       font-weight: 700;
     }
 
@@ -478,12 +475,12 @@
     .hero-copy {
       max-width: 680px;
 
-      margin-top: 28px;
+      margin-top: 24px;
 
       color: var(--text-soft);
 
-      font-size: 17px;
-      line-height: 1.8;
+      font-size: clamp(14px, 1.1vw, 17px);
+      line-height: 1.75;
     }
 
     .actions {
@@ -493,7 +490,7 @@
 
       gap: 12px;
 
-      margin-top: 32px;
+      margin-top: 28px;
     }
 
     .btn {
@@ -596,6 +593,11 @@
         rgba(255,255,255,.05);
     }
 
+    .actions .btn,
+    .product-actions .btn {
+      width: auto;
+    }
+
 
     /* =====================================================
        HERO PANEL
@@ -604,7 +606,7 @@
     .hero-panel {
       position: relative;
 
-      padding: 18px;
+      padding: 16px;
 
       border: 1px solid var(--border);
 
@@ -633,11 +635,11 @@
       justify-content: space-between;
       align-items: center;
 
-      padding: 5px 4px 17px;
+      padding: 5px 4px 15px;
 
       color: var(--text-muted);
 
-      font-size: 10px;
+      font-size: 11px;
       letter-spacing: .04em;
     }
 
@@ -676,9 +678,9 @@
       flex-direction: column;
       justify-content: center;
 
-      min-height: 130px;
+      min-height: 116px;
 
-      padding: 20px;
+      padding: 18px 20px;
 
       overflow: hidden;
 
@@ -694,10 +696,6 @@
         border-color .3s ease;
     }
 
-    .tile.big {
-      justify-content: flex-start;
-    }
-
     .tile:hover {
       transform: translateY(-3px);
 
@@ -707,6 +705,8 @@
 
     .tile.big {
       grid-column: 1 / -1;
+
+      justify-content: flex-start;
 
       background:
         radial-gradient(
@@ -736,7 +736,7 @@
 
       color: var(--text-muted);
 
-      font-size: 10px;
+      font-size: 11px;
 
       margin-bottom: 12px;
     }
@@ -823,111 +823,2912 @@
         0 0 12px rgba(34,211,238,.3);
     }
 
-  </style>
 
+    /* =====================================================
+       SECTION HEAD
+       ===================================================== */
+
+    .section-head {
+      max-width: 760px;
+
+      margin-bottom: clamp(24px, 3.2vw, 40px);
+    }
+
+    .kicker {
+      display: inline-block;
+
+      margin-bottom: 14px;
+
+      color: var(--cyan);
+
+      font-size: 11px;
+      font-weight: 600;
+
+      letter-spacing: .04em;
+      text-transform: uppercase;
+    }
+
+    .kicker.coral {
+      color: var(--coral);
+    }
+
+    .kicker.teal {
+      color: var(--cyan);
+    }
+
+    .kicker.amber {
+      color: var(--amber);
+    }
+
+    .section-head h2 {
+      font-family: "Sora", sans-serif;
+
+      font-size:
+        clamp(28px, 3.6vw, 50px);
+
+      line-height: 1.12;
+
+      letter-spacing: -.045em;
+    }
+
+    .section-head p {
+      max-width: 690px;
+
+      margin-top: 16px;
+
+      color: var(--text-soft);
+
+      font-size: clamp(13px, 1vw, 15px);
+    }
+
+
+    /* =====================================================
+       ABOUT
+       ===================================================== */
+
+    .story-grid {
+      display: grid;
+
+      grid-template-columns:
+        repeat(2, minmax(0,1fr));
+
+      gap: 18px;
+    }
+
+    .card {
+      border: 1px solid var(--border);
+
+      border-radius: var(--radius-lg);
+
+      background:
+        linear-gradient(
+          145deg,
+          rgba(255,255,255,.035),
+          rgba(255,255,255,.012)
+        );
+
+      box-shadow:
+        0 16px 45px rgba(0,0,0,.12);
+
+      transition:
+        transform .3s ease,
+        box-shadow .3s ease,
+        border-color .3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+
+      box-shadow:
+        var(--shadow-hover);
+
+      border-color:
+        var(--border-strong);
+    }
+
+    .story {
+      padding: clamp(22px, 2.4vw, 30px);
+    }
+
+    .story h3 {
+      font-family: "Sora", sans-serif;
+
+      font-size: clamp(20px, 1.8vw, 24px);
+
+      letter-spacing: -.035em;
+    }
+
+    .story > p {
+      color: var(--text-soft);
+
+      margin-top: 14px;
+
+      font-size: 13.5px;
+      line-height: 1.8;
+    }
+
+    .pillars {
+      display: grid;
+
+      grid-template-columns:
+        repeat(2, minmax(0,1fr));
+
+      gap: 10px;
+
+      margin-top: 24px;
+    }
+
+    .pillar {
+      position: relative;
+
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+
+      min-height: 74px;
+
+      padding: 15px 40px 15px 20px;
+
+      overflow: hidden;
+
+      border: 1px solid var(--border);
+
+      border-radius: 13px;
+
+      background:
+        rgba(255,255,255,.018);
+
+      transition:
+        transform .25s ease,
+        border-color .25s ease;
+    }
+
+    .pillar::before {
+      content: "";
+
+      position: absolute;
+
+      left: 0;
+      top: 50%;
+
+      width: 3px;
+      height: 28px;
+
+      transform: translateY(-50%);
+
+      border-radius: 0 4px 4px 0;
+
+      background:
+        var(--pillar-color);
+    }
+
+    .pillar:nth-child(1) {
+      --pillar-color: var(--cyan);
+    }
+
+    .pillar:nth-child(2) {
+      --pillar-color: var(--indigo);
+    }
+
+    .pillar:nth-child(3) {
+      --pillar-color: var(--coral);
+    }
+
+    .pillar:nth-child(4) {
+      --pillar-color: var(--amber);
+    }
+
+    .pillar:hover {
+      transform: translateX(3px);
+
+      border-color:
+        color-mix(
+          in srgb,
+          var(--pillar-color) 35%,
+          transparent
+        );
+    }
+
+    .pillar b {
+      display: block;
+
+      color: var(--pillar-color);
+
+      font-size: 12px;
+    }
+
+    .pillar span {
+      display: block;
+
+      color: var(--text-muted);
+
+      font-size: 11.5px;
+
+      margin-top: 5px;
+    }
+
+
+    /* =====================================================
+       PRODUCTS
+       ===================================================== */
+
+    .products {
+      display: flex;
+      flex-direction: column;
+
+      gap: clamp(22px, 3vw, 44px);
+    }
+
+    .product {
+      --product: var(--cyan);
+      --product-soft: rgba(34,211,238,.12);
+      --product-glow: rgba(34,211,238,.25);
+
+      position: relative;
+
+      overflow: hidden;
+
+      border: 1px solid var(--border);
+
+      border-radius: var(--radius-xl);
+
+      background:
+        linear-gradient(
+          145deg,
+          rgba(255,255,255,.035),
+          rgba(255,255,255,.012)
+        );
+
+      box-shadow:
+        var(--shadow);
+
+      transition:
+        transform .35s ease,
+        box-shadow .35s ease,
+        border-color .35s ease;
+    }
+
+    /* VibeFit = coral, KokanKart = amber — kept distinct from CMS's
+       own cyan/indigo brand pair so each product still reads as its
+       own identity. */
+    .product.vibefit {
+      --product: var(--coral);
+      --product-soft: var(--coral-soft);
+      --product-glow: var(--coral-glow);
+    }
+
+    .product.kokankart {
+      --product: var(--amber);
+      --product-soft: var(--amber-soft);
+      --product-glow: var(--amber-glow);
+    }
+
+    .product::before {
+      content: "";
+
+      position: absolute;
+
+      left: 0;
+      top: 0;
+      right: 0;
+
+      height: 3px;
+
+      z-index: 5;
+
+      background:
+        linear-gradient(
+          90deg,
+          var(--product),
+          transparent 75%
+        );
+    }
+
+    .product:hover {
+      transform: translateY(-5px);
+
+      border-color:
+        color-mix(
+          in srgb,
+          var(--product) 25%,
+          rgba(255,255,255,.08)
+        );
+
+      box-shadow:
+        0 30px 80px rgba(0,0,0,.35),
+        0 0 55px var(--product-glow);
+    }
+
+
+    /* =====================================================
+       PRODUCT BACKGROUND HERO
+       ===================================================== */
+
+    .product-background {
+      position: relative;
+
+      min-height: clamp(260px, 30vw, 400px);
+
+      overflow: hidden;
+
+      display: flex;
+      align-items: flex-end;
+
+      background-color: #07101b;
+
+      background-repeat: no-repeat;
+      background-position: right center;
+      background-size: cover;
+
+      isolation: isolate;
+    }
+
+    .vibefit .product-background {
+      background-image:
+        url("assets/vibefit-background.png");
+    }
+
+    .kokankart .product-background {
+      background-image:
+        url("assets/kokankart-background.png");
+    }
+
+    /* Tint the scrim with each product's accent so the photography
+       always reads as belonging to that product — this is what
+       keeps KokanKart's cool teal render from clashing with its
+       amber UI accents, without touching the source image. */
+    .product-background::after {
+      content: "";
+
+      position: absolute;
+      inset: 0;
+
+      z-index: -1;
+
+      background:
+        linear-gradient(
+          90deg,
+          color-mix(in srgb, var(--product) 14%, #05070d) 0%,
+          color-mix(in srgb, var(--product) 10%, rgba(5,9,17,.66)) 38%,
+          color-mix(in srgb, var(--product) 6%, rgba(5,9,17,.10)) 75%,
+          color-mix(in srgb, var(--product) 6%, rgba(5,9,17,.12)) 100%
+        );
+    }
+
+    .product-background-content {
+      width: min(620px, 55%);
+
+      padding: clamp(28px, 3.4vw, 55px) clamp(24px, 3.4vw, 55px) clamp(24px, 3vw, 48px);
+    }
+
+    .product-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      gap: 15px;
+
+      margin-bottom: 18px;
+    }
+
+    .status {
+      display: inline-flex;
+      align-items: center;
+
+      width: fit-content;
+
+      padding: 7px 11px;
+
+      border: 1px solid
+        color-mix(
+          in srgb,
+          var(--product) 38%,
+          transparent
+        );
+
+      border-radius: 8px;
+
+      color: var(--product);
+
+      background: var(--product-soft);
+
+      font-size: 11px;
+      font-weight: 600;
+
+      text-transform: uppercase;
+      letter-spacing: .025em;
+    }
+
+    .product-background .kicker {
+      margin: 0;
+
+      color: var(--product);
+    }
+
+    .product-background h3 {
+      margin-top: 10px;
+
+      font-family: "Sora", sans-serif;
+
+      font-size:
+        clamp(30px, 4.6vw, 62px);
+
+      line-height: 1;
+
+      letter-spacing: -.05em;
+    }
+
+    .product-background h3::before {
+      content: "";
+
+      display: inline-block;
+
+      width: 8px;
+      height: 8px;
+
+      margin-right: 12px;
+
+      vertical-align: middle;
+
+      border-radius: 50%;
+
+      background: var(--product);
+
+      box-shadow:
+        0 0 18px var(--product-glow);
+    }
+
+    .product-background .lead {
+      margin-top: 16px;
+
+      color: #d0d7e3;
+
+      font-size: 13.5px;
+
+      line-height: 1.7;
+
+      text-shadow:
+        0 2px 15px rgba(0,0,0,.7);
+    }
+
+    .product-background .tags {
+      display: flex;
+      flex-wrap: wrap;
+
+      gap: 7px;
+
+      margin-top: 18px;
+    }
+
+    .tag {
+      display: inline-flex;
+
+      padding: 7px 10px;
+
+      border: 1px solid
+        color-mix(
+          in srgb,
+          var(--product) 38%,
+          rgba(255,255,255,.08)
+        );
+
+      border-radius: 7px;
+
+      color: #d9e1eb;
+
+      background:
+        rgba(4,8,15,.55);
+
+      backdrop-filter: blur(7px);
+
+      font-size: 11px;
+
+      transition:
+        transform .2s ease,
+        background .2s ease,
+        color .2s ease,
+        border-color .2s ease;
+    }
+
+    .tag:hover {
+      transform: translateY(-2px);
+
+      color: var(--product);
+
+      background: var(--product-soft);
+
+      border-color: var(--product);
+    }
+
+
+    /* =====================================================
+       PRODUCT DETAILS
+       ===================================================== */
+
+    .product-details {
+      padding: clamp(18px, 2vw, 28px) clamp(20px, 3vw, 40px) clamp(20px, 2.4vw, 32px);
+    }
+
+    .product-info {
+      display: grid;
+
+      grid-template-columns:
+        repeat(2, minmax(0,1fr));
+
+      gap: clamp(18px, 2vw, 30px);
+    }
+
+    .info h4 {
+      margin-bottom: 12px;
+
+      color: var(--product);
+
+      font-family: "JetBrains Mono", monospace;
+
+      font-size: 11px;
+
+      text-transform: uppercase;
+      letter-spacing: .04em;
+    }
+
+    .info p,
+    .info li {
+      color: var(--text-soft);
+
+      font-size: 13px;
+      line-height: 1.72;
+    }
+
+    .info ul {
+      list-style: none;
+    }
+
+    .info li {
+      position: relative;
+
+      padding-left: 17px;
+
+      margin-bottom: 6px;
+    }
+
+    .info li::before {
+      content: "";
+
+      position: absolute;
+
+      left: 0;
+      top: .75em;
+
+      width: 5px;
+      height: 5px;
+
+      border-radius: 50%;
+
+      background: var(--product);
+
+      box-shadow:
+        0 0 8px var(--product-glow);
+    }
+
+    .product-actions {
+      display: flex;
+      flex-wrap: wrap;
+
+      gap: 9px;
+
+      margin-top: 18px;
+    }
+
+    .product-actions .btn.primary {
+      background: var(--product);
+
+      border-color: var(--product);
+
+      color: #fff;
+
+      box-shadow:
+        0 10px 28px var(--product-glow);
+    }
+
+    .product-actions .btn.primary:hover {
+      box-shadow:
+        0 16px 40px var(--product-glow);
+    }
+
+
+    /* =====================================================
+       SHOWCASE IMAGE
+       ===================================================== */
+
+    .product-showcase {
+      padding: 0 clamp(20px, 3vw, 40px) clamp(20px, 3vw, 40px);
+    }
+
+    .showcase-frame {
+      position: relative;
+
+      overflow: hidden;
+
+      border:
+        1px solid
+        rgba(255,255,255,.08);
+
+      border-radius: 20px;
+
+      background:
+        rgba(0,0,0,.18);
+
+      box-shadow:
+        inset 0 0 0 1px rgba(255,255,255,.02);
+    }
+
+    .showcase-frame::after {
+      content: "";
+
+      position: absolute;
+      inset: 0;
+
+      pointer-events: none;
+
+      background:
+        linear-gradient(
+          180deg,
+          transparent 65%,
+          rgba(0,0,0,.08)
+        );
+    }
+
+    .showcase-frame img {
+      width: 100%;
+      height: auto;
+
+      transition:
+        transform .65s var(--ease);
+    }
+
+    /* The KokanKart showcase graphic is shot on a warm cream
+       background rather than a dark one, so it needs a frame that
+       bridges the two instead of a hard-edged clash with the rest
+       of the (near-black) page. */
+    .kokankart .showcase-frame {
+      padding: 3px;
+
+      background:
+        linear-gradient(
+          160deg,
+          rgba(244, 166, 54, .35),
+          rgba(244, 166, 54, .05)
+        );
+
+      box-shadow:
+        0 0 0 1px rgba(244, 166, 54, .22),
+        0 30px 70px rgba(244, 166, 54, .14);
+    }
+
+    .kokankart .showcase-frame img {
+      border-radius: 17px;
+    }
+
+    .product:hover .showcase-frame img {
+      transform: scale(1.012);
+    }
+
+
+    /* =====================================================
+       APPROACH
+       ===================================================== */
+
+    .approach {
+      display: grid;
+
+      grid-template-columns:
+        repeat(5, minmax(0,1fr));
+
+      gap: 12px;
+    }
+
+    .step {
+      position: relative;
+
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+
+      min-height: 168px;
+
+      padding: 22px;
+
+      overflow: hidden;
+    }
+
+    .step .line {
+      width: 40px;
+      height: 3px;
+
+      margin-bottom: 22px;
+
+      border-radius: 100px;
+
+      background:
+        linear-gradient(
+          90deg,
+          var(--step-color),
+          transparent
+        );
+    }
+
+    .step:nth-child(1) {
+      --step-color: var(--cyan);
+    }
+
+    .step:nth-child(2) {
+      --step-color: var(--indigo);
+    }
+
+    .step:nth-child(3) {
+      --step-color: var(--coral);
+    }
+
+    .step:nth-child(4) {
+      --step-color: var(--amber);
+    }
+
+    .step:nth-child(5) {
+      --step-color: var(--cyan);
+    }
+
+    .step b {
+      color: var(--step-color);
+
+      font-family: "Sora", sans-serif;
+
+      font-size: 16px;
+    }
+
+    .step p {
+      color: var(--text-muted);
+
+      font-size: 12.5px;
+
+      margin-top: 9px;
+    }
+
+    .step::after {
+      content: "";
+
+      position: absolute;
+
+      right: 20px;
+      top: 20px;
+
+      width: 7px;
+      height: 7px;
+
+      border-radius: 50%;
+
+      background: var(--step-color);
+
+      box-shadow:
+        0 0 14px var(--step-color);
+    }
+
+
+    /* =====================================================
+       VALUES
+       ===================================================== */
+
+    .values {
+      display: grid;
+
+      grid-template-columns:
+        repeat(4, minmax(0,1fr));
+
+      gap: 12px;
+    }
+
+    .value {
+      position: relative;
+
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+
+      min-height: 100px;
+
+      padding: 20px 40px 20px 26px;
+
+      overflow: hidden;
+    }
+
+    .value::before {
+      content: "";
+
+      position: absolute;
+
+      left: 0;
+      top: 0;
+      bottom: 0;
+
+      width: 3px;
+
+      background: var(--value-color);
+    }
+
+    .value:nth-child(1) {
+      --value-color: var(--cyan);
+    }
+
+    .value:nth-child(2) {
+      --value-color: var(--indigo);
+    }
+
+    .value:nth-child(3) {
+      --value-color: var(--coral);
+    }
+
+    .value:nth-child(4) {
+      --value-color: var(--amber);
+    }
+
+    .value:nth-child(5) {
+      --value-color: var(--cyan);
+    }
+
+    .value:nth-child(6) {
+      --value-color: var(--indigo);
+    }
+
+    .value:nth-child(7) {
+      --value-color: var(--coral);
+    }
+
+    .value:nth-child(8) {
+      --value-color: var(--amber);
+    }
+
+    .value b {
+      color: var(--value-color);
+
+      font-family: "Sora", sans-serif;
+
+      font-size: 15px;
+    }
+
+    .value p {
+      color: var(--text-muted);
+
+      font-size: 12.5px;
+
+      margin-top: 7px;
+    }
+
+    .value:hover {
+      border-color:
+        color-mix(
+          in srgb,
+          var(--value-color) 35%,
+          transparent
+        );
+    }
+
+
+    /* =====================================================
+       VISION
+       ===================================================== */
+
+    .vision {
+      display: grid;
+
+      grid-template-columns:
+        minmax(0,1fr)
+        minmax(300px,.8fr);
+
+      gap: clamp(24px, 3vw, 50px);
+
+      padding: clamp(24px, 2.6vw, 40px);
+    }
+
+    .vision h3 {
+      max-width: 650px;
+
+      margin-top: 7px;
+
+      font-family: "Sora", sans-serif;
+
+      font-size:
+        clamp(24px, 3vw, 44px);
+
+      line-height: 1.15;
+
+      letter-spacing: -.045em;
+    }
+
+    .vision p {
+      max-width: 640px;
+
+      margin-top: 16px;
+
+      color: var(--text-soft);
+
+      font-size: 13.5px;
+    }
+
+    .future {
+      display: grid;
+
+      grid-template-columns: 1fr 1fr;
+
+      gap: 9px;
+
+      align-content: center;
+    }
+
+    .future div {
+      padding: 13px 13px 13px 34px;
+
+      position: relative;
+
+      border: 1px solid var(--border);
+
+      border-radius: 11px;
+
+      color: var(--text-soft);
+
+      background:
+        rgba(255,255,255,.018);
+
+      font-family: "JetBrains Mono", monospace;
+
+      font-size: 11px;
+
+      transition:
+        transform .2s ease,
+        border-color .2s ease,
+        background .2s ease;
+    }
+
+    .future div:hover {
+      transform: translateY(-3px);
+
+      color: var(--text);
+
+      border-color:
+        rgba(34,211,238,.3);
+
+      background:
+        rgba(34,211,238,.05);
+    }
+
+
+    /* =====================================================
+       CTA
+       ===================================================== */
+
+    .cta {
+      position: relative;
+
+      overflow: hidden;
+
+      padding: clamp(38px, 4vw, 65px) clamp(22px, 3vw, 50px);
+
+      text-align: center;
+    }
+
+    .cta::before {
+      content: "";
+
+      position: absolute;
+
+      width: 360px;
+      height: 360px;
+
+      right: -130px;
+      bottom: -210px;
+
+      border-radius: 50%;
+
+      background:
+        radial-gradient(
+          circle,
+          rgba(242,85,95,.16),
+          transparent 68%
+        );
+
+      pointer-events: none;
+    }
+
+    .cta::after {
+      content: "";
+
+      position: absolute;
+
+      width: 300px;
+      height: 300px;
+
+      left: -150px;
+      top: -180px;
+
+      border-radius: 50%;
+
+      background:
+        radial-gradient(
+          circle,
+          rgba(34,211,238,.12),
+          transparent 68%
+        );
+
+      pointer-events: none;
+    }
+
+    .cta .kicker,
+    .cta h2,
+    .cta p,
+    .cta .btn {
+      position: relative;
+      z-index: 2;
+    }
+
+    .cta h2 {
+      margin-top: 5px;
+
+      font-family: "Sora", sans-serif;
+
+      font-size:
+        clamp(28px, 4.4vw, 58px);
+
+      letter-spacing: -.05em;
+    }
+
+    .cta p {
+      max-width: 600px;
+
+      margin: 15px auto 22px;
+
+      color: var(--text-soft);
+
+      font-size: 13.5px;
+    }
+
+
+    /* =====================================================
+       FOOTER
+       ===================================================== */
+
+    footer {
+      padding: clamp(32px, 3.2vw, 55px) 0 clamp(20px, 2vw, 30px);
+
+      border-top: 1px solid var(--border);
+
+      background:
+        rgba(0,0,0,.12);
+    }
+
+    .footer-grid {
+      display: grid;
+
+      grid-template-columns:
+        1fr 1fr;
+
+      gap: 30px;
+    }
+
+    .footer-brand {
+      font-family: "Sora", sans-serif;
+
+      font-size: 15px;
+      font-weight: 600;
+    }
+
+    .footer-brand span {
+      display: block;
+
+      margin-top: 8px;
+
+      color: var(--text-muted);
+
+      font-family: "Inter", sans-serif;
+
+      font-size: 12px;
+      font-weight: 400;
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: flex-end;
+      flex-wrap: wrap;
+
+      gap: 13px 20px;
+
+      color: var(--text-muted);
+
+      font-size: 11px;
+    }
+
+    .footer-links a:hover {
+      color: var(--cyan);
+    }
+
+    .copyright {
+      margin-top: 28px;
+      padding-top: 18px;
+
+      border-top: 1px solid var(--border);
+
+      color: var(--text-muted);
+
+      font-family: "JetBrains Mono", monospace;
+
+      font-size: 11px;
+
+      text-align: center;
+    }
+
+
+    /* =====================================================
+       FOCUS
+       ===================================================== */
+
+    a:focus-visible,
+    button:focus-visible {
+      outline: 2px solid var(--cyan);
+      outline-offset: 4px;
+    }
+
+
+    /* =====================================================
+       SYMBOL POLISH — small visual markers for key ideas.
+       Purely decorative iconography, not reading text, so
+       these stay compact by design.
+       ===================================================== */
+
+    .pillar::after {
+      content: "✦";
+      position: absolute;
+      right: 13px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 22px;
+      height: 22px;
+      display: grid;
+      place-items: center;
+      border: 1px solid color-mix(in srgb, var(--pillar-color) 30%, transparent);
+      border-radius: 50%;
+      color: var(--pillar-color);
+      background: color-mix(in srgb, var(--pillar-color) 8%, transparent);
+      font-size: 11px;
+      line-height: 1;
+      opacity: .9;
+      transition: transform .25s ease, box-shadow .25s ease;
+    }
+
+    .pillar:nth-child(1)::after { content: "⌘"; }
+    .pillar:nth-child(2)::after { content: "◇"; }
+    .pillar:nth-child(3)::after { content: "↗"; }
+    .pillar:nth-child(4)::after { content: "▱"; }
+
+    .pillar:hover::after {
+      transform: translateY(-50%) rotate(8deg) scale(1.08);
+      box-shadow: 0 0 16px color-mix(in srgb, var(--pillar-color) 25%, transparent);
+    }
+
+    .step::before {
+      content: "01";
+      position: absolute;
+      right: 18px;
+      bottom: 17px;
+      color: var(--step-color);
+      font-family: "JetBrains Mono", monospace;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: .08em;
+      opacity: .55;
+    }
+
+    .step:nth-child(1)::before { content: "◎ 01"; }
+    .step:nth-child(2)::before { content: "◇ 02"; }
+    .step:nth-child(3)::before { content: "▣ 03"; }
+    .step:nth-child(4)::before { content: "↗ 04"; }
+    .step:nth-child(5)::before { content: "↻ 05"; }
+
+    .value::after {
+      content: "✦";
+      position: absolute;
+      right: 17px;
+      top: 18px;
+      color: var(--value-color);
+      font-size: 15px;
+      opacity: .75;
+    }
+
+    .value:nth-child(1)::after { content: "✦"; }
+    .value:nth-child(2)::after { content: "◇"; }
+    .value:nth-child(3)::after { content: "↯"; }
+    .value:nth-child(4)::after { content: "♥"; }
+    .value:nth-child(5)::after { content: "◉"; }
+    .value:nth-child(6)::after { content: "✓"; }
+    .value:nth-child(7)::after { content: "↗"; }
+    .value:nth-child(8)::after { content: "⌁"; }
+
+    .future div::before {
+      content: "→";
+      position: absolute;
+      left: 13px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--cyan);
+      font-family: "JetBrains Mono", monospace;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .future div:nth-child(2)::before { color: var(--indigo); content: "◇"; }
+    .future div:nth-child(3)::before { color: var(--coral); content: "↗"; }
+    .future div:nth-child(4)::before { color: var(--amber); content: "✦"; }
+    .future div:nth-child(5)::before { color: var(--cyan); content: "＋"; }
+    .future div:nth-child(6)::before { color: var(--indigo); content: "∞"; }
+
+    .info h4::before {
+      display: inline-block;
+      margin-right: 7px;
+      color: currentColor;
+      opacity: .8;
+      font-family: "JetBrains Mono", monospace;
+      font-size: .85em;
+    }
+
+    .vibefit .info h4::before { content: "✦"; }
+    .kokankart .info h4::before { content: "◇"; }
+
+
+    /* =====================================================
+       RESPONSIVE — layout / structural changes only.
+       Scalar spacing above already flexes via clamp(), so
+       these breakpoints only handle things clamp() can't do:
+       column-count changes, stacking, and the product-image
+       crop/legibility treatment on narrow screens.
+       ===================================================== */
+
+    @media (max-width: 1050px) {
+
+      .hero-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-copy {
+        max-width: 720px;
+      }
+
+      .hero-panel {
+        max-width: 700px;
+      }
+
+      .approach {
+        grid-template-columns:
+          repeat(3, minmax(0,1fr));
+      }
+
+      .values {
+        grid-template-columns:
+          repeat(2, minmax(0,1fr));
+      }
+
+      .product-background-content {
+        width: 65%;
+      }
+
+    }
+
+
+    @media (max-width: 800px) {
+
+      .nav-inner {
+        min-height: 64px;
+      }
+
+      .menu {
+        display: block;
+      }
+
+      .nav-links {
+        position: absolute;
+
+        left: 20px;
+        right: 20px;
+        top: calc(100% + 10px);
+
+        padding: 12px;
+
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+
+        gap: 4px;
+
+        border: 1px solid var(--border);
+
+        border-radius: 15px;
+
+        background:
+          rgba(7,11,20,.96);
+
+        backdrop-filter: blur(20px);
+
+        box-shadow:
+          0 25px 60px rgba(0,0,0,.35);
+
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-8px);
+
+        transition:
+          opacity .2s ease,
+          transform .2s ease,
+          visibility .2s ease;
+      }
+
+      .nav-links.open {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+      }
+
+      .nav-links a {
+        padding: 13px 12px;
+      }
+
+      .nav-cta {
+        text-align: center;
+      }
+
+      .story-grid {
+        grid-template-columns: 1fr;
+      }
+
+      /* Shorter min-height means less forced zoom on these wide
+         source images, so more of each phone mockup stays in
+         frame instead of being cropped to a sliver. */
+      .product-background {
+        align-items: flex-end;
+      }
+
+      .product-background-content {
+        width: 100%;
+      }
+
+      .product-info {
+        grid-template-columns: 1fr;
+      }
+
+      .vision {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-links {
+        justify-content: flex-start;
+      }
+
+    }
+
+
+    @media (max-width: 560px) {
+
+      .container,
+      .nav-inner {
+        width: calc(100% - 28px);
+      }
+
+      .brand-name {
+        display: none;
+      }
+
+      .actions {
+        align-items: stretch;
+        flex-direction: column;
+      }
+
+      .actions .btn {
+        width: 100%;
+      }
+
+      .panel-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .tile.big {
+        grid-column: auto;
+      }
+
+      .pillars {
+        grid-template-columns: 1fr;
+      }
+
+      /* On phones the status badge sits full-width over the
+         artwork, so the scrim is darkened from the very top —
+         it needs a reliable backdrop no matter what the crop
+         shows underneath. */
+      .product-background::after {
+        background:
+          linear-gradient(
+            180deg,
+            color-mix(in srgb, var(--product) 10%, rgba(5,9,17,.6)) 0%,
+            color-mix(in srgb, var(--product) 8%, rgba(5,9,17,.42)) 28%,
+            color-mix(in srgb, var(--product) 6%, rgba(5,9,17,.93)) 70%,
+            rgba(5,9,17,.98) 100%
+          );
+      }
+
+      .product-actions .btn {
+        width: 100%;
+      }
+
+      .approach {
+        grid-template-columns: 1fr;
+      }
+
+      .values {
+        grid-template-columns: 1fr;
+      }
+
+      .future {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-links {
+        gap: 10px 14px;
+      }
+
+    }
+
+
+    /* =====================================================
+       REDUCED MOTION
+       ===================================================== */
+
+    @media (prefers-reduced-motion: reduce) {
+
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+
+        transition-duration: .01ms !important;
+      }
+
+      .reveal {
+        opacity: 1;
+        transform: none;
+      }
+
+      .btn::after {
+        display: none;
+      }
+
+    }
+
+  </style>
 </head>
+
+
 
 <body>
 
-  <div class="scroll-progress"></div>
+  <!-- =====================================================
+       SCROLL PROGRESS
+       ===================================================== -->
+
+  <div
+    class="scroll-progress"
+    id="scrollProgress"
+  ></div>
+
 
   <!-- =====================================================
        NAVIGATION
        ===================================================== -->
 
   <nav>
+
     <div class="nav-inner">
 
-      <a href="#" class="brand">
-        <div class="brand-mark">
-          <img src="assets/cms-logo.png" alt="CMS Logo">
-        </div>
+      <a
+        class="brand"
+        href="#top"
+        aria-label="Creative Management Solutions home"
+      >
+
+        <img
+          class="brand-logo"
+          src="assets/cms-logo.png"
+          alt="Creative Management Solutions"
+        >
+
         <div class="brand-name">
-          Creative Management <span>Solutions</span>
+          <span>PRODUCT STUDIO</span>
         </div>
+
       </a>
 
-      <div class="nav-links">
-        <a href="#about">About</a>
-        <a href="#products">Products</a>
-        <a href="#contact">Contact</a>
-        <a href="#" class="nav-cta">Get Started</a>
+
+
+      <button
+        class="menu"
+        id="menu"
+        aria-label="Open navigation menu"
+        aria-expanded="false"
+      >
+        ☰
+      </button>
+
+
+      <div
+        class="nav-links"
+        id="navLinks"
+      >
+
+        <a href="#about">
+          About
+        </a>
+
+        <a href="#products">
+          Products
+        </a>
+
+        <a href="#approach">
+          Approach
+        </a>
+
+        <a href="#values">
+          Values
+        </a>
+
+        <a
+          class="nav-cta"
+          href="mailto:support@cmsgroup.in"
+        >
+          Contact CMS
+        </a>
+
       </div>
 
-      <button class="menu" aria-label="Toggle menu">☰</button>
-
     </div>
+
   </nav>
 
 
   <!-- =====================================================
-       HERO
+       MAIN
        ===================================================== -->
 
-  <section class="hero">
-    <div class="container">
-      <div class="hero-grid">
+  <main id="top">
 
-        <!-- Hero Content -->
-        <div>
-          <div class="eyebrow">
-            <span class="dot"></span>
-            Build the future
-          </div>
+
+    <!-- ===================================================
+         HERO
+         =================================================== -->
+
+    <section class="hero">
+
+      <div class="container hero-grid">
+
+        <div class="reveal">
+
+          <span class="eyebrow">
+            <i class="dot"></i>
+            India-focused digital product company
+          </span>
+
 
           <h1>
-            India's leading
-            <span class="gradient">digital product company</span>
+            <span class="gradient">
+              Building products
+            </span>
+            <br>
+            that solve real problems.
           </h1>
 
+
           <p class="hero-copy">
-            We craft innovative digital solutions across wellness, commerce, and emerging real-world opportunities. Turning ideas into impact.
+            Creative Management Solutions (CMS) builds,
+            launches and grows its own technology products —
+            creating focused digital experiences across
+            wellness, commerce and emerging real-world
+            opportunities.
           </p>
 
+
           <div class="actions">
-            <button class="btn primary">Get Started</button>
-            <button class="btn secondary">Learn More</button>
+
+            <a
+              class="btn primary"
+              href="#products"
+            >
+              Explore Products →
+            </a>
+
+            <a
+              class="btn secondary"
+              href="#about"
+            >
+              Our Philosophy
+            </a>
+
           </div>
+
         </div>
 
-        <!-- Hero Panel -->
-        <div class="hero-panel">
+
+        <!-- HERO PANEL -->
+
+        <div class="hero-panel reveal">
+
           <div class="panel-top">
-            <span>LIVE METRICS</span>
+
+            <span>
+              CMS / PRODUCT STUDIO
+            </span>
+
             <span class="live">
               <i></i>
-              Active
+              Building
             </span>
+
           </div>
 
-          <div class="panel-grid">
-            <div class="tile accent-teal">
-              <small>Users</small>
-              <strong>10K+</strong>
-              <p>Active worldwide</p>
-            </div>
 
-            <div class="tile accent-coral">
-              <small>Growth</small>
-              <strong>45%</strong>
-              <p>Month-over-month</p>
-            </div>
+          <div class="panel-grid">
 
             <div class="tile big">
-              <small>Projects</small>
-              <strong>15+</strong>
-              <p>Innovative solutions deployed</p>
+
+              <small>
+                Product philosophy
+              </small>
+
+              <strong>
+                Build → Launch → Learn → Grow
+              </strong>
+
+              <p>
+                Independent products designed
+                around real user needs.
+              </p>
+
+              <div class="bar">
+                <span></span>
+              </div>
+
+            </div>
+
+
+            <div class="tile accent-coral">
+
+              <small>
+                VibeFit
+              </small>
+
+              <strong>
+                Wellness
+              </strong>
+
+              <p>
+                Play Store preparation
+              </p>
+
+              <div class="bar coral">
+                <span></span>
+              </div>
+
+            </div>
+
+
+            <div class="tile accent-teal">
+
+              <small>
+                KokanKart
+              </small>
+
+              <strong>
+                Commerce
+              </strong>
+
+              <p>
+                Product development
+              </p>
+
               <div class="bar teal">
                 <span></span>
               </div>
+
             </div>
+
           </div>
+
         </div>
 
       </div>
+
+    </section>
+
+
+
+    <!-- ===================================================
+         ABOUT
+         =================================================== -->
+
+    <section id="about">
+
+      <div class="container">
+
+        <div class="section-head reveal">
+
+          <span class="kicker">
+            About CMS
+          </span>
+
+          <h2>
+            We build. We own. We evolve.
+          </h2>
+
+          <p>
+            CMS is focused on creating and operating
+            its own products rather than simply building
+            software for others.
+          </p>
+
+        </div>
+
+
+        <div class="story-grid">
+
+
+          <!-- STORY 1 -->
+
+          <article class="card story reveal">
+
+            <h3>
+              A product-first company.
+            </h3>
+
+            <p>
+              We start with a real problem, shape a useful
+              experience, build the technology behind it,
+              launch it, listen to users and continuously
+              improve the product. Our long-term goal is
+              to create independent products that can grow
+              into meaningful ecosystems.
+            </p>
+
+
+            <div class="pillars">
+
+              <div class="pillar">
+                <b>Problem → Product</b>
+                <span>
+                  Start with what matters.
+                </span>
+              </div>
+
+              <div class="pillar">
+                <b>Experience → Trust</b>
+                <span>
+                  Keep products simple and reliable.
+                </span>
+              </div>
+
+              <div class="pillar">
+                <b>Launch → Learn</b>
+                <span>
+                  Improve through real usage.
+                </span>
+              </div>
+
+              <div class="pillar">
+                <b>Product → Ecosystem</b>
+                <span>
+                  Build for long-term scale.
+                </span>
+              </div>
+
+            </div>
+
+          </article>
+
+
+          <!-- STORY 2 -->
+
+          <article class="card story reveal">
+
+            <h3>
+              Where CMS is heading.
+            </h3>
+
+            <p>
+              CMS is starting with focused digital products
+              and an India-first approach. Over time, the
+              company aims to build multiple technology-led
+              businesses and explore opportunities beyond
+              software when the right time and opportunity
+              arrive.
+            </p>
+
+
+            <div class="pillars">
+
+              <div class="pillar">
+                <b>Consumer Products</b>
+                <span>
+                  Useful everyday experiences.
+                </span>
+              </div>
+
+              <div class="pillar">
+                <b>Business Products</b>
+                <span>
+                  Technology for real operations.
+                </span>
+              </div>
+
+              <div class="pillar">
+                <b>Digital Commerce</b>
+                <span>
+                  Connecting people and businesses.
+                </span>
+              </div>
+
+              <div class="pillar">
+                <b>Wellness</b>
+                <span>
+                  Technology for healthier living.
+                </span>
+              </div>
+
+            </div>
+
+          </article>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- ===================================================
+         PRODUCTS
+         =================================================== -->
+
+    <section id="products">
+
+      <div class="container">
+
+        <div class="section-head reveal">
+
+          <span class="kicker">
+            Featured products
+          </span>
+
+          <h2>
+            Two products. One product philosophy.
+          </h2>
+
+          <p>
+            CMS is currently showcasing VibeFit and KokanKart —
+            two products built around very different real-world
+            needs, each with its own visual identity.
+          </p>
+
+        </div>
+
+
+        <div class="products">
+
+
+          <!-- =================================================
+               VIBEFIT
+               ================================================= -->
+
+          <article
+            class="product vibefit reveal"
+          >
+
+
+            <!-- NEW BACKGROUND IMAGE -->
+
+            <div class="product-background">
+
+              <div class="product-background-content">
+
+
+                <div class="product-top">
+
+                  <span class="status">
+                    Play Store preparation
+                  </span>
+
+                  <span class="kicker">
+                    Wellness / Consumer
+                  </span>
+
+                </div>
+
+
+                <h3>
+                  VibeFit
+                </h3>
+
+
+                <p class="lead">
+                  An offline-first fitness and wellness
+                  companion bringing workouts, yoga,
+                  nutrition, progress tracking, lifestyle
+                  planning and wellness guidance into
+                  one experience.
+                </p>
+
+
+                <div class="tags">
+
+                  <span class="tag">
+                    Workout Tracking
+                  </span>
+
+                  <span class="tag">
+                    Yoga & Meditation
+                  </span>
+
+                  <span class="tag">
+                    Indian Nutrition
+                  </span>
+
+                  <span class="tag">
+                    Offline-First
+                  </span>
+
+                  <span class="tag">
+                    Local Data
+                  </span>
+
+                  <span class="tag">
+                    Progress Analytics
+                  </span>
+
+                  <span class="tag">
+                    Lifestyle Planner
+                  </span>
+
+                  <span class="tag">
+                    Privacy Focused
+                  </span>
+
+                </div>
+
+              </div>
+
+            </div>
+
+
+            <!-- PRODUCT DETAILS -->
+
+            <div class="product-details">
+
+              <div class="product-info">
+
+
+                <div class="info">
+
+                  <h4>
+                    Product experience
+                  </h4>
+
+                  <ul>
+
+                    <li>
+                      Workout library and session tracking
+                    </li>
+
+                    <li>
+                      Yoga, breathing, mobility and recovery
+                    </li>
+
+                    <li>
+                      Indian food and nutrition tracking
+                    </li>
+
+                    <li>
+                      Weight, measurements and progress photos
+                    </li>
+
+                    <li>
+                      Goals, planning, reports and reminders
+                    </li>
+
+                  </ul>
+
+                </div>
+
+
+                <div class="info">
+
+                  <h4>
+                    Product philosophy
+                  </h4>
+
+                  <p>
+                    Core fitness functionality is designed
+                    around an offline-first experience, with
+                    local storage helping the app remain useful
+                    without continuous internet access.
+                  </p>
+
+
+                  <div class="product-actions">
+
+                    <a
+                      class="btn primary"
+                      href="/vibefit-privacy.html"
+                    >
+                      VibeFit Privacy Policy ↗
+                    </a>
+
+                    <a
+                      class="btn secondary"
+                      href="mailto:support@cmsgroup.in?subject=VibeFit%20Support"
+                    >
+                      VibeFit Support →
+                    </a>
+
+                  </div>
+
+                </div>
+
+              </div>
+
+            </div>
+
+
+            <!-- EXISTING SHOWCASE -->
+
+            <div class="product-showcase">
+
+              <div class="showcase-frame">
+
+                <img
+                  src="assets/vibefit-showcase.png"
+                  alt="VibeFit product showcase showing workouts, yoga, nutrition, recovery, progress and lifestyle screens"
+                  loading="lazy"
+                >
+
+              </div>
+
+            </div>
+
+          </article>
+
+
+
+          <!-- =================================================
+               KOKANKART
+               ================================================= -->
+
+          <article
+            class="product kokankart reveal"
+          >
+
+
+            <!-- NEW BACKGROUND IMAGE -->
+
+            <div class="product-background">
+
+              <div class="product-background-content">
+
+
+                <div class="product-top">
+
+                  <span class="status">
+                    Product development
+                  </span>
+
+                  <span class="kicker">
+                    Commerce / Local
+                  </span>
+
+                </div>
+
+
+                <h3>
+                  KokanKart
+                </h3>
+
+
+                <p class="lead">
+                  A hyperlocal commerce platform connecting
+                  customers with local vendors and regional
+                  products through a connected shopping,
+                  vendor, delivery and administration experience.
+                </p>
+
+
+                <div class="tags">
+
+                  <span class="tag">
+                    Hyperlocal Marketplace
+                  </span>
+
+                  <span class="tag">
+                    Local Vendors
+                  </span>
+
+                  <span class="tag">
+                    Regional Products
+                  </span>
+
+                  <span class="tag">
+                    Smart Cart
+                  </span>
+
+                  <span class="tag">
+                    Order Tracking
+                  </span>
+
+                  <span class="tag">
+                    Vendor Dashboard
+                  </span>
+
+                  <span class="tag">
+                    Delivery Flow
+                  </span>
+
+                  <span class="tag">
+                    Admin Operations
+                  </span>
+
+                </div>
+
+              </div>
+
+            </div>
+
+
+            <!-- PRODUCT DETAILS -->
+
+            <div class="product-details">
+
+              <div class="product-info">
+
+
+                <div class="info">
+
+                  <h4>
+                    Connected ecosystem
+                  </h4>
+
+                  <ul>
+
+                    <li>
+                      Customer discovery and local shopping
+                    </li>
+
+                    <li>
+                      Vendor product and order management
+                    </li>
+
+                    <li>
+                      Delivery partner workflow and tracking
+                    </li>
+
+                    <li>
+                      Admin controls, monitoring and analytics
+                    </li>
+
+                    <li>
+                      Area-based commerce model
+                    </li>
+
+                  </ul>
+
+                </div>
+
+
+                <div class="info">
+
+                  <h4>
+                    Product philosophy
+                  </h4>
+
+                  <p>
+                    KokanKart is designed as more than a
+                    storefront — it connects local commerce
+                    participants into one practical digital
+                    ecosystem.
+                  </p>
+
+
+                  <div class="product-actions">
+
+                    <a
+                      class="btn primary"
+                      href="mailto:support@cmsgroup.in?subject=KokanKart%20Inquiry"
+                    >
+                      KokanKart Inquiry →
+                    </a>
+
+                    <a
+                      class="btn secondary"
+                      href="mailto:support@cmsgroup.in?subject=KokanKart%20Vendor%20Signup"
+                    >
+                      Become a Vendor →
+                    </a>
+
+                  </div>
+
+                </div>
+
+              </div>
+
+            </div>
+
+
+            <!-- EXISTING SHOWCASE -->
+
+            <div class="product-showcase">
+
+              <div class="showcase-frame">
+
+                <img
+                  src="assets/kokankart-showcase.png"
+                  alt="KokanKart product showcase showing customer shopping, vendor dashboard, delivery and admin experiences"
+                  loading="lazy"
+                >
+
+              </div>
+
+            </div>
+
+          </article>
+
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- ===================================================
+         APPROACH
+         =================================================== -->
+
+    <section id="approach">
+
+      <div class="container">
+
+        <div class="section-head reveal">
+
+          <span class="kicker amber">
+            How we build
+          </span>
+
+          <h2>
+            From real problem to real product.
+          </h2>
+
+          <p>
+            CMS keeps the product cycle focused,
+            practical and iterative.
+          </p>
+
+        </div>
+
+
+        <div class="approach">
+
+
+          <div class="card step reveal">
+
+            <div class="line"></div>
+
+            <b>
+              Identify
+            </b>
+
+            <p>
+              Understand the problem and the people
+              experiencing it.
+            </p>
+
+          </div>
+
+
+          <div class="card step reveal">
+
+            <div class="line"></div>
+
+            <b>
+              Design
+            </b>
+
+            <p>
+              Shape a clear experience around the
+              core user need.
+            </p>
+
+          </div>
+
+
+          <div class="card step reveal">
+
+            <div class="line"></div>
+
+            <b>
+              Build
+            </b>
+
+            <p>
+              Create reliable technology with quality
+              at the foundation.
+            </p>
+
+          </div>
+
+
+          <div class="card step reveal">
+
+            <div class="line"></div>
+
+            <b>
+              Launch
+            </b>
+
+            <p>
+              Put the product into the real world and
+              learn from usage.
+            </p>
+
+          </div>
+
+
+          <div class="card step reveal">
+
+            <div class="line"></div>
+
+            <b>
+              Iterate
+            </b>
+
+            <p>
+              Improve continuously as users, needs
+              and opportunities evolve.
+            </p>
+
+          </div>
+
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- ===================================================
+         VALUES
+         =================================================== -->
+
+    <section id="values">
+
+      <div class="container">
+
+        <div class="section-head reveal">
+
+          <span class="kicker">
+            Core values
+          </span>
+
+          <h2>
+            Principles behind every product.
+          </h2>
+
+        </div>
+
+
+        <div class="values">
+
+
+          <div class="card value reveal">
+
+            <b>
+              Innovation
+            </b>
+
+            <p>
+              Think differently. Build meaningfully.
+            </p>
+
+          </div>
+
+
+          <div class="card value reveal">
+
+            <b>
+              Trust
+            </b>
+
+            <p>
+              Earn confidence through every interaction.
+            </p>
+
+          </div>
+
+
+          <div class="card value reveal">
+
+            <b>
+              Speed
+            </b>
+
+            <p>
+              Move from idea to execution with purpose.
+            </p>
+
+          </div>
+
+
+          <div class="card value reveal">
+
+            <b>
+              Customer Satisfaction
+            </b>
+
+            <p>
+              Create value users can feel.
+            </p>
+
+          </div>
+
+
+          <div class="card value reveal">
+
+            <b>
+              Transparency
+            </b>
+
+            <p>
+              Stay clear, honest and responsible.
+            </p>
+
+          </div>
+
+
+          <div class="card value reveal">
+
+            <b>
+              Quality
+            </b>
+
+            <p>
+              Build reliable experiences without shortcuts.
+            </p>
+
+          </div>
+
+
+          <div class="card value reveal">
+
+            <b>
+              Growth
+            </b>
+
+            <p>
+              Build today with tomorrow in mind.
+            </p>
+
+          </div>
+
+
+          <div class="card value reveal">
+
+            <b>
+              Service
+            </b>
+
+            <p>
+              Support products with responsibility.
+            </p>
+
+          </div>
+
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- ===================================================
+         VISION
+         =================================================== -->
+
+    <section>
+
+      <div class="container">
+
+        <div class="card vision reveal">
+
+          <div>
+
+            <span class="kicker">
+              Long-term direction
+            </span>
+
+            <h3>
+              Build products today.
+              Create ecosystems tomorrow.
+            </h3>
+
+            <p>
+              CMS is starting with an India-focused
+              product portfolio and aims to grow through
+              useful technology products, strong execution
+              and long-term ownership.
+            </p>
+
+          </div>
+
+
+          <div class="future">
+
+            <div>
+              Consumer Technology
+            </div>
+
+            <div>
+              Business Technology
+            </div>
+
+            <div>
+              Digital Commerce
+            </div>
+
+            <div>
+              Wellness Platforms
+            </div>
+
+            <div>
+              New Product Categories
+            </div>
+
+            <div>
+              Future Business Opportunities
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- ===================================================
+         CTA
+         =================================================== -->
+
+    <section>
+
+      <div class="container">
+
+        <div class="card cta reveal">
+
+          <span class="kicker">
+            Creative Management Solutions
+          </span>
+
+          <h2>
+            Building what comes next.
+          </h2>
+
+          <p>
+            Follow the products we are building today
+            and the ecosystems we aim to create over time.
+          </p>
+
+          <a
+            class="btn primary"
+            href="mailto:support@cmsgroup.in"
+          >
+            Contact CMS →
+          </a>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+  </main>
+
+
+
+  <!-- =====================================================
+       FOOTER
+       ===================================================== -->
+
+  <footer>
+
+    <div class="container">
+
+      <div class="footer-grid">
+
+
+        <div class="footer-brand">
+
+          Creative Management Solutions
+
+          <span>
+            India-focused digital product company.
+          </span>
+
+        </div>
+
+
+        <div class="footer-links">
+
+          <a href="#about">
+            About
+          </a>
+
+          <a href="#products">
+            Products
+          </a>
+
+          <a href="#approach">
+            Approach
+          </a>
+
+          <a href="#values">
+            Values
+          </a>
+
+          <a href="/privacy.html">
+            Privacy
+          </a>
+
+          <a href="/terms.html">
+            Terms
+          </a>
+
+          <a href="mailto:support@cmsgroup.in">
+            support@cmsgroup.in
+          </a>
+
+        </div>
+
+      </div>
+
+
+      <div class="copyright">
+
+        ©
+        <span id="year"></span>
+        Creative Management Solutions.
+        All Rights Reserved.
+
+      </div>
+
     </div>
-  </section>
+
+  </footer>
+
+
+
+  <!-- =====================================================
+       JAVASCRIPT
+       ===================================================== -->
+
+  <script>
+
+    /* =====================================================
+       YEAR
+       ===================================================== */
+
+    document.getElementById("year").textContent =
+      new Date().getFullYear();
+
+
+    /* =====================================================
+       MOBILE MENU
+       ===================================================== */
+
+    const menu =
+      document.getElementById("menu");
+
+    const navLinks =
+      document.getElementById("navLinks");
+
+
+    menu.addEventListener("click", function () {
+
+      const isOpen =
+        navLinks.classList.toggle("open");
+
+      menu.setAttribute(
+        "aria-expanded",
+        isOpen ? "true" : "false"
+      );
+
+      menu.setAttribute(
+        "aria-label",
+        isOpen
+          ? "Close navigation menu"
+          : "Open navigation menu"
+      );
+
+    });
+
+
+    /* Close mobile menu after navigation */
+
+    navLinks
+      .querySelectorAll("a")
+      .forEach(function (link) {
+
+        link.addEventListener("click", function () {
+
+          navLinks.classList.remove("open");
+
+          menu.setAttribute(
+            "aria-expanded",
+            "false"
+          );
+
+          menu.setAttribute(
+            "aria-label",
+            "Open navigation menu"
+          );
+
+        });
+
+      });
+
+
+    /* =====================================================
+       SCROLL PROGRESS
+       ===================================================== */
+
+    const scrollProgress =
+      document.getElementById("scrollProgress");
+
+
+    function updateScrollProgress() {
+
+      const scrollTop =
+        window.scrollY ||
+        document.documentElement.scrollTop;
+
+      const documentHeight =
+        document.documentElement.scrollHeight -
+        window.innerHeight;
+
+      if (documentHeight <= 0) {
+
+        scrollProgress.style.width = "0%";
+
+        return;
+      }
+
+      const percentage =
+        (scrollTop / documentHeight) * 100;
+
+      scrollProgress.style.width =
+        Math.min(
+          100,
+          Math.max(0, percentage)
+        ) + "%";
+
+    }
+
+
+    window.addEventListener(
+      "scroll",
+      updateScrollProgress,
+      {
+        passive: true
+      }
+    );
+
+
+    window.addEventListener(
+      "resize",
+      updateScrollProgress
+    );
+
+
+    updateScrollProgress();
+
+
+    /* =====================================================
+       REVEAL ON SCROLL
+       ===================================================== */
+
+    const revealElements =
+      document.querySelectorAll(".reveal");
+
+
+    const revealObserver =
+      new IntersectionObserver(
+        function (entries, observer) {
+
+          entries.forEach(function (entry) {
+
+            if (entry.isIntersecting) {
+
+              entry.target.classList.add("visible");
+
+              observer.unobserve(
+                entry.target
+              );
+
+            }
+
+          });
+
+        },
+        {
+          threshold: 0.12,
+          rootMargin: "0px 0px -40px 0px"
+        }
+      );
+
+
+    revealElements.forEach(function (element) {
+
+      revealObserver.observe(element);
+
+    });
+
+
+    /* =====================================================
+       ESCAPE KEY — MOBILE MENU
+       ===================================================== */
+
+    document.addEventListener(
+      "keydown",
+      function (event) {
+
+        if (event.key === "Escape") {
+
+          navLinks.classList.remove("open");
+
+          menu.setAttribute(
+            "aria-expanded",
+            "false"
+          );
+
+          menu.setAttribute(
+            "aria-label",
+            "Open navigation menu"
+          );
+
+        }
+
+      }
+    );
+
+  </script>
 
 </body>
-
 </html>
